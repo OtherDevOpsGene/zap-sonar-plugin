@@ -69,5 +69,5 @@ Permission to modify and redistribute is granted under the terms of the [LGPLv3]
   [LGPLv3]: http://www.gnu.org/licenses/lgpl.txt
   [OWASP ZAP]: https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project
   [OWASP Dependency-Check SonarQube Plugin]: https://github.com/stevespringett/dependency-check-sonar-plugin
-  [forked]: https://github.com/polymont/dependency-check-sonar-plugin]
+  [forked]: https://github.com/polymont/dependency-check-sonar-plugin
   [Polymont]: https://github.com/polymont
