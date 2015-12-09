@@ -27,11 +27,11 @@ The plugin keeps track of the following statistics:
 
 Additionally, the following metric is defined:
 
-__Identified Vulnerability Score (IVS)__
+__Identified Risk Score (IRS)__
 
 (high * 5) + (medium * 3) + (low * 1)
 
-The IVS is simply a weighted measurement of the vulnerabilities identified during
+The IRS is simply a weighted measurement of the vulnerabilities identified during
 a scan. It does not measure the actual risk posed by the findings.
 
 
