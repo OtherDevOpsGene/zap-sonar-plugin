@@ -27,11 +27,11 @@ The plugin keeps track of the following statistics:
 
 Additionally, the following metric is defined:
 
-__Identified Risk Score (IRS)__
+__Identified Vulnerability Score (IVS)__
 
 (high * 5) + (medium * 3) + (low * 1)
 
-The IRS is simply a weighted measurement of the vulnerabilities identified during
+The IVS is simply a weighted measurement of the vulnerabilities identified during
 a scan. It does not measure the actual risk posed by the findings.
 
 
@@ -53,8 +53,8 @@ Plugin Configuration
 A typical SonarQube configuraiton will have the following parameters. This example assumes the use of a Jenkins workspace, but can easily be altered for other CI/CD systems.
 
 ```ini
-sonar.sources=.
-sonar.zap.reportPath=${WORKSPACE}/zaproxy-report.xml
+sonar.sources=${WORKSPACE}
+sonar.zaproxy.reportPath=${WORKSPACE}/zaproxy-report.xml
 ```
 
 This example may be less than ideal as the source directory generally will not be the root of the project workspace, but rather a dedicated 'src' directory. It is important to note that from SonarQubes perspective, zaproxy-report.xml is a source file and will need to be included in sonar.sources. Multiple source directories can be specified by this properly.
@@ -68,14 +68,12 @@ The ZAP SonarQube Plugin is derived from the [OWASP Dependency-Check SonarQube P
 Copyright & License
 -------------------
 
-OWASP ZAP SonarQube Plugin is Copyright (c) Steve Springett. All Rights Reserved.
-
 Permission to modify and redistribute is granted under the terms of the [LGPLv3] license.
 
   [LGPLv3]: http://www.gnu.org/licenses/lgpl.txt
   [bintray]: https://bintray.com/stevespringett/owasp/zap-sonar/
   [GitHub]: https://github.com/stevespringett/zap-sonar-plugin/releases
-  [OWASP ZAP]: https://www.owasp.org/index.php/OWASP_Dependency_Check
+  [OWASP ZAP]: https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project
   [OWASP Dependency-Check SonarQube Plugin]: https://github.com/stevespringett/dependency-check-sonar-plugin
   [forked]: https://github.com/polymont/dependency-check-sonar-plugin]
   [Polymont]: https://github.com/polymont
