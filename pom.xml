@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.sonarsource.parent</groupId>
+        <artifactId>parent</artifactId>
+        <version>24</version>
+    </parent>
+    <groupId>org.sonarsource.owasp</groupId>
+    <artifactId>sonar-zap</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>ZAP for SonarQube</name>
+    <description>Integrates ZAP reports into SonarQube</description>
+    <inceptionYear>2015</inceptionYear>
+
+    <properties>
+        <license.owner>Steve Springett</license.owner>
+        <license.mailto>steve.springett@owasp.org</license.mailto>
+    </properties>
+
+    <organization>
+        <name>OWASP</name>
+        <url>http://www.owasp.org</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>GNU LGPL 3</name>
+            <url>http://www.gnu.org/licenses/lgpl.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Steve Springett</name>
+            <email>steve.springett@owasp.org</email>
+            <url>http://www.stevespringett.com</url>
+        </developer>
+    </developers>
+
+    <!-- todo: change the URLs to the new owner of the repo -->
+    <scm>
+      <connection>scm:git:https://github.com/stevespringett/zap-sonar-plugin</connection>
+      <developerConnection>scm:git:https://github.com/stevespringett/zap-sonar-plugin.git</developerConnection>
+      <url>https://github.com/stevespringett/zap-sonar-plugin</url>
+      <tag>HEAD</tag>
+    </scm>
+
+    <!-- todo: change the URL to the new owner of the repo -->
+    <issueManagement>
+      <system>GitHub</system>
+      <url>https://github.com/stevespringett/zap-sonar-plugin/issues</url>
+    </issueManagement>
+
+    <!-- todo: change the URL to the new owner of the repo -->
+    <ciManagement>
+      <system>Travis CI</system>
+      <url>https://travis-ci.org/stevespringett/zap-sonar-plugin</url>
+    </ciManagement>
+
+    <!-- todo: change the URL to the new owner of the repo -->
+    <distributionManagement>
+        <repository>
+            <id>bintray</id>
+            <url>https://api.bintray.com/maven/stevespringett/owasp/zap-sonar</url>
+        </repository>
+    </distributionManagement>
+
+    <modules>
+        <module>sonar-zap-plugin</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${version.release.plugin}</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

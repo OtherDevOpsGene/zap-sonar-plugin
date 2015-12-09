@@ -1,0 +1,126 @@
+<%
+   identified_risk_score = measure('identified_risk_score')
+
+   total_alerts = measure('total_alerts')
+   high_risk_alerts = measure('high_risk_alerts')
+   medium_risk_alerts = measure('medium_risk_alerts')
+   low_risk_alerts = measure('low_risk_alerts')
+   info_risk_alerts = measure('info_risk_alerts')
+
+   tooltip = message('widget.as_calculated_on_x', :params => l(@snapshot.created_at))
+
+   if identified_risk_score
+%>
+    <style>
+      .severity-circle {
+        display: block;
+        margin: 0 5px 0 0;
+        padding: 0;
+        float: left;
+        width: 5px;
+        height: 5px;
+        line-height: 12px;
+        background: #FFFFFF;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border: 3px solid #0000CD;
+        border-radius: 6px;
+      }
+      .severity-circle.high-severity {
+        border-color: red;
+      }
+      .severity-circle.medium-severity {
+        border-color: orange;
+      }
+      .severity-circle.low-severity {
+        border-color: green;
+      }
+      .severity-circle.info-severity {
+        border-color: darkblue;
+      }
+    </style>
+
+    <div class="widget-row">
+      <div class="widget-span widget-span-6">
+        <div class="widget-measure-container">
+          <p class="widget-measure widget-measure-main">
+            <span class="widget-label">
+              <%= message('zap.widget.securityRating') -%>
+            </span>
+            <span class="nowrap">
+              <a href="<%= url_for_drilldown('identified_risk_score') -%>" class="widget-link"
+                 title="<%= tooltip -%>" data-toggle="tooltip" data-placement="bottom">
+                 <%= format_measure(identified_risk_score) -%>
+              </a>
+              <%= dashboard_configuration.selected_period? ? format_variation(identified_risk_score) : trend_icon(identified_risk_score) -%>
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div class="widget-span widget-span-6">
+        <div class="widget-measure-container">
+          <p class="widget-measure widget-measure-main">
+            <span class="widget-label">
+              <%= message('zap.widget.totalAlerts') -%>
+            </span>
+            <span class="nowrap">
+              <a href="<%= url_for(:controller => 'component_issues', :action => 'index') -%>?id=<%= url_encode(@project.key) -%>#resolved=false|languages=zap"
+                 class="widget-link" title="<%= tooltip -%>" data-toggle="tooltip" data-placement="bottom">
+                <%= format_measure(total_alerts) -%>
+              </a>
+              <%= dashboard_configuration.selected_period? ? format_variation(total_alerts) : trend_icon(total_alerts) -%>
+            </span>
+          </p>
+          <table class="data widget-barchar">
+            <tr>
+              <td class="thin nowrap"><div class="severity-circle high-severity"></div> <%= message('zap.widget.severity.high') -%></td>
+              <td class="thin right nowrap">
+                <a href="<%= url_for(:controller => 'component_issues', :action => 'index') -%>?id=<%= url_encode(@project.key) -%>#resolved=false|severities=CRITICAL|languages=zap"
+                   class="widget-link drilldown_CRITICAL" title="<%= tooltip -%>" data-toggle="tooltip" data-placement="bottom">
+                  <%= format_measure(high_risk_alerts) -%>
+                </a>
+              </td>
+              <td class="thin nowrap">
+                <%= dashboard_configuration.selected_period? ? format_variation(high_risk_alerts) : trend_icon(high_risk_alerts, :empty => true) -%>
+              </td>
+            </tr>
+            <tr>
+              <td class="thin nowrap"><div class="severity-circle medium-severity"></div> <%= message('zap.widget.severity.medium') -%></td>
+              <td class="thin right nowrap">
+                <a href="<%= url_for(:controller => 'component_issues', :action => 'index') -%>?id=<%= url_encode(@project.key) -%>#resolved=false|severities=MAJOR|languages=zap"
+                   class="widget-link drilldown_MAJOR" title="<%= tooltip -%>" data-toggle="tooltip" data-placement="bottom">
+                  <%= format_measure(medium_risk_alerts) -%>
+                </a>                       </td>
+              <td class="thin nowrap">
+                <%= dashboard_configuration.selected_period? ? format_variation(medium_risk_alerts) : trend_icon(medium_risk_alerts, :empty => true) -%>
+              </td>
+            </tr>
+            <tr>
+              <td class="thin nowrap"><div class="severity-circle low-severity"></div> <%= message('zap.widget.severity.low') -%></td>
+              <td class="thin right nowrap">
+                <a href="<%= url_for(:controller => 'component_issues', :action => 'index') -%>?id=<%= url_encode(@project.key) -%>#resolved=false|severities=MINOR|languages=zap"
+                   class="widget-link drilldown_MINOR" title="<%= tooltip -%>" data-toggle="tooltip" data-placement="bottom">
+                  <%= format_measure(low_risk_alerts) -%>
+                </a>                        </td>
+              <td class="thin nowrap">
+                <%= dashboard_configuration.selected_period? ? format_variation(low_risk_alerts) : trend_icon(low_risk_alerts, :empty => true) -%>
+              </td>
+            </tr>
+            <tr>
+              <td class="thin nowrap"><div class="severity-circle info-severity"></div> <%= message('zap.widget.severity.info') -%></td>
+              <td class="thin right nowrap">
+                <a href="<%= url_for(:controller => 'component_issues', :action => 'index') -%>?id=<%= url_encode(@project.key) -%>#resolved=false|severities=INFO|languages=zap"
+                   class="widget-link drilldown_MINOR" title="<%= tooltip -%>" data-toggle="tooltip" data-placement="bottom">
+                  <%= format_measure(info_risk_alerts) -%>
+                </a>                        </td>
+              <td class="thin nowrap">
+                <%= dashboard_configuration.selected_period? ? format_variation(info_risk_alerts) : trend_icon(info_risk_alerts, :empty => true) -%>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+<% end %>
