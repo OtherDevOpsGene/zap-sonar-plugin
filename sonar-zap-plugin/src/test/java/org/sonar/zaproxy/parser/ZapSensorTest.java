@@ -27,6 +27,7 @@ import org.sonar.api.component.ResourcePerspectives;
 import org.sonar.api.issue.Issuable.IssueBuilder;
 import org.sonar.api.issue.Issue;
 import org.sonar.api.rule.RuleKey;
+import org.sonar.api.scan.filesystem.PathResolver;
 import org.sonar.zaproxy.ZapSensor;
 import org.sonar.zaproxy.ZapSensorConfiguration;
 
@@ -39,6 +40,7 @@ public class ZapSensorTest {
     private ZapSensorConfiguration configuration;
     private ResourcePerspectives resourcePerspectives;
     private FileSystem fileSystem;
+    private PathResolver pathResolver;
     private Rules rules;
     private ZapSensor sensor;
 
@@ -47,8 +49,9 @@ public class ZapSensorTest {
         this.configuration = mock(ZapSensorConfiguration.class);
         this.resourcePerspectives = mock(ResourcePerspectives.class);
         this.fileSystem = mock(FileSystem.class);
+        this.pathResolver = mock(PathResolver.class);
         this.rules = mock(Rules.class);
-        this.sensor = new ZapSensor(this.configuration, this.resourcePerspectives, this.fileSystem, this.rules);
+        this.sensor = new ZapSensor(this.configuration, this.resourcePerspectives, this.fileSystem, this.pathResolver, this.rules);
     }
 
     @Test

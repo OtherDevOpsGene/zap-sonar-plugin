@@ -31,6 +31,7 @@ import org.sonar.api.resources.Project;
 import org.sonar.api.resources.Resource;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.api.rule.Severity;
+import org.sonar.api.scan.filesystem.PathResolver;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.sonar.api.utils.log.Profiler;
@@ -50,9 +51,7 @@ public class ZapSensor implements Sensor {
 
     private static final Logger LOGGER = Loggers.get(ZapSensor.class);
 
-    private final ZapSensorConfiguration configuration;
     private final ResourcePerspectives resourcePerspectives;
-    private final FileSystem fileSystem;
     private final Rules rules;
     private final XmlReportFile report;
 
@@ -67,12 +66,11 @@ public class ZapSensor implements Sensor {
             ZapSensorConfiguration configuration,
             ResourcePerspectives resourcePerspectives,
             FileSystem fileSystem,
+            PathResolver pathResolver,
             Rules rules) {
-        this.configuration = configuration;
         this.resourcePerspectives = resourcePerspectives;
-        this.fileSystem = fileSystem;
         this.rules = rules;
-        this.report = new XmlReportFile(configuration, fileSystem);
+        this.report = new XmlReportFile(configuration, fileSystem, pathResolver);
     }
 
     @Override

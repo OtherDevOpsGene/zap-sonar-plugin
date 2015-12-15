@@ -47,13 +47,10 @@ Plugin Configuration
 A typical SonarQube configuraiton will have the following parameters. This example assumes the use of a Jenkins workspace, but can easily be altered for other CI/CD systems.
 
 ```ini
-sonar.sources=${WORKSPACE}
 sonar.zaproxy.reportPath=${WORKSPACE}/zaproxy-report.xml
 # Optional - specifies additional rules outside of what's included in the core
 sonar.zaproxy.rulesFilePath=${WORKSPACE}/myrules.xml
 ```
-
-This example may be less than ideal as the source directory generally will not be the root of the project workspace, but rather a dedicated 'src' directory. It is important to note that from SonarQubes perspective, zaproxy-report.xml is a source file and will need to be included in sonar.sources. Multiple source directories can be specified by this properly.
 
 History
 -------------------
