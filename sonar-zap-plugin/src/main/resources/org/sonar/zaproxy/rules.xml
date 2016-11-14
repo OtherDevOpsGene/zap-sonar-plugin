@@ -439,6 +439,28 @@ If you want to add a rule, you can, following the model above.
         <tag>zaproxy</tag>
     </rule>
     <rule>
+        <key>30002</key>
+        <name>Check for proper format string handling in back end c code</name>
+        <description>
+            <![CDATA[<h3>Solution :</h3>
+    <p>Many of the back end interfaces use a secondary programming language, often compiled,
+       to interface to a variety of system functions.  C and C++ are two of the more popular
+       "traditional" languages that are used.  The Format String exploit occurs when the submitted
+       data of an input string is evaluated as a command by the application. In this way,
+       the attacker could execute code, read the stack, or cause a segmentation fault in the
+       running application, causing new behaviors that could compromise the security or the
+       stability of the system.</p>
+    <h3>References:</h3>
+    <ul>
+    <li>No Reference.</li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
         <key>40003</key>
         <name>CRLF Injection</name>
 
