@@ -1,6 +1,6 @@
 /*
  * ZAP Plugin for SonarQube
- * Copyright (C) 2015 Steve Springett
+ * Copyright (C) 2015-2017 Steve Springett
  * steve.springett@owasp.org
  *
  * This program is free software; you can redistribute it and/or
@@ -13,38 +13,36 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 package org.sonar.zaproxy;
 
-import org.sonar.api.SonarPlugin;
+import org.sonar.api.Plugin;
+import org.sonar.zaproxy.base.ZapMetrics;
 import org.sonar.zaproxy.rule.ZapLanguage;
 import org.sonar.zaproxy.rule.ZapProfile;
 import org.sonar.zaproxy.rule.ZapRuleDefinition;
 import org.sonar.zaproxy.ui.ZapWidget;
-import org.sonar.zaproxy.base.ZapMetrics;
 
-import java.util.Arrays;
-import java.util.List;
-
-public final class ZapPlugin extends SonarPlugin {
+public final class ZapPlugin implements Plugin {
 
     public static final String REPOSITORY_KEY = "ZAProxy";
     public static final String LANGUAGE_KEY = "zap";
     public static final String LANGUAGE_NAME = "ZAP";
     public static final String RULES_FILE = "/org/sonar/zaproxy/rules.xml";
+    public static final String RULE_KEY = "ZapVulnerability";
 
-    @Override
-    public List getExtensions() {
-        return Arrays.asList(
-                ZapSensor.class,
-                ZapSensorConfiguration.class,
-                ZapMetrics.class,
-                ZapProfile.class,
-                ZapLanguage.class,
-                ZapRuleDefinition.class,
-                ZapWidget.class);
-    }
+		@Override
+		public void define(Context context) {
+			context.addExtensions(ZapSensor.class,
+          ZapSensorConfiguration.class,
+          ZapMetrics.class,
+          ZapProfile.class,
+          ZapLanguage.class,
+          ZapRuleDefinition.class,
+          ZapWidget.class);
+			
+		}
 }

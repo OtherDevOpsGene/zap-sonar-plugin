@@ -1,6 +1,6 @@
 /*
  * ZAP Plugin for SonarQube
- * Copyright (C) 2015 Steve Springett
+ * Copyright (C) 2015-2017 Steve Springett
  * steve.springett@owasp.org
  *
  * This program is free software; you can redistribute it and/or
@@ -13,29 +13,29 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 package org.sonar.zaproxy.base;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.sonar.api.rule.Severity;
+import static org.fest.assertions.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.fest.assertions.Assertions.assertThat;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.sonar.api.batch.rule.Severity;
 
 @RunWith(Parameterized.class)
 public class ZapUtilsTest {
 
     private final int riskCodeSeverity;
-    private final String expectedSeverity;
+    private final Severity expectedSeverity;
 
-    public ZapUtilsTest(int riskCodeSeverity, String expectedSeverity) {
+    public ZapUtilsTest(int riskCodeSeverity, Severity expectedSeverity) {
         this.riskCodeSeverity = riskCodeSeverity;
         this.expectedSeverity = expectedSeverity;
     }

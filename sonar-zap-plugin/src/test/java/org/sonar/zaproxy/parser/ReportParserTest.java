@@ -1,6 +1,6 @@
 /*
  * ZAP Plugin for SonarQube
- * Copyright (C) 2015 Steve Springett
+ * Copyright (C) 2015-2017 Steve Springett
  * steve.springett@owasp.org
  *
  * This program is free software; you can redistribute it and/or
@@ -13,22 +13,22 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 package org.sonar.zaproxy.parser;
 
-import org.junit.Test;
-import org.sonar.zaproxy.parser.element.AlertItem;
-import org.sonar.zaproxy.parser.element.ZapReport;
-import org.sonar.zaproxy.parser.element.Site;
+import static org.fest.assertions.Assertions.assertThat;
 
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.Iterator;
 
-import static org.fest.assertions.Assertions.assertThat;
+import org.junit.Test;
+import org.sonar.zaproxy.parser.element.AlertItem;
+import org.sonar.zaproxy.parser.element.Site;
+import org.sonar.zaproxy.parser.element.ZapReport;
 
 public class ReportParserTest {
 
