@@ -46,6 +46,7 @@ import org.sonar.zaproxy.parser.element.ZapReport;
 import org.xml.sax.SAXException;
 
 public class ZapSensor implements Sensor {
+
 	private static final String SENSOR_NAME = "OWASP Zap-Check";
 	private static final Logger LOGGER = Loggers.get(ZapSensor.class);
 
@@ -70,7 +71,7 @@ public class ZapSensor implements Sensor {
 	private void addIssue(org.sonar.api.batch.sensor.SensorContext context, AlertItem alert) {
 		Severity severity = ZapUtils.riskCodeToSonarQubeSeverity(alert.getRiskcode());
 		context.newIssue()
-				.forRule(RuleKey.of(ZapPlugin.REPOSITORY_KEY, ZapPlugin.RULE_KEY))
+				.forRule(RuleKey.of(ZapPlugin.REPOSITORY_KEY, String.valueOf(alert.getPluginid())))
 				.at(new DefaultIssueLocation().on(context.module()).message(formatDescription(alert)))
 				.overrideSeverity(severity)
 				.save();
@@ -132,9 +133,16 @@ public class ZapSensor implements Sensor {
 	}
 
 	private ZapReport parseZapReport() throws IOException, ParserConfigurationException, SAXException {
-		try (InputStream stream = this.report.getInputStream()) {
-			return new ReportParser().parse(stream);
+		InputStream stream = this.report.getInputStream();
+		if (stream == null) {
+			return null;
 		}
+		try {
+			return new ReportParser().parse(stream);
+		} finally {
+			stream.close();
+		}
+
 	}
 
 	@Override
@@ -143,8 +151,10 @@ public class ZapSensor implements Sensor {
 		profiler.startInfo("Process ZAP report");
 		try {
 			ZapReport zapReport = parseZapReport();
-			totalAlerts = zapReport.getSite().getAlerts().size();
-			addIssues(context, zapReport);
+			if (zapReport != null) {
+				totalAlerts = zapReport.getSite().getAlerts().size();
+				addIssues(context, zapReport);
+			}
 		} catch (Exception e) {
 			throw new RuntimeException(
 					"Can not process ZAP report. Ensure the report are located within the project workspace and that sonar.sources is set to reflect these paths (or set sonar.sources=.)",
@@ -162,8 +172,7 @@ public class ZapSensor implements Sensor {
 		context.newMeasure().forMetric(ZapMetrics.INFO_RISK_ALERTS).withValue((double) infoIssuesCount);
 		context.newMeasure().forMetric(ZapMetrics.TOTAL_ALERTS).withValue((double) totalAlerts);
 
-		context.newMeasure().forMetric(
-				ZapMetrics.IDENTIFIED_RISK_SCORE).withValue(
+		context.newMeasure().forMetric(ZapMetrics.IDENTIFIED_RISK_SCORE).withValue(
 				ZapMetrics.inheritedRiskScore(criticalIssuesCount, majorIssuesCount, minorIssuesCount));
 	}
 
@@ -172,8 +181,8 @@ public class ZapSensor implements Sensor {
 		return "OWASP Zed Attack Proxy";
 	}
 
-	 @Override
-   public void describe(SensorDescriptor sensorDescriptor) {
-       sensorDescriptor.name(SENSOR_NAME);
-   }
+	@Override
+	public void describe(SensorDescriptor sensorDescriptor) {
+		sensorDescriptor.name(SENSOR_NAME);
+	}
 }

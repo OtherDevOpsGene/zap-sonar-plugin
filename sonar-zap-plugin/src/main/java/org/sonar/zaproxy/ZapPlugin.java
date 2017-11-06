@@ -32,8 +32,7 @@ public final class ZapPlugin implements Plugin {
     public static final String LANGUAGE_KEY = "zap";
     public static final String LANGUAGE_NAME = "ZAP";
     public static final String RULES_FILE = "/org/sonar/zaproxy/rules.xml";
-    public static final String RULE_KEY = "ZapVulnerability";
-
+ 
 		@Override
 		public void define(Context context) {
 			context.addExtensions(ZapSensor.class,
