@@ -1,6 +1,6 @@
 /*
  * ZAP Plugin for SonarQube
- * Copyright (C) 2015 Steve Springett
+ * Copyright (C) 2015-2017 Steve Springett
  * steve.springett@owasp.org
  *
  * This program is free software; you can redistribute it and/or
@@ -13,14 +13,17 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 package org.sonar.zaproxy.rule;
 
-import org.apache.commons.io.Charsets;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
+import org.apache.commons.io.Charsets;
 import org.apache.commons.lang.StringUtils;
 import org.sonar.api.config.Settings;
 import org.sonar.api.server.rule.RulesDefinition;
@@ -29,10 +32,6 @@ import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.sonar.zaproxy.ZapPlugin;
 import org.sonar.zaproxy.base.ZapConstants;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class ZapRuleDefinition implements RulesDefinition {
 

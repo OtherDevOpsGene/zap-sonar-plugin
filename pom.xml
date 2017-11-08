@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.sonarsource.parent</groupId>
         <artifactId>parent</artifactId>
-        <version>24</version>
+        <version>40</version>
     </parent>
     <groupId>org.sonarsource.owasp</groupId>
     <artifactId>sonar-zap</artifactId>
@@ -37,6 +37,10 @@
             <name>Steve Springett</name>
             <email>steve.springett@owasp.org</email>
             <url>http://www.stevespringett.com</url>
+        </developer>
+        <developer>
+            <name>Niklas Mehner</name>
+            <email>niklas.mehner@gmail.com</email>
         </developer>
     </developers>
 

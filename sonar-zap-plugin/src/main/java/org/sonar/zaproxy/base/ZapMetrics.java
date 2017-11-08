@@ -1,6 +1,6 @@
 /*
  * ZAP Plugin for SonarQube
- * Copyright (C) 2015 Steve Springett
+ * Copyright (C) 2015-2017 Steve Springett
  * steve.springett@owasp.org
  *
  * This program is free software; you can redistribute it and/or
@@ -13,18 +13,18 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 package org.sonar.zaproxy.base;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.sonar.api.measures.Metric;
 import org.sonar.api.measures.Metrics;
 import org.sonar.api.measures.SumChildValuesFormula;
-
-import java.util.Arrays;
-import java.util.List;
 
 public final class ZapMetrics implements Metrics {
 
@@ -39,7 +39,7 @@ public final class ZapMetrics implements Metrics {
     public static final String TOTAL_ALERTS_KEY = "total_alerts";
 
     public static double inheritedRiskScore(int high, int medium, int low) {
-        return (double) ((high * 5) + (medium * 3) + (low * 1));
+        return (high * 5) + (medium * 3) + (low * 1);
     }
 
     public static final Metric IDENTIFIED_RISK_SCORE = new Metric.Builder(ZapMetrics.IDENTIFIED_RISK_SCORE_KEY, "Identified Risk Score", Metric.ValueType.INT)

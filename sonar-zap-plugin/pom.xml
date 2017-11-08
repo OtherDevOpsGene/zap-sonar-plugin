@@ -13,14 +13,14 @@
     <url>https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project</url>
 
     <properties>
-        <sonar.version>5.1</sonar.version>
+        <sonar.version>6.3</sonar.version>
         <sonar.pluginClass>org.sonar.zaproxy.ZapPlugin</sonar.pluginClass>
         <sonar.pluginName>ZAP</sonar.pluginName>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.codehaus.sonar</groupId>
+            <groupId>org.sonarsource.sonarqube</groupId>
             <artifactId>sonar-plugin-api</artifactId>
             <version>${sonar.version}</version>
             <scope>provided</scope>
