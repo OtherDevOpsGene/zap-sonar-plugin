@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/stevespringett/zap-sonar-plugin.svg?branch=master)](https://travis-ci.org/stevespringett/zap-sonar-plugin) 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/dfe0e60e2f044f768ffde63a85bf55d5)](https://www.codacy.com/app/stevespringett/zap-sonar-plugin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stevespringett/zap-sonar-plugin&amp;utm_campaign=Badge_Grade)
+
 ZAP Plugin for SonarQube 6.x
 =====================================
 
