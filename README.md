@@ -1,7 +1,8 @@
-ZAP Plugin for SonarQube
+ZAP Plugin for SonarQube 6.x
 =====================================
 
-Integrates [OWASP ZAP] reports into SonarQube v5.1 or higher.
+Integrates [OWASP ZAP] reports into SonarQube v6.3 or higher. 
+
 
 About ZAP
 -------------------
