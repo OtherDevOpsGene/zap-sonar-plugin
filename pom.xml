@@ -38,6 +38,10 @@
             <email>steve.springett@owasp.org</email>
             <url>http://www.stevespringett.com</url>
         </developer>
+        <developer>
+            <name>Niklas Mehner</name>
+            <email>niklas.mehner@gmail.com</email>
+        </developer>
     </developers>
 
     <!-- todo: change the URLs to the new owner of the repo -->
