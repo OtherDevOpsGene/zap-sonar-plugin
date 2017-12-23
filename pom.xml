@@ -6,17 +6,21 @@
         <artifactId>parent</artifactId>
         <version>40</version>
     </parent>
+
     <groupId>org.sonarsource.owasp</groupId>
     <artifactId>sonar-zap</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>ZAP for SonarQube</name>
     <description>Integrates ZAP reports into SonarQube</description>
     <inceptionYear>2015</inceptionYear>
 
     <properties>
-        <license.owner>Steve Springett</license.owner>
-        <license.mailto>steve.springett@owasp.org</license.mailto>
+        <license.owner>Gene Gotimer</license.owner>
+        <license.mailto>gene.gotimer@coveros.com</license.mailto>
+
+        <maven.gpg.plugin.version>1.5</maven.gpg.plugin.version>
+        <nexus.staging.maven.plugin.version>1.6.7</nexus.staging.maven.plugin.version>
     </properties>
 
     <organization>
@@ -34,6 +38,12 @@
 
     <developers>
         <developer>
+            <name>Gene Gotimer</name>
+            <email>gene.gotimer@coveros.com</email>
+            <organization>Coveros, Inc.</organization>
+            <organizationUrl>http://coveros.com</organizationUrl>
+        </developer>
+        <developer>
             <name>Steve Springett</name>
             <email>steve.springett@owasp.org</email>
             <url>http://www.stevespringett.com</url>
@@ -44,31 +54,30 @@
         </developer>
     </developers>
 
-    <!-- todo: change the URLs to the new owner of the repo -->
     <scm>
-      <connection>scm:git:https://github.com/stevespringett/zap-sonar-plugin</connection>
-      <developerConnection>scm:git:https://github.com/stevespringett/zap-sonar-plugin.git</developerConnection>
-      <url>https://github.com/stevespringett/zap-sonar-plugin</url>
-      <tag>HEAD</tag>
+      <connection>scm:git:https://github.com/Coveros/zap-sonar-plugin.git</connection>
+      <developerConnection>scm:git:git@github.com:Coveros/zap-sonar-plugin.git</developerConnection>
+      <url>https://github.com/Coveros/zap-sonar-plugin</url>
     </scm>
 
-    <!-- todo: change the URL to the new owner of the repo -->
     <issueManagement>
       <system>GitHub</system>
-      <url>https://github.com/stevespringett/zap-sonar-plugin/issues</url>
+      <url>https://github.com/Coveros/zap-sonar-plugin/issues</url>
     </issueManagement>
 
-    <!-- todo: change the URL to the new owner of the repo -->
     <ciManagement>
       <system>Travis CI</system>
-      <url>https://travis-ci.org/stevespringett/zap-sonar-plugin</url>
+      <url>https://travis-ci.org/Coveros/zap-sonar-plugin</url>
     </ciManagement>
 
-    <!-- todo: change the URL to the new owner of the repo -->
     <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
         <repository>
-            <id>bintray</id>
-            <url>https://api.bintray.com/maven/stevespringett/owasp/zap-sonar</url>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
     </distributionManagement>
 
@@ -85,6 +94,33 @@
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                     <useReleaseProfile>false</useReleaseProfile>
                     <releaseProfiles>release</releaseProfiles>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven.gpg.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>${nexus.staging.maven.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <!-- Set this to true and the release will automatically proceed and
+                        sync to Central Repository will follow -->
+                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
                 </configuration>
             </plugin>
         </plugins>
