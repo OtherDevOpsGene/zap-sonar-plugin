@@ -73,7 +73,6 @@ public class ZapRuleDefinition implements RulesDefinition {
                 f = new File(rulesFilePath);
                 xmlLoader.load(repository, new FileInputStream(f), "UTF-8");
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
                 LOGGER.warn("The file " + f.getAbsolutePath() + " does not exist", e);
 
                 // Load default ZAProxy rules if custom rules.xml does not exist.

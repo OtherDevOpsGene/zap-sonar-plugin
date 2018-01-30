@@ -120,6 +120,8 @@ public class ZapSensor implements Sensor {
 			case INFO:
 				this.infoIssuesCount++;
 				break;
+                        default:
+                                break;
 		}
 	}
 
