@@ -17,3 +17,8 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .idea/
 *.iml
+**/.project
+**/.settings/
+**/.classpath
+
+
