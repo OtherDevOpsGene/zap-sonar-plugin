@@ -21,7 +21,7 @@
 		<license.mailto>gene.gotimer@coveros.com</license.mailto>
 
 		<maven.gpg.plugin.version>1.5</maven.gpg.plugin.version>
-		<nexus.staging.maven.plugin.version>1.6.7</nexus.staging.maven.plugin.version>
+		<nexus.staging.maven.plugin.version>1.6.8</nexus.staging.maven.plugin.version>
 	</properties>
 
 	<organization>
@@ -78,7 +78,7 @@
 		</snapshotRepository>
 		<repository>
 			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
 
@@ -89,21 +89,47 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-release-plugin</artifactId>
-				<configuration>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<useReleaseProfile>false</useReleaseProfile>
-					<releaseProfiles>release</releaseProfiles>
-				</configuration>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
 
 	<profiles>
 		<profile>
-			<id>sign</id>
+			<id>release</id>
 			<build>
 				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-release-plugin</artifactId>
+						<configuration>
+							<autoVersionSubmodules>true</autoVersionSubmodules>
+							<useReleaseProfile>false</useReleaseProfile>
+							<releaseProfiles>release</releaseProfiles>
+							<goals>deploy</goals>
+						</configuration>
+					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
@@ -126,9 +152,7 @@
 						<configuration>
 							<serverId>ossrh</serverId>
 							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-							<!-- Set this to true and the release will automatically proceed and 
-								sync to Central Repository will follow -->
-							<autoReleaseAfterClose>false</autoReleaseAfterClose>
+							<autoReleaseAfterClose>true</autoReleaseAfterClose>
 						</configuration>
 					</plugin>
 				</plugins>
