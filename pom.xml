@@ -55,19 +55,19 @@
     </developers>
 
     <scm>
-      <connection>scm:git:https://github.com/Coveros/zap-sonar-plugin.git</connection>
-      <developerConnection>scm:git:git@github.com:Coveros/zap-sonar-plugin.git</developerConnection>
-      <url>https://github.com/Coveros/zap-sonar-plugin</url>
+        <connection>scm:git:https://github.com/Coveros/zap-sonar-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:Coveros/zap-sonar-plugin.git</developerConnection>
+        <url>https://github.com/Coveros/zap-sonar-plugin</url>
     </scm>
 
     <issueManagement>
-      <system>GitHub</system>
-      <url>https://github.com/Coveros/zap-sonar-plugin/issues</url>
+        <system>GitHub</system>
+        <url>https://github.com/Coveros/zap-sonar-plugin/issues</url>
     </issueManagement>
 
     <ciManagement>
-      <system>Travis CI</system>
-      <url>https://travis-ci.org/Coveros/zap-sonar-plugin</url>
+        <system>Travis CI</system>
+        <url>https://travis-ci.org/Coveros/zap-sonar-plugin</url>
     </ciManagement>
 
     <distributionManagement>
