@@ -22,6 +22,7 @@ package org.sonar.zaproxy.parser;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -33,6 +34,7 @@ import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.sonar.zaproxy.base.ZapUtils;
 import org.sonar.zaproxy.parser.element.AlertItem;
+import org.sonar.zaproxy.parser.element.Instance;
 import org.sonar.zaproxy.parser.element.Site;
 import org.sonar.zaproxy.parser.element.ZapReport;
 
@@ -52,15 +54,16 @@ public class ReportParser {
 
             SMInputCursor childCursor = rootC.childCursor(); // Child of <OWASPZAPReport>, here only <site>
 
-            Site site = null;
+            List<Site> sites = new ArrayList<Site>();
 
             while (childCursor.getNext() != null) {
                 String nodeName = childCursor.getLocalName();
                 if ("site".equals(nodeName)) {
-                    site = processSite(childCursor);
+                    sites.add(processSite(childCursor));
+
                 }
             }
-            return new ZapReport(gererated, versionZAP, site);
+            return new ZapReport(gererated, versionZAP, sites);
         } catch (XMLStreamException e) {
             throw new IllegalStateException("XML is not valid", e);
         }
@@ -112,14 +115,34 @@ public class ReportParser {
                 alertItem.setRiskdesc(StringUtils.trim(childCursor.collectDescendantText(false)));
             } else if ("desc".equals(nodeName)) {
                 alertItem.setDesc(StringUtils.trim(childCursor.collectDescendantText(false)));
-            } else if ("uri".equals(nodeName)) {
-                alertItem.setUri(StringUtils.trim(childCursor.collectDescendantText(false)));
-            } else if ("param".equals(nodeName)) {
-                alertItem.setParam(StringUtils.trim(childCursor.collectDescendantText(false)));
-            } else if ("attack".equals(nodeName)) {
-                alertItem.setAttack(StringUtils.trim(childCursor.collectDescendantText(false)));
-            } else if ("evidence".equals(nodeName)) {
-                alertItem.setEvidence(StringUtils.trim(childCursor.collectDescendantText(false)));
+            } else if ("instances".equals(nodeName)) {
+                SMInputCursor instanceCursor = childCursor.childElementCursor("instance");
+                while (instanceCursor.getNext() != null) {
+                    SMInputCursor childInstanceCursor = instanceCursor.childCursor();
+                    Instance instance = new Instance();
+                    while (childInstanceCursor.getNext() != null) {
+                        String instanceNodeName = childInstanceCursor.getLocalName();
+                        if (instanceNodeName != null) {
+                            String value = StringUtils.trim(childInstanceCursor.collectDescendantText(false));
+                            if ("uri".equals(instanceNodeName)) {
+                                instance.setUri(value);
+                            } else if ("param".equals(instanceNodeName)) {
+                                instance.setParam(value);
+                            } else if ("method".equals(instanceNodeName)) {
+                                instance.setMethod(value);
+                            } else if ("evidence".equals(instanceNodeName)) {
+                                instance.setEvidence(value);
+                            } else if ("attack".equals(instanceNodeName)) {
+                                instance.setAttack(value);
+                            }
+                        }
+                    }
+                    alertItem.addInstance(instance);
+                }
+//            }  else if ("attack".equals(nodeName)) {
+//                alertItem.setAttack(StringUtils.trim(childCursor.collectDescendantText(false)));
+//            } else if ("evidence".equals(nodeName)) {
+//                alertItem.setEvidence(StringUtils.trim(childCursor.collectDescendantText(false)));
             } else if ("otherinfo".equals(nodeName)) {
                 alertItem.setOtherinfo(StringUtils.trim(childCursor.collectDescendantText(false)));
             } else if ("solution".equals(nodeName)) {

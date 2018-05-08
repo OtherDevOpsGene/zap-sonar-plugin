@@ -19,6 +19,9 @@
  */
 package org.sonar.zaproxy.parser.element;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AlertItem {
 
     private int pluginid;
@@ -27,8 +30,9 @@ public class AlertItem {
     private int confidence;
     private String riskdesc;
     private String desc;
-    private String uri;
-    private String param;
+    //private String uri;
+    //private String param;
+    private List<Instance> instances;
     private String attack;
     private String evidence;
     private String otherinfo;
@@ -85,14 +89,26 @@ public class AlertItem {
         this.desc = desc;
     }
 
+    public void addInstance(Instance instance){
+        if (this.instances == null){
+            this.instances = new ArrayList<Instance>();
+        }
+        this.instances.add(instance);
+    }
+
+    public List<Instance> getInstances(){
+        return this.instances;
+    }
+    /*
     public String getUri() {
         return uri;
     }
 
     public void setUri(String uri) {
         this.uri = uri;
-    }
+    }*/
 
+    /*
     public String getParam() {
         return param;
     }
@@ -100,6 +116,7 @@ public class AlertItem {
     public void setParam(String param) {
         this.param = param;
     }
+    */
     public String getAttack() {
         return attack;
     }
@@ -158,10 +175,18 @@ public class AlertItem {
 
     @Override
     public String toString() {
+        String instanceString="";
+        for (Instance instance : instances) {
+            instanceString += instance.toString();
+            if (instances.indexOf(instance) < instances.size()-1){
+                instanceString +=", ";
+            }
+        }
+
         return "AlertItem [pluginid=" + pluginid + ", alert=" + alert
                 + ", riskcode=" + riskcode + ", confidence=" + confidence
-                + ", riskdesc=" + riskdesc + ", desc=" + desc + ", uri=" + uri
-                + ", param=" + param + ", attack=" + attack + ", evidence="
+                + ", riskdesc=" + riskdesc + ", desc=" + desc + ", instances=[" + instanceString
+                + "], attack=" + attack + ", evidence="
                 + evidence + ", otherinfo=" + otherinfo + ", solution="
                 + solution + ", reference=" + reference + ", cweid=" + cweid
                 + ", wascid=" + wascid + "]\n";
