@@ -139,10 +139,6 @@ public class ReportParser {
                     }
                     alertItem.addInstance(instance);
                 }
-//            }  else if ("attack".equals(nodeName)) {
-//                alertItem.setAttack(StringUtils.trim(childCursor.collectDescendantText(false)));
-//            } else if ("evidence".equals(nodeName)) {
-//                alertItem.setEvidence(StringUtils.trim(childCursor.collectDescendantText(false)));
             } else if ("otherinfo".equals(nodeName)) {
                 alertItem.setOtherinfo(StringUtils.trim(childCursor.collectDescendantText(false)));
             } else if ("solution".equals(nodeName)) {

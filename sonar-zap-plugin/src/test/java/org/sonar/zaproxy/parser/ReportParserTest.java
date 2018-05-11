@@ -28,7 +28,6 @@ import java.util.List;
 
 import org.junit.Test;
 import org.sonar.zaproxy.parser.element.AlertItem;
-import org.sonar.zaproxy.parser.element.Instance;
 import org.sonar.zaproxy.parser.element.Site;
 import org.sonar.zaproxy.parser.element.ZapReport;
 

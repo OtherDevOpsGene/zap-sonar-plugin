@@ -26,7 +26,6 @@ public class ZapReport {
 
     private String generated;
     private String versionZAP;
-    private Site site;
     private List<Site> sites;
 
     public ZapReport(String generated, String versionZAP, List<Site> sites) {
@@ -42,10 +41,6 @@ public class ZapReport {
     public String getVersionZAP() {
         return versionZAP;
     }
-
-    //public Site getSite() {
-//        return site;
-//    }
 
     public List<Site> getSites(){
         return sites;
