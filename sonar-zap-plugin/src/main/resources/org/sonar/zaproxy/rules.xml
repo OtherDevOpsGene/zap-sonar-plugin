@@ -1044,4 +1044,38 @@ If you want to add a rule, you can, following the model above.
         <tag>wascid-15</tag>
         <tag>cweid-565</tag>
     </rule>
+    <rule>
+        <key>100000</key>
+        <name>A Server Error response code was returned by the server</name>
+        <description>
+            <![CDATA[<h3>Solution :</h3>
+    <p>A response code of 400 was returned by the server.</p><p>This may indicate that the application is failing to handle unexpected input correctly.</p><p>Fix the handling of unexpected input.</p>
+    N/A
+    <h3>References:</h3>
+    <ul>
+
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
+        <key>100001</key>
+        <name>Unexpected Content-Type was returned</name>
+        <description>
+            <![CDATA[<h3>Solution :</h3>
+    <p>A Content-Type that was returned is not one of the types expected to be returned by an API. Fix the Content-Type header.</p>
+    N/A
+    <h3>References:</h3>
+    <ul>
+
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
 </rules>

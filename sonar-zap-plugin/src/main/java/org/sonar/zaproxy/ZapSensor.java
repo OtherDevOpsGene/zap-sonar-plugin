@@ -87,18 +87,24 @@ public class ZapSensor implements Sensor {
 	private String formatDescription(AlertItem alert) {
 		StringBuilder sb = new StringBuilder();
 
-		for (Instance instance: alert.getInstances()){
-			sb.append(addValueToDescription("URI", instance.getUri(), false));
-			sb.append(addValueToDescription("Method", instance.getMethod(), false));
-			sb.append(addValueToDescription("Param", instance.getParam(), false));
-			sb.append(addValueToDescription("Attack", instance.getAttack(), false));
+		if (null == alert.getInstances() || alert.getInstances().size() == 0) {
+			sb.append(addValueToDescription("Param", alert.getParam(), false));
+			sb.append(addValueToDescription("Attack", alert.getAttack(), false));
+			sb.append(addValueToDescription("Evidence", alert.getEvidence(), true));
+			sb.append(addValueToDescription("Method", alert.getMethod(), false));
+		} else {
+			for (Instance instance : alert.getInstances()) {
+				sb.append(addValueToDescription("URI", instance.getUri(), false));
+				sb.append(addValueToDescription("Method", instance.getMethod(), false));
+				sb.append(addValueToDescription("Param", instance.getParam(), false));
+				sb.append(addValueToDescription("Attack", instance.getAttack(), false));
+			}
 		}
 
 		sb.append(addValueToDescription("Confidence", String.valueOf(alert.getConfidence()), false));
 		sb.append(addValueToDescription("Description", alert.getDesc(), false));
-		//sb.append(addValueToDescription("Param", alert.getParam(), false));
-		//sb.append(addValueToDescription("Attack", alert.getAttack(), false));
-		//sb.append(addValueToDescription("Evidence", alert.getEvidence(), true));
+
+
 
 		return sb.toString();
 	}

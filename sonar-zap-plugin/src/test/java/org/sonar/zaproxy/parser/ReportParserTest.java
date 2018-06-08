@@ -76,4 +76,44 @@ public class ReportParserTest {
         assertThat(alert.getWascid()).isEqualTo(13);
     }
 
+    @Test
+    public void parseReportNoInstances() throws Exception {
+        ReportParser parser = new ReportParser();
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("report/zaproxy-report-no-instances.xml");
+        ZapReport zapReport = parser.parse(inputStream);
+        assertThat(zapReport.getGenerated()).isEqualTo("Fri, 8 Jun 2018 09:55:08");
+        assertThat(zapReport.getVersionZAP()).isEqualTo("2.7.0");
+
+        List<Site> sites = zapReport.getSites();
+        Site site = sites.get(0);
+        assertThat(site.getHost()).isEqualTo("example.org");
+        assertThat(site.getName()).isEqualTo("http://example.org");
+        assertThat(site.getPort()).isEqualTo(80);
+        assertThat(site.isSsl()).isEqualTo(false);
+
+        Collection<AlertItem> alerts = site.getAlerts();
+        assertThat(alerts.size()).isEqualTo(3);
+
+        Iterator<AlertItem> iterator = alerts.iterator();
+        AlertItem alert = iterator.next();
+
+        assertThat(alert.getPluginid()).isEqualTo(10015);
+        assertThat(alert.getAlert()).isEqualTo("Incomplete or No Cache-control and Pragma HTTP Header Set");
+        assertThat(alert.getRiskcode()).isEqualTo(1);
+        assertThat(alert.getConfidence()).isEqualTo(2);
+        assertThat(alert.getRiskdesc()).isEqualTo("Low (Medium)");
+        assertThat(alert.getDesc()).isEqualTo("<p>The cache-control and pragma HTTP header have not been set properly or are missing allowing the browser and proxies to cache content.</p>");
+        assertThat(alert.getInstances()).isNull();
+        assertThat(alert.getUri()).isEqualTo("http://example.org/sites/example.org/files/advagg_css/css.css");
+        assertThat(alert.getMethod()).isEqualTo("GET");
+        assertThat(alert.getParam()).isEqualTo("Cache-Control");
+        assertThat(alert.getEvidence()).isEqualTo("max-age=31449600, no-transform, public");
+
+        assertThat(alert.getAttack()).isNullOrEmpty();
+
+        assertThat(alert.getSolution()).isEqualTo("<p>Whenever possible ensure the cache-control HTTP header is set with no-cache, no-store, must-revalidate; and that the pragma HTTP header is set with no-cache.</p>");
+        assertThat(alert.getReference()).contains("<p>https://www.owasp.org/index.php/Session_Management_Cheat_Sheet#Web_Content_Caching</p>");
+        assertThat(alert.getCweid()).isEqualTo(525);
+        assertThat(alert.getWascid()).isEqualTo(13);
+    }
 }

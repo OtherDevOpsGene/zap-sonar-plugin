@@ -139,6 +139,16 @@ public class ReportParser {
                     }
                     alertItem.addInstance(instance);
                 }
+            } else if ("uri".equals(nodeName)) {
+                alertItem.setUri(StringUtils.trim(childCursor.collectDescendantText(false)));
+            } else if ("param".equals(nodeName)) {
+                alertItem.setParam(StringUtils.trim(childCursor.collectDescendantText(false)));
+            } else if ("method".equals(nodeName)) {
+                alertItem.setMethod(StringUtils.trim(childCursor.collectDescendantText(false)));
+            } else if ("evidence".equals(nodeName)) {
+                alertItem.setEvidence(StringUtils.trim(childCursor.collectDescendantText(false)));
+            } else if ("attack".equals(nodeName)) {
+                alertItem.setAttack(StringUtils.trim(childCursor.collectDescendantText(false)));
             } else if ("otherinfo".equals(nodeName)) {
                 alertItem.setOtherinfo(StringUtils.trim(childCursor.collectDescendantText(false)));
             } else if ("solution".equals(nodeName)) {

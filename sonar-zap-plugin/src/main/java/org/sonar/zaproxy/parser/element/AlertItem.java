@@ -30,13 +30,14 @@ public class AlertItem {
     private int confidence;
     private String riskdesc;
     private String desc;
-    //private String uri;
-    //private String param;
+    private String uri;
+    private String param;
     private List<Instance> instances;
     private String attack;
     private String evidence;
     private String otherinfo;
     private String solution;
+    private String method;
     private String reference;
     private int cweid;
     private int wascid;
@@ -99,24 +100,24 @@ public class AlertItem {
     public List<Instance> getInstances(){
         return this.instances;
     }
-    /*
+
     public String getUri() {
         return uri;
     }
 
-    public void setUri(String uri) {
-        this.uri = uri;
-    }*/
+    public void setUri(String uri) { this.uri = uri; }
 
-    /*
+    public String getMethod() { return method;
+    }
+
+    public void setMethod(String method) { this.method = method; }
+
     public String getParam() {
         return param;
     }
 
-    public void setParam(String param) {
-        this.param = param;
-    }
-    */
+    public void setParam(String param) { this.param = param; }
+
     public String getAttack() {
         return attack;
     }
