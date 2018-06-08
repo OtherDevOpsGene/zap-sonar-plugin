@@ -88,6 +88,7 @@ public class ZapSensor implements Sensor {
 		StringBuilder sb = new StringBuilder();
 
 		if (null == alert.getInstances() || alert.getInstances().size() == 0) {
+			sb.append(addValueToDescription("URI", alert.getUri(), false));
 			sb.append(addValueToDescription("Param", alert.getParam(), false));
 			sb.append(addValueToDescription("Attack", alert.getAttack(), false));
 			sb.append(addValueToDescription("Evidence", alert.getEvidence(), true));
@@ -98,6 +99,7 @@ public class ZapSensor implements Sensor {
 				sb.append(addValueToDescription("Method", instance.getMethod(), false));
 				sb.append(addValueToDescription("Param", instance.getParam(), false));
 				sb.append(addValueToDescription("Attack", instance.getAttack(), false));
+				sb.append(addValueToDescription("Evidence", instance.getEvidence(), false));
 			}
 		}
 
