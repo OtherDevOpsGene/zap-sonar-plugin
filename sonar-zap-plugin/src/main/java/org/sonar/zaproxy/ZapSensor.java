@@ -42,6 +42,8 @@ import org.sonar.zaproxy.base.ZapUtils;
 import org.sonar.zaproxy.parser.ReportParser;
 import org.sonar.zaproxy.parser.XmlReportFile;
 import org.sonar.zaproxy.parser.element.AlertItem;
+import org.sonar.zaproxy.parser.element.Instance;
+import org.sonar.zaproxy.parser.element.Site;
 import org.sonar.zaproxy.parser.element.ZapReport;
 import org.xml.sax.SAXException;
 
@@ -85,12 +87,26 @@ public class ZapSensor implements Sensor {
 	private String formatDescription(AlertItem alert) {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append(addValueToDescription("URI", alert.getUri(), false));
+		if (null == alert.getInstances() || alert.getInstances().size() == 0) {
+			sb.append(addValueToDescription("URI", alert.getUri(), false));
+			sb.append(addValueToDescription("Param", alert.getParam(), false));
+			sb.append(addValueToDescription("Attack", alert.getAttack(), false));
+			sb.append(addValueToDescription("Evidence", alert.getEvidence(), true));
+			sb.append(addValueToDescription("Method", alert.getMethod(), false));
+		} else {
+			for (Instance instance : alert.getInstances()) {
+				sb.append(addValueToDescription("URI", instance.getUri(), false));
+				sb.append(addValueToDescription("Method", instance.getMethod(), false));
+				sb.append(addValueToDescription("Param", instance.getParam(), false));
+				sb.append(addValueToDescription("Attack", instance.getAttack(), false));
+				sb.append(addValueToDescription("Evidence", instance.getEvidence(), false));
+			}
+		}
+
 		sb.append(addValueToDescription("Confidence", String.valueOf(alert.getConfidence()), false));
 		sb.append(addValueToDescription("Description", alert.getDesc(), false));
-		sb.append(addValueToDescription("Param", alert.getParam(), false));
-		sb.append(addValueToDescription("Attack", alert.getAttack(), false));
-		sb.append(addValueToDescription("Evidence", alert.getEvidence(), true));
+
+
 
 		return sb.toString();
 	}
@@ -124,11 +140,13 @@ public class ZapSensor implements Sensor {
 	}
 
 	private void addIssues(org.sonar.api.batch.sensor.SensorContext context, ZapReport zapReport) {
-		if (zapReport.getSite().getAlerts() == null) {
-			return;
-		}
-		for (AlertItem alert : zapReport.getSite().getAlerts()) {
-			addIssue(context, alert);
+		for (Site site: zapReport.getSites()) {
+			if (site.getAlerts() == null) {
+				return;
+			}
+			for (AlertItem alert : site.getAlerts()) {
+				addIssue(context, alert);
+			}
 		}
 	}
 
@@ -152,7 +170,9 @@ public class ZapSensor implements Sensor {
 		try {
 			ZapReport zapReport = parseZapReport();
 			if (zapReport != null) {
-				totalAlerts = zapReport.getSite().getAlerts().size();
+
+				//totalAlerts = zapReport.getSite().getAlerts().size();
+				totalAlerts = zapReport.getIssueCount();
 				addIssues(context, zapReport);
 			}
 		} catch (Exception e) {
