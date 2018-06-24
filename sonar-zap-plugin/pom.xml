@@ -13,9 +13,11 @@
     <url>https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project</url>
 
     <properties>
-        <sonar.version>6.3</sonar.version>
+        <sonar.version>6.7.4</sonar.version>
         <sonar.pluginClass>org.sonar.zaproxy.ZapPlugin</sonar.pluginClass>
         <sonar.pluginName>ZAP</sonar.pluginName>
+
+        <dockerfile.maven.plugin.version>1.4.3</dockerfile.maven.plugin.version>
     </properties>
 
     <dependencies>
@@ -73,5 +75,36 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <profiles>
+        <profile>
+            <id>docker</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.spotify</groupId>
+                        <artifactId>dockerfile-maven-plugin</artifactId>
+                        <version>${dockerfile.maven.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>default</id>
+                                <goals>
+                                    <goal>build</goal>
+                                    <goal>push</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <repository>${project.groupId}/${project.artifactId}</repository>
+                            <tag>${project.version}</tag>
+                            <buildArgs>
+                                <SONAR_VERSION>${sonar.version}</SONAR_VERSION>
+                                <ARTIFACT>${project.build.finalName}.jar</ARTIFACT>
+                            </buildArgs>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
