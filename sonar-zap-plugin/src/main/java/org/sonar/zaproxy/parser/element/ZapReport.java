@@ -19,16 +19,19 @@
  */
 package org.sonar.zaproxy.parser.element;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ZapReport {
 
     private String generated;
     private String versionZAP;
-    private Site site;
+    private List<Site> sites;
 
-    public ZapReport(String generated, String versionZAP, Site site) {
+    public ZapReport(String generated, String versionZAP, List<Site> sites) {
         this.generated = generated;
         this.versionZAP = versionZAP;
-        this.site = site;
+        this.sites = sites;
     }
 
     public String getGenerated() {
@@ -39,8 +42,23 @@ public class ZapReport {
         return versionZAP;
     }
 
-    public Site getSite() {
-        return site;
+    public List<Site> getSites(){
+        return sites;
+    }
+
+    public void addSite(Site site){
+        if (sites == null){
+            sites = new ArrayList<Site>();
+        }
+        sites.add(site);
+    }
+
+    public int getIssueCount(){
+        int count = 0;
+        for (Site site: sites){
+            count += site.getAlerts().size();
+        }
+        return count;
     }
 
     @Override
@@ -48,7 +66,7 @@ public class ZapReport {
         String s = "";
         s += "generated : [" + generated + "]\n";
         s += "versionZAP : [" + versionZAP + "]\n";
-        s += "site : [" + site + "]\n";
+        s += "sites : [" + sites.toString() + "]\n";
         return s;
     }
 

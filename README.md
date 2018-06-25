@@ -48,7 +48,7 @@ Copy the plugin (jar file) to $SONAR_INSTALL_DIR/extensions/plugins and restart 
 
 Plugin Configuration
 -------------------
-A typical SonarQube configuraiton will have the following parameters. This example assumes the use of a Jenkins workspace, but can easily be altered for other CI/CD systems.
+A typical SonarQube configuration will have the following parameters. This example assumes the use of a Jenkins workspace, but can easily be altered for other CI/CD systems.
 
 ```ini
 sonar.zaproxy.reportPath=${WORKSPACE}/zaproxy-report.xml
