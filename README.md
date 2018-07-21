@@ -4,7 +4,7 @@
 ZAP Plugin for SonarQube 6.x
 =====================================
 
-Integrates [OWASP ZAP] reports into SonarQube v6.3 or higher. 
+Integrates [OWASP ZAP] reports into SonarQube v6.7.4 or higher. The target version of SonarQube is the current LTS version.
 
 
 About ZAP
@@ -15,10 +15,12 @@ It is designed to be used by people with a wide range of security experience and
 
 ZAP provides automated scanners as well as a set of tools that allow you to find security vulnerabilities manually.
 
+
 Screenshots
 -------------------
 
 ![alt tag](screenshots/dashboard-widget.png)
+
 
 Metrics
 -------------------
@@ -37,14 +39,10 @@ The IRS is simply a weighted measurement of the vulnerabilities identified durin
 a scan. It does not measure the actual risk posed by the findings.
 
 
-Compiling
--------------------
-
-> $ mvn clean package
-
 Installation
 -------------------
 Copy the plugin (jar file) to $SONAR_INSTALL_DIR/extensions/plugins and restart SonarQube.
+
 
 Plugin Configuration
 -------------------
@@ -55,6 +53,47 @@ sonar.zaproxy.reportPath=${WORKSPACE}/zaproxy-report.xml
 # Optional - specifies additional rules outside of what's included in the core
 sonar.zaproxy.rulesFilePath=${WORKSPACE}/myrules.xml
 ```
+
+
+Compiling
+-------------------
+
+> $ mvn clean package
+
+This will build the plugin into a jar file into `sonar-zap-plugin/target/sonar-zap-plugin-<version>.jar`.
+
+A Docker image will also be created for testing. The image will be named `org.sonarsource.owasp/sonar-zap-plugin:<version>` and
+will have the supported version of SonarQube pulled from Docker Hub with the newly-built zap-sonar-plugin installed.
+
+Building the Docker image can be skipped with:
+
+> $ mvn clean package -P \\!docker
+
+(On Windows, the exclamation mark may not need to be escaped.)
+
+
+Testing
+-------------------
+Once the Docker image is built, it can be started with
+
+> $ docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 org.sonarsource.owasp/sonar-zap-plugin:<version>
+
+The SonarQube server may take a few minutes to start. You can check it with
+
+> $ docker logs sonarqube
+
+and look for a line that says `SonarQube is up`.
+
+Then run an analysis using the test report:
+
+> $ cd sonar-zap-plugin
+> $ mvn sonar:sonar -Dsonar.zaproxy.reportPath=$(pwd)/src/test/resources/report/zaproxy-report.xml
+
+The path must be an absolute path. If your shell does not support `$(pwd)`, replace it with the full path to the test report.
+
+The results can be viewed at <http://localhost:9000/project/issues?id=org.sonarsource.owasp%3Asonar-zap-plugin&resolved=false&tags=zaproxy>.
+There should be 14 issues: 1 Major, 9 Minor, 4 Info.
+
 
 History
 -------------------
