@@ -39,7 +39,7 @@ public final class ZapMetrics implements Metrics {
     public static final String TOTAL_ALERTS_KEY = "total_alerts";
 
     public static double inheritedRiskScore(int high, int medium, int low) {
-        return (high * 5) + (medium * 3) + (low * 1);
+        return (high * 5.0d) + (medium * 3.0d) + (low * 1.0d);
     }
 
     public static final Metric IDENTIFIED_RISK_SCORE = new Metric.Builder(ZapMetrics.IDENTIFIED_RISK_SCORE_KEY, "Identified Risk Score", Metric.ValueType.INT)
