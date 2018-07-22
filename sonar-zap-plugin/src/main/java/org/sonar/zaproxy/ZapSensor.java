@@ -124,6 +124,8 @@ public class ZapSensor implements Sensor {
 
 	private void incrementCount(Severity severity) {
 		switch (severity) {
+			case BLOCKER:
+				// treat blockers the same as criticals
 			case CRITICAL:
 				this.criticalIssuesCount++;
 				break;
