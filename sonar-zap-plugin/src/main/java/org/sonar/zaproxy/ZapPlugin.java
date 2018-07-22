@@ -28,20 +28,20 @@ import org.sonar.zaproxy.ui.ZapWidget;
 
 public final class ZapPlugin implements Plugin {
 
-    public static final String REPOSITORY_KEY = "ZAProxy";
-    public static final String LANGUAGE_KEY = "zap";
-    public static final String LANGUAGE_NAME = "ZAP";
-    public static final String RULES_FILE = "/org/sonar/zaproxy/rules.xml";
- 
-		@Override
-		public void define(Context context) {
-			context.addExtensions(ZapSensor.class,
-          ZapSensorConfiguration.class,
-          ZapMetrics.class,
-          ZapProfile.class,
-          ZapLanguage.class,
-          ZapRuleDefinition.class,
-          ZapWidget.class);
-			
-		}
+  public static final String REPOSITORY_KEY = "ZAProxy";
+  public static final String LANGUAGE_KEY = "zap";
+  public static final String LANGUAGE_NAME = "ZAP";
+  public static final String RULES_FILE = "/org/sonar/zaproxy/rules.xml";
+
+  @Override
+  public void define(Context context) {
+    context.addExtensions(ZapSensor.class,
+        ZapSensorConfiguration.class,
+        ZapMetrics.class,
+        ZapProfile.class,
+        ZapLanguage.class,
+        ZapRuleDefinition.class,
+        ZapWidget.class);
+
+  }
 }

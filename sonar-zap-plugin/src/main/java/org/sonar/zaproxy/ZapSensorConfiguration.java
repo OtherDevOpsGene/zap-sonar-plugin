@@ -24,16 +24,16 @@ import org.sonar.api.config.Settings;
 import org.sonar.zaproxy.base.ZapConstants;
 
 @ScannerSide
-public class ZapSensorConfiguration  {
+public class ZapSensorConfiguration {
 
-    private final Settings settings;
+  private final Settings settings;
 
-    public ZapSensorConfiguration(Settings settings) {
-        this.settings = settings;
-    }
+  public ZapSensorConfiguration(Settings settings) {
+    this.settings = settings;
+  }
 
-    public String getReportPath() {
-        return this.settings.getString(ZapConstants.REPORT_PATH_PROPERTY);
-    }
+  public String getReportPath() {
+    return this.settings.getString(ZapConstants.REPORT_PATH_PROPERTY);
+  }
 
 }

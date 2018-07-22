@@ -24,61 +24,61 @@ import java.util.Collections;
 
 public class Site {
 
-    private String host;
-    private String name;
-    private int port;
-    private boolean ssl;
-    private Collection<AlertItem> alerts = Collections.emptyList();
+  private String host;
+  private String name;
+  private int port;
+  private boolean ssl;
+  private Collection<AlertItem> alerts = Collections.emptyList();
 
-    public String getHost() {
-        return host;
-    }
+  public String getHost() {
+    return host;
+  }
 
-    public void setHost(String host) {
-        this.host = host;
-    }
+  public void setHost(String host) {
+    this.host = host;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public int getPort() {
-        return port;
-    }
+  public int getPort() {
+    return port;
+  }
 
-    public void setPort(int port) {
-        this.port = port;
-    }
+  public void setPort(int port) {
+    this.port = port;
+  }
 
-    public boolean isSsl() {
-        return ssl;
-    }
+  public boolean isSsl() {
+    return ssl;
+  }
 
-    public void setSsl(boolean ssl) {
-        this.ssl = ssl;
-    }
+  public void setSsl(boolean ssl) {
+    this.ssl = ssl;
+  }
 
-    public Collection<AlertItem> getAlerts() {
-        return alerts;
-    }
+  public Collection<AlertItem> getAlerts() {
+    return alerts;
+  }
 
-    public void setAlerts(Collection<AlertItem> alerts) {
-        this.alerts = alerts;
-    }
+  public void setAlerts(Collection<AlertItem> alerts) {
+    this.alerts = alerts;
+  }
 
-    @Override
-		public String toString() {
-        String s = "";
-        s += "host : [" + host + "]\n";
-        s += "name : [" + name + "]\n";
-        s += "port : [" + port + "]\n";
-        s += "ssl : [" + ssl + "]\n";
-        s += "alerts : [" + alerts + "]\n";
-        return s;
-    }
+  @Override
+  public String toString() {
+    String s = "";
+    s += "host : [" + host + "]\n";
+    s += "name : [" + name + "]\n";
+    s += "port : [" + port + "]\n";
+    s += "ssl : [" + ssl + "]\n";
+    s += "alerts : [" + alerts + "]\n";
+    return s;
+  }
 
 }

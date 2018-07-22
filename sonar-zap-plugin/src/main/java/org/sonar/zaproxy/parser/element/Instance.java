@@ -20,54 +20,56 @@
 package org.sonar.zaproxy.parser.element;
 
 public class Instance {
-    private String uri;
-    private String param;
-    private String method;
-    private String evidence;
-    private String attack;
 
-    public String getUri() {
-        return uri;
-    }
+  private String uri;
+  private String param;
+  private String method;
+  private String evidence;
+  private String attack;
 
-    public void setUri(String uri) {
-        this.uri = uri;
-    }
+  public String getUri() {
+    return uri;
+  }
 
-    public String getParam() {
-        return param;
-    }
+  public void setUri(String uri) {
+    this.uri = uri;
+  }
 
-    public void setParam(String param) {
-        this.param = param;
-    }
+  public String getParam() {
+    return param;
+  }
 
-    public String getMethod() {
-        return method;
-    }
+  public void setParam(String param) {
+    this.param = param;
+  }
 
-    public void setMethod(String method) {
-        this.method = method;
-    }
+  public String getMethod() {
+    return method;
+  }
 
-    public String getEvidence() {
-        return evidence;
-    }
+  public void setMethod(String method) {
+    this.method = method;
+  }
 
-    public void setEvidence(String evidence) {
-        this.evidence = evidence;
-    }
+  public String getEvidence() {
+    return evidence;
+  }
 
-    public String getAttack() {
-        return method;
-    }
+  public void setEvidence(String evidence) {
+    this.evidence = evidence;
+  }
 
-    public void setAttack(String attack) {
-        this.attack = attack;
-    }
+  public String getAttack() {
+    return method;
+  }
 
-    public String toString(){
-        return "{uri=" + uri + ", param=" +param + ", method=" + method + ", evidence=" + evidence + ", attack=" + attack + "}";
-    }
+  public void setAttack(String attack) {
+    this.attack = attack;
+  }
+
+  public String toString() {
+    return "{uri=" + uri + ", param=" + param + ", method=" + method + ", evidence=" + evidence
+        + ", attack=" + attack + "}";
+  }
 
 }

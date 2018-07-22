@@ -24,20 +24,20 @@ import org.sonar.api.resources.AbstractLanguage;
 import org.sonar.zaproxy.ZapPlugin;
 
 /**
- * In order for a rule repository to work properly, the rules created in the repository
- * must be associated with a language.
+ * In order for a rule repository to work properly, the rules created in the repository must be
+ * associated with a language.
  *
  * This class creates a new 'language' called zap
  */
 public class ZapLanguage extends AbstractLanguage {
 
-    public ZapLanguage() {
-        super(ZapPlugin.LANGUAGE_KEY, ZapPlugin.LANGUAGE_NAME);
-    }
+  public ZapLanguage() {
+    super(ZapPlugin.LANGUAGE_KEY, ZapPlugin.LANGUAGE_NAME);
+  }
 
-    @Override
-		public String[] getFileSuffixes() {
-        return new String[0];
-    }
+  @Override
+  public String[] getFileSuffixes() {
+    return new String[0];
+  }
 
 }
