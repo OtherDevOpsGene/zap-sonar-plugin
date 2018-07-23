@@ -509,6 +509,26 @@ If you want to add a rule, you can, following the model above.
         <tag>zaproxy</tag>
     </rule>
     <rule>
+        <key>10094</key>
+        <name>Base64 Disclosure</name>
+
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure">Top 10 2013-A6-Sensitive Data Exposure</a></li>
+    <li><a href="http://projects.webappsec.org/w/page/13246936/Information%20Leakage">WASC - Information Leakage</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>wascid-13</tag>
+        <tag>cweid-200</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
         <key>10105</key>
         <name>Weak Authentication Method</name>
 
@@ -825,6 +845,27 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-19</tag>
         <tag>cweid-89</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
+        <key>40029</key>
+        <name>Trace.axd Information Leak</name>
+
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Consider whether or not Trace Viewer is actually required in production, if it isn't then disable it. If it is then ensure access to it requires authentication and authorization.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://msdn.microsoft.com/en-us/library/bb386420.aspx">ASP.NET Tracing Overview</a></li>
+    <li><a href="https://msdn.microsoft.com/en-us/library/wwh16c6c.aspx">How to: View ASP.NET Trace Information with the Trace Viewer</a></li>
+    <li><a href="https://www.dotnetperls.com/trace">ASP.NET Trace Examples - Dot Net Perls</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>wascid-13</tag>
+        <tag>cweid-215</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
