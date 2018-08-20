@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/Coveros/zap-sonar-plugin.svg?branch=master)](https://travis-ci.org/Coveros/zap-sonar-plugin)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ba00fc80c7424266b2dfda21d0a62ead)](https://www.codacy.com/app/gotimer/zap-sonar-plugin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Coveros/zap-sonar-plugin&amp;utm_campaign=Badge_Grade)
 [![DepShield Badge](https://depshield.sonatype.org/badges/Coveros/zap-sonar-plugin/depshield.svg)](https://depshield.github.io)
+
 ZAP Plugin for SonarQube 6.x
 =====================================
 
