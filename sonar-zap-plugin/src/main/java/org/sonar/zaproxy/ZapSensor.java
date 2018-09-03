@@ -21,9 +21,7 @@ package org.sonar.zaproxy;
 
 import java.io.IOException;
 import java.io.InputStream;
-
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.apache.commons.lang.StringUtils;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.rule.Rules;
@@ -49,160 +47,163 @@ import org.xml.sax.SAXException;
 
 public class ZapSensor implements Sensor {
 
-	private static final String SENSOR_NAME = "OWASP Zap-Check";
-	private static final Logger LOGGER = Loggers.get(ZapSensor.class);
+  private static final String SENSOR_NAME = "OWASP Zap-Check";
+  private static final Logger LOGGER = Loggers.get(ZapSensor.class);
 
-	private final Rules rules;
-	private final XmlReportFile report;
+  private final Rules rules;
+  private final XmlReportFile report;
 
-	private int totalAlerts;
-	private int criticalIssuesCount;
-	private int majorIssuesCount;
-	private int minorIssuesCount;
-	private int infoIssuesCount;
+  private int totalAlerts;
+  private int criticalIssuesCount;
+  private int majorIssuesCount;
+  private int minorIssuesCount;
+  private int infoIssuesCount;
 
-	public ZapSensor(
-			ZapSensorConfiguration configuration,
-			FileSystem fileSystem,
-			PathResolver pathResolver,
-			Rules rules) {
-		this.rules = rules;
-		this.report = new XmlReportFile(configuration, fileSystem, pathResolver);
-	}
+  public ZapSensor(
+      ZapSensorConfiguration configuration,
+      FileSystem fileSystem,
+      PathResolver pathResolver,
+      Rules rules) {
+    this.rules = rules;
+    this.report = new XmlReportFile(configuration, fileSystem, pathResolver);
+  }
 
-	private void addIssue(org.sonar.api.batch.sensor.SensorContext context, AlertItem alert) {
-		Severity severity = ZapUtils.riskCodeToSonarQubeSeverity(alert.getRiskcode());
-		context.newIssue()
-				.forRule(RuleKey.of(ZapPlugin.REPOSITORY_KEY, String.valueOf(alert.getPluginid())))
-				.at(new DefaultIssueLocation().on(context.module()).message(formatDescription(alert)))
-				.overrideSeverity(severity)
-				.save();
+  private void addIssue(org.sonar.api.batch.sensor.SensorContext context, AlertItem alert) {
+    Severity severity = ZapUtils.riskCodeToSonarQubeSeverity(alert.getRiskcode());
+    context.newIssue()
+        .forRule(RuleKey.of(ZapPlugin.REPOSITORY_KEY, String.valueOf(alert.getPluginid())))
+        .at(new DefaultIssueLocation().on(context.module()).message(formatDescription(alert)))
+        .overrideSeverity(severity)
+        .save();
 
-		incrementCount(severity);
-	}
+    incrementCount(severity);
+  }
 
-	/**
-	 * todo: Add Markdown formatting if and when Sonar supports it https://jira.codehaus.org/browse/SONAR-4161
-	 */
-	private String formatDescription(AlertItem alert) {
-		StringBuilder sb = new StringBuilder();
+  /**
+   * todo: Add Markdown formatting if and when Sonar supports it https://jira.codehaus.org/browse/SONAR-4161
+   */
+  private String formatDescription(AlertItem alert) {
+    StringBuilder sb = new StringBuilder();
 
-		if (null == alert.getInstances() || alert.getInstances().size() == 0) {
-			sb.append(addValueToDescription("URI", alert.getUri(), false));
-			sb.append(addValueToDescription("Param", alert.getParam(), false));
-			sb.append(addValueToDescription("Attack", alert.getAttack(), false));
-			sb.append(addValueToDescription("Evidence", alert.getEvidence(), true));
-			sb.append(addValueToDescription("Method", alert.getMethod(), false));
-		} else {
-			for (Instance instance : alert.getInstances()) {
-				sb.append(addValueToDescription("URI", instance.getUri(), false));
-				sb.append(addValueToDescription("Method", instance.getMethod(), false));
-				sb.append(addValueToDescription("Param", instance.getParam(), false));
-				sb.append(addValueToDescription("Attack", instance.getAttack(), false));
-				sb.append(addValueToDescription("Evidence", instance.getEvidence(), false));
-			}
-		}
+    if (null == alert.getInstances() || alert.getInstances().size() == 0) {
+      sb.append(addValueToDescription("URI", alert.getUri(), false));
+      sb.append(addValueToDescription("Param", alert.getParam(), false));
+      sb.append(addValueToDescription("Attack", alert.getAttack(), false));
+      sb.append(addValueToDescription("Evidence", alert.getEvidence(), true));
+      sb.append(addValueToDescription("Method", alert.getMethod(), false));
+    } else {
+      for (Instance instance : alert.getInstances()) {
+        sb.append(addValueToDescription("URI", instance.getUri(), false));
+        sb.append(addValueToDescription("Method", instance.getMethod(), false));
+        sb.append(addValueToDescription("Param", instance.getParam(), false));
+        sb.append(addValueToDescription("Attack", instance.getAttack(), false));
+        sb.append(addValueToDescription("Evidence", instance.getEvidence(), false));
+      }
+    }
 
-		sb.append(addValueToDescription("Confidence", String.valueOf(alert.getConfidence()), false));
-		sb.append(addValueToDescription("Description", alert.getDesc(), false));
+    sb.append(addValueToDescription("Confidence", String.valueOf(alert.getConfidence()), false));
+    sb.append(addValueToDescription("Description", alert.getDesc(), false));
 
+    return sb.toString();
+  }
 
+  private String addValueToDescription(String name, String value, boolean isEnd) {
+    StringBuilder sb = new StringBuilder();
+    if (!StringUtils.isBlank(value)) {
+      sb.append(name).append(": ").append(value);
+      if (!isEnd) {
+        sb.append(" | ");
+      }
+    }
+    return sb.toString();
+  }
 
-		return sb.toString();
-	}
+  private void incrementCount(Severity severity) {
+    switch (severity) {
+      case BLOCKER:
+        // treat blockers the same as criticals
+      case CRITICAL:
+        this.criticalIssuesCount++;
+        break;
+      case MAJOR:
+        this.majorIssuesCount++;
+        break;
+      case MINOR:
+        this.minorIssuesCount++;
+        break;
+      case INFO:
+        this.infoIssuesCount++;
+        break;
+    }
+  }
 
-	private String addValueToDescription(String name, String value, boolean isEnd) {
-		StringBuilder sb = new StringBuilder();
-		if (!StringUtils.isBlank(value)) {
-			sb.append(name).append(": ").append(value);
-			if (!isEnd) {
-				sb.append(" | ");
-			}
-		}
-		return sb.toString();
-	}
+  private void addIssues(org.sonar.api.batch.sensor.SensorContext context, ZapReport zapReport) {
+    for (Site site : zapReport.getSites()) {
+      if (site.getAlerts() == null) {
+        return;
+      }
+      for (AlertItem alert : site.getAlerts()) {
+        addIssue(context, alert);
+      }
+    }
+  }
 
-	private void incrementCount(Severity severity) {
-		switch (severity) {
-			case CRITICAL:
-				this.criticalIssuesCount++;
-				break;
-			case MAJOR:
-				this.majorIssuesCount++;
-				break;
-			case MINOR:
-				this.minorIssuesCount++;
-				break;
-			case INFO:
-				this.infoIssuesCount++;
-				break;
-		}
-	}
+  private ZapReport parseZapReport()
+      throws IOException, ParserConfigurationException, SAXException {
+    InputStream stream = this.report.getInputStream();
+    if (stream == null) {
+      return null;
+    }
+    try {
+      return new ReportParser().parse(stream);
+    } finally {
+      stream.close();
+    }
 
-	private void addIssues(org.sonar.api.batch.sensor.SensorContext context, ZapReport zapReport) {
-		for (Site site: zapReport.getSites()) {
-			if (site.getAlerts() == null) {
-				return;
-			}
-			for (AlertItem alert : site.getAlerts()) {
-				addIssue(context, alert);
-			}
-		}
-	}
+  }
 
-	private ZapReport parseZapReport() throws IOException, ParserConfigurationException, SAXException {
-		InputStream stream = this.report.getInputStream();
-		if (stream == null) {
-			return null;
-		}
-		try {
-			return new ReportParser().parse(stream);
-		} finally {
-			stream.close();
-		}
+  @Override
+  public void execute(org.sonar.api.batch.sensor.SensorContext context) {
+    Profiler profiler = Profiler.create(LOGGER);
+    profiler.startInfo("Process ZAP report");
+    try {
+      ZapReport zapReport = parseZapReport();
+      if (zapReport != null) {
 
-	}
+        //totalAlerts = zapReport.getSite().getAlerts().size();
+        totalAlerts = zapReport.getIssueCount();
+        addIssues(context, zapReport);
+      }
+    } catch (Exception e) {
+      throw new RuntimeException(
+          "Can not process ZAP report. Ensure the report are located within the project workspace and that sonar.sources is set to reflect these paths (or set sonar.sources=.)",
+          e);
+    } finally {
+      profiler.stopInfo();
+    }
+    saveMeasures(context);
+  }
 
-	@Override
-	public void execute(org.sonar.api.batch.sensor.SensorContext context) {
-		Profiler profiler = Profiler.create(LOGGER);
-		profiler.startInfo("Process ZAP report");
-		try {
-			ZapReport zapReport = parseZapReport();
-			if (zapReport != null) {
+  private void saveMeasures(SensorContext context) {
+    context.newMeasure().forMetric(ZapMetrics.HIGH_RISK_ALERTS)
+        .withValue((double) criticalIssuesCount);
+    context.newMeasure().forMetric(ZapMetrics.MEDIUM_RISK_ALERTS)
+        .withValue((double) majorIssuesCount);
+    context.newMeasure().forMetric(ZapMetrics.LOW_RISK_ALERTS).withValue((double) minorIssuesCount);
+    context.newMeasure().forMetric(ZapMetrics.INFO_RISK_ALERTS).withValue((double) infoIssuesCount);
+    context.newMeasure().forMetric(ZapMetrics.TOTAL_ALERTS).withValue((double) totalAlerts);
 
-				//totalAlerts = zapReport.getSite().getAlerts().size();
-				totalAlerts = zapReport.getIssueCount();
-				addIssues(context, zapReport);
-			}
-		} catch (Exception e) {
-			throw new RuntimeException(
-					"Can not process ZAP report. Ensure the report are located within the project workspace and that sonar.sources is set to reflect these paths (or set sonar.sources=.)",
-					e);
-		} finally {
-			profiler.stopInfo();
-		}
-		saveMeasures(context);
-	}
+    context.newMeasure().forMetric(ZapMetrics.IDENTIFIED_RISK_SCORE).withValue(
+        ZapMetrics.inheritedRiskScore(criticalIssuesCount, majorIssuesCount, minorIssuesCount));
+  }
 
-	private void saveMeasures(SensorContext context) {
-		context.newMeasure().forMetric(ZapMetrics.HIGH_RISK_ALERTS).withValue((double) criticalIssuesCount);
-		context.newMeasure().forMetric(ZapMetrics.MEDIUM_RISK_ALERTS).withValue((double) majorIssuesCount);
-		context.newMeasure().forMetric(ZapMetrics.LOW_RISK_ALERTS).withValue((double) minorIssuesCount);
-		context.newMeasure().forMetric(ZapMetrics.INFO_RISK_ALERTS).withValue((double) infoIssuesCount);
-		context.newMeasure().forMetric(ZapMetrics.TOTAL_ALERTS).withValue((double) totalAlerts);
+  @Override
+  public String toString() {
+    return "OWASP Zed Attack Proxy";
+  }
 
-		context.newMeasure().forMetric(ZapMetrics.IDENTIFIED_RISK_SCORE).withValue(
-				ZapMetrics.inheritedRiskScore(criticalIssuesCount, majorIssuesCount, minorIssuesCount));
-	}
-
-	@Override
-	public String toString() {
-		return "OWASP Zed Attack Proxy";
-	}
-
-	@Override
-	public void describe(SensorDescriptor sensorDescriptor) {
-		sensorDescriptor.name(SENSOR_NAME);
-	}
+  @Override
+  public void describe(SensorDescriptor sensorDescriptor) {
+    sensorDescriptor.name(SENSOR_NAME);
+  }
 }

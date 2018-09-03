@@ -22,7 +22,6 @@ package org.sonar.zaproxy.rule;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
 import org.apache.commons.io.Charsets;
 import org.apache.commons.lang.StringUtils;
 import org.sonar.api.config.Settings;
@@ -35,52 +34,53 @@ import org.sonar.zaproxy.base.ZapConstants;
 
 public class ZapRuleDefinition implements RulesDefinition {
 
-    private static final Logger LOGGER = Loggers.get(ZapRuleDefinition.class);
+  private static final Logger LOGGER = Loggers.get(ZapRuleDefinition.class);
 
-    private final RulesDefinitionXmlLoader xmlLoader;
-    private final Settings settings;
+  private final RulesDefinitionXmlLoader xmlLoader;
+  private final Settings settings;
 
-    public ZapRuleDefinition(RulesDefinitionXmlLoader xmlLoader, Settings settings) {
-        this.xmlLoader = xmlLoader;
-        this.settings = settings;
+  public ZapRuleDefinition(RulesDefinitionXmlLoader xmlLoader, Settings settings) {
+    this.xmlLoader = xmlLoader;
+    this.settings = settings;
+  }
+
+  private String getRulesFilePath() {
+    String rulesFilePath = this.settings.getString(ZapConstants.RULES_FILE_PATH_PROPERTY);
+    if (StringUtils.isBlank(rulesFilePath)) {
+      return null;
     }
+    LOGGER.info("Path to rules.xml = [" + rulesFilePath + "]");
+    return rulesFilePath;
+  }
 
-    private String getRulesFilePath() {
-        String rulesFilePath = this.settings.getString(ZapConstants.RULES_FILE_PATH_PROPERTY);
-        if (StringUtils.isBlank(rulesFilePath)) {
-            return null;
-        }
-        LOGGER.info("Path to rules.xml = [" + rulesFilePath + "]");
-        return rulesFilePath;
+  private void loadDefaultZAProxyRules(NewRepository repository) {
+    xmlLoader
+        .load(repository, getClass().getResourceAsStream(ZapPlugin.RULES_FILE), Charsets.UTF_8);
+  }
+
+  @Override
+  public void define(Context context) {
+    NewRepository repository = context
+        .createRepository(ZapPlugin.REPOSITORY_KEY, ZapPlugin.LANGUAGE_KEY);
+    repository.setName(ZapPlugin.REPOSITORY_KEY);
+
+    String rulesFilePath = getRulesFilePath();
+
+    if (rulesFilePath == null) { // rules.xml by default
+      loadDefaultZAProxyRules(repository);
+    } else { // custom rules.xml
+      File f = null;
+      try {
+        f = new File(rulesFilePath);
+        xmlLoader.load(repository, new FileInputStream(f), "UTF-8");
+      } catch (FileNotFoundException e) {
+        LOGGER.warn("The file " + f.getAbsolutePath() + " does not exist", e);
+
+        // Load default ZAProxy rules if custom rules.xml does not exist.
+        loadDefaultZAProxyRules(repository);
+      }
     }
-
-    private void loadDefaultZAProxyRules(NewRepository repository) {
-        xmlLoader.load(repository, getClass().getResourceAsStream(ZapPlugin.RULES_FILE), Charsets.UTF_8);
-    }
-
-    @Override
-    public void define(Context context) {
-        NewRepository repository = context.createRepository(ZapPlugin.REPOSITORY_KEY, ZapPlugin.LANGUAGE_KEY);
-        repository.setName(ZapPlugin.REPOSITORY_KEY);
-
-        String rulesFilePath = getRulesFilePath();
-
-        if(rulesFilePath == null) { // rules.xml by default
-            loadDefaultZAProxyRules(repository);
-        } else { // custom rules.xml
-            File f = null;
-            try {
-                f = new File(rulesFilePath);
-                xmlLoader.load(repository, new FileInputStream(f), "UTF-8");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                LOGGER.warn("The file " + f.getAbsolutePath() + " does not exist", e);
-
-                // Load default ZAProxy rules if custom rules.xml does not exist.
-                loadDefaultZAProxyRules(repository);
-            }
-        }
-        repository.done();
-    }
+    repository.done();
+  }
 
 }

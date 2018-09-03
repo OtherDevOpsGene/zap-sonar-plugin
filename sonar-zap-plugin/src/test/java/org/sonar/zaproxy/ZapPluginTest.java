@@ -26,10 +26,10 @@ import org.sonar.api.Plugin;
 
 public class ZapPluginTest {
 
-    @Test
-    public void test_extensions() {
-    	final Plugin.Context context = mock(Plugin.Context.class);
-    	new ZapPlugin().define(context);
-    }
+  @Test
+  public void test_extensions() {
+    final Plugin.Context context = mock(Plugin.Context.class);
+    new ZapPlugin().define(context);
+  }
 
 }

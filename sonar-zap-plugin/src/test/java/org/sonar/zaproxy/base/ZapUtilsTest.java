@@ -23,7 +23,6 @@ import static org.fest.assertions.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.Collection;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -32,27 +31,28 @@ import org.sonar.api.batch.rule.Severity;
 @RunWith(Parameterized.class)
 public class ZapUtilsTest {
 
-    private final int riskCodeSeverity;
-    private final Severity expectedSeverity;
+  private final int riskCodeSeverity;
+  private final Severity expectedSeverity;
 
-    public ZapUtilsTest(int riskCodeSeverity, Severity expectedSeverity) {
-        this.riskCodeSeverity = riskCodeSeverity;
-        this.expectedSeverity = expectedSeverity;
-    }
+  public ZapUtilsTest(int riskCodeSeverity, Severity expectedSeverity) {
+    this.riskCodeSeverity = riskCodeSeverity;
+    this.expectedSeverity = expectedSeverity;
+  }
 
-    @Parameterized.Parameters
-    public static Collection<Object[]> severities() {
-        return Arrays.asList(new Object[][]{
-                {3, Severity.CRITICAL},
-                {2, Severity.MAJOR},
-                {1, Severity.MINOR},
-                {0, Severity.INFO}
-        });
-    }
+  @Parameterized.Parameters
+  public static Collection<Object[]> severities() {
+    return Arrays.asList(new Object[][]{
+        {3, Severity.CRITICAL},
+        {2, Severity.MAJOR},
+        {1, Severity.MINOR},
+        {0, Severity.INFO}
+    });
+  }
 
-    @Test
-    public void testRiskCodeToSonarQubeSeverity() {
-        assertThat(ZapUtils.riskCodeToSonarQubeSeverity(this.riskCodeSeverity)).isEqualTo(this.expectedSeverity);
-    }
+  @Test
+  public void testRiskCodeToSonarQubeSeverity() {
+    assertThat(ZapUtils.riskCodeToSonarQubeSeverity(this.riskCodeSeverity))
+        .isEqualTo(this.expectedSeverity);
+  }
 
 }

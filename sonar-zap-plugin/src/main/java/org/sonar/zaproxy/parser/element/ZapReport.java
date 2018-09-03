@@ -24,50 +24,50 @@ import java.util.List;
 
 public class ZapReport {
 
-    private String generated;
-    private String versionZAP;
-    private List<Site> sites;
+  private String generated;
+  private String versionZAP;
+  private List<Site> sites;
 
-    public ZapReport(String generated, String versionZAP, List<Site> sites) {
-        this.generated = generated;
-        this.versionZAP = versionZAP;
-        this.sites = sites;
-    }
+  public ZapReport(String generated, String versionZAP, List<Site> sites) {
+    this.generated = generated;
+    this.versionZAP = versionZAP;
+    this.sites = sites;
+  }
 
-    public String getGenerated() {
-        return generated;
-    }
+  public String getGenerated() {
+    return generated;
+  }
 
-    public String getVersionZAP() {
-        return versionZAP;
-    }
+  public String getVersionZAP() {
+    return versionZAP;
+  }
 
-    public List<Site> getSites(){
-        return sites;
-    }
+  public List<Site> getSites() {
+    return sites;
+  }
 
-    public void addSite(Site site){
-        if (sites == null){
-            sites = new ArrayList<Site>();
-        }
-        sites.add(site);
+  public void addSite(Site site) {
+    if (sites == null) {
+      sites = new ArrayList<Site>();
     }
+    sites.add(site);
+  }
 
-    public int getIssueCount(){
-        int count = 0;
-        for (Site site: sites){
-            count += site.getAlerts().size();
-        }
-        return count;
+  public int getIssueCount() {
+    int count = 0;
+    for (Site site : sites) {
+      count += site.getAlerts().size();
     }
+    return count;
+  }
 
-    @Override
-		public String toString() {
-        String s = "";
-        s += "generated : [" + generated + "]\n";
-        s += "versionZAP : [" + versionZAP + "]\n";
-        s += "sites : [" + sites.toString() + "]\n";
-        return s;
-    }
+  @Override
+  public String toString() {
+    String s = "";
+    s += "generated : [" + generated + "]\n";
+    s += "versionZAP : [" + versionZAP + "]\n";
+    s += "sites : [" + sites.toString() + "]\n";
+    return s;
+  }
 
 }

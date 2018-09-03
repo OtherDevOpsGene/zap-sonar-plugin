@@ -21,34 +21,33 @@ package org.sonar.zaproxy.base;
 
 import javax.xml.stream.FactoryConfigurationError;
 import javax.xml.stream.XMLInputFactory;
-
 import org.codehaus.staxmate.SMInputFactory;
 import org.sonar.api.batch.rule.Severity;
 
 public final class ZapUtils {
 
-    private ZapUtils() {
-    }
+  private ZapUtils() {
+  }
 
-    public static SMInputFactory newStaxParser() throws FactoryConfigurationError {
-        XMLInputFactory xmlFactory = XMLInputFactory.newInstance();
-        xmlFactory.setProperty(XMLInputFactory.IS_COALESCING, Boolean.TRUE);
-        xmlFactory.setProperty(XMLInputFactory.IS_NAMESPACE_AWARE, Boolean.FALSE);
-        xmlFactory.setProperty(XMLInputFactory.SUPPORT_DTD, Boolean.FALSE);
-        xmlFactory.setProperty(XMLInputFactory.IS_VALIDATING, Boolean.FALSE);
-        return new SMInputFactory(xmlFactory);
-    }
+  public static SMInputFactory newStaxParser() throws FactoryConfigurationError {
+    XMLInputFactory xmlFactory = XMLInputFactory.newInstance();
+    xmlFactory.setProperty(XMLInputFactory.IS_COALESCING, Boolean.TRUE);
+    xmlFactory.setProperty(XMLInputFactory.IS_NAMESPACE_AWARE, Boolean.FALSE);
+    xmlFactory.setProperty(XMLInputFactory.SUPPORT_DTD, Boolean.FALSE);
+    xmlFactory.setProperty(XMLInputFactory.IS_VALIDATING, Boolean.FALSE);
+    return new SMInputFactory(xmlFactory);
+  }
 
-    public static Severity riskCodeToSonarQubeSeverity(int riskcode) {
-        if (riskcode == 3) {
-            return Severity.CRITICAL;
-        } else if (riskcode == 2) {
-            return Severity.MAJOR;
-        } else if (riskcode == 1) {
-            return Severity.MINOR;
-        } else {
-            return Severity.INFO;
-        }
+  public static Severity riskCodeToSonarQubeSeverity(int riskcode) {
+    if (riskcode == 3) {
+      return Severity.CRITICAL;
+    } else if (riskcode == 2) {
+      return Severity.MAJOR;
+    } else if (riskcode == 1) {
+      return Severity.MINOR;
+    } else {
+      return Severity.INFO;
     }
+  }
 
 }

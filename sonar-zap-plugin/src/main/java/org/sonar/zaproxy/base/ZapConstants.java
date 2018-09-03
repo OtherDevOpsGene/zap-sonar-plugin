@@ -21,10 +21,10 @@ package org.sonar.zaproxy.base;
 
 public final class ZapConstants {
 
-    public static final String REPORT_PATH_PROPERTY = "sonar.zaproxy.reportPath";
-    public static final String RULES_FILE_PATH_PROPERTY = "sonar.zaproxy.rulesFilePath";
+  public static final String REPORT_PATH_PROPERTY = "sonar.zaproxy.reportPath";
+  public static final String RULES_FILE_PATH_PROPERTY = "sonar.zaproxy.rulesFilePath";
 
-    private ZapConstants() {
-    }
+  private ZapConstants() {
+  }
 
 }

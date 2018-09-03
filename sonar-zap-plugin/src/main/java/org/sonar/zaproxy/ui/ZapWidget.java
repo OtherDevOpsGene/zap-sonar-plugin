@@ -24,19 +24,19 @@ import org.sonar.api.web.RubyRailsWidget;
 
 public class ZapWidget extends AbstractRubyTemplate implements RubyRailsWidget {
 
-    @Override
-    public String getId() {
-        return "zap";
-    }
+  @Override
+  public String getId() {
+    return "zap";
+  }
 
-    @Override
-    public String getTitle() {
-        return "Vulnerabilities identified by ZAP";
-    }
+  @Override
+  public String getTitle() {
+    return "Vulnerabilities identified by ZAP";
+  }
 
-    @Override
-    protected String getTemplatePath() {
-        return "/org/sonar/zaproxy/ui/widget.html.erb";
-    }
+  @Override
+  protected String getTemplatePath() {
+    return "/org/sonar/zaproxy/ui/widget.html.erb";
+  }
 
 }
