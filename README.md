@@ -1,11 +1,12 @@
 [![Build Status](https://travis-ci.org/Coveros/zap-sonar-plugin.svg?branch=master)](https://travis-ci.org/Coveros/zap-sonar-plugin)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ba00fc80c7424266b2dfda21d0a62ead)](https://www.codacy.com/app/gotimer/zap-sonar-plugin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Coveros/zap-sonar-plugin&amp;utm_campaign=Badge_Grade)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c978770ba79f15c2b029/maintainability)](https://codeclimate.com/github/Coveros/zap-sonar-plugin/maintainability)
 [![DepShield Badge](https://depshield.sonatype.org/badges/Coveros/zap-sonar-plugin/depshield.svg)](https://depshield.github.io)
 
 ZAP Plugin for SonarQube 6.x
 =====================================
 
-Integrates [OWASP ZAP] reports into SonarQube v6.7.4 or higher. The target version of SonarQube is the current LTS version.
+Integrates [OWASP ZAP] reports into SonarQube v6.7.5 or higher. The target version of SonarQube is the current LTS version.
 
 
 About ZAP
@@ -59,7 +60,7 @@ sonar.zaproxy.rulesFilePath=${WORKSPACE}/myrules.xml
 Compiling
 -------------------
 
-> $ mvn clean package
+    $ mvn clean package
 
 This will build the plugin into a jar file into `sonar-zap-plugin/target/sonar-zap-plugin-<version>.jar`.
 
@@ -68,7 +69,7 @@ will have the supported version of SonarQube pulled from Docker Hub with the new
 
 Building the Docker image can be skipped with:
 
-> $ mvn clean package -P \\!docker
+    $ mvn clean package -P \\!docker
 
 (On Windows, the exclamation mark may not need to be escaped.)
 
@@ -77,18 +78,18 @@ Testing
 -------------------
 Once the Docker image is built, it can be started with
 
-> $ docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 org.sonarsource.owasp/sonar-zap-plugin:<version>
+    $ docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 org.sonarsource.owasp/sonar-zap-plugin:version
 
 The SonarQube server may take a few minutes to start. You can check it with
 
-> $ docker logs sonarqube
+    $ docker logs sonarqube
 
 and look for a line that says `SonarQube is up`.
 
 Then run an analysis using the test report:
 
-> $ cd sonar-zap-plugin
-> $ mvn sonar:sonar -Dsonar.zaproxy.reportPath=$(pwd)/src/test/resources/report/zaproxy-report.xml
+    $ cd sonar-zap-plugin
+    $ mvn sonar:sonar -Dsonar.zaproxy.reportPath=$(pwd)/src/test/resources/report/zaproxy-report.xml
 
 The path must be an absolute path. If your shell does not support `$(pwd)`, replace it with the full path to the test report.
 
