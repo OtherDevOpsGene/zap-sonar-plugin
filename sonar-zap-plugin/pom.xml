@@ -19,10 +19,10 @@
 
         <commons.io.version>2.6</commons.io.version>
         <commons.lang.version>2.6</commons.lang.version>
-        <jsr305.version>2.0.3</jsr305.version>
+        <jsr305.version>3.0.2</jsr305.version>
 
         <junit.version>4.12</junit.version>
-        <mockito.version>1.10.19</mockito.version>
+        <mockito.version>2.21.0</mockito.version>
         <fest.assert.version>1.4</fest.assert.version>
 
         <dockerfile.maven.plugin.version>1.4.4</dockerfile.maven.plugin.version>
