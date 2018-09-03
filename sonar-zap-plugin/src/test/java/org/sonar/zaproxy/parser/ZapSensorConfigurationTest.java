@@ -20,7 +20,8 @@
 package org.sonar.zaproxy.parser;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,19 +30,20 @@ import org.sonar.zaproxy.ZapSensorConfiguration;
 import org.sonar.zaproxy.base.ZapConstants;
 
 public class ZapSensorConfigurationTest {
-    private Settings settings;
-    private ZapSensorConfiguration sensorConfiguration;
 
-    @Before
-    public void init() {
-        this.settings = mock(Settings.class);
-        this.sensorConfiguration = new ZapSensorConfiguration(this.settings);
-    }
+  private Settings settings;
+  private ZapSensorConfiguration sensorConfiguration;
 
-    @Test
-    public void testGetReportPath() {
-        when(this.settings.getString(ZapConstants.REPORT_PATH_PROPERTY)).thenReturn("location");
-        assertThat(this.sensorConfiguration.getReportPath()).isEqualTo("location");
-    }
+  @Before
+  public void init() {
+    this.settings = mock(Settings.class);
+    this.sensorConfiguration = new ZapSensorConfiguration(this.settings);
+  }
+
+  @Test
+  public void testGetReportPath() {
+    when(this.settings.getString(ZapConstants.REPORT_PATH_PROPERTY)).thenReturn("location");
+    assertThat(this.sensorConfiguration.getReportPath()).isEqualTo("location");
+  }
 
 }

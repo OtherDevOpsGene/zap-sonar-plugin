@@ -19,55 +19,57 @@
  */
 package org.sonar.zaproxy.parser.element;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Instance {
 
-public class ZapReport {
+  private String uri;
+  private String param;
+  private String method;
+  private String evidence;
+  private String attack;
 
-  private String generated;
-  private String versionZAP;
-  private List<Site> sites;
-
-  public ZapReport(String generated, String versionZAP, List<Site> sites) {
-    this.generated = generated;
-    this.versionZAP = versionZAP;
-    this.sites = sites;
+  public String getUri() {
+    return uri;
   }
 
-  public String getGenerated() {
-    return generated;
+  public void setUri(String uri) {
+    this.uri = uri;
   }
 
-  public String getVersionZAP() {
-    return versionZAP;
+  public String getParam() {
+    return param;
   }
 
-  public List<Site> getSites() {
-    return sites;
+  public void setParam(String param) {
+    this.param = param;
   }
 
-  public void addSite(Site site) {
-    if (sites == null) {
-      sites = new ArrayList<Site>();
-    }
-    sites.add(site);
+  public String getMethod() {
+    return method;
   }
 
-  public int getIssueCount() {
-    int count = 0;
-    for (Site site : sites) {
-      count += site.getAlerts().size();
-    }
-    return count;
+  public void setMethod(String method) {
+    this.method = method;
   }
 
-  @Override
+  public String getEvidence() {
+    return evidence;
+  }
+
+  public void setEvidence(String evidence) {
+    this.evidence = evidence;
+  }
+
+  public String getAttack() {
+    return method;
+  }
+
+  public void setAttack(String attack) {
+    this.attack = attack;
+  }
+
   public String toString() {
-    String s = "";
-    s += "generated : [" + generated + "]\n";
-    s += "versionZAP : [" + versionZAP + "]\n";
-    s += "sites : [" + sites.toString() + "]\n";
-    return s;
+    return "{uri=" + uri + ", param=" + param + ", method=" + method + ", evidence=" + evidence
+        + ", attack=" + attack + "}";
   }
 
 }
