@@ -76,7 +76,9 @@
         <profile>
             <id>docker</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>docker</name>
+                </property>
             </activation>
             <build>
                 <plugins>

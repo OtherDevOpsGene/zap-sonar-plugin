@@ -64,14 +64,29 @@ Compiling
 
 This will build the plugin into a jar file into `sonar-zap-plugin/target/sonar-zap-plugin-<version>.jar`.
 
-A Docker image will also be created for testing. The image will be named `org.sonarsource.owasp/sonar-zap-plugin:<version>` and
+If the `docker` property is set, a Docker image will also be created for testing. The image will be named `org.sonarsource.owasp/sonar-zap-plugin:<version>` and
 will have the supported version of SonarQube pulled from Docker Hub with the newly-built zap-sonar-plugin installed.
 
-Building the Docker image can be skipped with:
+To make sure the Docker image is always created when building locally, you can set the docker property in an active profile in your `settings.xml`:
 
-    $ mvn clean package -P \\!docker
+```Maven POM
+    <settings>
+    ...
+      <profiles>
+        <profile>
+          <id>docker</id>
+          <properties>
+            <docker>true</docker>
+          </properties>
+        </profile>
+      </profiles>
 
-(On Windows, the exclamation mark may not need to be escaped.)
+      <activeProfiles>
+        <activeProfile>docker</activeProfile>
+      </activeProfiles>
+    ...
+    </settings>
+```
 
 
 Testing
