@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.sonarsource.owasp</groupId>
         <artifactId>sonar-zap</artifactId>
-        <version>1.1.0-SNAPSHOT</version>
+        <version>1.1.1-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
     <artifactId>sonar-zap-plugin</artifactId>
@@ -76,7 +76,9 @@
         <profile>
             <id>docker</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>docker</name>
+                </property>
             </activation>
             <build>
                 <plugins>
