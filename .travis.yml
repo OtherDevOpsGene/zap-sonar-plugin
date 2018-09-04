@@ -6,7 +6,7 @@ deploy:
   api_key:
     secure: "iIpNlCeY40d551a01hes4umEbC7gBePwGIopW8wvFjEeh8/OaOgrTANF7+ijVvTnf12itajcKmCRmkVM3nyfiXvzyINBr3X6HEzWbm72ZZ+re8pAFV96nPDst7mRAKhs/pv0U6tY3dcNKDBCDf9AbyX+5Y5WFugjNxbPDVqvZoXfOJFA2oWkJXkwCju+X+9mYM2p3Cl/BJvr7EAq31C1jNSB6xyTGtR7PMM+lS1F1Df0c86jY2H33vMWOgsnHStflVp04VDrq4LkkEvV90EB4QOguCb7Olkzdq8eoGYmp4ZLtKStInXCxHl7xbVlBvlAHf81Q7Oe8oIOTr2HQoKIwd3BcZafQZBqeRwyPngh9VQjftgjsQCpDXOCIYNLLzBYTcMfcFjEqwQVDOKK1TfsyF0iUctGIFpGaSllZYcjct9hmTNHeJxZrW8J3d5H5ORilb9h4EITEVrmpaJIkmXbdVl2Q8OAsxmaEgvbp/ZEZmnehLX89yM5wRy0NEPtokYbO3pKc57draXnluVHW1QPf+muAuqx8ScEOvM/s+sYj5nVlYcIgU9X8q4rJi+ym8IW0lJskIkfePgLlCgGVD19/aivLnQFLM5iKv3uy67/g4jAk26lQ/VBADtlC8hmu3CHVLQQLhdCOmoDpCT2gH+t/tiOdEUJbRzbCo1zr79Ltsk="
   file_glob: true
-  file: target/sonar-zap-plugin-*.jar
+  file: sonar-zap-plugin/target/sonar-zap-plugin-*.jar
   skip_cleanup: true
   on:
     tags: true
