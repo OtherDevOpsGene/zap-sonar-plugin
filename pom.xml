@@ -9,7 +9,7 @@
 
 	<groupId>org.sonarsource.owasp</groupId>
 	<artifactId>sonar-zap</artifactId>
-	<version>1.1.2-SNAPSHOT</version>
+	<version>1.1.2</version>
   
 	<packaging>pom</packaging>
 	<name>ZAP for SonarQube</name>
@@ -59,7 +59,7 @@
 		<connection>scm:git:https://github.com/Coveros/zap-sonar-plugin.git</connection>
 		<developerConnection>scm:git:git@github.com:Coveros/zap-sonar-plugin.git</developerConnection>
 		<url>https://github.com/Coveros/zap-sonar-plugin</url>
-	  <tag>HEAD</tag>
+	  <tag>sonar-zap-plugin-1.1.2</tag>
   </scm>
 
 	<issueManagement>
