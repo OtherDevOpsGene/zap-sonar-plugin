@@ -124,4 +124,26 @@ public class ReportParserTest {
     assertThat(alert.getCweid()).isEqualTo(525);
     assertThat(alert.getWascid()).isEqualTo(13);
   }
+  
+  @Test
+  public void parseReportMoreRules() throws Exception {
+    ReportParser parser = new ReportParser();
+    InputStream inputStream = getClass().getClassLoader()
+        .getResourceAsStream("report/zapproxy-report-more-rules.xml");
+    ZapReport zapReport = parser.parse(inputStream);
+    assertThat(zapReport.getGenerated()).isEqualTo("Wed, 31 Oct 2018 19:13:06");
+    assertThat(zapReport.getVersionZAP()).isEqualTo("D-2018-10-29");
+
+    List<Site> sites = zapReport.getSites();
+    Site site = sites.get(0);
+    assertThat(site.getHost()).isEqualTo("192.168.1.15");
+    assertThat(site.getName()).isEqualTo("https://192.168.1.15:8443");
+    assertThat(site.getPort()).isEqualTo(8443);
+    assertThat(site.isSsl()).isEqualTo(true);
+
+    Collection<AlertItem> alerts = site.getAlerts();
+    assertThat(alerts.size()).isEqualTo(18);
+
+  }
+
 }
