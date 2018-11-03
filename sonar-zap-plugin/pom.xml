@@ -13,7 +13,7 @@
     <url>https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project</url>
 
     <properties>
-        <sonar.version>7.3</sonar.version>
+        <sonar.version>7.4</sonar.version>
         <sonar.pluginClass>org.sonar.zaproxy.ZapPlugin</sonar.pluginClass>
         <sonar.pluginName>ZAP</sonar.pluginName>
 

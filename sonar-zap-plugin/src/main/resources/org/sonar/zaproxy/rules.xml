@@ -46,9 +46,24 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>cweid-548</tag>
         <tag>wascid-48</tag>
+        <tag>wascid-16</tag>        
+        <tag>owasp-a5</tag>
+        <tag>owasp-a6</tag>        
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    
+    <!-- 
+    
+    "securityStandards": {
+    "CWE": [
+      330
+    ],
+    "OWASP": [
+      "A6"
+    ]
+  }-->
+    
     <rule>
         <key>2</key>
         <name>Private IP Disclosure</name>
@@ -66,6 +81,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>cweid-200</tag>
         <tag>wascid-13</tag>
+        <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -85,6 +101,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>cweid-200</tag>
         <tag>wascid-13</tag>
+        <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -142,6 +159,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>cweid-22</tag>
         <tag>wascid-33</tag>
+        <tag>owasp-a5</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -208,6 +226,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>cweid-98</tag>
         <tag>wascid-5</tag>
+        <tag>owasp-a5</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -225,7 +244,9 @@ If you want to add a rule, you can, following the model above.
         </description>
         <severity>MINOR</severity>
         <status>READY</status>
-        <tag>wascid-13</tag>
+        <tag>wascid-15</tag>
+        <tag>cwe-1004</tag>
+        <tag>owasp-a2</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -243,7 +264,10 @@ If you want to add a rule, you can, following the model above.
         </description>
         <severity>MINOR</severity>
         <status>READY</status>
-        <tag>wascid-13</tag>
+        <tag>wascid-4</tag>
+        <tag>cwe-614</tag>
+        <tag>owasp-a2</tag>
+        <tag>owasp-a3</tag>        
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -375,6 +399,7 @@ If you want to add a rule, you can, following the model above.
         <severity>MINOR</severity>
         <status>READY</status>
         <tag>wascid-15</tag>
+        <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -525,6 +550,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-13</tag>
         <tag>cweid-200</tag>
+        <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -563,6 +589,7 @@ If you want to add a rule, you can, following the model above.
         <severity>CRITICAL</severity>
         <status>READY</status>
         <tag>wascid-9</tag>
+        <tag>cweid-352</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -642,6 +669,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-25</tag>
         <tag>cweid-113</tag>
+        <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -733,6 +761,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-8</tag>
         <tag>cweid-79</tag>
+        <tag>owasp-a7</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -776,6 +805,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-8</tag>
         <tag>cweid-79</tag>
+        <tag>owasp-a7</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -795,6 +825,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-8</tag>
         <tag>cweid-79</tag>
+        <tag>owasp-a7</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -814,6 +845,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-8</tag>
         <tag>cweid-79</tag>
+        <tag>owasp-a7</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -845,6 +877,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-19</tag>
         <tag>cweid-89</tag>
+        <tag>owasp-a1</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -948,6 +981,7 @@ If you want to add a rule, you can, following the model above.
         <severity>CRITICAL</severity>
         <status>READY</status>
         <tag>cweid-94</tag>
+        <tag>owasp-a9</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -1043,6 +1077,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-13</tag>
         <tag>cweid-200</tag>
+        <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
