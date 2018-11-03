@@ -288,6 +288,7 @@ If you want to add a rule, you can, following the model above.
         <tag>cweid-525</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
+        <tag>owasp-a3</tag>
     </rule>
     <rule>
         <key>10015</key>
@@ -307,6 +308,7 @@ If you want to add a rule, you can, following the model above.
         <tag>cweid-525</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
+        <tag>owasp-a3</tag>
     </rule>
     <rule>
         <key>10016</key>
@@ -361,6 +363,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>security</tag>
         <tag>zaproxy</tag>
+        <tag>owasp-a6</tag>
     </rule>
     <rule>
         <key>10020</key>
@@ -495,6 +498,7 @@ If you want to add a rule, you can, following the model above.
         <tag>wascid-13</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
+        <tag>owasp-a3</tag>
     </rule>
     <rule>
         <key>10032</key>
@@ -961,6 +965,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>security</tag>
         <tag>zaproxy</tag>
+        <tag>owasp-a6</tag>
     </rule>
     <rule>
         <key>90019</key>
@@ -1153,6 +1158,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>security</tag>
         <tag>zaproxy</tag>
+        <tag>owasp-a6</tag>
     </rule>
     <rule>
         <key>10097</key>
@@ -1174,6 +1180,7 @@ If you want to add a rule, you can, following the model above.
         <tag>zaproxy</tag>
         <tag>cweid-200</tag>
         <tag>wascid-13</tag>
+        <tag>owasp-a3</tag>
     </rule>
     <rule>
         <key>10055</key>
@@ -1278,6 +1285,7 @@ If you want to add a rule, you can, following the model above.
         <tag>zaproxy</tag>
         <tag>cweid-524</tag>
         <tag>wascid-13</tag>
+        <tag>owasp-a3</tag>
     </rule>       
     <rule>
         <key>10096</key>
@@ -1297,5 +1305,6 @@ If you want to add a rule, you can, following the model above.
         <tag>zaproxy</tag>
         <tag>cweid-200</tag>
         <tag>wascid-13</tag>
+        <tag>owasp-a3</tag>
     </rule>
 </rules>
