@@ -1196,6 +1196,7 @@ If you want to add a rule, you can, following the model above.
         <tag>zaproxy</tag>
         <tag>cweid-16</tag>
         <tag>wascid-15</tag>
+        <tag>owasp-a6</tag>
     </rule>
     <rule>
         <key>10054</key>
@@ -1215,6 +1216,7 @@ If you want to add a rule, you can, following the model above.
         <tag>zaproxy</tag>
         <tag>cweid-16</tag>
         <tag>wascid-13</tag>
+        <tag>owasp-a6</tag>
     </rule>  
     <rule>
         <key>10038</key>
@@ -1235,6 +1237,7 @@ If you want to add a rule, you can, following the model above.
         <tag>zaproxy</tag>
         <tag>cweid-16</tag>
         <tag>wascid-15</tag>
+        <tag>owasp-a6</tag>
     </rule>
     <rule>
         <key>10035</key>
@@ -1255,6 +1258,7 @@ If you want to add a rule, you can, following the model above.
         <tag>zaproxy</tag>
         <tag>cweid-16</tag>
         <tag>wascid-15</tag>
+        <tag>owasp-a6</tag>
     </rule>
     <rule>
         <key>10049</key>
