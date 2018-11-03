@@ -22,7 +22,6 @@ package org.sonar.zaproxy.rule;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 
