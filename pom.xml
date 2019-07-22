@@ -19,7 +19,7 @@
 	<properties>
 		<license.owner>Gene Gotimer</license.owner>
 		<license.mailto>gene.gotimer@coveros.com</license.mailto>
-
+                <license.year>2015-2017</license.year>
 		<maven.gpg.plugin.version>1.5</maven.gpg.plugin.version>
 		<nexus.staging.maven.plugin.version>1.6.8</nexus.staging.maven.plugin.version>
 	</properties>
