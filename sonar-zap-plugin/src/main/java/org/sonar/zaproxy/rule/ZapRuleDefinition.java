@@ -22,9 +22,13 @@ package org.sonar.zaproxy.rule;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Optional;
+import java.util.Set;
+
 import org.apache.commons.io.Charsets;
 import org.apache.commons.lang.StringUtils;
-import org.sonar.api.config.Settings;
+import org.apache.commons.lang.reflect.FieldUtils;
+import org.sonar.api.config.Configuration;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
 import org.sonar.api.utils.log.Logger;
@@ -37,25 +41,39 @@ public class ZapRuleDefinition implements RulesDefinition {
   private static final Logger LOGGER = Loggers.get(ZapRuleDefinition.class);
 
   private final RulesDefinitionXmlLoader xmlLoader;
-  private final Settings settings;
+  private final Configuration configuration;
 
-  public ZapRuleDefinition(RulesDefinitionXmlLoader xmlLoader, Settings settings) {
+  public ZapRuleDefinition(RulesDefinitionXmlLoader xmlLoader, Configuration configuration) {
     this.xmlLoader = xmlLoader;
-    this.settings = settings;
+    this.configuration = configuration;
   }
 
   private String getRulesFilePath() {
-    String rulesFilePath = this.settings.getString(ZapConstants.RULES_FILE_PATH_PROPERTY);
-    if (StringUtils.isBlank(rulesFilePath)) {
+    Optional<String> rulesFilePath = this.configuration.get(ZapConstants.RULES_FILE_PATH_PROPERTY);
+    if (!rulesFilePath.isPresent() || StringUtils.isBlank(rulesFilePath.get())) {
       return null;
     }
     LOGGER.info("Path to rules.xml = [" + rulesFilePath + "]");
-    return rulesFilePath;
+    return rulesFilePath.get();
   }
 
   private void loadDefaultZAProxyRules(NewRepository repository) {
-    xmlLoader
-        .load(repository, getClass().getResourceAsStream(ZapPlugin.RULES_FILE), Charsets.UTF_8);
+    xmlLoader.load(repository, getClass().getResourceAsStream(ZapPlugin.RULES_FILE), Charsets.UTF_8);
+    for (NewRule newRule : repository.rules()) {
+      try {
+        final Set<String> tags = (Set<String>) FieldUtils.readField(newRule, "tags", true);
+        for (String tag : tags) {
+          if (tag.contains("cweid-")) {
+            newRule.addCwe(Integer.parseInt(tag.replace("cweid-", "")));
+          }
+          if (tag.contains("owasp-")) {
+            newRule.addOwaspTop10(OwaspTop10.valueOf(tag.replace("owasp-", "").toUpperCase()));
+          }
+        }
+      } catch (IllegalAccessException e) {
+        LOGGER.warn("Problem parsing security tags",e);
+      }
+    }
   }
 
   @Override

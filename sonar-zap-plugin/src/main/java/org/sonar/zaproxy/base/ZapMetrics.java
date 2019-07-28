@@ -23,7 +23,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.sonar.api.measures.Metric;
 import org.sonar.api.measures.Metrics;
-import org.sonar.api.measures.SumChildValuesFormula;
 
 public final class ZapMetrics implements Metrics {
 
@@ -42,7 +41,6 @@ public final class ZapMetrics implements Metrics {
       .setDirection(Metric.DIRECTION_BETTER)
       .setQualitative(true)
       .setDomain(ZapMetrics.DOMAIN)
-      .setFormula(new SumChildValuesFormula(false))
       .setBestValue(0.0)
       .create();
   public static final Metric HIGH_RISK_ALERTS = new Metric.Builder(HIGH_RISK_ALERTS_KEY,

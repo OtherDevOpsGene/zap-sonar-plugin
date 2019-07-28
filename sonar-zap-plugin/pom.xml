@@ -13,19 +13,20 @@
     <url>https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project</url>
 
     <properties>
-        <sonar.version>6.7.5</sonar.version>
+        <sonar.version>7.9.1</sonar.version>
         <sonar.pluginClass>org.sonar.zaproxy.ZapPlugin</sonar.pluginClass>
         <sonar.pluginName>ZAP</sonar.pluginName>
 
         <commons.io.version>2.6</commons.io.version>
         <commons.lang.version>2.6</commons.lang.version>
         <jsr305.version>3.0.2</jsr305.version>
+        <staxmate.version>2.3.1</staxmate.version>
 
         <junit.version>4.12</junit.version>
-        <mockito.version>2.21.0</mockito.version>
+        <mockito.version>2.28.2</mockito.version>
         <fest.assert.version>1.4</fest.assert.version>
 
-        <dockerfile.maven.plugin.version>1.4.4</dockerfile.maven.plugin.version>
+        <dockerfile.maven.plugin.version>1.4.10</dockerfile.maven.plugin.version>
     </properties>
 
     <dependencies>
@@ -49,6 +50,11 @@
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
             <version>${jsr305.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.staxmate</groupId>
+            <artifactId>staxmate</artifactId>
+            <version>${staxmate.version}</version>
         </dependency>
 
         <!-- unit tests -->
@@ -99,7 +105,7 @@
                             <repository>${project.groupId}/${project.artifactId}</repository>
                             <tag>${project.version}</tag>
                             <buildArgs>
-                                <SONAR_VERSION>${sonar.version}</SONAR_VERSION>
+                                <SONAR_VERSION>${sonar.version}-community</SONAR_VERSION>
                                 <ARTIFACT>${project.build.finalName}.jar</ARTIFACT>
                             </buildArgs>
                         </configuration>
