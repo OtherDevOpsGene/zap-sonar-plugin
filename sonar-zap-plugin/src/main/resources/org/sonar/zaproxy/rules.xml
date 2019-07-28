@@ -46,9 +46,24 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>cweid-548</tag>
         <tag>wascid-48</tag>
+        <tag>wascid-16</tag>        
+        <tag>owasp-a5</tag>
+        <tag>owasp-a6</tag>        
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    
+    <!-- 
+    
+    "securityStandards": {
+    "CWE": [
+      330
+    ],
+    "OWASP": [
+      "A6"
+    ]
+  }-->
+    
     <rule>
         <key>2</key>
         <name>Private IP Disclosure</name>
@@ -66,6 +81,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>cweid-200</tag>
         <tag>wascid-13</tag>
+        <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -85,6 +101,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>cweid-200</tag>
         <tag>wascid-13</tag>
+        <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -142,6 +159,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>cweid-22</tag>
         <tag>wascid-33</tag>
+        <tag>owasp-a5</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -208,6 +226,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>cweid-98</tag>
         <tag>wascid-5</tag>
+        <tag>owasp-a5</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -225,7 +244,9 @@ If you want to add a rule, you can, following the model above.
         </description>
         <severity>MINOR</severity>
         <status>READY</status>
-        <tag>wascid-13</tag>
+        <tag>wascid-15</tag>
+        <tag>cwe-1004</tag>
+        <tag>owasp-a2</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -243,7 +264,10 @@ If you want to add a rule, you can, following the model above.
         </description>
         <severity>MINOR</severity>
         <status>READY</status>
-        <tag>wascid-13</tag>
+        <tag>wascid-4</tag>
+        <tag>cwe-614</tag>
+        <tag>owasp-a2</tag>
+        <tag>owasp-a3</tag>        
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -264,6 +288,7 @@ If you want to add a rule, you can, following the model above.
         <tag>cweid-525</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
+        <tag>owasp-a3</tag>
     </rule>
     <rule>
         <key>10015</key>
@@ -283,6 +308,7 @@ If you want to add a rule, you can, following the model above.
         <tag>cweid-525</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
+        <tag>owasp-a3</tag>
     </rule>
     <rule>
         <key>10016</key>
@@ -337,6 +363,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>security</tag>
         <tag>zaproxy</tag>
+        <tag>owasp-a6</tag>
     </rule>
     <rule>
         <key>10020</key>
@@ -375,6 +402,7 @@ If you want to add a rule, you can, following the model above.
         <severity>MINOR</severity>
         <status>READY</status>
         <tag>wascid-15</tag>
+        <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -470,6 +498,7 @@ If you want to add a rule, you can, following the model above.
         <tag>wascid-13</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
+        <tag>owasp-a3</tag>
     </rule>
     <rule>
         <key>10032</key>
@@ -525,6 +554,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-13</tag>
         <tag>cweid-200</tag>
+        <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -563,6 +593,7 @@ If you want to add a rule, you can, following the model above.
         <severity>CRITICAL</severity>
         <status>READY</status>
         <tag>wascid-9</tag>
+        <tag>cweid-352</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -642,6 +673,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-25</tag>
         <tag>cweid-113</tag>
+        <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -733,6 +765,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-8</tag>
         <tag>cweid-79</tag>
+        <tag>owasp-a7</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -776,6 +809,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-8</tag>
         <tag>cweid-79</tag>
+        <tag>owasp-a7</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -795,6 +829,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-8</tag>
         <tag>cweid-79</tag>
+        <tag>owasp-a7</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -814,6 +849,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-8</tag>
         <tag>cweid-79</tag>
+        <tag>owasp-a7</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -845,6 +881,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-19</tag>
         <tag>cweid-89</tag>
+        <tag>owasp-a1</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -928,6 +965,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>security</tag>
         <tag>zaproxy</tag>
+        <tag>owasp-a6</tag>
     </rule>
     <rule>
         <key>90019</key>
@@ -948,6 +986,7 @@ If you want to add a rule, you can, following the model above.
         <severity>CRITICAL</severity>
         <status>READY</status>
         <tag>cweid-94</tag>
+        <tag>owasp-a9</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -1043,6 +1082,7 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>wascid-13</tag>
         <tag>cweid-200</tag>
+        <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -1118,5 +1158,153 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>security</tag>
         <tag>zaproxy</tag>
+        <tag>owasp-a6</tag>
+    </rule>
+    <rule>
+        <key>10097</key>
+        <name>Hash Disclosure - MD4 / MD5</name>
+        <description>
+            <![CDATA[<h3>Solution :</h3>
+    <p>A Ensure that hashes that are used to protect credentials or other resources are not leaked by the web server or database. There is typically no requirement for password hashes to be accessible to the web browser.</p>
+    N/A
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure">Sensitive Data Exposure</a></li>
+    <li><a href="http://projects.webappsec.org/w/page/13246936/Information%20Leakage">Information Leakage</a></li>
+    <li><a href="http://openwall.info/wiki/john/sample-hashes">sample hashes</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+        <tag>cweid-200</tag>
+        <tag>wascid-13</tag>
+        <tag>owasp-a3</tag>
+    </rule>
+    <rule>
+        <key>10055</key>
+        <name>CSP Scanner: script-src unsafe-inline</name>
+        <description>
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>
+    N/A
+    <h3>References:</h3>
+    <ul>
+    <li><a href="http://www.w3.org/TR/CSP2/">http://www.w3.org/TR/CSP2/</a></li>
+    <li><a href="http://caniuse.com/#search=content+security+policy">http://caniuse.com/#search=content+security+policy</a></li>
+    <li><a href="http://content-security-policy.com/">http://content-security-policy.com/</a></li>
+    <li><a href="https://github.com/shapesecurity/salvation">https://github.com/shapesecurity/salvation</a></li>    
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+        <tag>cweid-16</tag>
+        <tag>wascid-15</tag>
+        <tag>owasp-a6</tag>
+    </rule>
+    <rule>
+        <key>10054</key>
+        <name>Cookie Without SameSite Attribute</name>
+        <description>
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that the SameSite attribute is set to either &apos;lax&apos; or ideally &apos;strict&apos; for all cookies.</p>
+    N/A
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site">https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</a></li>
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+        <tag>cweid-16</tag>
+        <tag>wascid-13</tag>
+        <tag>owasp-a6</tag>
+    </rule>  
+    <rule>
+        <key>10038</key>
+        <name>Content Security Policy (CSP) Header Not Set</name>
+        <description>
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header, to achieve optimal browser support: &quot;Content-Security-Policy&quot; for Chrome 25+, Firefox 23+ and Safari 7+, &quot;X-Content-Security-Policy&quot; for Firefox 4.0+ and Internet Explorer 10+, and &quot;X-WebKit-CSP&quot; for Chrome 14+ and Safari 6+</p>
+    N/A
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy">https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</a></li>
+    <li><a href="http://content-security-policy.com/">http://content-security-policy.com/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+        <tag>cweid-16</tag>
+        <tag>wascid-15</tag>
+        <tag>owasp-a6</tag>
+    </rule>
+    <rule>
+        <key>10035</key>
+        <name>Content Security Policy (CSP) Header Not Set</name>
+        <description>
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>
+    N/A
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.owasp.org/index.php/HTTP_Strict_Transport_Security">https://www.owasp.org/index.php/HTTP_Strict_Transport_Security</a></li>
+    <li><a href="http://content-security-policy.com/">http://content-security-policy.com/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+        <tag>cweid-16</tag>
+        <tag>wascid-15</tag>
+        <tag>owasp-a6</tag>
+    </rule>
+    <rule>
+        <key>10049</key>
+        <name>Storable and Cacheable Content</name>
+        <description>
+            <![CDATA[<h3>Solution :</h3>
+    <p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:&lt;/p&gt;&lt;p&gt;Cache-Control: no-cache, no-store, must-revalidate, private&lt;/p&gt;&lt;p&gt;Pragma: no-cache&lt;/p&gt;&lt;p&gt;Expires: 0&lt;/p&gt;&lt;p&gt;This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>
+    N/A
+    <h3>References:</h3>
+    <ul>
+    <li>&lt;p&gt;https://tools.ietf.org/html/rfc7234&lt;/p&gt;&lt;p&gt;https://tools.ietf.org/html/rfc7231&lt;/p&gt;&lt;p&gt;http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)&lt;/p&gt;</li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+        <tag>cweid-524</tag>
+        <tag>wascid-13</tag>
+        <tag>owasp-a3</tag>
+    </rule>       
+    <rule>
+        <key>10096</key>
+        <name>Timestamp Disclosure - Unix</name>
+        <description>
+            <![CDATA[<h3>Solution :</h3>
+    <p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>
+    N/A
+    <h3>References:</h3>
+    <ul>
+    <li>&lt;p&gt;https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure&lt;/p&gt;&lt;p&gt;http://projects.webappsec.org/w/page/13246936/Information%20Leakage&lt;/p&gt;</li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+        <tag>cweid-200</tag>
+        <tag>wascid-13</tag>
+        <tag>owasp-a3</tag>
     </rule>
 </rules>
