@@ -3,10 +3,10 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/c978770ba79f15c2b029/maintainability)](https://codeclimate.com/github/Coveros/zap-sonar-plugin/maintainability)
 [![DepShield Badge](https://depshield.sonatype.org/badges/Coveros/zap-sonar-plugin/depshield.svg)](https://depshield.github.io)
 
-ZAP Plugin for SonarQube 6.x
+ZAP Plugin for SonarQube 7.x
 =====================================
 
-Integrates [OWASP ZAP] reports into SonarQube v6.7.5 or higher. The target version of SonarQube is the current LTS version.
+Integrates [OWASP ZAP] reports into SonarQube v7.x or higher. The target version of SonarQube is the current LTS version.
 
 
 About ZAP
