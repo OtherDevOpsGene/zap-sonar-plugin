@@ -112,6 +112,20 @@ The results can be viewed at <http://localhost:9000/project/issues?id=org.sonars
 There should be 14 issues: 1 Major, 9 Minor, 4 Info.
 
 
+Releasing
+-------------------
+
+You will need a valid code signing key registered with OSSRH, which @gotimer has now.
+
+Once the changes are pushed, all checks come back clean, and the version number is updated for release, then merge the pull request into `master`.
+
+On the `master` branch: 
+
+    $ mvn clean deploy -P release
+    $ git tag -a sonar-zap-plugin-1.2.0 -m 'Support for SonarQube 7.9 LTS'
+    $ git push --tags origin
+
+
 History
 -------------------
 
