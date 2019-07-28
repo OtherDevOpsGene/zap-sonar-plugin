@@ -27,7 +27,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.rule.Rules;
-import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.scan.filesystem.PathResolver;
 import org.sonar.zaproxy.ZapSensor;
 import org.sonar.zaproxy.ZapSensorConfiguration;
