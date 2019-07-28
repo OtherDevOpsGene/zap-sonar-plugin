@@ -35,7 +35,6 @@ import org.sonar.zaproxy.ZapSensorConfiguration;
 public class ZapSensorTest {
 
   private ZapSensorConfiguration configuration;
-  private SensorContext sensorContext;
   private FileSystem fileSystem;
   private PathResolver pathResolver;
   private Rules rules;
@@ -44,7 +43,6 @@ public class ZapSensorTest {
   @Before
   public void init() {
     this.configuration = mock(ZapSensorConfiguration.class);
-    this.sensorContext = mock(SensorContext.class);
     this.fileSystem = mock(FileSystem.class);
     this.pathResolver = mock(PathResolver.class);
     this.rules = mock(Rules.class);
@@ -55,15 +53,8 @@ public class ZapSensorTest {
         this.rules);
   }
 
-
   @Test
   public void toStringTest() {
     assertThat(this.sensor.toString()).isEqualTo("OWASP Zed Attack Proxy");
   }
-
-  @Test
-  public void shouldAnalyse() throws URISyntaxException {
-    // todo: Once the Sensor is capable of working properly, populate this unit test.
-  }
-
 }
