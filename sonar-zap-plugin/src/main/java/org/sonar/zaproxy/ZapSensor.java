@@ -30,6 +30,7 @@ import org.sonar.api.batch.sensor.Sensor;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.SensorDescriptor;
 import org.sonar.api.batch.sensor.issue.internal.DefaultIssueLocation;
+import org.sonar.api.internal.google.common.annotations.VisibleForTesting;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.api.scan.filesystem.PathResolver;
 import org.sonar.api.utils.log.Logger;
@@ -82,7 +83,8 @@ public class ZapSensor implements Sensor {
   /**
    * todo: Add Markdown formatting if and when Sonar supports it https://jira.codehaus.org/browse/SONAR-4161
    */
-  private String formatDescription(AlertItem alert) {
+  @VisibleForTesting
+  String formatDescription(AlertItem alert) {
     StringBuilder sb = new StringBuilder();
 
     if (null == alert.getInstances() || alert.getInstances().size() == 0) {
