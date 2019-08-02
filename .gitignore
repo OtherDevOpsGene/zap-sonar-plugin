@@ -20,5 +20,5 @@ buildNumber.properties
 **/.project
 **/.settings/
 **/.classpath
-
+settings.json
 
