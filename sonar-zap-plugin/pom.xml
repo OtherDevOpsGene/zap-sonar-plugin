@@ -27,6 +27,7 @@
         <fest.assert.version>1.4</fest.assert.version>
 
         <jacoco.maven.plugin.version>0.8.4</jacoco.maven.plugin.version>
+        <pitest.maven.version>1.4.9</pitest.maven.version>
         <dockerfile.maven.plugin.version>1.4.10</dockerfile.maven.plugin.version>
     </properties>
 
@@ -100,6 +101,11 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>${pitest.maven.version}</version>
             </plugin>
         </plugins>
     </build>
