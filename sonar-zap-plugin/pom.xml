@@ -160,7 +160,7 @@
                         <configuration>
                             <apiToken>${env.CODACY_API_TOKEN}</apiToken>
                             <projectToken>${env.CODACY_PROJECT_TOKEN}</projectToken>
-                            <coverageReportFile>${project.reporting.outputDirectory}/jacoco.xml</coverageReportFile>
+                            <coverageReportFile>${project.reporting.outputDirectory}/jacoco.exec</coverageReportFile>
                             <commit>${env.TRAVIS_COMMIT}</commit>
                             <codacyApiBaseUrl>https://api.codacy.com</codacyApiBaseUrl>
                             <failOnMissingReportFile>false</failOnMissingReportFile>
