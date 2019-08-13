@@ -149,7 +149,9 @@
         <profile>
             <id>codecoverage</id>
             <activation>
-                <property><name>env.TRAVIS</name></property>
+                <property>
+                    <name>env.CODACY_API_TOKEN</name>
+                </property>
             </activation>
             <build>
                 <plugins>
