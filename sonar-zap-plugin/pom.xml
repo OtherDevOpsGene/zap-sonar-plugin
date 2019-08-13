@@ -29,6 +29,7 @@
         <jacoco.maven.plugin.version>0.8.4</jacoco.maven.plugin.version>
         <pitest.maven.version>1.4.9</pitest.maven.version>
         <dockerfile.maven.plugin.version>1.4.10</dockerfile.maven.plugin.version>
+        <codacy.maven.plugin.version>1.2.0</codacy.maven.plugin.version>
     </properties>
 
     <dependencies>
@@ -141,6 +142,38 @@
                                 <ARTIFACT>${project.build.finalName}.jar</ARTIFACT>
                             </buildArgs>
                         </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>codecoverage</id>
+            <activation>
+                <property><name>env.TRAVIS</name></property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.gavinmogan</groupId>
+                        <artifactId>codacy-maven-plugin</artifactId>
+                        <version>${codacy.maven.plugin.version}</version>
+                        <configuration>
+                            <apiToken>${env.CODACY_API_TOKEN}</apiToken>
+                            <projectToken>${env.CODACY_PROJECT_TOKEN}</projectToken>
+                            <coverageReportFile>${project.reporting.outputDirectory}/jacoco.xml</coverageReportFile>
+                            <commit>${env.TRAVIS_COMMIT}</commit>
+                            <codacyApiBaseUrl>https://api.codacy.com</codacyApiBaseUrl>
+                            <failOnMissingReportFile>false</failOnMissingReportFile>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>post-test</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>coverage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
