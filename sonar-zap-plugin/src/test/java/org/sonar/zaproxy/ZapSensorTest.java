@@ -46,14 +46,7 @@ public class ZapSensorTest {
   
   @Test
   public void formatDescriptionNoInstances() {
-    final AlertItem alertItem = new AlertItem();
-    alertItem.setUri("http://example.org/alertItem1");
-    alertItem.setParam("param1");
-    alertItem.setAttack("attack1");
-    alertItem.setEvidence("evidence1");
-    alertItem.setMethod("method1");
-    alertItem.setConfidence(1);
-    alertItem.setDesc("desc1");
+    final AlertItem alertItem = createTestAlertItem(1);
 
     final String desc = zapSensor.formatDescription(alertItem);
 
@@ -63,38 +56,41 @@ public class ZapSensorTest {
 
   @Test
   public void formatDescriptionWithInstances() {
-    final Instance instance4 = new Instance();
-    instance4.setUri("http://example.org/alertItem4");
-    instance4.setMethod("method4");
-    instance4.setParam("param4");
-    instance4.setAttack("attack4");
-    instance4.setEvidence("evidence4");
+    final Instance instance4 = createTestInstance(4);
+    final Instance instance5 = createTestInstance(5);
 
-    final Instance instance5 = new Instance();
-    instance5.setUri("http://example.org/alertItem5");
-    instance5.setMethod("method5");
-    instance5.setParam("param5");
-    instance5.setAttack("attack5");
-    instance5.setEvidence("evidence5");
-
-    final AlertItem alertItem = new AlertItem();
-    alertItem.setUri("http://example.org/alertItem3");
-    alertItem.setParam("param3");
-    alertItem.setAttack("attack3");
-    alertItem.setEvidence("evidence3");
-    alertItem.setMethod("method3");
-    alertItem.setConfidence(3);
-    alertItem.setDesc("desc3");
+    final AlertItem alertItem = createTestAlertItem(3);
     alertItem.addInstance(instance4);
     alertItem.addInstance(instance5);
 
     final String desc = zapSensor.formatDescription(alertItem);
 
-    assertEquals("URI: http://example.org/alertItem4 | Method: method4 | Param: param4 | "
+    assertEquals("URI: http://example.org/instance4 | Method: method4 | Param: param4 | "
         + "Attack: method4 | Evidence: evidence4 | "
-        + "URI: http://example.org/alertItem5 | Method: method5 | Param: param5 | "
+        + "URI: http://example.org/instance5 | Method: method5 | Param: param5 | "
         + "Attack: method5 | Evidence: evidence5 | "
         + "Confidence: 3 | Description: desc3 | ", desc);
   }
 
+  private AlertItem createTestAlertItem(final Integer id) {
+    final AlertItem alertItem = new AlertItem();
+    alertItem.setUri("http://example.org/alertItem" + id);
+    alertItem.setParam("param" + id);
+    alertItem.setAttack("attack" + id);
+    alertItem.setEvidence("evidence" + id);
+    alertItem.setMethod("method" + id);
+    alertItem.setConfidence(id);
+    alertItem.setDesc("desc" + id);
+    return alertItem;
+  }
+
+  private Instance createTestInstance(final Integer id) {
+    final Instance instance = new Instance();
+    instance.setUri("http://example.org/instance" + id);
+    instance.setMethod("method" + id);
+    instance.setParam("param" + id);
+    instance.setAttack("attack" + id);
+    instance.setEvidence("evidence" + id);
+    return instance;
+  }
 }
