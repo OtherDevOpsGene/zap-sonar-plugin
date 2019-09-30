@@ -23,6 +23,7 @@
 
 		<maven.gpg.plugin.version>1.5</maven.gpg.plugin.version>
 		<nexus.staging.maven.plugin.version>1.6.8</nexus.staging.maven.plugin.version>
+		<dependency.check.maven.version>5.2.2</dependency.check.maven.version>
 	</properties>
 
 	<organization>
@@ -89,6 +90,15 @@
 	</modules>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.owasp</groupId>
+					<artifactId>dependency-check-maven</artifactId>
+					<version>${dependency.check.maven.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -110,6 +120,17 @@
 						<id>attach-javadocs</id>
 						<goals>
 							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.owasp</groupId>
+				<artifactId>dependency-check-maven</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
 						</goals>
 					</execution>
 				</executions>
