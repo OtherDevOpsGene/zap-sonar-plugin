@@ -1,6 +1,6 @@
 /*
  * ZAP Plugin for SonarQube
- * Copyright (C) 2015-2017 Gene Gotimer
+ * Copyright (C) 2015-2020 Gene Gotimer
  * gene.gotimer@coveros.com
  *
  * This program is free software; you can redistribute it and/or
