@@ -113,6 +113,9 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<source>${jdk.min.version}</source>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
