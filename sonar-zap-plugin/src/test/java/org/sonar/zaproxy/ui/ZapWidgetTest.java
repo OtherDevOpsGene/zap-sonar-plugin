@@ -21,7 +21,7 @@ package org.sonar.zaproxy.ui;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ZapWidgetTest {
 

@@ -25,7 +25,7 @@ import java.io.InputStream;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.sonar.zaproxy.parser.element.AlertItem;
 import org.sonar.zaproxy.parser.element.Site;
 import org.sonar.zaproxy.parser.element.ZapReport;
@@ -124,7 +124,7 @@ public class ReportParserTest {
     assertThat(alert.getCweid()).isEqualTo(525);
     assertThat(alert.getWascid()).isEqualTo(13);
   }
-  
+
   @Test
   public void parseReportMoreRules() throws Exception {
     ReportParser parser = new ReportParser();
