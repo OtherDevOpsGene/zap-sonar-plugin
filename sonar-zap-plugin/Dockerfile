@@ -1,6 +1,6 @@
 ARG SONAR_VERSION
-FROM sonarqube:${SONAR_VERSION}
+FROM sonarqube:${sonar.version}-community
 LABEL maintainer="gene.gotimer@coveros.com"
 
 ARG ARTIFACT
-COPY target/${ARTIFACT} /opt/sonarqube/extensions/plugins/
+COPY target/${project.build.finalName}.jar /opt/sonarqube/extensions/plugins/

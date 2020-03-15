@@ -16,6 +16,7 @@
         <sonar.version>7.9.2</sonar.version>
         <sonar.pluginClass>org.sonar.zaproxy.ZapPlugin</sonar.pluginClass>
         <sonar.pluginName>ZAP</sonar.pluginName>
+        <sonar.maven.plugin.version>3.6.0.1398</sonar.maven.plugin.version>
 
         <commons.io.version>2.6</commons.io.version>
         <commons.lang.version>2.6</commons.lang.version>
@@ -28,7 +29,7 @@
         <selenium.version>3.141.59</selenium.version>
         <selenium.jupiter.version>3.3.4</selenium.jupiter.version>
 
-        <dockerfile.maven.plugin.version>1.4.13</dockerfile.maven.plugin.version>
+        <docker.maven.plugin.version>0.33.0</docker.maven.plugin.version>
     </properties>
 
     <dependencies>
@@ -108,29 +109,84 @@
                     <name>docker</name>
                 </property>
             </activation>
+            <properties>
+                <sonar.zaproxy.reportPath>${project.basedir}/src/test/resources/report/zaproxy-report.xml</sonar.zaproxy.reportPath>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>com.spotify</groupId>
-                        <artifactId>dockerfile-maven-plugin</artifactId>
-                        <version>${dockerfile.maven.plugin.version}</version>
+                        <groupId>io.fabric8</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <version>${docker.maven.plugin.version}</version>
                         <executions>
                             <execution>
-                                <id>default</id>
+                                <id>start</id>
+                                <phase>pre-integration-test</phase>
                                 <goals>
                                     <goal>build</goal>
-                                    <goal>push</goal>
+                                    <goal>start</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>stop</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>stop</goal>
                                 </goals>
                             </execution>
                         </executions>
                         <configuration>
-                            <repository>${project.groupId}/${project.artifactId}</repository>
-                            <tag>${project.version}</tag>
-                            <buildArgs>
-                                <SONAR_VERSION>${sonar.version}-community</SONAR_VERSION>
-                                <ARTIFACT>${project.build.finalName}.jar</ARTIFACT>
-                            </buildArgs>
+                            <images>
+                                <image>
+                                    <name>${project.groupId}/${project.artifactId}</name>
+                                    <build>
+                                        <dockerFile>${project.basedir}/Dockerfile</dockerFile >
+                                    </build>
+                                    <run>
+                                        <ports>
+                                            <port>9000:9000</port>
+                                            <port>9092:9092</port>
+                                        </ports>
+                                        <wait>
+                                            <log>SonarQube is up</log>
+                                            <time>60000</time>
+                                        </wait>
+                                    </run>
+                                </image>
+                            </images>
                         </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonarsource.scanner.maven</groupId>
+                        <artifactId>sonar-maven-plugin</artifactId>
+                        <version>${sonar.maven.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>analyze</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>sonar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>integration-test</id>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>verify</id>
+                                <goals>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
