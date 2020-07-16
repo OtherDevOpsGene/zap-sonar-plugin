@@ -11,7 +11,7 @@
 const REACT_APP = /^REACT_APP_/i;
 
 function getClientEnvironment() {
-  return Object.keys(process.env).filter(key => REACT_APP.test(key)).reduce((env, key) => {
+  return Object.keys(process.env).filter((key) => REACT_APP.test(key)).reduce((env, key) => {
     env["process.env." + key] = JSON.stringify(process.env[key]);
     return env;
   }, {
