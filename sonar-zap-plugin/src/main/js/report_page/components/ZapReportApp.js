@@ -45,15 +45,6 @@ const ZapReportApp = ({ options }) => {
     window.innerHeight - (72 + 48 + 145.5)
   );
 
-  React.useEffect(() => {
-    init();
-    window.addEventListener("resize", updateDimensions);
-
-    return () => {
-      window.removeEventListener("resize", updateDimensions);
-    };
-  }, []);
-
   const init = async () => {
     const htmlZapReport = await findZapReport(options);
     setHtmlReportString(htmlZapReport);
@@ -66,6 +57,15 @@ const ZapReportApp = ({ options }) => {
     let updateHeight = window.innerHeight - (72 + 48 + 145.5);
     setHeight(updateHeight);
   };
+
+  React.useEffect(() => {
+    init();
+    window.addEventListener("resize", updateDimensions);
+
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+    };
+  }, []);
 
   return (
     <div className="page zap-report-container">
