@@ -19,6 +19,7 @@
  */
 package org.sonar.zaproxy;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.xml.parsers.ParserConfigurationException;
@@ -37,6 +38,7 @@ import org.sonar.api.utils.log.Loggers;
 import org.sonar.api.utils.log.Profiler;
 import org.sonar.zaproxy.base.ZapMetrics;
 import org.sonar.zaproxy.base.ZapUtils;
+import org.sonar.zaproxy.parser.HtmlReportFile;
 import org.sonar.zaproxy.parser.ReportParser;
 import org.sonar.zaproxy.parser.XmlReportFile;
 import org.sonar.zaproxy.parser.element.AlertItem;
@@ -52,6 +54,7 @@ public class ZapSensor implements Sensor {
 
   private final Rules rules;
   private final XmlReportFile report;
+  private final HtmlReportFile htmlReport;
 
   private int totalAlerts;
   private int criticalIssuesCount;
@@ -59,28 +62,25 @@ public class ZapSensor implements Sensor {
   private int minorIssuesCount;
   private int infoIssuesCount;
 
-  public ZapSensor(
-      ZapSensorConfiguration configuration,
-      FileSystem fileSystem,
-      PathResolver pathResolver,
+  public ZapSensor(ZapSensorConfiguration configuration, FileSystem fileSystem, PathResolver pathResolver,
       Rules rules) {
     this.rules = rules;
     this.report = new XmlReportFile(configuration, fileSystem, pathResolver);
+    this.htmlReport = new HtmlReportFile(configuration, fileSystem, pathResolver);
   }
 
   private void addIssue(org.sonar.api.batch.sensor.SensorContext context, AlertItem alert) {
     Severity severity = ZapUtils.riskCodeToSonarQubeSeverity(alert.getRiskcode());
-    context.newIssue()
-        .forRule(RuleKey.of(ZapPlugin.REPOSITORY_KEY, String.valueOf(alert.getPluginid())))
+    context.newIssue().forRule(RuleKey.of(ZapPlugin.REPOSITORY_KEY, String.valueOf(alert.getPluginid())))
         .at(new DefaultIssueLocation().on(context.module()).message(formatDescription(alert)))
-        .overrideSeverity(severity)
-        .save();
+        .overrideSeverity(severity).save();
 
     incrementCount(severity);
   }
 
   /**
-   * todo: Add Markdown formatting if and when Sonar supports it https://jira.codehaus.org/browse/SONAR-4161
+   * todo: Add Markdown formatting if and when Sonar supports it
+   * https://jira.codehaus.org/browse/SONAR-4161
    */
   private String formatDescription(AlertItem alert) {
     StringBuilder sb = new StringBuilder();
@@ -148,8 +148,7 @@ public class ZapSensor implements Sensor {
     }
   }
 
-  private ZapReport parseZapReport()
-      throws IOException, ParserConfigurationException, SAXException {
+  private ZapReport parseZapReport() throws IOException, ParserConfigurationException, SAXException {
     InputStream stream = this.report.getInputStream();
     if (stream == null) {
       return null;
@@ -170,7 +169,7 @@ public class ZapSensor implements Sensor {
       ZapReport zapReport = parseZapReport();
       if (zapReport != null) {
 
-        //totalAlerts = zapReport.getSite().getAlerts().size();
+        // totalAlerts = zapReport.getSite().getAlerts().size();
         totalAlerts = zapReport.getIssueCount();
         addIssues(context, zapReport);
       }
@@ -182,19 +181,35 @@ public class ZapSensor implements Sensor {
       profiler.stopInfo();
     }
     saveMeasures(context);
+
+    try {
+      uploadHtmlReport(context);
+    } catch (IOException e) {
+       throw new RuntimeException(
+          "Can not upload ZAP HTML report. Ensure the report are located within the project workspace and that sonar.sources is set to reflect these paths (or set sonar.sources=.)",
+          e);
+    }
   }
 
   private void saveMeasures(SensorContext context) {
-    context.newMeasure().forMetric(ZapMetrics.HIGH_RISK_ALERTS)
-        .withValue((double) criticalIssuesCount);
-    context.newMeasure().forMetric(ZapMetrics.MEDIUM_RISK_ALERTS)
-        .withValue((double) majorIssuesCount);
+    context.newMeasure().forMetric(ZapMetrics.HIGH_RISK_ALERTS).withValue((double) criticalIssuesCount);
+    context.newMeasure().forMetric(ZapMetrics.MEDIUM_RISK_ALERTS).withValue((double) majorIssuesCount);
     context.newMeasure().forMetric(ZapMetrics.LOW_RISK_ALERTS).withValue((double) minorIssuesCount);
     context.newMeasure().forMetric(ZapMetrics.INFO_RISK_ALERTS).withValue((double) infoIssuesCount);
     context.newMeasure().forMetric(ZapMetrics.TOTAL_ALERTS).withValue((double) totalAlerts);
 
-    context.newMeasure().forMetric(ZapMetrics.IDENTIFIED_RISK_SCORE).withValue(
-        ZapMetrics.inheritedRiskScore(criticalIssuesCount, majorIssuesCount, minorIssuesCount));
+    context.newMeasure().forMetric(ZapMetrics.IDENTIFIED_RISK_SCORE)
+        .withValue(ZapMetrics.inheritedRiskScore(criticalIssuesCount, majorIssuesCount, minorIssuesCount));
+  }
+
+  private void uploadHtmlReport(SensorContext context) throws IOException {
+    String reportContent = htmlReport.getReportContent();
+    if (htmlReport != null) {
+      LOGGER.info("Upload ZAP HTML Report");
+      context.<String>newMeasure().forMetric(ZapMetrics.HTML_REPORT)
+          .on(context.project())
+          .withValue(reportContent).save();
+    }
   }
 
   @Override

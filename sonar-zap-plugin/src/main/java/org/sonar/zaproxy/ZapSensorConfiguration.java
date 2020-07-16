@@ -36,4 +36,8 @@ public class ZapSensorConfiguration {
     return this.settings.getString(ZapConstants.REPORT_PATH_PROPERTY);
   }
 
+  public String getHtmlReportPath() {
+    return this.settings.getString(ZapConstants.HTML_REPORT_PATH_PROPERTY);
+  }
+
 }
