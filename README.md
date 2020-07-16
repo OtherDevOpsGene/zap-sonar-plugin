@@ -52,6 +52,7 @@ A typical SonarQube configuration will have the following parameters. This examp
 
 ```ini
 sonar.zaproxy.reportPath=${WORKSPACE}/zaproxy-report.xml
+sonar.zaproxy.htmlReportPath=${WORKSPACE}/zaproxy-htmlReport.html
 # Optional - specifies additional rules outside of what's included in the core
 sonar.zaproxy.rulesFilePath=${WORKSPACE}/myrules.xml
 ```
@@ -104,13 +105,14 @@ and look for a line that says `SonarQube is up`.
 Then run an analysis using the test report:
 
     $ cd sonar-zap-plugin
-    $ mvn sonar:sonar -Dsonar.zaproxy.reportPath=$(pwd)/src/test/resources/report/zaproxy-report.xml
+    $ mvn sonar:sonar -Dsonar.zaproxy.reportPath=$(pwd)/src/test/resources/report/zaproxy-report.xml -Dsonar.zaproxy.htmlReportPath=$(pwd)/src/test/resources/report/zaproxy-htmlReport.xml
 
 The path must be an absolute path. If your shell does not support `$(pwd)`, replace it with the full path to the test report.
 
 The results can be viewed at <http://localhost:9000/project/issues?id=org.sonarsource.owasp%3Asonar-zap-plugin&resolved=false&tags=zaproxy>.
 There should be 14 issues: 1 Major, 9 Minor, 4 Info.
 
+The Zap HTML report can be viewed from within sonarqube under more > ZAP.
 
 Releasing
 -------------------
