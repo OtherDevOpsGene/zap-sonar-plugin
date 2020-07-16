@@ -24,6 +24,7 @@ import org.sonar.zaproxy.base.ZapMetrics;
 import org.sonar.zaproxy.rule.ZapLanguage;
 import org.sonar.zaproxy.rule.ZapProfile;
 import org.sonar.zaproxy.rule.ZapRuleDefinition;
+import org.sonar.zaproxy.ui.ZapPage;
 import org.sonar.zaproxy.ui.ZapWidget;
 
 public final class ZapPlugin implements Plugin {
@@ -41,7 +42,9 @@ public final class ZapPlugin implements Plugin {
         ZapProfile.class,
         ZapLanguage.class,
         ZapRuleDefinition.class,
-        ZapWidget.class);
+        ZapWidget.class,
+        ZapPage.class
+    );
 
   }
 }
