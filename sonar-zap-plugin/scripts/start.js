@@ -5,29 +5,29 @@
  * All rights reserved
  * mailto:info AT sonarsource DOT com
  */
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = "development";
 
 // Load environment variables from .env file. Surpress warnings using silent
 // if this file is missing. dotenv will never modify any environment variables
 // that have already been set.
 // https://github.com/motdotla/dotenv
-require('dotenv').config();
+require("dotenv").config();
 
-const chalk = require('chalk');
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const httpProxyMiddleware = require('http-proxy-middleware');
-const detect = require('detect-port');
-const clearConsole = require('react-dev-utils/clearConsole');
-const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
-const config = require('../conf/webpack/webpack.config.dev.js');
+const chalk = require("chalk");
+const webpack = require("webpack");
+const WebpackDevServer = require("webpack-dev-server");
+const httpProxyMiddleware = require("http-proxy-middleware");
+const detect = require("detect-port");
+const clearConsole = require("react-dev-utils/clearConsole");
+const formatWebpackMessages = require("react-dev-utils/formatWebpackMessages");
+const config = require("../conf/webpack/webpack.config.dev.js");
 
 // Tools like Cloud9 rely on this.
 const DEFAULT_PORT = process.env.PORT || 3000;
 let compiler;
 let handleCompile;
 
-const PROXY_URL = process.env.PROXY_URL || 'http://localhost:9000';
+const PROXY_URL = process.env.PROXY_URL || "http://localhost:9000";
 
 function setupCompiler(host, port, protocol) {
   // "Compiler" is a low-level interface to Webpack.
@@ -36,16 +36,16 @@ function setupCompiler(host, port, protocol) {
 
   // "invalid" event fires when you have changed a file, and Webpack is
   // recompiling a bundle. WebpackDevServer takes care to pause serving the
-  // bundle, so if you refresh, it'll wait instead of serving the old one.
-  // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
-  compiler.plugin('invalid', () => {
+  // bundle, so if you refresh, it"ll wait instead of serving the old one.
+  // "invalid" is short for "bundle invalidated", it doesn"t imply any errors.
+  compiler.plugin("invalid", () => {
     clearConsole();
-    console.log('Compiling...');
+    console.log("Compiling...");
   });
 
   // "done" event fires when Webpack has finished recompiling the bundle.
   // Whether or not you have warnings or errors, you will get this event.
-  compiler.plugin('done', stats => {
+  compiler.plugin("done", stats => {
     clearConsole();
 
     // We have switched off the default Webpack output in WebpackDevServer
@@ -55,21 +55,21 @@ function setupCompiler(host, port, protocol) {
     const messages = formatWebpackMessages(jsonStats);
     const seconds = jsonStats.time / 1000;
     if (!messages.errors.length && !messages.warnings.length) {
-      console.log(chalk.green('Compiled successfully!'));
-      console.log('Duration: ' + seconds.toFixed(2) + 's');
+      console.log(chalk.green("Compiled successfully!"));
+      console.log("Duration: " + seconds.toFixed(2) + "s");
       console.log();
-      console.log('The app is running at:');
+      console.log("The app is running at:");
       console.log();
-      console.log('  ' + chalk.cyan(protocol + '://' + host + ':' + port + '/'));
+      console.log("  " + chalk.cyan(protocol + "://" + host + ":" + port + "/"));
       console.log();
-      console.log('Note that the development build is not optimized.');
-      console.log('To create a production build, use ' + chalk.cyan('npm run build') + '.');
+      console.log("Note that the development build is not optimized.");
+      console.log("To create a production build, use " + chalk.cyan("npm run build") + ".");
       console.log();
     }
 
     // If errors exist, only show errors.
     if (messages.errors.length) {
-      console.log(chalk.red('Failed to compile.'));
+      console.log(chalk.red("Failed to compile."));
       console.log();
       messages.errors.forEach(message => {
         console.log(message);
@@ -80,7 +80,7 @@ function setupCompiler(host, port, protocol) {
 
     // Show warnings if no errors were found.
     if (messages.warnings.length) {
-      console.log(chalk.yellow('Compiled with warnings.'));
+      console.log(chalk.yellow("Compiled with warnings."));
       console.log();
       messages.warnings.forEach(message => {
         console.log(message);
@@ -96,19 +96,19 @@ function onProxyError(proxy) {
   return function(err, req, res) {
     const host = req.headers && req.headers.host;
     console.log(
-      chalk.red('Proxy error:') +
-        ' Could not proxy request ' +
+      chalk.red("Proxy error:") +
+        " Could not proxy request " +
         chalk.cyan(req.url) +
-        ' from ' +
+        " from " +
         chalk.cyan(host) +
-        ' to ' +
+        " to " +
         chalk.cyan(proxy) +
-        '.'
+        "."
     );
     console.log(
-      'See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (' +
+      "See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (" +
         chalk.cyan(err.code) +
-        ').'
+        ")."
     );
     console.log();
 
@@ -118,15 +118,15 @@ function onProxyError(proxy) {
       res.writeHead(500);
     }
     res.end(
-      'Proxy error: Could not proxy request ' +
+      "Proxy error: Could not proxy request " +
         req.url +
-        ' from ' +
+        " from " +
         host +
-        ' to ' +
+        " to " +
         proxy +
-        ' (' +
+        " (" +
         err.code +
-        ').'
+        ")."
     );
   };
 }
@@ -136,15 +136,15 @@ function addMiddleware(devServer) {
   // Every unrecognized request will be forwarded to it.
   const proxy = PROXY_URL;
   if (proxy) {
-    if (typeof proxy !== 'string') {
-      console.log(chalk.red('When specified, "proxy" in package.json must be a string.'));
-      console.log(chalk.red('Instead, the type of "proxy" was "' + typeof proxy + '".'));
-      console.log(chalk.red('Either remove "proxy" from package.json, or make it a string.'));
+    if (typeof proxy !== "string") {
+      console.log(chalk.red("When specified, 'proxy' in package.json must be a string."));
+      console.log(chalk.red("Instead, the type of 'proxy' was '" + typeof proxy + "'."));
+      console.log(chalk.red("Either remove 'proxy' from package.json, or make it a string."));
       process.exit(1);
     }
 
     // Otherwise, if proxy is specified, we will let it handle any request.
-    // There are a few exceptions which we won't send to the proxy:
+    // There are a few exceptions which we won"t send to the proxy:
     // - /*.hot-update.json (WebpackDevServer uses this too for hot reloading)
     // - /sockjs-node/* (WebpackDevServer uses this for hot reloading)
     // Tip: use https://jex.im/regulex/ to visualize the regex
@@ -155,7 +155,7 @@ function addMiddleware(devServer) {
       // of both HTTP and WebSockets to work without false positives.
       httpProxyMiddleware(pathname => mayProxy.test(pathname), {
         target: proxy,
-        logLevel: 'silent',
+        logLevel: "silent",
         onError: onProxyError(proxy),
         secure: false,
         changeOrigin: true
@@ -171,9 +171,9 @@ function runDevServer(host, port, protocol) {
   const devServer = new WebpackDevServer(compiler, {
     // Enable gzip compression of generated files.
     compress: true,
-    // Silence WebpackDevServer's own logs since they're generally not useful.
+    // Silence WebpackDevServer"s own logs since they"re generally not useful.
     // It will still show compile warnings and errors with this setting.
-    clientLogLevel: 'none',
+    clientLogLevel: "none",
     // Enable hot reloading server. It will provide /sockjs-node/ endpoint
     // for the WebpackDevServer client so it can learn when the files were
     // updated. The WebpackDevServer client is included as an entry point
@@ -191,8 +191,8 @@ function runDevServer(host, port, protocol) {
     watchOptions: {
       ignored: /node_modules/
     },
-    // Enable HTTPS if the HTTPS environment variable is set to 'true'
-    https: protocol === 'https',
+    // Enable HTTPS if the HTTPS environment variable is set to "true"
+    https: protocol === "https",
     host
   });
 
@@ -206,14 +206,14 @@ function runDevServer(host, port, protocol) {
     }
 
     clearConsole();
-    console.log(chalk.cyan('Starting the development server...'));
+    console.log(chalk.cyan("Starting the development server..."));
     console.log();
   });
 }
 
 function run(port) {
-  const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
-  const host = process.env.HOST || 'localhost';
+  const protocol = process.env.HTTPS === "true" ? "https" : "http";
+  const host = process.env.HOST || "localhost";
   setupCompiler(host, port, protocol);
   runDevServer(host, port, protocol);
 }
@@ -226,5 +226,5 @@ detect(DEFAULT_PORT).then(port => {
     return;
   }
 
-  console.log(chalk.yellow('Something is already running on port ' + DEFAULT_PORT + '.'));
+  console.log(chalk.yellow("Something is already running on port " + DEFAULT_PORT + "."));
 });
