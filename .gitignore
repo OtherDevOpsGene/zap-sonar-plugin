@@ -22,3 +22,5 @@ buildNumber.properties
 **/.classpath
 
 
+node_modules
+node
