@@ -5,6 +5,7 @@
  * All rights reserved
  * mailto:info AT sonarsource DOT com
  */
+/* eslint-disable no-console */
 process.env.NODE_ENV = "development";
 
 // Load environment variables from .env file. Surpress warnings using silent
