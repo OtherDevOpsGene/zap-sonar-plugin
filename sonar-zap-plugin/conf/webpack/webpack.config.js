@@ -54,13 +54,13 @@ module.exports = {
       {
         test: /\.css/,
         use: [
-          { loader: 'style-loader'},
-          { loader: 'css-loader'},
-          { loader: 'postcss-loader',
+          { loader: "style-loader"},
+          { loader: "css-loader"},
+          { loader: "postcss-loader",
             options: {
-              ident: 'postcss',
+              ident: "postcss",
               plugins: [
-                require('autoprefixer'),
+                require("autoprefixer"),
               ]
             }
           }
