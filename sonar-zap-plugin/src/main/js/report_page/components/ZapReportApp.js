@@ -22,13 +22,14 @@ import React from "react";
 import { DeferredSpinner } from "sonar-components";
 import { getJSON } from "sonar-request";
 
-export function findDependencyCheckReport(options) {
+const findZapReport = (options) => {
   return getJSON("/api/measures/component", {
     component: options.component.key,
-    metricKeys: "report",
+    metricKeys: "html_report",
   }).then(function (response) {
+    console.log(response);
     var report = response.component.measures.find((measure) => {
-      return measure.metric === "report";
+      return measure.metric === "html_report";
     });
     if (typeof report === "undefined") {
       return "<center><h2>No HTML-Report found. Please check property sonar.zaproxy.htmlReportPath</h2></center>";
@@ -36,68 +37,52 @@ export function findDependencyCheckReport(options) {
       return report.value;
     }
   });
-}
+};
 
-export default class ZapReportApp extends React.PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      loading: true,
-      data: "",
-      height: 0,
+const ZapReportApp = ({ options }) => {
+  const [htmlReportString, setHtmlReportString] = React.useState(null);
+  const [height, setHeight] = React.useState(
+    window.innerHeight - (72 + 48 + 145.5)
+  );
+
+  React.useEffect(() => {
+    init();
+    window.addEventListener("resize", updateDimensions);
+
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
     };
-  }
+  }, []);
 
-  componentDidMount() {
-    // eslint-disable-next-line react/prop-types
-    findDependencyCheckReport(this.props.options).then((data) => {
-      this.setState({
-        loading: false,
-        data,
-      });
-    });
-    /**
-     * Add event listener
-     */
-    this.updateDimensions();
-    window.addEventListener("resize", this.updateDimensions.bind(this));
-  }
+  const init = async () => {
+    const htmlZapReport = await findZapReport(options);
+    setHtmlReportString(htmlZapReport);
+  };
 
-  /**
-   * Remove event listener
-   */
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions.bind(this));
-  }
-
-  updateDimensions() {
+  const updateDimensions = () => {
     // 72px SonarQube common pane
     // 72px SonarQube project pane
     // 145,5 SonarQube footer
     let updateHeight = window.innerHeight - (72 + 48 + 145.5);
-    this.setState({ height: updateHeight });
-  }
+    setHeight(updateHeight);
+  };
 
-  render() {
-    if (this.state.loading) {
-      return (
-        <div className="page page-limited">
-          <DeferredSpinner />
-        </div>
-      );
-    }
+  return (
+    <div className="page zap-report-container">
+      { !htmlReportString &&
+        <DeferredSpinner />
+      }
 
-    return (
-      <div className="page zap-report-container">
+      { htmlReportString &&
         <iframe
           classsandbox="allow-scripts allow-same-origin"
-          height={this.state.height}
-          srcDoc={this.state.data}
+          height={height}
+          srcDoc={htmlReportString}
           style={{ border: "none" }}
         />
-      </div>
-    );
-  }
-}
+      }
+    </div>
+  );
+};
 
 export default ZapReportApp;

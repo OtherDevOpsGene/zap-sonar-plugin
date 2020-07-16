@@ -18,7 +18,8 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 import React from "react";
-import "../style.css";
+import "../styles.css";
+import ZapReportApp from "./components/ZapReportApp";
 
 window.registerExtension("zap/report_page", (options) => {
   return <ZapReportApp options={options} />;
