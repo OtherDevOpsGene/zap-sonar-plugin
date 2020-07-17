@@ -27,7 +27,6 @@ const findZapReport = (options) => {
     component: options.component.key,
     metricKeys: "html_report",
   }).then(function (response) {
-    console.log(response);
     var report = response.component.measures.find((measure) => {
       return measure.metric === "html_report";
     });

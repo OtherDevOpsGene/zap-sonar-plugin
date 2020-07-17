@@ -46,7 +46,7 @@ function setupCompiler(host, port, protocol) {
 
   // "done" event fires when Webpack has finished recompiling the bundle.
   // Whether or not you have warnings or errors, you will get this event.
-  compiler.plugin("done", stats => {
+  compiler.plugin("done", (stats) => {
     clearConsole();
 
     // We have switched off the default Webpack output in WebpackDevServer
@@ -72,7 +72,7 @@ function setupCompiler(host, port, protocol) {
     if (messages.errors.length) {
       console.log(chalk.red("Failed to compile."));
       console.log();
-      messages.errors.forEach(message => {
+      messages.errors.forEach((message) => {
         console.log(message);
         console.log();
       });
@@ -83,7 +83,7 @@ function setupCompiler(host, port, protocol) {
     if (messages.warnings.length) {
       console.log(chalk.yellow("Compiled with warnings."));
       console.log();
-      messages.warnings.forEach(message => {
+      messages.warnings.forEach((message) => {
         console.log(message);
         console.log();
       });
@@ -154,7 +154,7 @@ function addMiddleware(devServer) {
       mayProxy,
       // Pass the scope regex both to Express and to the middleware for proxying
       // of both HTTP and WebSockets to work without false positives.
-      httpProxyMiddleware(pathname => mayProxy.test(pathname), {
+      httpProxyMiddleware((pathname) => mayProxy.test(pathname), {
         target: proxy,
         logLevel: "silent",
         onError: onProxyError(proxy),
@@ -201,7 +201,7 @@ function runDevServer(host, port, protocol) {
   addMiddleware(devServer);
 
   // Launch WebpackDevServer.
-  devServer.listen(port, err => {
+  devServer.listen(port, (err) => {
     if (err) {
       return console.log(err);
     }
@@ -221,8 +221,8 @@ function run(port) {
 
 // We attempt to use the default port but if it is busy, we offer the user to
 // run on a different port. `detect()` Promise resolves to the next free port.
-detect(DEFAULT_PORT).then(port => {
-  if (port == DEFAULT_PORT) {
+detect(DEFAULT_PORT).then((port) => {
+  if (port === DEFAULT_PORT) {
     run(port);
     return;
   }

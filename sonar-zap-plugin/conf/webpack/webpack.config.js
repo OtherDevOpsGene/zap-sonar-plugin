@@ -12,7 +12,7 @@ module.exports = {
   // defined in src/main/java/org/sonarsource/plugins/example/web/MyPluginPageDefinition.java
   entry: {
     // Using React:
-    report_page: ["./src/main/js/report_page/index.js"],
+    "report_page": ["./src/main/js/report_page/index.js"],
   },
   output: {
     // The entry point files MUST be shipped inside the final JAR's static/

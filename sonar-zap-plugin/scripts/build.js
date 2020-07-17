@@ -19,7 +19,7 @@ function formatSize(bytes) {
   const k = 1000; // or 1024 for binary
   const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + " " + sizes[i];
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + " " + sizes[parseInt(i)];
 }
 
 function build() {
@@ -35,7 +35,7 @@ function build() {
 
     if (stats.compilation.errors && stats.compilation.errors.length) {
       console.log(chalk.red.bold("Failed to create a production build!"));
-      stats.compilation.errors.forEach(err => console.log(chalk.red(err.message || err)));
+      stats.compilation.errors.forEach((err) => console.log(chalk.red(err.message || err)));
       process.exit(1);
     }
 
@@ -44,7 +44,7 @@ function build() {
     console.log("Assets:");
     const assets = jsonStats.assets.slice();
     assets.sort((a, b) => b.size - a.size);
-    assets.forEach(asset => {
+    assets.forEach((asset) => {
       let sizeLabel = formatSize(asset.size);
       const leftPadding = " ".repeat(Math.max(0, 8 - sizeLabel.length));
       sizeLabel = leftPadding + sizeLabel;

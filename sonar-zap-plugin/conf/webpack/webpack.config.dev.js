@@ -17,7 +17,7 @@ config.output.publicPath = "/static/zap/";
 config.output.pathinfo = true;
 
 Object.keys(config.entry).forEach((key) => {
-  config.entry[key].unshift(require.resolve("react-dev-utils/webpackHotDevClient"));
+  config.entry[String(key)].unshift(require.resolve("react-dev-utils/webpackHotDevClient"));
 });
 
 config.plugins = [new webpack.HotModuleReplacementPlugin()];
