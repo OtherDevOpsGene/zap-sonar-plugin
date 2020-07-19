@@ -204,7 +204,7 @@ public class ZapSensor implements Sensor {
 
   private void uploadHtmlReport(SensorContext context) throws IOException {
     String reportContent = htmlReport.getReportContent();
-    if (htmlReport != null) {
+    if (reportContent != null) {
       LOGGER.info("Upload ZAP HTML Report");
       context.<String>newMeasure().forMetric(ZapMetrics.HTML_REPORT)
           .on(context.project())
