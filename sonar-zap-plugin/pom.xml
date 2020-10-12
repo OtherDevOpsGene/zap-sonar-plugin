@@ -22,7 +22,7 @@
         <jsr305.version>3.0.2</jsr305.version>
         <staxmate.version>2.3.1</staxmate.version>
 
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <mockito.version>2.28.2</mockito.version>
         <fest.assert.version>1.4</fest.assert.version>
 
