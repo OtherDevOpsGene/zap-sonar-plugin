@@ -89,7 +89,8 @@
         <mockito.version>2.28.2</mockito.version>
         <fest.assert.version>1.4</fest.assert.version>
 
-        <dockerfile.maven.plugin.version>1.4.10</dockerfile.maven.plugin.version>
+        <docker.maven.plugin.version>0.33.0</docker.maven.plugin.version>
+        <sonar.zaproxy.reportPath>${project.basedir}/src/test/resources/report/zaproxy-report.xml</sonar.zaproxy.reportPath>
     </properties>
     <build>
         <plugins>
@@ -277,25 +278,33 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>com.spotify</groupId>
-                        <artifactId>dockerfile-maven-plugin</artifactId>
-                        <version>${dockerfile.maven.plugin.version}</version>
+                        <groupId>io.fabric8</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <version>${docker.maven.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>default</id>
                                 <goals>
                                     <goal>build</goal>
-                                    <goal>push</goal>
                                 </goals>
                             </execution>
                         </executions>
                         <configuration>
-                            <repository>${project.groupId}/${project.artifactId}</repository>
-                            <tag>${project.version}</tag>
-                            <buildArgs>
-                                <SONAR_VERSION>${sonar.version}-community</SONAR_VERSION>
-                                <ARTIFACT>${project.build.finalName}.jar</ARTIFACT>
-                            </buildArgs>
+                            <images>
+                                <image>
+                                    <name>${project.groupId}/%a:%l</name>
+                                    <build>
+                                        <from>sonarqube:lts</from>
+                                        <labels>
+                                            <maintainer>${license.mailto}</maintainer>
+                                        </labels>
+                                        <assembly>
+                                            <descriptorRef>artifact</descriptorRef>
+                                            <targetDir>/opt/sonarqube/extensions/plugins/</targetDir>
+                                        </assembly>
+                                    </build>
+                                </image>
+                            </images>
                         </configuration>
                     </plugin>
                 </plugins>

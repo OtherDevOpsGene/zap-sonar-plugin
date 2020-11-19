@@ -110,7 +110,6 @@ and look for a line that says `SonarQube is up`.
 Then run an analysis using the test report:
 
 ```bash
-cd sonar-zap-plugin
 mvn sonar:sonar -Dsonar.zaproxy.reportPath=${PWD}/src/test/resources/report/zaproxy-report.xml
 ```
 
