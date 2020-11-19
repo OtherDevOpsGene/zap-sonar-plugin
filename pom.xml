@@ -1,164 +1,306 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.sonarsource.parent</groupId>
-		<artifactId>parent</artifactId>
-		<version>40</version>
-	</parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.sonarsource.owasp</groupId>
-	<artifactId>sonar-zap</artifactId>
-	<version>1.2.1-SNAPSHOT</version>
-  
-	<packaging>pom</packaging>
-	<name>ZAP for SonarQube</name>
-	<description>Integrates ZAP reports into SonarQube</description>
-	<inceptionYear>2015</inceptionYear>
+    <groupId>org.sonarsource.owasp</groupId>
+    <artifactId>sonar-zap-plugin</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+    <packaging>sonar-plugin</packaging>
 
-	<properties>
-		<license.owner>Gene Gotimer</license.owner>
-		<license.mailto>gene.gotimer@coveros.com</license.mailto>
-		<license.year>2015-2017</license.year>
+    <dependencies>
+        <dependency>
+            <groupId>org.sonarsource.sonarqube</groupId>
+            <artifactId>sonar-plugin-api</artifactId>
+            <version>${sonar.apiVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons.lang.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${jsr305.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.staxmate</groupId>
+            <artifactId>staxmate</artifactId>
+            <version>${staxmate.version}</version>
+        </dependency>
 
-		<maven.gpg.plugin.version>1.5</maven.gpg.plugin.version>
-		<nexus.staging.maven.plugin.version>1.6.8</nexus.staging.maven.plugin.version>
-	</properties>
+        <!-- unit tests -->
+        <dependency>
+            <groupId>org.sonarsource.sonarqube</groupId>
+            <artifactId>sonar-testing-harness</artifactId>
+            <version>${sonar.apiVersion}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-assert</artifactId>
+            <version>${fest.assert.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-	<organization>
-		<name>OWASP</name>
-		<url>http://www.owasp.org</url>
-	</organization>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-	<licenses>
-		<license>
-			<name>GNU LGPL 3</name>
-			<url>http://www.gnu.org/licenses/lgpl.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+        <license.owner>Gene Gotimer</license.owner>
+        <license.mailto>eugene.gotimer@steampunk.com</license.mailto>
+        <license.year>2015-2020</license.year>
 
-	<developers>
-		<developer>
-			<name>Gene Gotimer</name>
-			<email>gene.gotimer@coveros.com</email>
-			<organization>Coveros, Inc.</organization>
-			<organizationUrl>http://coveros.com</organizationUrl>
-		</developer>
-		<developer>
-			<name>Steve Springett</name>
-			<email>steve.springett@owasp.org</email>
-			<url>http://www.stevespringett.com</url>
-		</developer>
-		<developer>
-			<name>Niklas Mehner</name>
-			<email>niklas.mehner@gmail.com</email>
-		</developer>
-	</developers>
+        <sonar.apiVersion>7.9</sonar.apiVersion>
+        <jdk.min.version>1.8</jdk.min.version>
+        <sonar.sources>src/main/java</sonar.sources>
 
-	<scm>
-		<connection>scm:git:https://github.com/Coveros/zap-sonar-plugin.git</connection>
-		<developerConnection>scm:git:git@github.com:Coveros/zap-sonar-plugin.git</developerConnection>
-		<url>https://github.com/Coveros/zap-sonar-plugin</url>
-	  <tag>HEAD</tag>
-  </scm>
+        <sonar.pluginClass>org.sonar.zaproxy.ZapPlugin</sonar.pluginClass>
 
-	<issueManagement>
-		<system>GitHub</system>
-		<url>https://github.com/Coveros/zap-sonar-plugin/issues</url>
-	</issueManagement>
+        <maven.gpg.plugin.version>1.5</maven.gpg.plugin.version>
+        <nexus.staging.maven.plugin.version>1.6.8</nexus.staging.maven.plugin.version>
 
-	<ciManagement>
-		<system>Travis CI</system>
-		<url>https://travis-ci.org/Coveros/zap-sonar-plugin</url>
-	</ciManagement>
+        <commons.io.version>2.6</commons.io.version>
+        <commons.lang.version>2.6</commons.lang.version>
+        <jsr305.version>3.0.2</jsr305.version>
+        <staxmate.version>2.3.1</staxmate.version>
 
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
+        <junit.version>4.12</junit.version>
+        <mockito.version>2.28.2</mockito.version>
+        <fest.assert.version>1.4</fest.assert.version>
 
-	<modules>
-		<module>sonar-zap-plugin</module>
-	</modules>
+        <dockerfile.maven.plugin.version>1.4.10</dockerfile.maven.plugin.version>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+                <configuration>
+                    <source>8</source>
+                    <detectJavaApiLink>false</detectJavaApiLink>
+                    <quiet>true</quiet>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
+                <artifactId>sonar-packaging-maven-plugin</artifactId>
+                <version>1.18.0.372</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <pluginClass>${sonar.pluginClass}</pluginClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${jdk.min.version}</source>
+                    <target>${jdk.min.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- UTF-8 bundles are not supported by Java, so they must be converted during build -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>native2ascii-maven-plugin</artifactId>
+                <version>2.0.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+    <name>ZAP Plugin for SonarQube</name>
+    <description>Integrates ZAP reports into SonarQube</description>
+    <url>https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project</url>
+    <inceptionYear>2015</inceptionYear>
 
-	<profiles>
-		<profile>
-			<id>release</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-release-plugin</artifactId>
-						<configuration>
-							<autoVersionSubmodules>true</autoVersionSubmodules>
-							<useReleaseProfile>false</useReleaseProfile>
-							<releaseProfiles>release</releaseProfiles>
-							<goals>deploy</goals>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>${maven.gpg.plugin.version}</version>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.sonatype.plugins</groupId>
-						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>${nexus.staging.maven.plugin.version}</version>
-						<extensions>true</extensions>
-						<configuration>
-							<serverId>ossrh</serverId>
-							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-							<autoReleaseAfterClose>true</autoReleaseAfterClose>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+    <licenses>
+        <license>
+            <name>GNU LGPL 3</name>
+            <url>http://www.gnu.org/licenses/lgpl.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>OWASP</name>
+        <url>http://www.owasp.org</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>OtherDevOpsGene</id>
+            <name>Gene Gotimer</name>
+            <email>eugene.gotimer@steampunk.com</email>
+            <timezone>America/New_York</timezone>
+        </developer>
+        <developer>
+            <name>Steve Springett</name>
+            <email>steve.springett@owasp.org</email>
+            <url>http://www.stevespringett.com</url>
+        </developer>
+    </developers>
+    <contributors>
+        <contributor>
+            <name>Niklas Mehner</name>
+            <email>niklas.mehner@gmail.com</email>
+        </contributor>
+    </contributors>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/OtherDevOpsGene/zap-sonar-plugin/issues</url>
+    </issueManagement>
+    <ciManagement>
+        <system>Travis CI</system>
+        <url>https://travis-ci.org/OtherDevOpsGene/zap-sonar-plugin</url>
+    </ciManagement>
+
+    <scm>
+        <connection>scm:git:https://github.com/OtherDevOpsGene/zap-sonar-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:OtherDevOpsGene/zap-sonar-plugin.git</developerConnection>
+        <url>https://github.com/OtherDevOpsGene/zap-sonar-plugin</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <configuration>
+                            <autoVersionSubmodules>true</autoVersionSubmodules>
+                            <useReleaseProfile>false</useReleaseProfile>
+                            <releaseProfiles>release</releaseProfiles>
+                            <goals>deploy</goals>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven.gpg.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${nexus.staging.maven.plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>docker</id>
+            <activation>
+                <property>
+                    <name>docker</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.spotify</groupId>
+                        <artifactId>dockerfile-maven-plugin</artifactId>
+                        <version>${dockerfile.maven.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>default</id>
+                                <goals>
+                                    <goal>build</goal>
+                                    <goal>push</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <repository>${project.groupId}/${project.artifactId}</repository>
+                            <tag>${project.version}</tag>
+                            <buildArgs>
+                                <SONAR_VERSION>${sonar.version}-community</SONAR_VERSION>
+                                <ARTIFACT>${project.build.finalName}.jar</ARTIFACT>
+                            </buildArgs>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 </project>
