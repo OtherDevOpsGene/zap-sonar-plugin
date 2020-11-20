@@ -1,0 +1,16 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.3.0
+    hooks:
+    -   id: check-case-conflict
+    -   id: check-xml
+    -   id: end-of-file-fixer
+-   repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: v1.6.1
+    hooks:
+    -   id: pretty-format-java
+        args: ["--autofix"]
+-   repo: https://github.com/markdownlint/markdownlint
+    rev: 02832ed3bc0681e72117663c6f8802ce878bf908
+    hooks:
+    -   id: markdownlint_docker
