@@ -185,7 +185,6 @@
                         <target>${java.version}</target>
                         <compilerArgs>
                             <arg>-XDcompilePolicy=simple</arg>
-                            <arg>-Xplugin:ErrorProne</arg>
                         </compilerArgs>
                     </configuration>
                 </plugin>
