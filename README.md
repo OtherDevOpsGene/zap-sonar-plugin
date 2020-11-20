@@ -113,13 +113,11 @@ Look for a line that says `SonarQube is up`.
 Then run an analysis using the test report:
 
 ```bash
-mvn sonar:sonar -Dsonar.zaproxy.reportPath=${PWD}/src/test/resources/report/zaproxy-report.xml
+mvn sonar:sonar
 ```
 
-The path must be an absolute path. If your shell does not support `${PWD}`,
-replace it with the full path to the test report.
-
-The results can be viewed at <http://localhost:9000/project/issues?id=org.sonarsource.owasp%3Asonar-zap-plugin&resolved=false&tags=zaproxy>.
+The ZAP results can be viewed at
+<http://localhost:9000/project/issues?id=org.sonarsource.owasp%3Asonar-zap-plugin&resolved=false&tags=zaproxy>.
 There should be 14 issues: 1 Major, 9 Minor, 4 Info.
 
 ## Releasing
