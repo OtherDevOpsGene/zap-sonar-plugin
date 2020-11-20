@@ -1,24 +1,3 @@
-<!--
-  #%L
-  ZAP Plugin for SonarQube
-  %%
-  Copyright (C) 2015 - 2020 Gene Gotimer <eugene.gotimer@steampunk.com>
-  %%
-  This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as
-  published by the Free Software Foundation, either version 3 of the
-  License, or (at your option) any later version.
-  
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-  
-  You should have received a copy of the GNU General Public
-  License along with this program.  If not, see
-  <http://www.gnu.org/licenses/gpl-3.0.html>.
-  #L%
-  -->
 <!-- TODO this file should be automatically generated with the ZAProxy report -->
 
 <!-- A rule model -->
@@ -67,15 +46,15 @@ If you want to add a rule, you can, following the model above.
         <status>READY</status>
         <tag>cweid-548</tag>
         <tag>wascid-48</tag>
-        <tag>wascid-16</tag>        
+        <tag>wascid-16</tag>
         <tag>owasp-a5</tag>
-        <tag>owasp-a6</tag>        
+        <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
-    
-    <!-- 
-    
+
+    <!--
+
     "securityStandards": {
     "CWE": [
       330
@@ -84,7 +63,7 @@ If you want to add a rule, you can, following the model above.
       "A6"
     ]
   }-->
-    
+
     <rule>
         <key>2</key>
         <name>Private IP Disclosure</name>
@@ -288,7 +267,7 @@ If you want to add a rule, you can, following the model above.
         <tag>wascid-4</tag>
         <tag>cwe-614</tag>
         <tag>owasp-a2</tag>
-        <tag>owasp-a3</tag>        
+        <tag>owasp-a3</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -1215,7 +1194,7 @@ If you want to add a rule, you can, following the model above.
     <li><a href="http://www.w3.org/TR/CSP2/">http://www.w3.org/TR/CSP2/</a></li>
     <li><a href="http://caniuse.com/#search=content+security+policy">http://caniuse.com/#search=content+security+policy</a></li>
     <li><a href="http://content-security-policy.com/">http://content-security-policy.com/</a></li>
-    <li><a href="https://github.com/shapesecurity/salvation">https://github.com/shapesecurity/salvation</a></li>    
+    <li><a href="https://github.com/shapesecurity/salvation">https://github.com/shapesecurity/salvation</a></li>
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -1245,7 +1224,7 @@ If you want to add a rule, you can, following the model above.
         <tag>cweid-16</tag>
         <tag>wascid-13</tag>
         <tag>owasp-a6</tag>
-    </rule>  
+    </rule>
     <rule>
         <key>10038</key>
         <name>Content Security Policy (CSP) Header Not Set</name>
@@ -1307,7 +1286,7 @@ If you want to add a rule, you can, following the model above.
         <tag>cweid-524</tag>
         <tag>wascid-13</tag>
         <tag>owasp-a3</tag>
-    </rule>       
+    </rule>
     <rule>
         <key>10096</key>
         <name>Timestamp Disclosure - Unix</name>

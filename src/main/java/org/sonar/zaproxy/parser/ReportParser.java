@@ -1,22 +1,3 @@
-/*
- * ZAP Plugin for SonarQube
- * Copyright (C) 2015-2017 Gene Gotimer
- * gene.gotimer@coveros.com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- */
 package org.sonar.zaproxy.parser;
 
 /*-
@@ -50,8 +31,6 @@ import org.apache.commons.lang.StringUtils;
 import org.codehaus.staxmate.SMInputFactory;
 import org.codehaus.staxmate.in.SMHierarchicCursor;
 import org.codehaus.staxmate.in.SMInputCursor;
-import org.sonar.api.utils.log.Logger;
-import org.sonar.api.utils.log.Loggers;
 import org.sonar.zaproxy.base.ZapUtils;
 import org.sonar.zaproxy.parser.element.AlertItem;
 import org.sonar.zaproxy.parser.element.Instance;
@@ -60,8 +39,6 @@ import org.sonar.zaproxy.parser.element.ZapReport;
 
 public class ReportParser {
 
-  private static final Logger LOGGER = Loggers.get(ReportParser.class);
-
   public ZapReport parse(InputStream inputStream) {
     SMInputFactory inputFactory = ZapUtils.newStaxParser();
     try {
@@ -69,7 +46,7 @@ public class ReportParser {
 
       SMInputCursor owaspZapReportCursor = rootC.advance(); // <OWASPZAPReport>
 
-      String gererated = owaspZapReportCursor.getAttrValue("generated");
+      String generated = owaspZapReportCursor.getAttrValue("generated");
       String versionZAP = owaspZapReportCursor.getAttrValue("version");
 
       SMInputCursor childCursor =
@@ -83,7 +60,7 @@ public class ReportParser {
           sites.add(processSite(childCursor));
         }
       }
-      return new ZapReport(gererated, versionZAP, sites);
+      return new ZapReport(generated, versionZAP, sites);
     } catch (XMLStreamException e) {
       throw new IllegalStateException("XML is not valid", e);
     }

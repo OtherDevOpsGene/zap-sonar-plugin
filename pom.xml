@@ -421,6 +421,10 @@
                 <configuration>
                     <licenseName>gpl_v3</licenseName>
                     <organizationName>${license.owner} &lt;${license.mailto}&gt;</organizationName>
+                    <roots>
+                        <root>src/main/java</root>
+                        <root>src/test/java</root>
+                    </roots>
                 </configuration>
             </plugin>
         </plugins>
