@@ -19,6 +19,28 @@
  */
 package org.sonar.zaproxy;
 
+/*-
+ * #%L
+ * ZAP Plugin for SonarQube
+ * %%
+ * Copyright (C) 2015 - 2020 Gene Gotimer <eugene.gotimer@steampunk.com>
+ * %%
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public
+ * License along with this program.  If not, see
+ * <http://www.gnu.org/licenses/gpl-3.0.html>.
+ * #L%
+ */
+
 import java.io.IOException;
 import java.io.InputStream;
 import javax.xml.parsers.ParserConfigurationException;
@@ -70,7 +92,8 @@ public class ZapSensor implements Sensor {
 
   private void addIssue(org.sonar.api.batch.sensor.SensorContext context, AlertItem alert) {
     Severity severity = ZapUtils.riskCodeToSonarQubeSeverity(alert.getRiskcode());
-    context.newIssue()
+    context
+        .newIssue()
         .forRule(RuleKey.of(ZapPlugin.REPOSITORY_KEY, String.valueOf(alert.getPluginid())))
         .at(new DefaultIssueLocation().on(context.module()).message(formatDescription(alert)))
         .overrideSeverity(severity)
@@ -80,7 +103,8 @@ public class ZapSensor implements Sensor {
   }
 
   /**
-   * todo: Add Markdown formatting if and when Sonar supports it https://jira.codehaus.org/browse/SONAR-4161
+   * todo: Add Markdown formatting if and when Sonar supports it
+   * https://jira.codehaus.org/browse/SONAR-4161
    */
   private String formatDescription(AlertItem alert) {
     StringBuilder sb = new StringBuilder();
@@ -159,7 +183,6 @@ public class ZapSensor implements Sensor {
     } finally {
       stream.close();
     }
-
   }
 
   @Override
@@ -170,13 +193,14 @@ public class ZapSensor implements Sensor {
       ZapReport zapReport = parseZapReport();
       if (zapReport != null) {
 
-        //totalAlerts = zapReport.getSite().getAlerts().size();
+        // totalAlerts = zapReport.getSite().getAlerts().size();
         totalAlerts = zapReport.getIssueCount();
         addIssues(context, zapReport);
       }
     } catch (Exception e) {
       throw new RuntimeException(
-          "Can not process ZAP report. Ensure the report are located within the project workspace and that sonar.sources is set to reflect these paths (or set sonar.sources=.)",
+          "Can not process ZAP report. Ensure the report are located within the project workspace"
+              + " and that sonar.sources is set to reflect these paths (or set sonar.sources=.)",
           e);
     } finally {
       profiler.stopInfo();
@@ -185,16 +209,23 @@ public class ZapSensor implements Sensor {
   }
 
   private void saveMeasures(SensorContext context) {
-    context.newMeasure().forMetric(ZapMetrics.HIGH_RISK_ALERTS)
+    context
+        .newMeasure()
+        .forMetric(ZapMetrics.HIGH_RISK_ALERTS)
         .withValue((double) criticalIssuesCount);
-    context.newMeasure().forMetric(ZapMetrics.MEDIUM_RISK_ALERTS)
+    context
+        .newMeasure()
+        .forMetric(ZapMetrics.MEDIUM_RISK_ALERTS)
         .withValue((double) majorIssuesCount);
     context.newMeasure().forMetric(ZapMetrics.LOW_RISK_ALERTS).withValue((double) minorIssuesCount);
     context.newMeasure().forMetric(ZapMetrics.INFO_RISK_ALERTS).withValue((double) infoIssuesCount);
     context.newMeasure().forMetric(ZapMetrics.TOTAL_ALERTS).withValue((double) totalAlerts);
 
-    context.newMeasure().forMetric(ZapMetrics.IDENTIFIED_RISK_SCORE).withValue(
-        ZapMetrics.inheritedRiskScore(criticalIssuesCount, majorIssuesCount, minorIssuesCount));
+    context
+        .newMeasure()
+        .forMetric(ZapMetrics.IDENTIFIED_RISK_SCORE)
+        .withValue(
+            ZapMetrics.inheritedRiskScore(criticalIssuesCount, majorIssuesCount, minorIssuesCount));
   }
 
   @Override

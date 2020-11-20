@@ -19,12 +19,33 @@
  */
 package org.sonar.zaproxy.rule;
 
+/*-
+ * #%L
+ * ZAP Plugin for SonarQube
+ * %%
+ * Copyright (C) 2015 - 2020 Gene Gotimer <eugene.gotimer@steampunk.com>
+ * %%
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public
+ * License along with this program.  If not, see
+ * <http://www.gnu.org/licenses/gpl-3.0.html>.
+ * #L%
+ */
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Optional;
 import java.util.Set;
-
 import org.apache.commons.io.Charsets;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.reflect.FieldUtils;
@@ -58,7 +79,8 @@ public class ZapRuleDefinition implements RulesDefinition {
   }
 
   private void loadDefaultZAProxyRules(NewRepository repository) {
-    xmlLoader.load(repository, getClass().getResourceAsStream(ZapPlugin.RULES_FILE), Charsets.UTF_8);
+    xmlLoader.load(
+        repository, getClass().getResourceAsStream(ZapPlugin.RULES_FILE), Charsets.UTF_8);
     for (NewRule newRule : repository.rules()) {
       try {
         final Set<String> tags = (Set<String>) FieldUtils.readField(newRule, "tags", true);
@@ -71,15 +93,15 @@ public class ZapRuleDefinition implements RulesDefinition {
           }
         }
       } catch (IllegalAccessException e) {
-        LOGGER.warn("Problem parsing security tags",e);
+        LOGGER.warn("Problem parsing security tags", e);
       }
     }
   }
 
   @Override
   public void define(Context context) {
-    NewRepository repository = context
-        .createRepository(ZapPlugin.REPOSITORY_KEY, ZapPlugin.LANGUAGE_KEY);
+    NewRepository repository =
+        context.createRepository(ZapPlugin.REPOSITORY_KEY, ZapPlugin.LANGUAGE_KEY);
     repository.setName(ZapPlugin.REPOSITORY_KEY);
 
     String rulesFilePath = getRulesFilePath();
@@ -100,5 +122,4 @@ public class ZapRuleDefinition implements RulesDefinition {
     }
     repository.done();
   }
-
 }
