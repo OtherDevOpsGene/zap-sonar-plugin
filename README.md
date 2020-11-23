@@ -1,7 +1,7 @@
 # ZAP Plugin for SonarQube 7.x LTS
 
 [![Build Status](https://travis-ci.org/OtherDevOpsGene/zap-sonar-plugin.svg?branch=master)](https://travis-ci.org/OtherDevOpsGene/zap-sonar-plugin)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/1a3d6b1802d6437ca5e54b525635f36f)](https://www.codacy.com/gh/OtherDevOpsGene/zap-sonar-plugin/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=OtherDevOpsGene/zap-sonar-plugin&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6f379a37e7ef4994b5443723ec4bcb9f)](https://www.codacy.com/gh/OtherDevOpsGene/zap-sonar-plugin/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=OtherDevOpsGene/zap-sonar-plugin&amp;utm_campaign=Badge_Grade)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 [![DepShield Badge](https://depshield.sonatype.org/badges/OtherDevOpsGene/zap-sonar-plugin/depshield.svg)](https://depshield.github.io)
 [![Known Vulnerabilities](https://snyk.io/test/github/OtherDevOpsGene/zap-sonar-plugin/badge.svg)](https://snyk.io/test/github/OtherDevOpsGene/zap-sonar-plugin)
