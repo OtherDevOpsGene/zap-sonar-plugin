@@ -6,6 +6,8 @@
 [![DepShield Badge](https://depshield.sonatype.org/badges/OtherDevOpsGene/zap-sonar-plugin/depshield.svg)](https://depshield.github.io)
 [![Known Vulnerabilities](https://snyk.io/test/github/OtherDevOpsGene/zap-sonar-plugin/badge.svg)](https://snyk.io/test/github/OtherDevOpsGene/zap-sonar-plugin)
 [![deepcode](https://www.deepcode.ai/api/gh/badge?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF0Zm9ybTEiOiJnaCIsIm93bmVyMSI6Ik90aGVyRGV2T3BzR2VuZSIsInJlcG8xIjoiemFwLXNvbmFyLXBsdWdpbiIsImluY2x1ZGVMaW50IjpmYWxzZSwiYXV0aG9ySWQiOjI1MDYzLCJpYXQiOjE2MDU4ODgyMzB9.5bi9hovkUE-DkAOLt0IUZy_CJTeJH1LFiRrqK_REoW0)](https://www.deepcode.ai/app/gh/OtherDevOpsGene/zap-sonar-plugin/_/dashboard?utm_content=gh%2FOtherDevOpsGene%2Fzap-sonar-plugin)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/OtherDevOpsGene/zap-sonar-plugin.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/OtherDevOpsGene/zap-sonar-plugin/alerts/)
+[![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/OtherDevOpsGene/zap-sonar-plugin.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/OtherDevOpsGene/zap-sonar-plugin/context:java)
 
 Integrates [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)
 reports into SonarQube v7.x or higher. The target version of SonarQube is the
