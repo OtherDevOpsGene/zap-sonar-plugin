@@ -15,7 +15,7 @@
         <license.owner>Gene Gotimer</license.owner>
         <license.mailto>eugene.gotimer@steampunk.com</license.mailto>
 
-        <sonar.apiVersion>7.9</sonar.apiVersion>
+        <sonar.apiVersion>7.9.4</sonar.apiVersion>
         <sonar.pluginClass>org.sonar.zaproxy.ZapPlugin</sonar.pluginClass>
         <sonar.packaging.maven.plugin.version>1.20.0.405</sonar.packaging.maven.plugin.version>
         <sonar.zaproxy.reportPath>${project.basedir}/src/test/resources/report/zaproxy-report.xml</sonar.zaproxy.reportPath>
@@ -420,7 +420,7 @@
                 <artifactId>license-maven-plugin</artifactId>
                 <configuration>
                     <licenseName>gpl_v3</licenseName>
-                    <organizationName>${license.owner} &lt;${license.mailto}&gt;</organizationName>
+                    <organizationName>${license.owner} &lt;${license.mailto}></organizationName>
                     <roots>
                         <root>src/main/java</root>
                         <root>src/test/java</root>
