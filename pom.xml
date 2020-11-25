@@ -400,9 +400,47 @@
                         <banDuplicatePomDependencyVersions/>
                         <requireProperty>
                             <property>sonar.apiVersion</property>
+                            <message>sonar.apiVersion is required by Sonar Packaging</message>
                         </requireProperty>
                         <requireProperty>
                             <property>sonar.pluginClass</property>
+                            <message>sonar.pluginClass is required by Sonar Packaging</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.groupId</property>
+                            <message>project.groupId is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.artifactId</property>
+                            <message>project.artifactId is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.version</property>
+                            <message>project.version is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.name</property>
+                            <message>project.name is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.description</property>
+                            <message>project.description is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.url</property>
+                            <message>project.url is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.licenses</property>
+                            <message>project.licenses is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.developers</property>
+                            <message>project.developers is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.scm</property>
+                            <message>project.scm is required by OSSRH Central Repository</message>
                         </requireProperty>
                     </rules>
                 </configuration>
