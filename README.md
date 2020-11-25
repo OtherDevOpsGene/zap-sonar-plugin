@@ -134,9 +134,16 @@ On the `main` branch:
 
 ```bash
 git checkout main
+mvn versions:set -DnewVersion=2.0.0
 mvn clean deploy -P release
-git tag -a sonar-zap-plugin-1.2.0 -m 'Support for SonarQube 7.9 LTS'
+git add pom.xml
+git commit -m 'Deploying release to Central Repository'
+git tag -a sonar-zap-plugin-2.0.0 -m 'Support for SonarQube 7.9 LTS'
+mvn versions:set -DnewVersion=2.0.1-SNAPSHOT
+git add pom.xml
+git commit -m 'Preparing for next development version'
 git push --tags origin
+git push origin
 ```
 
 ## History
