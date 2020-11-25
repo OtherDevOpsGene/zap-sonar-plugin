@@ -38,7 +38,7 @@
         <maven.pmd.plugin.version>3.13.0</maven.pmd.plugin.version>
         <maven.enforcer.plugin.version>3.0.0-M3</maven.enforcer.plugin.version>
         <native2ascii.maven.plugin.version>2.0.1</native2ascii.maven.plugin.version>
-        <maven.gpg.plugin.version>1.5</maven.gpg.plugin.version>
+        <maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
         <nexus.staging.maven.plugin.version>1.6.8</nexus.staging.maven.plugin.version>
 
         <maven.site.plugin.version>3.9.1</maven.site.plugin.version>
@@ -276,6 +276,7 @@
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>${maven.javadoc.plugin.version}</version>
                     <configuration>
+                        <source>${java.version}</source>
                         <quiet>true</quiet>
                     </configuration>
                     <executions>
@@ -400,9 +401,47 @@
                         <banDuplicatePomDependencyVersions/>
                         <requireProperty>
                             <property>sonar.apiVersion</property>
+                            <message>sonar.apiVersion is required by Sonar Packaging</message>
                         </requireProperty>
                         <requireProperty>
                             <property>sonar.pluginClass</property>
+                            <message>sonar.pluginClass is required by Sonar Packaging</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.groupId</property>
+                            <message>project.groupId is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.artifactId</property>
+                            <message>project.artifactId is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.version</property>
+                            <message>project.version is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.name</property>
+                            <message>project.name is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.description</property>
+                            <message>project.description is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.url</property>
+                            <message>project.url is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.licenses</property>
+                            <message>project.licenses is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.developers</property>
+                            <message>project.developers is required by OSSRH Central Repository</message>
+                        </requireProperty>
+                        <requireProperty>
+                            <property>project.scm</property>
+                            <message>project.scm is required by OSSRH Central Repository</message>
                         </requireProperty>
                     </rules>
                 </configuration>
@@ -426,6 +465,14 @@
                         <root>src/test/java</root>
                     </roots>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
