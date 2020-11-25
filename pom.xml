@@ -276,6 +276,7 @@
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>${maven.javadoc.plugin.version}</version>
                     <configuration>
+                        <source>8</source>
                         <quiet>true</quiet>
                     </configuration>
                     <executions>
@@ -464,6 +465,10 @@
                         <root>src/test/java</root>
                     </roots>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
