@@ -130,16 +130,15 @@ You will need a valid code signing key registered with OSSRH.
 Once you push the changes, all checks come back clean, and you update the
 version number for release, then merge the pull request into `main`.
 
-On the `main` branch:
-
 ```bash
 git checkout main
-mvn versions:set -DnewVersion='2.0.1'
+git checkout -b release-2.0.2
+mvn versions:set -DnewVersion='2.0.2'
 git add pom.xml
 git commit -m 'Deploying release to Central Repository'
 mvn clean deploy -P release
-git tag -a sonar-zap-plugin-2.0.1 -m 'Support for SonarQube 7.9 LTS'
-mvn versions:set -DnewVersion=2.0.2-SNAPSHOT
+git tag -a sonar-zap-plugin-2.0.2 -m 'Support for SonarQube 7.9 LTS'
+mvn versions:set -DnewVersion=2.0.3-SNAPSHOT
 git add pom.xml
 git commit -m 'Preparing for next development version'
 git push origin
