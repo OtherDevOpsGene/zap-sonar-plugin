@@ -22,12 +22,12 @@ package org.sonar.zaproxy.parser;
  * #L%
  */
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.sonar.api.config.Settings;
 import org.sonar.zaproxy.ZapSensorConfiguration;
 import org.sonar.zaproxy.base.ZapConstants;
@@ -37,7 +37,7 @@ public class ZapSensorConfigurationTest {
   private Settings settings;
   private ZapSensorConfiguration sensorConfiguration;
 
-  @Before
+  @BeforeEach
   public void init() {
     this.settings = mock(Settings.class);
     this.sensorConfiguration = new ZapSensorConfiguration(this.settings);

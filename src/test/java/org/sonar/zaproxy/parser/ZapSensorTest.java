@@ -22,11 +22,11 @@ package org.sonar.zaproxy.parser;
  * #L%
  */
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.rule.Rules;
 import org.sonar.api.scan.filesystem.PathResolver;
@@ -41,7 +41,7 @@ public class ZapSensorTest {
   private Rules rules;
   private ZapSensor sensor;
 
-  @Before
+  @BeforeEach
   public void init() {
     this.configuration = mock(ZapSensorConfiguration.class);
     this.fileSystem = mock(FileSystem.class);

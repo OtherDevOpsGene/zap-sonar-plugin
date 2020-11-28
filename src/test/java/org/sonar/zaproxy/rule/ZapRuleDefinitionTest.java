@@ -22,10 +22,10 @@ package org.sonar.zaproxy.rule;
  * #L%
  */
 
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.sonar.api.config.Configuration;
 import org.sonar.api.server.rule.RulesDefinition.Context;
 import org.sonar.api.server.rule.RulesDefinition.Rule;
@@ -43,7 +43,7 @@ public class ZapRuleDefinitionTest {
     Context context = new Context();
     ZapRuleDefinition.define(context);
     for (Rule rule : context.repositories().get(0).rules()) {
-      assertFalse(rule.tags().isEmpty());
+      assertThat(rule.tags()).isNotEmpty();
     }
   }
 }

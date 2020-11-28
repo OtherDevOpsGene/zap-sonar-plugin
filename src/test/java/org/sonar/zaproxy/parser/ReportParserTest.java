@@ -22,13 +22,13 @@ package org.sonar.zaproxy.parser;
  * #L%
  */
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.sonar.zaproxy.parser.element.AlertItem;
 import org.sonar.zaproxy.parser.element.Site;
 import org.sonar.zaproxy.parser.element.ZapReport;

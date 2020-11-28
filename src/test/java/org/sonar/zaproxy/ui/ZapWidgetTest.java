@@ -22,9 +22,9 @@ package org.sonar.zaproxy.ui;
  * #L%
  */
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ZapWidgetTest {
 
