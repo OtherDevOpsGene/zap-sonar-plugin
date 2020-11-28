@@ -31,18 +31,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.codehaus.staxmate.SMInputFactory;
 import org.codehaus.staxmate.in.SMHierarchicCursor;
 import org.codehaus.staxmate.in.SMInputCursor;
-import org.sonar.api.rules.RuleFinder;
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
 import org.sonar.zaproxy.ZapPlugin;
 import org.sonar.zaproxy.base.ZapUtils;
 
 public class ZapProfile implements BuiltInQualityProfilesDefinition {
-
-  private final RuleFinder ruleFinder;
-
-  public ZapProfile(RuleFinder ruleFinder) {
-    this.ruleFinder = ruleFinder;
-  }
 
   /** Return the key of the rule pointed by ruleCursor. */
   private String processKey(SMInputCursor ruleCursor) throws XMLStreamException {
