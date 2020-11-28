@@ -153,14 +153,11 @@ public class ZapSensor implements Sensor {
   }
 
   private ZapReport parseZapReport() throws IOException {
-    InputStream stream = this.report.getInputStream();
-    if (stream == null) {
-      return null;
-    }
-    try {
+    try (InputStream stream = this.report.getInputStream()) {
+      if (stream == null) {
+        return null;
+      }
       return new ReportParser().parse(stream);
-    } finally {
-      stream.close();
     }
   }
 
