@@ -71,7 +71,7 @@ public class ZapSensor implements Sensor {
     this.report = new XmlReportFile(configuration, fileSystem, pathResolver);
   }
 
-  private void addIssue(org.sonar.api.batch.sensor.SensorContext context, AlertItem alert) {
+  private void addIssue(SensorContext context, AlertItem alert) {
     Severity severity = ZapUtils.riskCodeToSonarQubeSeverity(alert.getRiskcode());
     context
         .newIssue()
@@ -142,7 +142,7 @@ public class ZapSensor implements Sensor {
     }
   }
 
-  private void addIssues(org.sonar.api.batch.sensor.SensorContext context, ZapReport zapReport) {
+  private void addIssues(SensorContext context, ZapReport zapReport) {
     for (Site site : zapReport.getSites()) {
       if (site.getAlerts() == null) {
         return;
@@ -167,7 +167,7 @@ public class ZapSensor implements Sensor {
   }
 
   @Override
-  public void execute(org.sonar.api.batch.sensor.SensorContext context) {
+  public void execute(SensorContext context) {
     Profiler profiler = Profiler.create(LOGGER);
     profiler.startInfo("Process ZAP report");
     try {
