@@ -38,10 +38,10 @@ public class ZapRuleDefinitionTest {
     RulesDefinitionXmlLoader xmlLoader = new RulesDefinitionXmlLoader();
     Configuration configuration = mock(Configuration.class);
 
-    ZapRuleDefinition ZapRuleDefinition = new ZapRuleDefinition(xmlLoader, configuration);
+    ZapRuleDefinition zapRuleDefinition = new ZapRuleDefinition(xmlLoader, configuration);
 
     Context context = new Context();
-    ZapRuleDefinition.define(context);
+    zapRuleDefinition.define(context);
     for (Rule rule : context.repositories().get(0).rules()) {
       assertThat(rule.tags()).isNotEmpty();
     }
