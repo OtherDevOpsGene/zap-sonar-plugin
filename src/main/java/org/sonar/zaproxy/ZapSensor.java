@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import org.apache.commons.lang3.StringUtils;
 import org.sonar.api.batch.fs.FileSystem;
-import org.sonar.api.batch.rule.Rules;
 import org.sonar.api.batch.rule.Severity;
 import org.sonar.api.batch.sensor.Sensor;
 import org.sonar.api.batch.sensor.SensorContext;
@@ -61,10 +60,7 @@ public class ZapSensor implements Sensor {
   private int infoIssuesCount;
 
   public ZapSensor(
-      ZapSensorConfiguration configuration,
-      FileSystem fileSystem,
-      PathResolver pathResolver,
-      Rules rules) {
+      ZapSensorConfiguration configuration, FileSystem fileSystem, PathResolver pathResolver) {
     this.report = new XmlReportFile(configuration, fileSystem, pathResolver);
   }
 

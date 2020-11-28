@@ -22,20 +22,20 @@ package org.sonar.zaproxy;
  * #L%
  */
 
-import org.sonar.api.batch.ScannerSide;
-import org.sonar.api.config.Settings;
+import org.sonar.api.config.Configuration;
+import org.sonar.api.scanner.ScannerSide;
 import org.sonar.zaproxy.base.ZapConstants;
 
 @ScannerSide
 public class ZapSensorConfiguration {
 
-  private final Settings settings;
+  private final Configuration config;
 
-  public ZapSensorConfiguration(Settings settings) {
-    this.settings = settings;
+  public ZapSensorConfiguration(final Configuration config) {
+    this.config = config;
   }
 
   public String getReportPath() {
-    return this.settings.getString(ZapConstants.REPORT_PATH_PROPERTY);
+    return this.config.get(ZapConstants.REPORT_PATH_PROPERTY).get();
   }
 }

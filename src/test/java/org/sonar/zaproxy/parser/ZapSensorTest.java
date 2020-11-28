@@ -27,7 +27,6 @@ import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.Test;
 import org.sonar.api.batch.fs.FileSystem;
-import org.sonar.api.batch.rule.Rules;
 import org.sonar.api.scan.filesystem.PathResolver;
 import org.sonar.zaproxy.ZapSensor;
 import org.sonar.zaproxy.ZapSensorConfiguration;
@@ -40,8 +39,7 @@ public class ZapSensorTest {
     final ZapSensorConfiguration configuration = mock(ZapSensorConfiguration.class);
     final FileSystem fileSystem = mock(FileSystem.class);
     final PathResolver pathResolver = mock(PathResolver.class);
-    final Rules rules = mock(Rules.class);
-    this.sensor = new ZapSensor(configuration, fileSystem, pathResolver, rules);
+    this.sensor = new ZapSensor(configuration, fileSystem, pathResolver);
   }
 
   @Test
