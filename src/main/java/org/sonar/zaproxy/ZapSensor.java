@@ -24,7 +24,6 @@ package org.sonar.zaproxy;
 
 import java.io.IOException;
 import java.io.InputStream;
-import javax.xml.parsers.ParserConfigurationException;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.rule.Rules;
 import org.sonar.api.batch.rule.Severity;
@@ -35,6 +34,7 @@ import org.sonar.api.batch.sensor.issue.internal.DefaultIssueLocation;
 import org.sonar.api.internal.apachecommons.lang.StringUtils;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.api.scan.filesystem.PathResolver;
+import org.sonar.api.utils.MessageException;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.sonar.api.utils.log.Profiler;
@@ -46,7 +46,6 @@ import org.sonar.zaproxy.parser.element.AlertItem;
 import org.sonar.zaproxy.parser.element.Instance;
 import org.sonar.zaproxy.parser.element.Site;
 import org.sonar.zaproxy.parser.element.ZapReport;
-import org.xml.sax.SAXException;
 
 public class ZapSensor implements Sensor {
 
@@ -153,8 +152,7 @@ public class ZapSensor implements Sensor {
     }
   }
 
-  private ZapReport parseZapReport()
-      throws IOException, ParserConfigurationException, SAXException {
+  private ZapReport parseZapReport() throws IOException {
     InputStream stream = this.report.getInputStream();
     if (stream == null) {
       return null;
@@ -178,8 +176,8 @@ public class ZapSensor implements Sensor {
         totalAlerts = zapReport.getIssueCount();
         addIssues(context, zapReport);
       }
-    } catch (Exception e) {
-      throw new RuntimeException(
+    } catch (IOException e) {
+      throw MessageException.of(
           "Can not process ZAP report. Ensure the report are located within the project workspace"
               + " and that sonar.sources is set to reflect these paths (or set sonar.sources=.)",
           e);
