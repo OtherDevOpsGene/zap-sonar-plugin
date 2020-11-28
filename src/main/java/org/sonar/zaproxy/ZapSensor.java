@@ -164,8 +164,6 @@ public class ZapSensor implements Sensor {
     try {
       ZapReport zapReport = parseZapReport();
       if (zapReport != null) {
-
-        // totalAlerts = zapReport.getSite().getAlerts().size();
         totalAlerts = zapReport.getIssueCount();
         addIssues(context, zapReport);
       }
