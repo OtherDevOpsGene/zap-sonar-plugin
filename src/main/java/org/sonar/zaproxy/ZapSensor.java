@@ -83,7 +83,7 @@ public class ZapSensor implements Sensor {
   private String formatDescription(AlertItem alert) {
     StringBuilder sb = new StringBuilder();
 
-    if (null == alert.getInstances() || alert.getInstances().size() == 0) {
+    if (null == alert.getInstances() || alert.getInstances().isEmpty()) {
       sb.append(addValueToDescription("URI", alert.getUri(), false));
       sb.append(addValueToDescription("Param", alert.getParam(), false));
       sb.append(addValueToDescription("Attack", alert.getAttack(), false));
