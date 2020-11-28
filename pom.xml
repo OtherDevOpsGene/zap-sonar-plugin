@@ -51,6 +51,7 @@
         <license.maven.plugin.version>2.0.0</license.maven.plugin.version>
         <docker.maven.plugin.version>0.34.1</docker.maven.plugin.version>
 
+        <commons.lang3.version>3.11</commons.lang3.version>
         <jsr305.version>3.0.2</jsr305.version>
         <staxmate.version>2.4.0</staxmate.version>
 
@@ -66,6 +67,11 @@
                 <artifactId>sonar-plugin-api</artifactId>
                 <version>${sonar.apiVersion}</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.code.findbugs</groupId>
@@ -104,6 +110,10 @@
         <dependency>
             <groupId>org.sonarsource.sonarqube</groupId>
             <artifactId>sonar-plugin-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>

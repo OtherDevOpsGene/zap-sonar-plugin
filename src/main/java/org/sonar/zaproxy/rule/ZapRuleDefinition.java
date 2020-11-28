@@ -22,13 +22,15 @@ package org.sonar.zaproxy.rule;
  * #L%
  */
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import java.util.Set;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.reflect.FieldUtils;
 import org.sonar.api.config.Configuration;
-import org.sonar.api.internal.apachecommons.codec.Charsets;
-import org.sonar.api.internal.apachecommons.lang.StringUtils;
-import org.sonar.api.internal.apachecommons.lang.reflect.FieldUtils;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
 import org.sonar.api.utils.log.Logger;
@@ -59,7 +61,7 @@ public class ZapRuleDefinition implements RulesDefinition {
 
   private void loadDefaultZAProxyRules(NewRepository repository) {
     xmlLoader.load(
-        repository, getClass().getResourceAsStream(ZapPlugin.RULES_FILE), Charsets.UTF_8);
+        repository, getClass().getResourceAsStream(ZapPlugin.RULES_FILE), StandardCharsets.UTF_8);
     for (NewRule newRule : repository.rules()) {
       try {
         final Set<String> tags = (Set<String>) FieldUtils.readField(newRule, "tags", true);
