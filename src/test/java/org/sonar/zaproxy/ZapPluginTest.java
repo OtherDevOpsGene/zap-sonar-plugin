@@ -24,7 +24,7 @@ package org.sonar.zaproxy;
 
 import static org.mockito.Mockito.mock;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.sonar.api.Plugin;
 
 public class ZapPluginTest {

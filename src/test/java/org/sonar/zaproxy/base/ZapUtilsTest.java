@@ -22,40 +22,29 @@ package org.sonar.zaproxy.base;
  * #L%
  */
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-import java.util.Arrays;
-import java.util.Collection;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.sonar.api.batch.rule.Severity;
 
-@RunWith(Parameterized.class)
 public class ZapUtilsTest {
 
-  private final int riskCodeSeverity;
-  private final Severity expectedSeverity;
-
-  public ZapUtilsTest(int riskCodeSeverity, Severity expectedSeverity) {
-    this.riskCodeSeverity = riskCodeSeverity;
-    this.expectedSeverity = expectedSeverity;
+  public static Stream<Arguments> severitiesProvider() {
+    return Stream.of(
+        arguments(3, Severity.CRITICAL),
+        arguments(2, Severity.MAJOR),
+        arguments(1, Severity.MINOR),
+        arguments(0, Severity.INFO));
   }
 
-  @Parameterized.Parameters
-  public static Collection<Object[]> severities() {
-    return Arrays.asList(
-        new Object[][] {
-          {3, Severity.CRITICAL},
-          {2, Severity.MAJOR},
-          {1, Severity.MINOR},
-          {0, Severity.INFO}
-        });
-  }
-
-  @Test
-  public void testRiskCodeToSonarQubeSeverity() {
-    assertThat(ZapUtils.riskCodeToSonarQubeSeverity(this.riskCodeSeverity))
-        .isEqualTo(this.expectedSeverity);
+  @ParameterizedTest
+  @MethodSource("severitiesProvider")
+  public void testRiskCodeToSonarQubeSeverity(
+      final int riskCodeSeverity, final Severity expectedSeverity) {
+    assertThat(ZapUtils.riskCodeToSonarQubeSeverity(riskCodeSeverity)).isEqualTo(expectedSeverity);
   }
 }
