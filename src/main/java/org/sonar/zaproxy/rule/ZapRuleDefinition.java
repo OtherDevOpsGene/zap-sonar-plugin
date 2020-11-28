@@ -22,9 +22,7 @@ package org.sonar.zaproxy.rule;
  * #L%
  */
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Optional;
 import java.util.Set;
 import org.apache.commons.io.Charsets;
@@ -90,11 +88,10 @@ public class ZapRuleDefinition implements RulesDefinition {
     if (rulesFilePath == null) { // rules.xml by default
       loadDefaultZAProxyRules(repository);
     } else { // custom rules.xml
-      File f = null;
-      try {
-        f = new File(rulesFilePath);
-        xmlLoader.load(repository, new FileInputStream(f), "UTF-8");
-      } catch (FileNotFoundException e) {
+      File f = new File(rulesFilePath);
+      try (final FileInputStream in = new FileInputStream(f)) {
+        xmlLoader.load(repository, in, "UTF-8");
+      } catch (IOException e) {
         LOGGER.warn("The file " + f.getAbsolutePath() + " does not exist", e);
 
         // Load default ZAProxy rules if custom rules.xml does not exist.
