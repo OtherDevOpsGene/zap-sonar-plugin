@@ -18,9 +18,8 @@ current LTS version.
 OWASP Zed Attack Proxy (ZAP) is an easy to use integrated penetration testing
 tool for finding vulnerabilities in web applications.
 
-It is designed to be used by people with a wide range of security experience and
-as such is ideal for developers and functional testers who are new to
-penetration testing.
+People with a wide range of security experience can use ZAP and making it ideal
+for developers and functional testers new to penetration testing.
 
 ZAP provides automated scanners as well as a set of tools that allow you to find
 security vulnerabilities manually.
@@ -31,13 +30,10 @@ security vulnerabilities manually.
 
 ## Metrics
 
-The plugin keeps track of the following statistics:
+The plugin keeps track of the total number of high, medium, low, and info
+severity findings.
 
-* Total number of high, medium, low, and info severity findings
-
-Additionally, the following metric is defined:
-
-### Identified Risk Score (IRS)
+Additionally, we define the **Identified Risk Score (IRS)** as
 
 (high &times; 5) + (medium &times; 3) + (low &times; 1)
 
