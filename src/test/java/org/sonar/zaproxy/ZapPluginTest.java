@@ -30,7 +30,7 @@ import org.sonar.api.Plugin;
 public class ZapPluginTest {
 
   @Test
-  public void test_extensions() {
+  public void extensions() {
     final Plugin.Context context = mock(Plugin.Context.class);
     new ZapPlugin().define(context);
   }

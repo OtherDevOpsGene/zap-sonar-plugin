@@ -29,7 +29,7 @@ import org.junit.jupiter.api.Test;
 public class ZapWidgetTest {
 
   @Test
-  public void test_rails_template() throws Exception {
+  public void railsTemplate() throws Exception {
     ZapWidget widget = new ZapWidget();
     assertThat(widget.getClass().getResource(widget.getTemplatePath()))
         .as("Template not found: " + widget.getTemplatePath())
@@ -37,7 +37,7 @@ public class ZapWidgetTest {
   }
 
   @Test
-  public void test_metadata() throws Exception {
+  public void metadata() throws Exception {
     ZapWidget widget = new ZapWidget();
     assertThat(widget.getId()).containsIgnoringCase("zap");
     assertThat(widget.getTitle()).contains("Vulnerabilities identified by ZAP");
