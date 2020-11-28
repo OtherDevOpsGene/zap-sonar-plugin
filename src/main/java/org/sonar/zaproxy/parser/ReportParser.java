@@ -101,64 +101,97 @@ public class ReportParser {
     SMInputCursor childCursor = alertItemCursor.childCursor();
     while (childCursor.getNext() != null) {
       String nodeName = childCursor.getLocalName();
-      if ("pluginid".equals(nodeName)) {
-        alertItem.setPluginid(childCursor.getElemIntValue());
-      } else if ("alert".equals(nodeName)) {
-        alertItem.setAlert(StringUtils.trim(childCursor.collectDescendantText(false)));
-      } else if ("riskcode".equals(nodeName)) {
-        alertItem.setRiskcode(childCursor.getElemIntValue());
-      } else if ("confidence".equals(nodeName)) {
-        alertItem.setConfidence(childCursor.getElemIntValue());
-      } else if ("riskdesc".equals(nodeName)) {
-        alertItem.setRiskdesc(StringUtils.trim(childCursor.collectDescendantText(false)));
-      } else if ("desc".equals(nodeName)) {
-        alertItem.setDesc(StringUtils.trim(childCursor.collectDescendantText(false)));
-      } else if ("instances".equals(nodeName)) {
-        SMInputCursor instanceCursor = childCursor.childElementCursor("instance");
-        while (instanceCursor.getNext() != null) {
-          SMInputCursor childInstanceCursor = instanceCursor.childCursor();
-          Instance instance = new Instance();
-          while (childInstanceCursor.getNext() != null) {
-            String instanceNodeName = childInstanceCursor.getLocalName();
-            if (instanceNodeName != null) {
-              String value = StringUtils.trim(childInstanceCursor.collectDescendantText(false));
-              if ("uri".equals(instanceNodeName)) {
-                instance.setUri(value);
-              } else if ("param".equals(instanceNodeName)) {
-                instance.setParam(value);
-              } else if ("method".equals(instanceNodeName)) {
-                instance.setMethod(value);
-              } else if ("evidence".equals(instanceNodeName)) {
-                instance.setEvidence(value);
-              } else if ("attack".equals(instanceNodeName)) {
-                instance.setAttack(value);
-              }
-            }
+      switch (nodeName == null ? "" : nodeName) {
+        case ("pluginid"):
+          alertItem.setPluginid(childCursor.getElemIntValue());
+          break;
+        case "alert":
+          alertItem.setAlert(StringUtils.trim(childCursor.collectDescendantText(false)));
+          break;
+        case "riskcode":
+          alertItem.setRiskcode(childCursor.getElemIntValue());
+          break;
+        case "confidence":
+          alertItem.setConfidence(childCursor.getElemIntValue());
+          break;
+        case "riskdesc":
+          alertItem.setRiskdesc(StringUtils.trim(childCursor.collectDescendantText(false)));
+          break;
+        case "desc":
+          alertItem.setDesc(StringUtils.trim(childCursor.collectDescendantText(false)));
+          break;
+        case "instances":
+          SMInputCursor instanceCursor = childCursor.childElementCursor("instance");
+          while (instanceCursor.getNext() != null) {
+            SMInputCursor childInstanceCursor = instanceCursor.childCursor();
+            Instance instance = processInstance(childInstanceCursor);
+            alertItem.addInstance(instance);
           }
-          alertItem.addInstance(instance);
-        }
-      } else if ("uri".equals(nodeName)) {
-        alertItem.setUri(StringUtils.trim(childCursor.collectDescendantText(false)));
-      } else if ("param".equals(nodeName)) {
-        alertItem.setParam(StringUtils.trim(childCursor.collectDescendantText(false)));
-      } else if ("method".equals(nodeName)) {
-        alertItem.setMethod(StringUtils.trim(childCursor.collectDescendantText(false)));
-      } else if ("evidence".equals(nodeName)) {
-        alertItem.setEvidence(StringUtils.trim(childCursor.collectDescendantText(false)));
-      } else if ("attack".equals(nodeName)) {
-        alertItem.setAttack(StringUtils.trim(childCursor.collectDescendantText(false)));
-      } else if ("otherinfo".equals(nodeName)) {
-        alertItem.setOtherinfo(StringUtils.trim(childCursor.collectDescendantText(false)));
-      } else if ("solution".equals(nodeName)) {
-        alertItem.setSolution(StringUtils.trim(childCursor.collectDescendantText(false)));
-      } else if ("reference".equals(nodeName)) {
-        alertItem.setReference(StringUtils.trim(childCursor.collectDescendantText(false)));
-      } else if ("cweid".equals(nodeName)) {
-        alertItem.setCweid(childCursor.getElemIntValue());
-      } else if ("wascid".equals(nodeName)) {
-        alertItem.setWascid(childCursor.getElemIntValue());
+          break;
+        case "uri":
+          alertItem.setUri(StringUtils.trim(childCursor.collectDescendantText(false)));
+          break;
+        case "param":
+          alertItem.setParam(StringUtils.trim(childCursor.collectDescendantText(false)));
+          break;
+        case "method":
+          alertItem.setMethod(StringUtils.trim(childCursor.collectDescendantText(false)));
+          break;
+        case "evidence":
+          alertItem.setEvidence(StringUtils.trim(childCursor.collectDescendantText(false)));
+          break;
+        case "attack":
+          alertItem.setAttack(StringUtils.trim(childCursor.collectDescendantText(false)));
+          break;
+        case "otherinfo":
+          alertItem.setOtherinfo(StringUtils.trim(childCursor.collectDescendantText(false)));
+          break;
+        case "solution":
+          alertItem.setSolution(StringUtils.trim(childCursor.collectDescendantText(false)));
+          break;
+        case "reference":
+          alertItem.setReference(StringUtils.trim(childCursor.collectDescendantText(false)));
+          break;
+        case "cweid":
+          alertItem.setCweid(childCursor.getElemIntValue());
+          break;
+        case "wascid":
+          alertItem.setWascid(childCursor.getElemIntValue());
+          break;
+        default:
+          break;
       }
     }
     return alertItem;
+  }
+
+  private Instance processInstance(SMInputCursor childInstanceCursor) throws XMLStreamException {
+    Instance instance = new Instance();
+    while (childInstanceCursor.getNext() != null) {
+      String instanceNodeName = childInstanceCursor.getLocalName();
+      if (instanceNodeName != null) {
+        String value = StringUtils.trim(childInstanceCursor.collectDescendantText(false));
+        switch (instanceNodeName) {
+          case "uri":
+            instance.setUri(value);
+            break;
+          case "param":
+            instance.setParam(value);
+            break;
+          case "method":
+            instance.setMethod(value);
+            break;
+          case "evidence":
+            instance.setEvidence(value);
+            break;
+          case "attack":
+            instance.setAttack(value);
+            break;
+          default:
+            break;
+        }
+      }
+    }
+    return instance;
   }
 }
