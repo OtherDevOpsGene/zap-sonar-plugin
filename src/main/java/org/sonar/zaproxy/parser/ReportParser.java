@@ -71,8 +71,8 @@ public class ReportParser {
 
     site.setHost(siteCursor.getAttrValue("host"));
     site.setName(siteCursor.getAttrValue("name"));
-    site.setPort(Integer.valueOf(siteCursor.getAttrValue("port")));
-    site.setSsl(Boolean.valueOf(siteCursor.getAttrValue("ssl")));
+    site.setPort(Integer.parseInt(siteCursor.getAttrValue("port")));
+    site.setSsl(Boolean.parseBoolean(siteCursor.getAttrValue("ssl")));
 
     SMInputCursor childCursor = siteCursor.childCursor(); // Child of <site>, here only <alerts>
 
