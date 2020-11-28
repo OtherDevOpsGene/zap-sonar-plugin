@@ -24,17 +24,17 @@ package org.sonar.zaproxy;
 
 import java.io.IOException;
 import java.io.InputStream;
-import javax.xml.parsers.ParserConfigurationException;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.sonar.api.batch.fs.FileSystem;
-import org.sonar.api.batch.rule.Rules;
 import org.sonar.api.batch.rule.Severity;
 import org.sonar.api.batch.sensor.Sensor;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.SensorDescriptor;
-import org.sonar.api.batch.sensor.issue.internal.DefaultIssueLocation;
+import org.sonar.api.batch.sensor.issue.NewIssue;
+import org.sonar.api.batch.sensor.issue.NewIssueLocation;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.api.scan.filesystem.PathResolver;
+import org.sonar.api.utils.MessageException;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.sonar.api.utils.log.Profiler;
@@ -46,14 +46,12 @@ import org.sonar.zaproxy.parser.element.AlertItem;
 import org.sonar.zaproxy.parser.element.Instance;
 import org.sonar.zaproxy.parser.element.Site;
 import org.sonar.zaproxy.parser.element.ZapReport;
-import org.xml.sax.SAXException;
 
 public class ZapSensor implements Sensor {
 
   private static final String SENSOR_NAME = "OWASP Zap-Check";
   private static final Logger LOGGER = Loggers.get(ZapSensor.class);
 
-  private final Rules rules;
   private final XmlReportFile report;
 
   private int totalAlerts;
@@ -63,34 +61,29 @@ public class ZapSensor implements Sensor {
   private int infoIssuesCount;
 
   public ZapSensor(
-      ZapSensorConfiguration configuration,
-      FileSystem fileSystem,
-      PathResolver pathResolver,
-      Rules rules) {
-    this.rules = rules;
+      ZapSensorConfiguration configuration, FileSystem fileSystem, PathResolver pathResolver) {
     this.report = new XmlReportFile(configuration, fileSystem, pathResolver);
   }
 
-  private void addIssue(org.sonar.api.batch.sensor.SensorContext context, AlertItem alert) {
+  private void addIssue(SensorContext context, AlertItem alert) {
     Severity severity = ZapUtils.riskCodeToSonarQubeSeverity(alert.getRiskcode());
-    context
-        .newIssue()
+    NewIssue sonarIssue = context.newIssue();
+
+    NewIssueLocation location =
+        sonarIssue.newLocation().on(context.project()).message(formatDescription(alert));
+
+    sonarIssue
+        .at(location)
         .forRule(RuleKey.of(ZapPlugin.REPOSITORY_KEY, String.valueOf(alert.getPluginid())))
-        .at(new DefaultIssueLocation().on(context.module()).message(formatDescription(alert)))
         .overrideSeverity(severity)
         .save();
-
     incrementCount(severity);
   }
 
-  /**
-   * todo: Add Markdown formatting if and when Sonar supports it
-   * https://jira.codehaus.org/browse/SONAR-4161
-   */
   private String formatDescription(AlertItem alert) {
     StringBuilder sb = new StringBuilder();
 
-    if (null == alert.getInstances() || alert.getInstances().size() == 0) {
+    if (null == alert.getInstances() || alert.getInstances().isEmpty()) {
       sb.append(addValueToDescription("URI", alert.getUri(), false));
       sb.append(addValueToDescription("Param", alert.getParam(), false));
       sb.append(addValueToDescription("Attack", alert.getAttack(), false));
@@ -139,10 +132,13 @@ public class ZapSensor implements Sensor {
       case INFO:
         this.infoIssuesCount++;
         break;
+      default:
+        LOGGER.debug("Unknown severity {}", severity);
+        break;
     }
   }
 
-  private void addIssues(org.sonar.api.batch.sensor.SensorContext context, ZapReport zapReport) {
+  private void addIssues(SensorContext context, ZapReport zapReport) {
     for (Site site : zapReport.getSites()) {
       if (site.getAlerts() == null) {
         return;
@@ -153,33 +149,27 @@ public class ZapSensor implements Sensor {
     }
   }
 
-  private ZapReport parseZapReport()
-      throws IOException, ParserConfigurationException, SAXException {
-    InputStream stream = this.report.getInputStream();
-    if (stream == null) {
-      return null;
-    }
-    try {
+  private ZapReport parseZapReport() throws IOException {
+    try (InputStream stream = this.report.getInputStream()) {
+      if (stream == null) {
+        return null;
+      }
       return new ReportParser().parse(stream);
-    } finally {
-      stream.close();
     }
   }
 
   @Override
-  public void execute(org.sonar.api.batch.sensor.SensorContext context) {
+  public void execute(SensorContext context) {
     Profiler profiler = Profiler.create(LOGGER);
     profiler.startInfo("Process ZAP report");
     try {
       ZapReport zapReport = parseZapReport();
       if (zapReport != null) {
-
-        // totalAlerts = zapReport.getSite().getAlerts().size();
         totalAlerts = zapReport.getIssueCount();
         addIssues(context, zapReport);
       }
-    } catch (Exception e) {
-      throw new RuntimeException(
+    } catch (IOException e) {
+      throw MessageException.of(
           "Can not process ZAP report. Ensure the report are located within the project workspace"
               + " and that sonar.sources is set to reflect these paths (or set sonar.sources=.)",
           e);

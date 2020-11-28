@@ -63,7 +63,7 @@ public class Instance {
   }
 
   public String getAttack() {
-    return method;
+    return attack;
   }
 
   public void setAttack(String attack) {

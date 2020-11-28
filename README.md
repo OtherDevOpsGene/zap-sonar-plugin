@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/OtherDevOpsGene/zap-sonar-plugin.svg?branch=main)](https://travis-ci.org/OtherDevOpsGene/zap-sonar-plugin)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6f379a37e7ef4994b5443723ec4bcb9f)](https://www.codacy.com/gh/OtherDevOpsGene/zap-sonar-plugin/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=OtherDevOpsGene/zap-sonar-plugin&amp;utm_campaign=Badge_Grade)
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c6ac1a0ad4a4bba3b9f0/maintainability)](https://codeclimate.com/github/OtherDevOpsGene/zap-sonar-plugin/maintainability)
 [![DepShield Badge](https://depshield.sonatype.org/badges/OtherDevOpsGene/zap-sonar-plugin/depshield.svg)](https://depshield.github.io)
 [![Known Vulnerabilities](https://snyk.io/test/github/OtherDevOpsGene/zap-sonar-plugin/badge.svg)](https://snyk.io/test/github/OtherDevOpsGene/zap-sonar-plugin)
 [![deepcode](https://www.deepcode.ai/api/gh/badge?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF0Zm9ybTEiOiJnaCIsIm93bmVyMSI6Ik90aGVyRGV2T3BzR2VuZSIsInJlcG8xIjoiemFwLXNvbmFyLXBsdWdpbiIsImluY2x1ZGVMaW50IjpmYWxzZSwiYXV0aG9ySWQiOjI1MDYzLCJpYXQiOjE2MDU4ODgyMzB9.5bi9hovkUE-DkAOLt0IUZy_CJTeJH1LFiRrqK_REoW0)](https://www.deepcode.ai/app/gh/OtherDevOpsGene/zap-sonar-plugin/_/dashboard?utm_content=gh%2FOtherDevOpsGene%2Fzap-sonar-plugin)
@@ -18,31 +18,11 @@ current LTS version.
 OWASP Zed Attack Proxy (ZAP) is an easy to use integrated penetration testing
 tool for finding vulnerabilities in web applications.
 
-It is designed to be used by people with a wide range of security experience and
-as such is ideal for developers and functional testers who are new to
-penetration testing.
+People with a wide range of security experience can use ZAP and making it ideal
+for developers and functional testers new to penetration testing.
 
 ZAP provides automated scanners as well as a set of tools that allow you to find
 security vulnerabilities manually.
-
-## Screenshots
-
-![ZAP plugin screenshot](screenshots/dashboard-widget.png)
-
-## Metrics
-
-The plugin keeps track of the following statistics:
-
-* Total number of high, medium, low, and info severity findings
-
-Additionally, the following metric is defined:
-
-### Identified Risk Score (IRS)
-
-(high &times; 5) + (medium &times; 3) + (low &times; 1)
-
-The IRS is simply a weighted measurement of the vulnerabilities identified
-during a scan. It does not measure the actual risk posed by the findings.
 
 ## Installation
 

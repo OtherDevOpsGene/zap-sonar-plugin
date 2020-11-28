@@ -27,28 +27,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.xml.stream.XMLStreamException;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.codehaus.staxmate.SMInputFactory;
 import org.codehaus.staxmate.in.SMHierarchicCursor;
 import org.codehaus.staxmate.in.SMInputCursor;
-import org.sonar.api.profiles.ProfileDefinition;
-import org.sonar.api.profiles.RulesProfile;
-import org.sonar.api.profiles.XMLProfileParser;
-import org.sonar.api.rules.Rule;
-import org.sonar.api.rules.RuleFinder;
-import org.sonar.api.utils.ValidationMessages;
+import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
 import org.sonar.zaproxy.ZapPlugin;
 import org.sonar.zaproxy.base.ZapUtils;
 
-public class ZapProfile extends ProfileDefinition {
-
-  private final XMLProfileParser xmlParser;
-  private final RuleFinder ruleFinder;
-
-  public ZapProfile(RuleFinder ruleFinder, XMLProfileParser xmlParser) {
-    this.xmlParser = xmlParser;
-    this.ruleFinder = ruleFinder;
-  }
+public class ZapProfile implements BuiltInQualityProfilesDefinition {
 
   /** Return the key of the rule pointed by ruleCursor. */
   private String processKey(SMInputCursor ruleCursor) throws XMLStreamException {
@@ -80,17 +67,18 @@ public class ZapProfile extends ProfileDefinition {
   }
 
   @Override
-  public RulesProfile createProfile(ValidationMessages validation) {
-    RulesProfile profile = RulesProfile.create(ZapPlugin.LANGUAGE_NAME, ZapPlugin.LANGUAGE_KEY);
+  public void define(Context context) {
+    NewBuiltInQualityProfile profile =
+        context.createBuiltInQualityProfile(ZapPlugin.LANGUAGE_NAME, ZapPlugin.LANGUAGE_KEY);
+    profile.setDefault(true);
+
     InputStream inputStream = getClass().getResourceAsStream(ZapPlugin.RULES_FILE);
     List<String> ruleKeysList = new ArrayList<>(getAllRuleKeysFromFile(inputStream));
 
     for (String ruleKey : ruleKeysList) {
-      Rule rule = ruleFinder.findByKey(ZapPlugin.REPOSITORY_KEY, ruleKey);
-      profile.activateRule(rule, null);
+      profile.activateRule(ZapPlugin.REPOSITORY_KEY, ruleKey);
     }
 
-    profile.setDefaultProfile(true);
-    return profile;
+    profile.done();
   }
 }

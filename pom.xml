@@ -51,8 +51,7 @@
         <license.maven.plugin.version>2.0.0</license.maven.plugin.version>
         <docker.maven.plugin.version>0.34.1</docker.maven.plugin.version>
 
-        <commons.io.version>2.8.0</commons.io.version>
-        <commons.lang.version>2.6</commons.lang.version>
+        <commons.lang3.version>3.11</commons.lang3.version>
         <jsr305.version>3.0.2</jsr305.version>
         <staxmate.version>2.4.0</staxmate.version>
 
@@ -70,14 +69,9 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons.io.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-lang</groupId>
-                <artifactId>commons-lang</artifactId>
-                <version>${commons.lang.version}</version>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.code.findbugs</groupId>
@@ -118,12 +112,8 @@
             <artifactId>sonar-plugin-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>

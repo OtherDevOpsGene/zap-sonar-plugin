@@ -22,16 +22,27 @@ package org.sonar.zaproxy;
  * #L%
  */
 
-import static org.mockito.Mockito.mock;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import org.sonar.api.Plugin;
+import org.sonar.api.SonarEdition;
+import org.sonar.api.SonarQubeSide;
+import org.sonar.api.SonarRuntime;
+import org.sonar.api.internal.PluginContextImpl;
+import org.sonar.api.internal.SonarRuntimeImpl;
+import org.sonar.api.utils.Version;
 
 public class ZapPluginTest {
 
   @Test
-  public void test_extensions() {
-    final Plugin.Context context = mock(Plugin.Context.class);
-    new ZapPlugin().define(context);
+  public void extensions() {
+    SonarRuntime runtime =
+        SonarRuntimeImpl.forSonarQube(
+            Version.create(7, 9), SonarQubeSide.SCANNER, SonarEdition.COMMUNITY);
+    Plugin.Context context = new PluginContextImpl.Builder().setSonarRuntime(runtime).build();
+    ZapPlugin plugin = new ZapPlugin();
+    plugin.define(context);
+    assertThat(context.getExtensions().size()).isEqualTo(6);
   }
 }

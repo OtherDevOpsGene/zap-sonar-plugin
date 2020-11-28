@@ -36,7 +36,7 @@ import org.sonar.zaproxy.parser.element.ZapReport;
 public class ReportParserTest {
 
   @Test
-  public void parseReport() throws Exception {
+  public void parseReport() {
     ReportParser parser = new ReportParser();
     InputStream inputStream =
         getClass().getClassLoader().getResourceAsStream("report/zaproxy-report.xml");
@@ -88,7 +88,7 @@ public class ReportParserTest {
   }
 
   @Test
-  public void parseReportNoInstances() throws Exception {
+  public void parseReportNoInstances() {
     ReportParser parser = new ReportParser();
     InputStream inputStream =
         getClass().getClassLoader().getResourceAsStream("report/zaproxy-report-no-instances.xml");
@@ -141,7 +141,7 @@ public class ReportParserTest {
   }
 
   @Test
-  public void parseReportMoreRules() throws Exception {
+  public void parseReportMoreRules() {
     ReportParser parser = new ReportParser();
     InputStream inputStream =
         getClass().getClassLoader().getResourceAsStream("report/zapproxy-report-more-rules.xml");
