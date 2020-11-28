@@ -52,7 +52,7 @@ public class ReportParser {
       SMInputCursor childCursor =
           rootC.childCursor(); // Child of <OWASPZAPReport>, here only <site>
 
-      List<Site> sites = new ArrayList<Site>();
+      List<Site> sites = new ArrayList<>();
 
       while (childCursor.getNext() != null) {
         String nodeName = childCursor.getLocalName();

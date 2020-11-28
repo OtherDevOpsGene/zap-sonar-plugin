@@ -95,7 +95,7 @@ public class AlertItem {
 
   public void addInstance(Instance instance) {
     if (this.instances == null) {
-      this.instances = new ArrayList<Instance>();
+      this.instances = new ArrayList<>();
     }
     this.instances.add(instance);
   }

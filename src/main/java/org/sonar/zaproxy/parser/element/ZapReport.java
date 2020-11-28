@@ -51,7 +51,7 @@ public class ZapReport {
 
   public void addSite(Site site) {
     if (sites == null) {
-      sites = new ArrayList<Site>();
+      sites = new ArrayList<>();
     }
     sites.add(site);
   }
