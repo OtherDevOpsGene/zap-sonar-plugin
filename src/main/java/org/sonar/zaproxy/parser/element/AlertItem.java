@@ -186,11 +186,11 @@ public class AlertItem {
 
   @Override
   public String toString() {
-    String instanceString = "";
+    StringBuilder instanceString = new StringBuilder();
     for (Instance instance : instances) {
-      instanceString += instance.toString();
+      instanceString.append(instance.toString());
       if (instances.indexOf(instance) < instances.size() - 1) {
-        instanceString += ", ";
+        instanceString.append(", ");
       }
     }
 
@@ -207,7 +207,7 @@ public class AlertItem {
         + ", desc="
         + desc
         + ", instances=["
-        + instanceString
+        + instanceString.toString()
         + "], attack="
         + attack
         + ", evidence="
