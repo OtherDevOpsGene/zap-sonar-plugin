@@ -80,10 +80,6 @@ public class ZapSensor implements Sensor {
     incrementCount(severity);
   }
 
-  /**
-   * todo: Add Markdown formatting if and when Sonar supports it
-   * https://jira.codehaus.org/browse/SONAR-4161
-   */
   private String formatDescription(AlertItem alert) {
     StringBuilder sb = new StringBuilder();
 
