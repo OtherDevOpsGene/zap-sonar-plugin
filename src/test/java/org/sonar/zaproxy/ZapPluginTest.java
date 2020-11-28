@@ -43,6 +43,6 @@ public class ZapPluginTest {
     Plugin.Context context = new PluginContextImpl.Builder().setSonarRuntime(runtime).build();
     ZapPlugin plugin = new ZapPlugin();
     plugin.define(context);
-    assertThat(context.getExtensions().size()).isEqualTo(7);
+    assertThat(context.getExtensions().size()).isEqualTo(6);
   }
 }

@@ -24,22 +24,6 @@ for developers and functional testers new to penetration testing.
 ZAP provides automated scanners as well as a set of tools that allow you to find
 security vulnerabilities manually.
 
-## Screenshots
-
-![ZAP plugin screenshot](screenshots/dashboard-widget.png)
-
-## Metrics
-
-The plugin keeps track of the total number of high, medium, low, and info
-severity findings.
-
-Additionally, we define the **Identified Risk Score (IRS)** as
-
-(high &times; 5) + (medium &times; 3) + (low &times; 1)
-
-The IRS is simply a weighted measurement of the vulnerabilities identified
-during a scan. It does not measure the actual risk posed by the findings.
-
 ## Installation
 
 Copy the plugin (jar file) to `$SONAR_INSTALL_DIR/extensions/plugins` and
