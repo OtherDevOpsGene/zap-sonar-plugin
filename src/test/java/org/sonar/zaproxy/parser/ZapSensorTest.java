@@ -25,7 +25,6 @@ package org.sonar.zaproxy.parser;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.rule.Rules;
@@ -35,19 +34,14 @@ import org.sonar.zaproxy.ZapSensorConfiguration;
 
 public class ZapSensorTest {
 
-  private ZapSensorConfiguration configuration;
-  private FileSystem fileSystem;
-  private PathResolver pathResolver;
-  private Rules rules;
   private ZapSensor sensor;
 
-  @BeforeEach
-  public void init() {
-    this.configuration = mock(ZapSensorConfiguration.class);
-    this.fileSystem = mock(FileSystem.class);
-    this.pathResolver = mock(PathResolver.class);
-    this.rules = mock(Rules.class);
-    this.sensor = new ZapSensor(this.configuration, this.fileSystem, this.pathResolver, this.rules);
+  public ZapSensorTest() {
+    final ZapSensorConfiguration configuration = mock(ZapSensorConfiguration.class);
+    final FileSystem fileSystem = mock(FileSystem.class);
+    final PathResolver pathResolver = mock(PathResolver.class);
+    final Rules rules = mock(Rules.class);
+    this.sensor = new ZapSensor(configuration, fileSystem, pathResolver, rules);
   }
 
   @Test

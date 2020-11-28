@@ -53,7 +53,6 @@ public class ZapSensor implements Sensor {
   private static final String SENSOR_NAME = "OWASP Zap-Check";
   private static final Logger LOGGER = Loggers.get(ZapSensor.class);
 
-  private final Rules rules;
   private final XmlReportFile report;
 
   private int totalAlerts;
@@ -67,7 +66,6 @@ public class ZapSensor implements Sensor {
       FileSystem fileSystem,
       PathResolver pathResolver,
       Rules rules) {
-    this.rules = rules;
     this.report = new XmlReportFile(configuration, fileSystem, pathResolver);
   }
 
