@@ -5,7 +5,7 @@
 
     <groupId>org.sonarsource.owasp</groupId>
     <artifactId>sonar-zap-plugin</artifactId>
-    <version>2.0.3-SNAPSHOT</version>
+    <version>2.1.0-SNAPSHOT</version>
     <packaging>sonar-plugin</packaging>
 
     <properties>
@@ -15,7 +15,7 @@
         <license.owner>Gene Gotimer</license.owner>
         <license.mailto>eugene.gotimer@steampunk.com</license.mailto>
 
-        <sonar.apiVersion>7.9.4</sonar.apiVersion>
+        <sonar.apiVersion>7.9.5</sonar.apiVersion>
         <sonar.pluginClass>org.sonar.zaproxy.ZapPlugin</sonar.pluginClass>
         <sonar.packaging.maven.plugin.version>1.20.0.405</sonar.packaging.maven.plugin.version>
         <sonar.zaproxy.reportPath>${project.basedir}/src/test/resources/report/zaproxy-report.xml</sonar.zaproxy.reportPath>
@@ -353,6 +353,11 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>${docker.maven.plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -573,7 +578,6 @@
                     <plugin>
                         <groupId>io.fabric8</groupId>
                         <artifactId>docker-maven-plugin</artifactId>
-                        <version>${docker.maven.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>default</id>
