@@ -1,4 +1,4 @@
-package org.sonar.zaproxy;
+package org.sonar.zaproxy.ui;
 
 /*-
  * #%L
@@ -22,29 +22,21 @@ package org.sonar.zaproxy;
  * #L%
  */
 
-import org.sonar.api.Plugin;
-import org.sonar.zaproxy.base.ZapMetrics;
-import org.sonar.zaproxy.rule.ZapLanguage;
-import org.sonar.zaproxy.rule.ZapProfile;
-import org.sonar.zaproxy.rule.ZapRuleDefinition;
-import org.sonar.zaproxy.ui.ZapPage;
+import org.sonar.api.web.page.Context;
+import org.sonar.api.web.page.Page;
+import org.sonar.api.web.page.Page.Scope;
+import org.sonar.api.web.page.PageDefinition;
 
-public final class ZapPlugin implements Plugin {
-
-  public static final String REPOSITORY_KEY = "ZAProxy";
-  public static final String LANGUAGE_KEY = "zap";
-  public static final String LANGUAGE_NAME = "ZAP";
-  public static final String RULES_FILE = "/org/sonar/zaproxy/rules.xml";
+public class ZapPage implements PageDefinition {
 
   @Override
   public void define(Context context) {
-    context.addExtensions(
-        ZapSensor.class,
-        ZapSensorConfiguration.class,
-        ZapMetrics.class,
-        ZapProfile.class,
-        ZapLanguage.class,
-        ZapRuleDefinition.class,
-        ZapPage.class);
+    context.addPage(
+        Page.builder("zap/report_page")
+            .setScope(Scope.COMPONENT)
+            .setComponentQualifiers(Page.Qualifier.PROJECT, Page.Qualifier.MODULE)
+            .setName("ZAP")
+            .setAdmin(false)
+            .build());
   }
 }

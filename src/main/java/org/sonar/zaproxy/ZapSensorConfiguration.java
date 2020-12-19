@@ -38,4 +38,10 @@ public class ZapSensorConfiguration {
   public String getReportPath() {
     return this.config.get(ZapConstants.REPORT_PATH_PROPERTY).orElse("missing/report/path");
   }
+
+  public String getHtmlReportPath() {
+    return this.config
+        .get(ZapConstants.HTML_REPORT_PATH_PROPERTY)
+        .orElse("missing/html/report/path");
+  }
 }

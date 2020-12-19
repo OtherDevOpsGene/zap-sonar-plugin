@@ -37,6 +37,7 @@ other CI/CD systems.
 
 ```ini
 sonar.zaproxy.reportPath=${WORKSPACE}/zaproxy-report.xml
+sonar.zaproxy.htmlReportPath=${WORKSPACE}/zaproxy-htmlReport.html
 # Optional - specifies additional rules outside of what's included in the core
 sonar.zaproxy.rulesFilePath=${WORKSPACE}/myrules.xml
 ```

@@ -20,3 +20,6 @@ buildNumber.properties
 **/.project
 **/.settings/
 **/.classpath
+.vscode
+node_modules
+node

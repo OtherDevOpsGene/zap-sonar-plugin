@@ -38,6 +38,8 @@ public final class ZapMetrics implements Metrics {
   public static final String LOW_RISK_ALERTS_KEY = "low_risk_alerts";
   public static final String INFO_RISK_ALERTS_KEY = "info_risk_alerts";
   public static final String TOTAL_ALERTS_KEY = "total_alerts";
+  public static final String HTML_REPORT_KEY = "html_report";
+
   public static final Metric IDENTIFIED_RISK_SCORE =
       new Metric.Builder(
               ZapMetrics.IDENTIFIED_RISK_SCORE_KEY, "Identified Risk Score", Metric.ValueType.INT)
@@ -97,6 +99,15 @@ public final class ZapMetrics implements Metrics {
     return (high * 5.0d) + (medium * 3.0d) + (low * 1.0d);
   }
 
+  public static final Metric<String> HTML_REPORT =
+      new Metric.Builder(HTML_REPORT_KEY, "ZAP Report", Metric.ValueType.DATA)
+          .setDescription("Report HTML")
+          .setQualitative(Boolean.FALSE)
+          .setDomain(ZapMetrics.DOMAIN)
+          .setHidden(false)
+          .setDeleteHistoricalData(true)
+          .create();
+
   @Override
   public List<Metric> getMetrics() {
     return Arrays.asList(
@@ -105,6 +116,7 @@ public final class ZapMetrics implements Metrics {
         ZapMetrics.MEDIUM_RISK_ALERTS,
         ZapMetrics.LOW_RISK_ALERTS,
         ZapMetrics.INFO_RISK_ALERTS,
-        ZapMetrics.TOTAL_ALERTS);
+        ZapMetrics.TOTAL_ALERTS,
+        ZapMetrics.HTML_REPORT);
   }
 }
