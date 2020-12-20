@@ -18,7 +18,8 @@
         <sonar.apiVersion>7.9.5</sonar.apiVersion>
         <sonar.pluginClass>org.sonar.zaproxy.ZapPlugin</sonar.pluginClass>
         <sonar.packaging.maven.plugin.version>1.20.0.405</sonar.packaging.maven.plugin.version>
-        <sonar.zaproxy.reportPath>${project.basedir}/src/test/resources/report/zaproxy-report.xml</sonar.zaproxy.reportPath>
+        <sonar.zaproxy.reportPath>${project.basedir}/src/test/resources/report/dvwa.xml</sonar.zaproxy.reportPath>
+        <sonar.zaproxy.htmlReportPath>${project.basedir}/src/test/resources/report/dvwa.html</sonar.zaproxy.htmlReportPath>
 
         <java.version>1.8</java.version>
         <maven.version>3.5.4</maven.version>
@@ -50,6 +51,7 @@
         <pitest.junit5.plugin.version>0.12</pitest.junit5.plugin.version>
         <license.maven.plugin.version>2.0.0</license.maven.plugin.version>
         <docker.maven.plugin.version>0.34.1</docker.maven.plugin.version>
+        <frontend.maven.plugin.version>1.11.0</frontend.maven.plugin.version>
 
         <commons.lang3.version>3.11</commons.lang3.version>
         <jsr305.version>3.0.2</jsr305.version>
@@ -358,6 +360,11 @@
                     <artifactId>docker-maven-plugin</artifactId>
                     <version>${docker.maven.plugin.version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>com.github.eirslett</groupId>
+                    <artifactId>frontend-maven-plugin</artifactId>
+                    <version>${frontend.maven.plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -470,7 +477,6 @@
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.6</version>
                 <executions>
                     <execution>
                         <phase>generate-resources</phase>
@@ -490,6 +496,16 @@
                         </goals>
                         <configuration>
                             <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <id>npm audit</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>audit</arguments>
                         </configuration>
                     </execution>
                     <execution>

@@ -55,14 +55,15 @@ Look for a line that says `SonarQube is up`.
 Then run an analysis using the test report:
 
 ```bash
-mvn sonar:sonar -Dsonar.zaproxy.htmlReportPath=$(pwd)/src/test/resources/report/zaproxy-htmlReport.xml
+mvn sonar:sonar
 ```
 
 The ZAP results can be viewed at
 <http://localhost:9000/project/issues?id=org.sonarsource.owasp%3Asonar-zap-plugin&resolved=false&tags=zaproxy>.
-There should be 14 issues: 1 Major, 9 Minor, 4 Info.
+There should be 13 issues: 4 Major, 5 Minor, 4 Info.
 
-The Zap HTML report can be viewed from within sonarqube under more > ZAP.
+The ZAP HTML report can be viewed from within SonarQube under `More` > `ZAP` at
+<http://localhost:9000/project/extension/zap/report_page?id=org.sonarsource.owasp%3Asonar-zap-plugin&qualifier=TRK>.
 
 ## Releasing
 

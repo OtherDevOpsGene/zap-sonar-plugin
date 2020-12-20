@@ -1,0 +1,1736 @@
+<?xml version="1.0"?><OWASPZAPReport version="2.10.0" generated="Sat, 19 Dec 2020 22:33:06">
+  <site name="https://example.org" host="example.org" port="443" ssl="true"><alerts><alertitem>
+    <pluginid>10106</pluginid>
+    <alertRef>10106</alertRef>
+    <alert>HTTP Only Site</alert>
+    <name>HTTP Only Site</name>
+    <riskcode>2</riskcode>
+    <confidence>2</confidence>
+    <riskdesc>Medium (Medium)</riskdesc>
+    <desc>&lt;p&gt;The site is only served under HTTP and not HTTPS.&lt;/p&gt;</desc>
+    <instances>
+      <instance>
+        <uri>http://example.org/login.php</uri>
+        <method>POST</method>
+      </instance>
+    </instances>
+    <count>1</count>
+    <solution>&lt;p&gt;Configure your web or application server to use SSL (https).&lt;/p&gt;</solution>
+    <otherinfo>&lt;p&gt;Failed to connect.&lt;/p&gt;&lt;p&gt;ZAP attempted to connect via: https://example.org:443/login.php&lt;/p&gt;</otherinfo>
+    <reference>&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html&lt;/p&gt;&lt;p&gt;https://letsencrypt.org/&lt;/p&gt;</reference>
+    <cweid>311</cweid>
+    <wascid>4</wascid>
+    <sourceid>1</sourceid>
+  </alertitem>
+  </alerts></site><site name="http://example.org" host="example.org" port="80" ssl="false"><alerts><alertitem>
+  <pluginid>10038</pluginid>
+  <alertRef>10038</alertRef>
+  <alert>Content Security Policy (CSP) Header Not Set</alert>
+  <name>Content Security Policy (CSP) Header Not Set</name>
+  <riskcode>2</riskcode>
+  <confidence>3</confidence>
+  <riskdesc>Medium (High)</riskdesc>
+  <desc>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/dvwa/</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=D;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=N;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=M;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=S;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=N;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=D;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=M;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=D;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=S;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=N;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=D;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=S;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=S;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=D;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=D;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=M;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=D;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=D;O=A</uri>
+  <method>GET</method>
+  </instance>
+  </instances>
+  <count>63</count>
+  <solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header, to achieve optimal browser support: &quot;Content-Security-Policy&quot; for Chrome 25+, Firefox 23+ and Safari 7+, &quot;X-Content-Security-Policy&quot; for Firefox 4.0+ and Internet Explorer 10+, and &quot;X-WebKit-CSP&quot; for Chrome 14+ and Safari 6+.&lt;/p&gt;</solution>
+  <reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy&lt;/p&gt;&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html&lt;/p&gt;&lt;p&gt;http://www.w3.org/TR/CSP/&lt;/p&gt;&lt;p&gt;http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html&lt;/p&gt;&lt;p&gt;http://www.html5rocks.com/en/tutorials/security/content-security-policy/&lt;/p&gt;&lt;p&gt;http://caniuse.com/#feat=contentsecuritypolicy&lt;/p&gt;&lt;p&gt;http://content-security-policy.com/&lt;/p&gt;</reference>
+  <cweid>16</cweid>
+  <wascid>15</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>90004</pluginid>
+  <alertRef>90004</alertRef>
+  <alert>Insufficient Site Isolation Against Spectre Vulnerability</alert>
+  <name>Insufficient Site Isolation Against Spectre Vulnerability</name>
+  <riskcode>1</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Low (Medium)</riskdesc>
+  <desc>&lt;p&gt;Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=D;O=D</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Resource-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=N;O=A</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Opener-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=S;O=A</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Resource-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=N;O=D</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Opener-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=M;O=A</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Opener-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=S;O=D</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Resource-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=M;O=A</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Embedder-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/index.php</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Opener-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=D;O=A</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Resource-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/index.php</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Embedder-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Opener-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=D;O=D</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Resource-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=D;O=A</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Resource-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=N;O=A</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Opener-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Embedder-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=D;O=D</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Resource-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Resource-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=M;O=D</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Resource-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=N;O=D</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Opener-Policy</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=N;O=D</uri>
+  <method>GET</method>
+  <param>Cross-Origin-Embedder-Policy</param>
+  </instance>
+  </instances>
+  <count>200</count>
+  <solution>&lt;p&gt;Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to &apos;same-origin&apos; for all web pages.&lt;/p&gt;&lt;p&gt;&apos;same-site&apos; is considered as less secured and should be avoided.&lt;/p&gt;&lt;p&gt;If resources must be shared, set the header to &apos;cross-origin&apos;.&lt;/p&gt;&lt;p&gt;If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).&lt;/p&gt;</solution>
+  <reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy_(CORP)&lt;/p&gt;</reference>
+  <cweid>16</cweid>
+  <wascid>14</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10036</pluginid>
+  <alertRef>10036</alertRef>
+  <alert>Server Leaks Version Information via &quot;Server&quot; HTTP Response Header Field</alert>
+  <name>Server Leaks Version Information via &quot;Server&quot; HTTP Response Header Field</name>
+  <riskcode>1</riskcode>
+  <confidence>3</confidence>
+  <riskdesc>Low (High)</riskdesc>
+  <desc>&lt;p&gt;The web/application server is leaking version information via the &quot;Server&quot; HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/dvwa/css/main.css</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=M;O=A</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=N;O=A</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/index.php</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=M;O=D</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/dvwaPhpIds.inc.php</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/warning.png</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/dvwaPage.inc.php</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=N;O=D</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/MySQL.php</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/source.css</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=N;O=A</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=S;O=D</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=N;O=A</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=M;O=D</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=S;O=A</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=D;O=A</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=S;O=D</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=D;O=D</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25 (Debian)</evidence>
+  </instance>
+  </instances>
+  <count>88</count>
+  <solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to suppress the &quot;Server&quot; header or provide generic details.&lt;/p&gt;</solution>
+  <reference>&lt;p&gt;http://httpd.apache.org/docs/current/mod/core.html#servertokens&lt;/p&gt;&lt;p&gt;http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007&lt;/p&gt;&lt;p&gt;http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx&lt;/p&gt;&lt;p&gt;http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html&lt;/p&gt;</reference>
+  <cweid>200</cweid>
+  <wascid>13</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10049</pluginid>
+  <alertRef>10049</alertRef>
+  <alert>Storable and Cacheable Content</alert>
+  <name>Storable and Cacheable Content</name>
+  <riskcode>0</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Informational (Medium)</riskdesc>
+  <desc>&lt;p&gt;The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where &quot;shared&quot; caching servers such as &quot;proxy&quot; caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/dvwa/css/source.css</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=N;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/login.css</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/login_logo.png</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=N;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=N;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=D;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/robots.txt</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=M;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=M;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=N;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=D;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/icons/image2.gif</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=M;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/warning.png</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=M;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=N;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=M;O=D</uri>
+  <method>GET</method>
+  </instance>
+  </instances>
+  <count>80</count>
+  <solution>&lt;p&gt;Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:&lt;/p&gt;&lt;p&gt;Cache-Control: no-cache, no-store, must-revalidate, private&lt;/p&gt;&lt;p&gt;Pragma: no-cache&lt;/p&gt;&lt;p&gt;Expires: 0&lt;/p&gt;&lt;p&gt;This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. &lt;/p&gt;</solution>
+  <otherinfo>&lt;p&gt;In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.&lt;/p&gt;</otherinfo>
+  <reference>&lt;p&gt;https://tools.ietf.org/html/rfc7234&lt;/p&gt;&lt;p&gt;https://tools.ietf.org/html/rfc7231&lt;/p&gt;&lt;p&gt;http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)&lt;/p&gt;</reference>
+  <cweid>524</cweid>
+  <wascid>13</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10104</pluginid>
+  <alertRef>10104</alertRef>
+  <alert>User Agent Fuzzer</alert>
+  <name>User Agent Fuzzer</name>
+  <riskcode>0</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Informational (Medium)</riskdesc>
+  <desc>&lt;p&gt;Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/index.php</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>msnbot/1.1 (+http://search.msn.com/msnbot.htm)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>msnbot/1.1 (+http://search.msn.com/msnbot.htm)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>msnbot/1.1 (+http://search.msn.com/msnbot.htm)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>msnbot/1.1 (+http://search.msn.com/msnbot.htm)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/logout.php</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/index.php</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/logout.php</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>msnbot/1.1 (+http://search.msn.com/msnbot.htm)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>POST</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org</uri>
+  <method>GET</method>
+  <param>Header User-Agent</param>
+  <attack>Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</attack>
+  </instance>
+  </instances>
+  <count>84</count>
+  <solution>&lt;p&gt;&lt;/p&gt;</solution>
+  <reference>&lt;p&gt;https://owasp.org/wstg&lt;/p&gt;</reference>
+  <sourceid>1</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10021</pluginid>
+  <alertRef>10021</alertRef>
+  <alert>X-Content-Type-Options Header Missing</alert>
+  <name>X-Content-Type-Options Header Missing</name>
+  <riskcode>1</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Low (Medium)</riskdesc>
+  <desc>&lt;p&gt;The Anti-MIME-Sniffing header X-Content-Type-Options was not set to &apos;nosniff&apos;. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/dvwa/?C=N;O=A</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=N;O=D</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=M;O=D</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/warning.png</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/index.php</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=M;O=A</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=N;O=D</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/login_logo.png</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=M;O=D</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/source.css</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=M;O=A</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/dvwaPage.inc.php</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=M;O=A</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=D;O=A</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=M;O=D</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=D;O=A</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=M;O=D</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=D;O=D</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=N;O=A</uri>
+  <method>GET</method>
+  <param>X-Content-Type-Options</param>
+  </instance>
+  </instances>
+  <count>79</count>
+  <solution>&lt;p&gt;Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to &apos;nosniff&apos; for all web pages.&lt;/p&gt;&lt;p&gt;If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.&lt;/p&gt;</solution>
+  <otherinfo>&lt;p&gt;This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.&lt;/p&gt;&lt;p&gt;At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.&lt;/p&gt;</otherinfo>
+  <reference>&lt;p&gt;http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx&lt;/p&gt;&lt;p&gt;https://owasp.org/www-community/Security_Headers&lt;/p&gt;</reference>
+  <cweid>16</cweid>
+  <wascid>15</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10020</pluginid>
+  <alertRef>10020</alertRef>
+  <alert>X-Frame-Options Header Not Set</alert>
+  <name>X-Frame-Options Header Not Set</name>
+  <riskcode>2</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Medium (Medium)</riskdesc>
+  <desc>&lt;p&gt;X-Frame-Options header is not included in the HTTP response to protect against &apos;ClickJacking&apos; attacks.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/dvwa/css/</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=N;O=D</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=D;O=D</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=M;O=A</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=D;O=D</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=D;O=A</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=D;O=A</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=M;O=D</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=D;O=A</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=D;O=D</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=S;O=A</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=M;O=D</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=M;O=D</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=S;O=D</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=M;O=A</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=M;O=A</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>GET</method>
+  <param>X-Frame-Options</param>
+  </instance>
+  </instances>
+  <count>59</count>
+  <solution>&lt;p&gt;Most modern Web browsers support the X-Frame-Options HTTP header. Ensure it&apos;s set on all web pages returned by your site (if you expect the page to be framed only by pages on your server (e.g. it&apos;s part of a FRAMESET) then you&apos;ll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. ALLOW-FROM allows specific websites to frame the web page in supported web browsers).&lt;/p&gt;</solution>
+  <reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options&lt;/p&gt;</reference>
+  <cweid>16</cweid>
+  <wascid>15</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10063</pluginid>
+  <alertRef>10063</alertRef>
+  <alert>Feature Policy Header Not Set</alert>
+  <name>Feature Policy Header Not Set</name>
+  <riskcode>1</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Low (Medium)</riskdesc>
+  <desc>&lt;p&gt;Feature Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Feature Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=M;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=N;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/dvwaPhpIds.inc.php</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=N;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=M;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=N;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/MySQL.php</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/index.php</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=M;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/dvwaPage.inc.php</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=M;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=S;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=S;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=S;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=S;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=N;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=N;O=A</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=N;O=D</uri>
+  <method>GET</method>
+  </instance>
+  </instances>
+  <count>65</count>
+  <solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to set the Feature-Policy header.&lt;/p&gt;</solution>
+  <reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy&lt;/p&gt;&lt;p&gt;https://developers.google.com/web/updates/2018/06/feature-policy&lt;/p&gt;&lt;p&gt;https://scotthelme.co.uk/a-new-security-header-feature-policy/&lt;/p&gt;&lt;p&gt;https://w3c.github.io/webappsec-feature-policy/&lt;/p&gt;&lt;p&gt;https://www.smashingmagazine.com/2018/12/feature-policy/&lt;/p&gt;</reference>
+  <cweid>16</cweid>
+  <wascid>15</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10049</pluginid>
+  <alertRef>10049</alertRef>
+  <alert>Storable but Non-Cacheable Content</alert>
+  <name>Storable but Non-Cacheable Content</name>
+  <riskcode>0</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Informational (Medium)</riskdesc>
+  <desc>&lt;p&gt;The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users. &lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/</uri>
+  <method>GET</method>
+  <evidence>no-cache</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org</uri>
+  <method>GET</method>
+  <evidence>no-cache</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>GET</method>
+  <evidence>no-cache</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/index.php</uri>
+  <method>GET</method>
+  <evidence>no-cache</evidence>
+  </instance>
+  </instances>
+  <count>4</count>
+  <solution>&lt;p&gt;&lt;/p&gt;</solution>
+  <reference>&lt;p&gt;https://tools.ietf.org/html/rfc7234&lt;/p&gt;&lt;p&gt;https://tools.ietf.org/html/rfc7231&lt;/p&gt;&lt;p&gt;http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)&lt;/p&gt;</reference>
+  <cweid>524</cweid>
+  <wascid>13</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10033</pluginid>
+  <alertRef>10033</alertRef>
+  <alert>Directory Browsing - Apache 2</alert>
+  <name>Directory Browsing - Apache 2</name>
+  <riskcode>2</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Medium (Medium)</riskdesc>
+  <desc>&lt;p&gt;It is possible to view a listing of the directory contents. Directory listings may reveal hidden scripts, include files , backup source files, etc., which be accessed to reveal sensitive information. - Apache 2&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=S;O=D</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/includes/DBMS&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=N;O=A</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/includes&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=D;O=D</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/includes/DBMS&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=S;O=D</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/css&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=S;O=A</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/includes/DBMS&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=N;O=D</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/includes&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=S;O=A</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/css&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/css&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/includes/DBMS&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=M;O=D</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/css&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=S;O=A</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=D;O=D</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/js&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=M;O=A</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/css&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=D;O=A</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/js&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=S;O=D</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=N;O=A</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/js&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=M;O=D</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/includes/DBMS&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=N;O=A</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/images&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=M;O=A</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/includes/DBMS&lt;/title&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=D;O=A</uri>
+  <method>GET</method>
+  <evidence>&lt;title&gt;Index of /dvwa/includes&lt;/title&gt;</evidence>
+  </instance>
+  </instances>
+  <count>54</count>
+  <solution>&lt;p&gt;Configure the web server to disable directory browsing. &lt;/p&gt;</solution>
+  <otherinfo>&lt;p&gt;&lt;title&gt;Index of /dvwa/includes/DBMS&lt;/title&gt;&lt;/p&gt;</otherinfo>
+  <reference>&lt;p&gt;https://cwe.mitre.org/data/definitions/548.html&lt;/p&gt;</reference>
+  <cweid>548</cweid>
+  <wascid>16</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>90022</pluginid>
+  <alertRef>90022</alertRef>
+  <alert>Application Error Disclosure</alert>
+  <name>Application Error Disclosure</name>
+  <riskcode>2</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Medium (Medium)</riskdesc>
+  <desc>&lt;p&gt;This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=S;O=D</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=D;O=D</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=S;O=A</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=D;O=D</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=N;O=D</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=D;O=D</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=N;O=A</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=D;O=A</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/?C=D;O=A</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=N;O=D</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=N;O=A</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/?C=N;O=A</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=S;O=D</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=S;O=A</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/?C=M;O=D</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/?C=D;O=D</uri>
+  <method>GET</method>
+  <evidence>Parent Directory</evidence>
+  </instance>
+  </instances>
+  <count>54</count>
+  <solution>&lt;p&gt;Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.&lt;/p&gt;</solution>
+  <reference>&lt;p&gt;&lt;/p&gt;</reference>
+  <cweid>200</cweid>
+  <wascid>13</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>90027</pluginid>
+  <alertRef>90027</alertRef>
+  <alert>Cookie Slack Detector</alert>
+  <name>Cookie Slack Detector</name>
+  <riskcode>0</riskcode>
+  <confidence>1</confidence>
+  <riskdesc>Informational (Low)</riskdesc>
+  <desc>&lt;p&gt;Repeated GET requests: drop a different cookie each time, followed by normal request with all cookies to stabilize session, compare responses against original baseline GET. This can reveal areas where cookie based authentication/attributes are not actually enforced.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/dvwa/css/main.css</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/dvwaPhpIds.inc.php</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/source.css</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/dvwaPage.inc.php</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/icons</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/login_logo.png</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/warning.png</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/js/?C=D;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/sitemap.xml</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/?C=D;O=D</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>POST</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/index.php</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/</uri>
+  <method>GET</method>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/PGSQL.php</uri>
+  <method>GET</method>
+  </instance>
+  </instances>
+  <count>49</count>
+  <solution>&lt;p&gt;&lt;/p&gt;</solution>
+  <otherinfo>&lt;p&gt;Cookies that don&apos;t have expected effects can reveal flaws in application logic. In the worst case, this can reveal where authentication via cookie token(s) is not actually enforced.&lt;/p&gt;&lt;p&gt;These cookies affected the response: &lt;/p&gt;&lt;p&gt;These cookies did NOT affect the response: security,PHPSESSID&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</otherinfo>
+  <reference>&lt;p&gt;http://projects.webappsec.org/Fingerprinting&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</reference>
+  <cweid>200</cweid>
+  <wascid>45</wascid>
+  <sourceid>1</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10049</pluginid>
+  <alertRef>10049</alertRef>
+  <alert>Non-Storable Content</alert>
+  <name>Non-Storable Content</name>
+  <riskcode>0</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Informational (Medium)</riskdesc>
+  <desc>&lt;p&gt;The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/</uri>
+  <method>GET</method>
+  <evidence>no-store</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/PGSQL.php</uri>
+  <method>GET</method>
+  <evidence>500</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org</uri>
+  <method>GET</method>
+  <evidence>no-store</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/logout.php</uri>
+  <method>GET</method>
+  <evidence>no-store</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>POST</method>
+  <evidence>no-store</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/index.php</uri>
+  <method>GET</method>
+  <evidence>no-store</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/MySQL.php</uri>
+  <method>GET</method>
+  <evidence>500</evidence>
+  </instance>
+  </instances>
+  <count>7</count>
+  <solution>&lt;p&gt;The content may be marked as storable by ensuring that the following conditions are satisfied:&lt;/p&gt;&lt;p&gt;The request method must be understood by the cache and defined as being cacheable (&quot;GET&quot;, &quot;HEAD&quot;, and &quot;POST&quot; are currently defined as cacheable)&lt;/p&gt;&lt;p&gt;The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)&lt;/p&gt;&lt;p&gt;The &quot;no-store&quot; cache directive must not appear in the request or response header fields&lt;/p&gt;&lt;p&gt;For caching by &quot;shared&quot; caches such as &quot;proxy&quot; caches, the &quot;private&quot; response directive must not appear in the response&lt;/p&gt;&lt;p&gt;For caching by &quot;shared&quot; caches such as &quot;proxy&quot; caches, the &quot;Authorization&quot; header field must not appear in the request, unless the response explicitly allows it (using one of the &quot;must-revalidate&quot;, &quot;public&quot;, or &quot;s-maxage&quot; Cache-Control response directives)&lt;/p&gt;&lt;p&gt;In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:&lt;/p&gt;&lt;p&gt;It must contain an &quot;Expires&quot; header field&lt;/p&gt;&lt;p&gt;It must contain a &quot;max-age&quot; response directive&lt;/p&gt;&lt;p&gt;For &quot;shared&quot; caches such as &quot;proxy&quot; caches, it must contain a &quot;s-maxage&quot; response directive&lt;/p&gt;&lt;p&gt;It must contain a &quot;Cache Control Extension&quot; that allows it to be cached&lt;/p&gt;&lt;p&gt;It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   &lt;/p&gt;</solution>
+  <reference>&lt;p&gt;https://tools.ietf.org/html/rfc7234&lt;/p&gt;&lt;p&gt;https://tools.ietf.org/html/rfc7231&lt;/p&gt;&lt;p&gt;http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)&lt;/p&gt;</reference>
+  <cweid>524</cweid>
+  <wascid>13</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>40023</pluginid>
+  <alertRef>40023</alertRef>
+  <alert>Possible Username Enumeration</alert>
+  <name>Possible Username Enumeration</name>
+  <riskcode>0</riskcode>
+  <confidence>1</confidence>
+  <riskdesc>Informational (Low)</riskdesc>
+  <desc>&lt;p&gt;It may be possible to enumerate usernames, based on differing HTTP responses when valid and invalid usernames are provided. This would greatly increase the probability of success of password brute-forcing attacks against the system. Note that false positives may sometimes be minimised by increasing the &apos;Attack Strength&apos; Option in ZAP.  Please manually check the &apos;Other Info&apos; field to confirm if this is actually an issue. &lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>GET</method>
+  <param>PHPSESSID</param>
+  <attack>Manipulate [cookie] field: [PHPSESSID] and monitor the output </attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>POST</method>
+  <param>password</param>
+  <attack>Manipulate [form] field: [password] and monitor the output </attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>POST</method>
+  <param>security</param>
+  <attack>Manipulate [cookie] field: [security] and monitor the output </attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>POST</method>
+  <param>Login</param>
+  <attack>Manipulate [form] field: [Login] and monitor the output </attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>POST</method>
+  <param>username</param>
+  <attack>Manipulate [form] field: [username] and monitor the output </attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>POST</method>
+  <param>user_token</param>
+  <attack>Manipulate [form] field: [user_token] and monitor the output </attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>POST</method>
+  <param>PHPSESSID</param>
+  <attack>Manipulate [cookie] field: [PHPSESSID] and monitor the output </attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>GET</method>
+  <param>security</param>
+  <attack>Manipulate [cookie] field: [security] and monitor the output </attack>
+  </instance>
+  </instances>
+  <count>8</count>
+  <solution>&lt;p&gt;Do not divulge details of whether a username is valid or invalid. In particular, for unsuccessful login attempts, do not differentiate between an invalid user and an invalid password in the error message, page title, page contents, HTTP headers, or redirection logic.&lt;/p&gt;</solution>
+  <otherinfo>&lt;p&gt;[cookie] parameter [PHPSESSID] leaks information on whether a user exists. The [1] differences in output, for the valid original username value [dco74tnj8uccv95bc1mu4n3i72], and invalid username value [ldqxpmotvuaenoceqewoyzsamg] are:&lt;/p&gt;&lt;p&gt;[&lt;/p&gt;&lt;p&gt;(Changed Text)&lt;/p&gt;&lt;p&gt;Output for Valid Username  : [position: 53, size: 1, lines: [	&lt;input type=&apos;hidden&apos; name=&apos;user_token&apos; value=&apos;09&apos; /&gt;
+]]&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Output for Invalid Username: [position: 53, size: 1, lines: [	&lt;input type=&apos;hidden&apos; name=&apos;user_token&apos; value=&apos;c7&apos; /&gt;
+]]&lt;/p&gt;&lt;p&gt;]&lt;/p&gt;</otherinfo>
+  <reference>&lt;p&gt;https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account.html&lt;/p&gt;&lt;p&gt;http://sebastian-schinzel.de/_download/ifip-sec2011.pdf&lt;/p&gt;</reference>
+  <cweid>200</cweid>
+  <wascid>13</wascid>
+  <sourceid>1</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>90022</pluginid>
+  <alertRef>90022</alertRef>
+  <alert>Application Error Disclosure</alert>
+  <name>Application Error Disclosure</name>
+  <riskcode>1</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Low (Medium)</riskdesc>
+  <desc>&lt;p&gt;This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/PGSQL.php</uri>
+  <method>GET</method>
+  <evidence>HTTP/1.0 500 Internal Server Error</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/MySQL.php</uri>
+  <method>GET</method>
+  <evidence>HTTP/1.0 500 Internal Server Error</evidence>
+  </instance>
+  </instances>
+  <count>2</count>
+  <solution>&lt;p&gt;Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.&lt;/p&gt;</solution>
+  <reference>&lt;p&gt;&lt;/p&gt;</reference>
+  <cweid>200</cweid>
+  <wascid>13</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>0</pluginid>
+  <alertRef>0</alertRef>
+  <alert>Directory Browsing</alert>
+  <name>Directory Browsing</name>
+  <riskcode>2</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Medium (Medium)</riskdesc>
+  <desc>&lt;p&gt;It is possible to view the directory listing.  Directory listing may reveal hidden scripts, include files, backup source files, etc. which can be accessed to read sensitive information.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/dvwa/js/</uri>
+  <method>GET</method>
+  <attack>Parent Directory</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/</uri>
+  <method>GET</method>
+  <attack>Parent Directory</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/images/</uri>
+  <method>GET</method>
+  <attack>Parent Directory</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/</uri>
+  <method>GET</method>
+  <attack>Parent Directory</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/css/</uri>
+  <method>GET</method>
+  <attack>Parent Directory</attack>
+  </instance>
+  <instance>
+  <uri>http://example.org/dvwa/includes/DBMS/</uri>
+  <method>GET</method>
+  <attack>Parent Directory</attack>
+  </instance>
+  </instances>
+  <count>6</count>
+  <solution>&lt;p&gt;Disable directory browsing.  If this is required, make sure the listed files does not induce risks.&lt;/p&gt;</solution>
+  <reference>&lt;p&gt;http://httpd.apache.org/docs/mod/core.html#options&lt;/p&gt;&lt;p&gt;http://alamo.satlug.org/pipermail/satlug/2002-February/000053.html&lt;/p&gt;</reference>
+  <cweid>548</cweid>
+  <wascid>48</wascid>
+  <sourceid>1</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10108</pluginid>
+  <alertRef>10108</alertRef>
+  <alert>Reverse Tabnabbing</alert>
+  <name>Reverse Tabnabbing</name>
+  <riskcode>2</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Medium (Medium)</riskdesc>
+  <desc>&lt;p&gt;At least one link on this page is vulnerable to Reverse tabnabbing as it uses a target attribute without using both of the &quot;noopener&quot; and &quot;noreferrer&quot; keywords in the &quot;rel&quot; attribute, which allows the target page to take control of this page.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org</uri>
+  <method>GET</method>
+  <evidence>&lt;a href=&quot;http://www.dvwa.co.uk/&quot; target=&quot;_blank&quot;&gt;Damn Vulnerable Web Application (DVWA)&lt;/a&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>GET</method>
+  <evidence>&lt;a href=&quot;http://www.dvwa.co.uk/&quot; target=&quot;_blank&quot;&gt;Damn Vulnerable Web Application (DVWA)&lt;/a&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/index.php</uri>
+  <method>GET</method>
+  <evidence>&lt;a href=&quot;https://www.virtualbox.org/&quot; target=&quot;_blank&quot;&gt;VirtualBox&lt;/a&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/</uri>
+  <method>GET</method>
+  <evidence>&lt;a href=&quot;https://www.virtualbox.org/&quot; target=&quot;_blank&quot;&gt;VirtualBox&lt;/a&gt;</evidence>
+  </instance>
+  </instances>
+  <count>4</count>
+  <solution>&lt;p&gt;Do not use a target attribute, or if you have to then also add the attribute: rel=&quot;noopener noreferrer&quot;.&lt;/p&gt;</solution>
+  <reference>&lt;p&gt;https://owasp.org/www-community/attacks/Reverse_Tabnabbing&lt;/p&gt;&lt;p&gt;https://dev.to/ben/the-targetblank-vulnerability-by-example&lt;/p&gt;&lt;p&gt;https://mathiasbynens.github.io/rel-noopener/&lt;/p&gt;&lt;p&gt;https://medium.com/@jitbit/target-blank-the-most-underestimated-vulnerability-ever-96e328301f4c&lt;/p&gt;</reference>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10009</pluginid>
+  <alertRef>10009</alertRef>
+  <alert>In Page Banner Information Leak</alert>
+  <name>In Page Banner Information Leak</name>
+  <riskcode>1</riskcode>
+  <confidence>3</confidence>
+  <riskdesc>Low (High)</riskdesc>
+  <desc>&lt;p&gt;The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/sitemap.xml</uri>
+  <method>GET</method>
+  <evidence>Apache/2.4.25</evidence>
+  </instance>
+  </instances>
+  <count>1</count>
+  <solution>&lt;p&gt;Configure the server to prevent such information leaks. For example:&lt;/p&gt;&lt;p&gt;Under Tomcat this is done via the &quot;server&quot; directive and implementation of custom error pages.&lt;/p&gt;&lt;p&gt;Under Apache this is done via the &quot;ServerSignature&quot; and &quot;ServerTokens&quot; directives.&lt;/p&gt;</solution>
+  <otherinfo>&lt;p&gt;There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body.&lt;/p&gt;</otherinfo>
+  <reference>&lt;p&gt;https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/&lt;/p&gt;</reference>
+  <cweid>200</cweid>
+  <wascid>13</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10054</pluginid>
+  <alertRef>10054</alertRef>
+  <alert>Cookie Without SameSite Attribute</alert>
+  <name>Cookie Without SameSite Attribute</name>
+  <riskcode>1</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Low (Medium)</riskdesc>
+  <desc>&lt;p&gt;A cookie has been set without the SameSite attribute, which means that the cookie can be sent as a result of a &apos;cross-site&apos; request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org</uri>
+  <method>GET</method>
+  <param>PHPSESSID</param>
+  <evidence>Set-Cookie: PHPSESSID</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org</uri>
+  <method>GET</method>
+  <param>security</param>
+  <evidence>Set-Cookie: security</evidence>
+  </instance>
+  </instances>
+  <count>2</count>
+  <solution>&lt;p&gt;Ensure that the SameSite attribute is set to either &apos;lax&apos; or ideally &apos;strict&apos; for all cookies.&lt;/p&gt;</solution>
+  <reference>&lt;p&gt;https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site&lt;/p&gt;</reference>
+  <cweid>16</cweid>
+  <wascid>13</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10094</pluginid>
+  <alertRef>10094</alertRef>
+  <alert>Base64 Disclosure</alert>
+  <name>Base64 Disclosure</name>
+  <riskcode>0</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Informational (Medium)</riskdesc>
+  <desc>&lt;p&gt;Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org</uri>
+  <method>GET</method>
+  <evidence>org/TR/xhtml1/DTD/xhtml1-strict</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>GET</method>
+  <evidence>org/TR/xhtml1/DTD/xhtml1-strict</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/</uri>
+  <method>GET</method>
+  <evidence>org/TR/xhtml1/DTD/xhtml1-strict</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org/index.php</uri>
+  <method>GET</method>
+  <evidence>org/TR/xhtml1/DTD/xhtml1-strict</evidence>
+  </instance>
+  </instances>
+  <count>4</count>
+  <solution>&lt;p&gt;Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.&lt;/p&gt;</solution>
+  <otherinfo>&lt;p&gt;��?M\x001f�٥���\x000f�a�iu��k��&lt;/p&gt;</otherinfo>
+  <reference>&lt;p&gt;http://projects.webappsec.org/w/page/13246936/Information%20Leakage&lt;/p&gt;</reference>
+  <cweid>200</cweid>
+  <wascid>13</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10110</pluginid>
+  <alertRef>10110</alertRef>
+  <alert>Dangerous JS Functions</alert>
+  <name>Dangerous JS Functions</name>
+  <riskcode>1</riskcode>
+  <confidence>1</confidence>
+  <riskdesc>Low (Low)</riskdesc>
+  <desc>&lt;p&gt;A dangerous JS function seems to be in use that would leave the site vulnerable.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/dvwa/js/dvwaPage.js</uri>
+  <method>GET</method>
+  <evidence>eval</evidence>
+  </instance>
+  </instances>
+  <count>1</count>
+  <solution>&lt;p&gt;See the references for security advice on the use of these functions.&lt;/p&gt;</solution>
+  <reference>&lt;p&gt;https://angular.io/guide/security&lt;/p&gt;</reference>
+  <cweid>749</cweid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10202</pluginid>
+  <alertRef>10202</alertRef>
+  <alert>Absence of Anti-CSRF Tokens</alert>
+  <name>Absence of Anti-CSRF Tokens</name>
+  <riskcode>1</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Low (Medium)</riskdesc>
+  <desc>&lt;p&gt;No Anti-CSRF tokens were found in a HTML submission form.&lt;/p&gt;&lt;p&gt;A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;CSRF attacks are effective in a number of situations, including:&lt;/p&gt;&lt;p&gt;    * The victim has an active session on the target site.&lt;/p&gt;&lt;p&gt;    * The victim is authenticated via HTTP auth on the target site.&lt;/p&gt;&lt;p&gt;    * The victim is on the same local network as the target site.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;CSRF has primarily been used to perform an action against a target site using the victim&apos;s privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>GET</method>
+  <evidence>&lt;form action=&quot;login.php&quot; method=&quot;post&quot;&gt;</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org</uri>
+  <method>GET</method>
+  <evidence>&lt;form action=&quot;login.php&quot; method=&quot;post&quot;&gt;</evidence>
+  </instance>
+  </instances>
+  <count>2</count>
+  <solution>&lt;p&gt;Phase: Architecture and Design&lt;/p&gt;&lt;p&gt;Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.&lt;/p&gt;&lt;p&gt;For example, use anti-CSRF packages such as the OWASP CSRFGuard.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Phase: Implementation&lt;/p&gt;&lt;p&gt;Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Phase: Architecture and Design&lt;/p&gt;&lt;p&gt;Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).&lt;/p&gt;&lt;p&gt;Note that this can be bypassed using XSS.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.&lt;/p&gt;&lt;p&gt;Note that this can be bypassed using XSS.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Use the ESAPI Session Management control.&lt;/p&gt;&lt;p&gt;This control includes a component for CSRF.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Do not use the GET method for any request that triggers a state change.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Phase: Implementation&lt;/p&gt;&lt;p&gt;Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.&lt;/p&gt;</solution>
+  <otherinfo>&lt;p&gt;No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF] was found in the following HTML form: [Form 1: &quot;username&quot; &quot;password&quot; &quot;Login&quot; &quot;user_token&quot; ].&lt;/p&gt;</otherinfo>
+  <reference>&lt;p&gt;http://projects.webappsec.org/Cross-Site-Request-Forgery&lt;/p&gt;&lt;p&gt;http://cwe.mitre.org/data/definitions/352.html&lt;/p&gt;</reference>
+  <cweid>352</cweid>
+  <wascid>9</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10010</pluginid>
+  <alertRef>10010</alertRef>
+  <alert>Cookie No HttpOnly Flag</alert>
+  <name>Cookie No HttpOnly Flag</name>
+  <riskcode>1</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Low (Medium)</riskdesc>
+  <desc>&lt;p&gt;A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org</uri>
+  <method>GET</method>
+  <param>PHPSESSID</param>
+  <evidence>Set-Cookie: PHPSESSID</evidence>
+  </instance>
+  <instance>
+  <uri>http://example.org</uri>
+  <method>GET</method>
+  <param>security</param>
+  <evidence>Set-Cookie: security</evidence>
+  </instance>
+  </instances>
+  <count>2</count>
+  <solution>&lt;p&gt;Ensure that the HttpOnly flag is set for all cookies.&lt;/p&gt;</solution>
+  <reference>&lt;p&gt;https://owasp.org/www-community/HttpOnly&lt;/p&gt;</reference>
+  <cweid>16</cweid>
+  <wascid>13</wascid>
+  <sourceid>3</sourceid>
+</alertitem>
+<alertitem>
+  <pluginid>10051</pluginid>
+  <alertRef>10051</alertRef>
+  <alert>Relative Path Confusion</alert>
+  <name>Relative Path Confusion</name>
+  <riskcode>2</riskcode>
+  <confidence>2</confidence>
+  <riskdesc>Medium (Medium)</riskdesc>
+  <desc>&lt;p&gt;The web server is configured to serve responses to ambiguous URLs in a manner that is likely to lead to confusion about the correct &quot;relative path&quot; for the URL. Resources (CSS, images, etc.) are also specified in the page response using relative, rather than absolute URLs. In an attack, if the web browser parses the &quot;cross-content&quot; response in a permissive manner, or can be tricked into permissively parsing the &quot;cross-content&quot; response, using techniques such as framing, then the web browser may be fooled into interpreting HTML as CSS (or other content types), leading to an XSS vulnerability.&lt;/p&gt;</desc>
+  <instances>
+  <instance>
+  <uri>http://example.org/login.php</uri>
+  <method>GET</method>
+  <attack>http://example.org/login.php/n0saz/fdqxq</attack>
+  <evidence>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;dvwa/css/login.css&quot;&gt;</evidence>
+  </instance>
+  </instances>
+  <count>1</count>
+  <solution>&lt;p&gt;Web servers and frameworks should be updated to be configured to not serve responses to ambiguous URLs in such a way that the relative path of such URLs could be mis-interpreted by components on either the client side, or server side.&lt;/p&gt;&lt;p&gt;Within the application, the correct use of the &quot;&lt;base&gt;&quot; HTML tag in the HTTP response will unambiguously specify the base URL for all relative URLs in the document.&lt;/p&gt;&lt;p&gt;Use the &quot;Content-Type&quot; HTTP response header to make it harder for the attacker to force the web browser to mis-interpret the content type of the response.&lt;/p&gt;&lt;p&gt;Use the &quot;X-Content-Type-Options: nosniff&quot; HTTP response header to prevent the web browser from &quot;sniffing&quot; the content type of the response.&lt;/p&gt;&lt;p&gt;Use a modern DOCTYPE such as &quot;&lt;!doctype html&gt;&quot; to prevent the page from being rendered in the web browser using &quot;Quirks Mode&quot;, since this results in the content type being ignored by the web browser.&lt;/p&gt;&lt;p&gt;Specify the &quot;X-Frame-Options&quot; HTTP response header to prevent Quirks Mode from being enabled in the web browser using framing attacks. &lt;/p&gt;</solution>
+  <otherinfo>&lt;p&gt;No &lt;base&gt; tag was specified in the HTML &lt;head&gt; tag to define the location for relative URLs.&lt;/p&gt;&lt;p&gt;A Content Type of &quot;text/html;charset=utf-8&quot; was specified. If the web browser is employing strict parsing rules, this will prevent cross-content attacks from succeeding. Quirks Mode in the web browser would disable strict parsing.  &lt;/p&gt;&lt;p&gt;Quirks Mode is implicitly enabled via the use of an old DOCTYPE with PUBLIC id &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;, allowing the specified Content Type to be bypassed in some web browsers.&lt;/p&gt;</otherinfo>
+  <reference>&lt;p&gt;http://www.thespanner.co.uk/2014/03/21/rpo/&lt;/p&gt;&lt;p&gt;https://hsivonen.fi/doctype/&lt;/p&gt;&lt;p&gt;http://www.w3schools.com/tags/tag_base.asp&lt;/p&gt;</reference>
+  <cweid>20</cweid>
+  <wascid>20</wascid>
+  <sourceid>1</sourceid>
+</alertitem>
+</alerts></site></OWASPZAPReport>
