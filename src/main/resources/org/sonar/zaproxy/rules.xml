@@ -1634,6 +1634,26 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
         <tag>zaproxy</tag>
     </rule>
     <rule>
+        <key>30001</key>
+        <name>Buffer Overflow</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Rewrite the background program using proper return length checking.  This will require a recompile of the background executable.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://owasp.org/www-community/attacks/Buffer_overflow_attack">https://owasp.org/www-community/attacks/Buffer_overflow_attack</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/30001/">https://www.zaproxy.org/docs/alerts/30001/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-120</tag>
+        <tag>wascid-7</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
         <key>30002</key>
         <name>Check for proper format string handling in back end c code</name>
         <description>
@@ -1655,6 +1675,26 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    <rule>
+        <key>30003</key>
+        <name>Integer Overflow Error</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Rewrite the background program using proper checking of the size of integer being input to prevent overflows and divide by 0 errors.  This will require a recompile of the background executable.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/w/page/13246946/Integer%20Overflows">https://projects.webappsec.org/w/page/13246946/Integer%20Overflows</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/190.html">CWE-190</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/30003/">https://www.zaproxy.org/docs/alerts/30003/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-190</tag>
+        <tag>wascid-3</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>40003</key>
         <name>CRLF Injection</name>
