@@ -1296,7 +1296,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
 Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://www.hpenterprisesecurity.com/vulncat/en/vulncat/vb/html5_overly_permissive_cors_policy.html">http://www.hpenterprisesecurity.com/vulncat/en/vulncat/vb/html5_overly_permissive_cors_policy.html</a></li>
+    <li><a href="https://www.hpenterprisesecurity.com/vulncat/en/vulncat/vb/html5_overly_permissive_cors_policy.html">http://www.hpenterprisesecurity.com/vulncat/en/vulncat/vb/html5_overly_permissive_cors_policy.html</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/264.html">CWE-264</a></li>    
 	<li><a href="https://www.zaproxy.org/docs/alerts/10098/">https://www.zaproxy.org/docs/alerts/10098/</a></li>
     </ul>]]>
@@ -1316,7 +1316,7 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <p>Ensure that application Source Code is not available with alternative extensions, and ensure that source code is not present within other files or data deployed to the web server, or served by the web server.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/">http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/</a></li>
+    <li><a href="https://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/">http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/540.html">CWE-540</a></li>    
 	<li><a href="https://www.zaproxy.org/docs/alerts/10099/">https://www.zaproxy.org/docs/alerts/10099/</a></li>
     </ul>]]>
@@ -1476,6 +1476,126 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    <rule>
+        <key>20012</key>
+        <name>Anti-CSRF Tokens Check</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Cross-Site-Request-Forgery">http://projects.webappsec.org/Cross-Site-Request-Forgery</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/352.html">CWE-352</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/20012/">https://www.zaproxy.org/docs/alerts/20012/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-352</tag>
+        <tag>wascid-9</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>20014</key>
+        <name>HTTP Parameter Pollution</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Properly sanitize the user input for parameter delimiters</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.google.com/search?q=http+parameter+pollution">http://www.google.com/search?q=http+parameter+pollution</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/20014/">https://www.zaproxy.org/docs/alerts/20014/</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>cweid-20</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>20015</key>
+        <name>Heartbleed OpenSSL Vulnerability</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Update to OpenSSL 1.0.1g or later. Re-issue HTTPS certificates. Change asymmetric private keys and shared secret keys, since these may have been compromised, with no evidence of compromise in the server log files.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cvedetails.com/cve-details.php?t=1&cve_id=CVE-2014-0160">http://cvedetails.com/cve-details.php?t=1&cve_id=CVE-2014-0160</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/119.html">CWE-119</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/20015/">https://www.zaproxy.org/docs/alerts/20015/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-119</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>20016</key>
+        <name>Cross-Domain Misconfiguration</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Correct/Add cross domain policy</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html">http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/264.html">CWE-264</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/20016/">https://www.zaproxy.org/docs/alerts/20016/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-264</tag>
+        <tag>wascid-14</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>20017</key>
+        <name>Source Code Disclosure - CVE-2012-1823</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Improper input handling is one of the most common weaknesses identified across applications today. Poorly handled input is a leading cause behind critical vulnerabilities that exist in systems and applications.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Improper-Input-Handling">https://projects.webappsec.org/Improper-Input-Handling</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/20017/">https://www.zaproxy.org/docs/alerts/20017/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-20</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>20018</key>
+        <name>Remote Code Execution - CVE-2012-1823</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Improper input handling is one of the most common weaknesses identified across applications today. Poorly handled input is a leading cause behind critical vulnerabilities that exist in systems and applications.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Improper-Input-Handling">https://projects.webappsec.org/Improper-Input-Handling</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/20018/">https://www.zaproxy.org/docs/alerts/20018/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-20</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>20019</key>
         <name>External Redirect</name>
