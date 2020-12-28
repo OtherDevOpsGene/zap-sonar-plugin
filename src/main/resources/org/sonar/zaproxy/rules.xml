@@ -2341,6 +2341,65 @@ Grant the minimum database access that is necessary for the application.</p>
         <tag>zaproxy</tag>
     </rule>
     <rule>
+        <key>90002</key>
+        <name>Java Serialization Object</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Deserialization of untrusted data is inherently dangerous and should be avoided.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.oracle.com/technetwork/java/seccodeguide-139067.html#8">https://www.oracle.com/technetwork/java/seccodeguide-139067.html#8</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/502.html">CWE-502</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90002/">https://www.zaproxy.org/docs/alerts/90002/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-502</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>90003</key>
+        <name>Sub Resource Integrity Attribute Missing</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Provide a valid integrity attribute to the tag.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity">https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">CWE-16</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90003/">https://www.zaproxy.org/docs/alerts/90003/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-16</tag>
+        <tag>wascid-15</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>90004</key>
+        <name>Insufficient Site Isolation Against Spectre Vulnerability</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy_(CORP)">https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy_(CORP)</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">CWE-16</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90004/">https://www.zaproxy.org/docs/alerts/90004/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>cweid-16</tag>
+        <tag>wascid-14</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
         <key>90011</key>
         <name>Charset Mismatch</name>
 
