@@ -2243,6 +2243,65 @@ Grant the minimum database access that is necessary for the application.</p>
         <tag>zaproxy</tag>
     </rule>
     <rule>
+        <key>40032</key>
+        <name>.htaccess Information Leak</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure the .htaccess file is not accessible.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cwe.mitre.org/data/definitions/215.html">CWE-215</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40032/">https://www.zaproxy.org/docs/alerts/40032/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-215</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40034</key>
+        <name>.env Information Leak</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure the .env file is not accessible.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.google.com/search?q=db_password+filetype%3Aenv">https://www.google.com/search?q=db_password+filetype%3Aenv</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/215.html">CWE-215</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40034/">https://www.zaproxy.org/docs/alerts/40034/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-215</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40035</key>
+        <name>Hidden File Finder</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Consider whether or not the component is actually required in production, if it isn't then disable it. If it is then ensure access to it requires appropriate authentication and authorization, or limit exposure to internal systems or specific source IPs, etc.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://blog.hboeck.de/archives/892-Introducing-Snallygaster-a-Tool-to-Scan-for-Secrets-on-Web-Servers.html">https://blog.hboeck.de/archives/892-Introducing-Snallygaster-a-Tool-to-Scan-for-Secrets-on-Web-Servers.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/538.html">CWE-538</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40035/">https://www.zaproxy.org/docs/alerts/40035/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-538</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
         <key>50001</key>
         <name>Script Passive Scan Rules</name>
 
