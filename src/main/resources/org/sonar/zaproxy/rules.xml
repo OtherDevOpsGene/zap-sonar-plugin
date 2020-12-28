@@ -40,6 +40,9 @@ If you want to add a rule, you can, following the model above.
   <ul>
   <li><a href="https://httpd.apache.org/docs/mod/core.html#options">Directive Options</a></li>
   <li><a href="https://alamo.satlug.org/pipermail/satlug/2002-February/000053.html">Apache Dir/Browsing Question</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/548.html">CWE-548</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/0/">https://www.zaproxy.org/docs/alerts/0/</a></li>
+
   </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -75,6 +78,8 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://tools.ietf.org/html/rfc1918">Address Allocation for Private Internets</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/2/">https://www.zaproxy.org/docs/alerts/2/</a></li>
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -95,6 +100,8 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://seclists.org/lists/webappsec/2002/Oct-Dec/0111.html">Hijacking URL Encoded Session IDs using Referer Logs</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/3/">https://www.zaproxy.org/docs/alerts/3/</a></li>
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -153,6 +160,7 @@ If you want to add a rule, you can, following the model above.
     <ul>
     <li><a href="https://projects.webappsec.org/Path-Traversal">Path Traversal</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/22.html">CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/6/">https://www.zaproxy.org/docs/alerts/6/</a></li>
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -220,6 +228,7 @@ If you want to add a rule, you can, following the model above.
     <li><a href="https://projects.webappsec.org/Remote-File-Inclusion">Remote File Inclusion</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/98.html">CWE-98: Improper Control of Filename for Include/Require Statement in PHP Program
     ('PHP Remote File Inclusion')</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/7/">https://www.zaproxy.org/docs/alerts/7/</a></li>
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -239,10 +248,9 @@ If you want to add a rule, you can, following the model above.
     <p>Ensure that Git metadata files are not deployed to the web server or application server.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://projects.webappsec.org/Predictable-Resource-Location">http://projects.webappsec.org/Predictable-Resource-Location</a></li>
-    <li><a href="https://cwe.mitre.org/data/definitions/425.html">http://cwe.mitre.org/data/definitions/425.html</a></li>
+    <li><a href="https://projects.webappsec.org/Predictable-Resource-Location">https://projects.webappsec.org/Predictable-Resource-Location</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/425.html">https://cwe.mitre.org/data/definitions/425.html</a></li>
     <li><a href="https://www.zaproxy.org/docs/alerts/41/">https://www.zaproxy.org/docs/alerts/41/</a></li>
-
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -262,8 +270,8 @@ If you want to add a rule, you can, following the model above.
     <p>Ensure that SVN metadata files are not deployed to the web server or application server.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://projects.webappsec.org/Predictable-Resource-Location">http://projects.webappsec.org/Predictable-Resource-Location</a></li>
-    <li><a href="https://cwe.mitre.org/data/definitions/425.html">http://cwe.mitre.org/data/definitions/425.html</a></li>
+    <li><a href="https://projects.webappsec.org/Predictable-Resource-Location">https://projects.webappsec.org/Predictable-Resource-Location</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/425.html">https://cwe.mitre.org/data/definitions/425.html</a></li>
     <li><a href="https://www.zaproxy.org/docs/alerts/42/">https://www.zaproxy.org/docs/alerts/42/</a></li>
 
     </ul>]]>
@@ -285,10 +293,9 @@ If you want to add a rule, you can, following the model above.
     <p>Ensure that Source Code files are not deployed to the web server or application server.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://projects.webappsec.org/Predictable-Resource-Location">http://projects.webappsec.org/Predictable-Resource-Location</a></li>
-    <li><a href="https://cwe.mitre.org/data/definitions/425.html">http://cwe.mitre.org/data/definitions/425.html</a></li>
+    <li><a href="https://projects.webappsec.org/Predictable-Resource-Location">https://projects.webappsec.org/Predictable-Resource-Location</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/425.html">https://cwe.mitre.org/data/definitions/425.html</a></li>
     <li><a href="https://www.zaproxy.org/docs/alerts/43/">https://www.zaproxy.org/docs/alerts/43/</a></li>
-
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -308,6 +315,8 @@ If you want to add a rule, you can, following the model above.
     <p>Please upgrade to the latest version of ExampleLibrary.</p>
     <h3>References:</h3>
     <ul>
+    <li><a href="https://cwe.mitre.org/data/definitions/829.html">https://cwe.mitre.org/data/definitions/829.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/937.html">https://cwe.mitre.org/data/definitions/937.html</a></li>        
     <li><a href="https://www.zaproxy.org/docs/alerts/10003/">https://www.zaproxy.org/docs/alerts/10003/</a></li>
     </ul>]]>
         </description>
@@ -331,8 +340,8 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/">https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">https://cwe.mitre.org/data/definitions/200.html</a></li>
     <li><a href="https://www.zaproxy.org/docs/alerts/10009/">https://www.zaproxy.org/docs/alerts/10009/</a></li>
-    
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -352,6 +361,8 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/HttpOnly">HttpOnly</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/1004.html">https://cwe.mitre.org/data/definitions/1004.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10010/">https://www.zaproxy.org/docs/alerts/10010/</a></li>
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -372,6 +383,8 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Testing_for_cookies_attributes_(OWASP-SM-002)">Testing for cookies attributes (OTG-SESS-002)</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/614.html">https://cwe.mitre.org/data/definitions/614.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10011/">https://www.zaproxy.org/docs/alerts/10011/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -393,6 +406,8 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://msdn.microsoft.com/library/default.asp?url=/workshop/author/forms/autocomplete_ovr.asp">Autocomplete</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/525.html">https://cwe.mitre.org/data/definitions/525.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10012/">https://www.zaproxy.org/docs/alerts/10012/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -413,6 +428,8 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Session_Management_Cheat_Sheet#Web_Content_Caching">Web Content Caching</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/525.html">https://cwe.mitre.org/data/definitions/525.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10015/">https://www.zaproxy.org/docs/alerts/10015/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -433,6 +450,8 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <ul>
     <li><a href="https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet">XSS (Cross Site Scripting) Prevention Cheat Sheet</a></li>
     <li><a href="https://blog.veracode.com/2014/03/guidelines-for-setting-security-headers">Guidelines for Setting Security Headers</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/933.html">https://cwe.mitre.org/data/definitions/933.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10016/">https://www.zaproxy.org/docs/alerts/10016/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -451,7 +470,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application</p>
     <h3>References:</h3>
     <ul>
-    <li>No reference.</li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10017/">https://www.zaproxy.org/docs/alerts/10017/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -469,6 +488,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx">Reducing MIME type security risks</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10019/">https://www.zaproxy.org/docs/alerts/10019/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -489,6 +509,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://blogs.msdn.com/b/ieinternals/archive/2010/03/30/combating-clickjacking-with-x-frame-options.aspx">Combating ClickJacking With X-Frame-Options</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10020/">https://www.zaproxy.org/docs/alerts/10020/</a></li>    
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -509,6 +530,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <ul>
     <li><a href="https://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx">Reducing MIME type security risks</a></li>
     <li><a href="https://www.owasp.org/index.php/List_of_useful_HTTP_headers">List of useful HTTP headers</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10021/">https://www.zaproxy.org/docs/alerts/10021/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -530,6 +552,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Top_10_2007-Information_Leakage_and_Improper_Error_Handling">List of useful HTTP headers</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10023/">https://www.zaproxy.org/docs/alerts/10023/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -548,6 +571,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Information_exposure_through_query_strings_in_url">List of useful HTTP headers</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10024/">https://www.zaproxy.org/docs/alerts/10024/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -566,6 +590,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Information_exposure_through_query_strings_in_url">List of useful HTTP headers</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10025/">https://www.zaproxy.org/docs/alerts/10025/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -585,6 +610,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Testing_for_HTTP_Parameter_pollution_(OTG-INPVAL-004)">Testing for HPP</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10026/">https://www.zaproxy.org/docs/alerts/10026/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -602,6 +628,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://cwe.mitre.org/data/definitions/546.html">CWE-546</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10027/">https://www.zaproxy.org/docs/alerts/10027/</a></li>    
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -640,7 +667,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <p>Do not allow user input to control cookie names and values. If some query string parameters must be set in cookie values, be sure to filter out semicolon's that can serve as name/value pair delimiters.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-cookie">http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-cookie</a></li>
+    <li><a href="https://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-cookie">https://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-cookie</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>
 	<li><a href="https://www.zaproxy.org/docs/alerts/10029/">https://www.zaproxy.org/docs/alerts/10029/</a></li>
     </ul>]]>
@@ -679,7 +706,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <p>Validate all input and sanitize output it before writing to any HTML attributes.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute">http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</a></li>
+    <li><a href="https://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute">https://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>
 	<li><a href="https://www.zaproxy.org/docs/alerts/10031/">https://www.zaproxy.org/docs/alerts/10031/</a></li>
     </ul>]]>
@@ -701,6 +728,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/images/2/22/20110412-aspnet_viewstate_security-alexandre.pdf">ASP Security ViewState flaw</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10032/">https://www.zaproxy.org/docs/alerts/10032/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -709,9 +737,6 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
-
-
-
     <rule>
         <key>10033</key>
         <name>Directory Browsing</name>
@@ -739,7 +764,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <p>Update to OpenSSL 1.0.1g or later. Re-issue HTTPS certificates. Change asymmetric private keys and shared secret keys, since these may have been compromised, with no evidence of compromise in the server log files.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://cvedetails.com/cve-details.php?t=1&cve_id=CVE-2014-0160">http://cvedetails.com/cve-details.php?t=1&cve_id=CVE-2014-0160</a></li>
+    <li><a href="https://cvedetails.com/cve-details.php?t=1&cve_id=CVE-2014-0160">https://cvedetails.com/cve-details.php?t=1&cve_id=CVE-2014-0160</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/119.html">CWE-119</a></li>
 	<li><a href="https://www.zaproxy.org/docs/alerts/10034/">https://www.zaproxy.org/docs/alerts/10034/</a></li>
     </ul>]]>
@@ -778,7 +803,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <p>Ensure that your web server, application server, load balancer, etc. is configured to suppress 'X-Powered-By' headers.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx">http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</a></li>
+    <li><a href="https://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx">https://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>
 	<li><a href="https://www.zaproxy.org/docs/alerts/10037/">https://www.zaproxy.org/docs/alerts/10037/</a></li>
     </ul>]]>
@@ -821,6 +846,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Transport_Layer_Protection_Cheat_Sheet">Transport Layer Protection Cheat Sheet</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10040/">https://www.zaproxy.org/docs/alerts/10040/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -874,7 +900,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <p>Validate all input and sanitize output it before writing to any Javascript on* events.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://websecuritytool.codeplex.com/wikipage?title=Checks#user-javascript-event">http://websecuritytool.codeplex.com/wikipage?title=Checks#user-javascript-event</a></li>
+    <li><a href="https://websecuritytool.codeplex.com/wikipage?title=Checks#user-javascript-event">https://websecuritytool.codeplex.com/wikipage?title=Checks#user-javascript-event</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>    
 	<li><a href="https://www.zaproxy.org/docs/alerts/10043/">https://www.zaproxy.org/docs/alerts/10043/</a></li>
     </ul>]]>
@@ -913,7 +939,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <p>Apply appropriate access control authorizations for each access to all restricted URLs, scripts or files.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://projects.webappsec.org/Predictable-Resource-Location">http://projects.webappsec.org/Predictable-Resource-Location</a></li>
+    <li><a href="https://projects.webappsec.org/Predictable-Resource-Location">https://projects.webappsec.org/Predictable-Resource-Location</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/541.html">CWE-541</a></li>
 	<li><a href="https://www.zaproxy.org/docs/alerts/10045/">https://www.zaproxy.org/docs/alerts/10045/</a></li>
     </ul>]]>
@@ -954,7 +980,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <p>Update Bash on the server to the latest version</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271">http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271</a></li>
+    <li><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271">https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/78.html">CWE-78</a></li>    
 	<li><a href="https://www.zaproxy.org/docs/alerts/10048/">https://www.zaproxy.org/docs/alerts/10048/</a></li>
     </ul>]]>
@@ -991,7 +1017,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <p>Web servers and frameworks should be updated to be configured to not serve responses to ambiguous URLs in such a way that the relative path of such URLs could be mis-interpreted by components on either the client side, or server side.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://www.thespanner.co.uk/2014/03/21/rpo/">http://www.thespanner.co.uk/2014/03/21/rpo/</a></li>
+    <li><a href="https://www.thespanner.co.uk/2014/03/21/rpo/">https://www.thespanner.co.uk/2014/03/21/rpo/</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>    
 	<li><a href="https://www.zaproxy.org/docs/alerts/10051/">https://www.zaproxy.org/docs/alerts/10051/</a></li>
     </ul>]]>
@@ -1053,6 +1079,9 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <h3>References:</h3>
     <ul>
     <li><a href="https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site">https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">https://cwe.mitre.org/data/definitions/16.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10054/">https://www.zaproxy.org/docs/alerts/10054/</a></li>    
+
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -1072,10 +1101,12 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     N/A
     <h3>References:</h3>
     <ul>
-    <li><a href="https://www.w3.org/TR/CSP2/">http://www.w3.org/TR/CSP2/</a></li>
-    <li><a href="https://caniuse.com/#search=content+security+policy">http://caniuse.com/#search=content+security+policy</a></li>
-    <li><a href="https://content-security-policy.com/">http://content-security-policy.com/</a></li>
+    <li><a href="https://www.w3.org/TR/CSP2/">https://www.w3.org/TR/CSP2/</a></li>
+    <li><a href="https://caniuse.com/#search=content+security+policy">https://caniuse.com/#search=content+security+policy</a></li>
+    <li><a href="https://content-security-policy.com/">https://content-security-policy.com/</a></li>
     <li><a href="https://github.com/shapesecurity/salvation">https://github.com/shapesecurity/salvation</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">https://cwe.mitre.org/data/definitions/16.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10055/">https://www.zaproxy.org/docs/alerts/10055/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -1215,6 +1246,8 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <ul>
     <li><a href="https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure">Top 10 2013-A6-Sensitive Data Exposure</a></li>
     <li><a href="https://projects.webappsec.org/w/page/13246936/Information%20Leakage">WASC - Information Leakage</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">https://cwe.mitre.org/data/definitions/200.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10094/">https://www.zaproxy.org/docs/alerts/10094/</a></li>    
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -1254,7 +1287,9 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     N/A
     <h3>References:</h3>
     <ul>
-    <li>&lt;p&gt;https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure&lt;/p&gt;&lt;p&gt;http://projects.webappsec.org/w/page/13246936/Information%20Leakage&lt;/p&gt;</li>
+    <li>&lt;p&gt;https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure&lt;/p&gt;&lt;p&gt;https://projects.webappsec.org/w/page/13246936/Information%20Leakage&lt;/p&gt;</li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">https://cwe.mitre.org/data/definitions/200.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10096/">https://www.zaproxy.org/docs/alerts/10096/</a></li>    
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -1277,6 +1312,8 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
     <li><a href="https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure">Sensitive Data Exposure</a></li>
     <li><a href="https://projects.webappsec.org/w/page/13246936/Information%20Leakage">Information Leakage</a></li>
     <li><a href="https://openwall.info/wiki/john/sample-hashes">sample hashes</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">https://cwe.mitre.org/data/definitions/200.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10097/">https://www.zaproxy.org/docs/alerts/10097/</a></li>    
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -1296,7 +1333,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
 Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://www.hpenterprisesecurity.com/vulncat/en/vulncat/vb/html5_overly_permissive_cors_policy.html">http://www.hpenterprisesecurity.com/vulncat/en/vulncat/vb/html5_overly_permissive_cors_policy.html</a></li>
+    <li><a href="https://www.hpenterprisesecurity.com/vulncat/en/vulncat/vb/html5_overly_permissive_cors_policy.html">https://www.hpenterprisesecurity.com/vulncat/en/vulncat/vb/html5_overly_permissive_cors_policy.html</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/264.html">CWE-264</a></li>    
 	<li><a href="https://www.zaproxy.org/docs/alerts/10098/">https://www.zaproxy.org/docs/alerts/10098/</a></li>
     </ul>]]>
@@ -1316,7 +1353,7 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <p>Ensure that application Source Code is not available with alternative extensions, and ensure that source code is not present within other files or data deployed to the web server, or served by the web server.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/">http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/</a></li>
+    <li><a href="https://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/">https://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/540.html">CWE-540</a></li>    
 	<li><a href="https://www.zaproxy.org/docs/alerts/10099/">https://www.zaproxy.org/docs/alerts/10099/</a></li>
     </ul>]]>
@@ -1357,6 +1394,7 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/OWASP_Periodic_Table_of_Vulnerabilities_-_Weak_Authentication_Methods">Weak Authentication Methods</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10105/">https://www.zaproxy.org/docs/alerts/10105/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -1467,6 +1505,9 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet">CSRF Prevention Cheat Sheet</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/352.html">https://cwe.mitre.org/data/definitions/352.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10202/">https://www.zaproxy.org/docs/alerts/10202/</a></li>    
+
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -1484,7 +1525,7 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://projects.webappsec.org/Cross-Site-Request-Forgery">http://projects.webappsec.org/Cross-Site-Request-Forgery</a></li>
+    <li><a href="https://projects.webappsec.org/Cross-Site-Request-Forgery">https://projects.webappsec.org/Cross-Site-Request-Forgery</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/352.html">CWE-352</a></li>    
 	<li><a href="https://www.zaproxy.org/docs/alerts/20012/">https://www.zaproxy.org/docs/alerts/20012/</a></li>
     </ul>]]>
@@ -1504,7 +1545,7 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <p>Properly sanitize the user input for parameter delimiters</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://www.google.com/search?q=http+parameter+pollution">http://www.google.com/search?q=http+parameter+pollution</a></li>
+    <li><a href="https://www.google.com/search?q=http+parameter+pollution">https://www.google.com/search?q=http+parameter+pollution</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>    
 	<li><a href="https://www.zaproxy.org/docs/alerts/20014/">https://www.zaproxy.org/docs/alerts/20014/</a></li>
     </ul>]]>
@@ -1524,7 +1565,7 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <p>Update to OpenSSL 1.0.1g or later. Re-issue HTTPS certificates. Change asymmetric private keys and shared secret keys, since these may have been compromised, with no evidence of compromise in the server log files.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://cvedetails.com/cve-details.php?t=1&cve_id=CVE-2014-0160">http://cvedetails.com/cve-details.php?t=1&cve_id=CVE-2014-0160</a></li>
+    <li><a href="https://cvedetails.com/cve-details.php?t=1&cve_id=CVE-2014-0160">https://cvedetails.com/cve-details.php?t=1&cve_id=CVE-2014-0160</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/119.html">CWE-119</a></li>    
 	<li><a href="https://www.zaproxy.org/docs/alerts/20015/">https://www.zaproxy.org/docs/alerts/20015/</a></li>
     </ul>]]>
@@ -1544,7 +1585,7 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <p>Correct/Add cross domain policy</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html">http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html</a></li>
+    <li><a href="https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html">https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/264.html">CWE-264</a></li>    
 	<li><a href="https://www.zaproxy.org/docs/alerts/20016/">https://www.zaproxy.org/docs/alerts/20016/</a></li>
     </ul>]]>
@@ -1614,7 +1655,7 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     redirect occurs, or force the user to click on the link. Be careful to avoid XSS problems when generating the disclaimer page.
     When the set of acceptable objects, such as filenames or URLs, is limited or known, create a mapping from a set of fixed input values (such as numeric IDs)
     to the actual filenames or URLs, and reject all other inputs.
-    For example, ID 1 could map to "/login.asp" and ID 2 could map to "http://www.example.com/". Features such as the ESAPI AccessReferenceMap provide this
+    For example, ID 1 could map to "/login.asp" and ID 2 could map to "https://www.example.com/". Features such as the ESAPI AccessReferenceMap provide this
     capability.
     Understand all the potential areas where untrusted inputs can enter your software: parameters or arguments, cookies, anything read from the network,
     environment variables, reverse DNS lookups, query results, request headers, URL components, e-mail, files, databases, and any external systems that provide
@@ -1624,6 +1665,7 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <ul>
     <li><a href="https://projects.webappsec.org/URL-Redirector-Abuse">URL Redirector Abuse</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/601.html">CWE-601: URL Redirection to Untrusted Site ('Open Redirect')</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/20019/">https://www.zaproxy.org/docs/alerts/20019/</a></li>    
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -1667,7 +1709,7 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
        stability of the system.</p>
     <h3>References:</h3>
     <ul>
-    <li>No Reference.</li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/30002/">https://www.zaproxy.org/docs/alerts/30002/</a></li>    
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -1706,6 +1748,9 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <ul>
     <li><a href="https://www.securityfocus.com/bid/9804">Multiple Vendor HTTP Response Splitting Vulnerability</a></li>
     <li><a href="https://www.owasp.org/index.php/HTTP_Response_Splitting">HTTP Response Splitting</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/113.html">https://cwe.mitre.org/data/definitions/113.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40003/">https://www.zaproxy.org/docs/alerts/40003/</a></li>    
+
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -1726,7 +1771,8 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     properly.  Use a generic 500 error page for internal server error.</p>
     <h3>References:</h3>
     <ul>
-    <li>No reference.</li>
+    <li><a href="https://cwe.mitre.org/data/definitions/472.html">https://cwe.mitre.org/data/definitions/472.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40008/">https://www.zaproxy.org/docs/alerts/40008/</a></li>        
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -1755,6 +1801,8 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.carleton.ca/~dmcfet/html/ssi.html">Server Side Includes</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/97.html">https://cwe.mitre.org/data/definitions/97.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40009/">https://www.zaproxy.org/docs/alerts/40009/</a></li>        
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -1798,6 +1846,7 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <ul>
     <li><a href="https://projects.webappsec.org/Cross-Site-Scripting">Cross Site Scripting</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/79.html">CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40012/">https://www.zaproxy.org/docs/alerts/40012/</a></li>        
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -1863,6 +1912,7 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <ul>
     <li><a href="https://projects.webappsec.org/Cross-Site-Scripting">Cross Site Scripting</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/79.html">CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40014/">https://www.zaproxy.org/docs/alerts/40014/</a></li>        
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -1882,7 +1932,8 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <p>N/A</p>
     <h3>References:</h3>
     <ul>
-    <li>No reference.</li>
+    <li><a href="https://cwe.mitre.org/data/definitions/79.html">https://cwe.mitre.org/data/definitions/79.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40016/">https://www.zaproxy.org/docs/alerts/40016/</a></li>            
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -1902,7 +1953,8 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <p>N/A</p>
     <h3>References:</h3>
     <ul>
-    <li>No reference.</li>
+    <li><a href="https://cwe.mitre.org/data/definitions/79.html">https://cwe.mitre.org/data/definitions/79.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40017/">https://www.zaproxy.org/docs/alerts/40017/</a></li>        
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -1935,6 +1987,8 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
     <ul>
     <li><a href="https://www.owasp.org/index.php/Top_10_2010-A1">Top 10 2010-A1-Injection</a></li>
     <li><a href="https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet">SQL Injection Prevention Cheat Sheet</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">https://cwe.mitre.org/data/definitions/89.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40018/">https://www.zaproxy.org/docs/alerts/40018/</a></li>        
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -2158,7 +2212,7 @@ For any data that will be output to another web page, especially any data that w
 Consult the XSS Prevention Cheat Sheet for more details on the types of encoding and escaping that are needed.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://projects.webappsec.org/Cross-Site-Scripting">http://projects.webappsec.org/Cross-Site-Scripting</a></li>
+    <li><a href="https://projects.webappsec.org/Cross-Site-Scripting">https://projects.webappsec.org/Cross-Site-Scripting</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/79.html">CWE-79</a></li>    
 	<li><a href="https://www.zaproxy.org/docs/alerts/40026/">https://www.zaproxy.org/docs/alerts/40026/</a></li>
     </ul>]]>
@@ -2233,6 +2287,8 @@ Grant the minimum database access that is necessary for the application.</p>
     <li><a href="https://msdn.microsoft.com/en-us/library/bb386420.aspx">ASP.NET Tracing Overview</a></li>
     <li><a href="https://msdn.microsoft.com/en-us/library/wwh16c6c.aspx">How to: View ASP.NET Trace Information with the Trace Viewer</a></li>
     <li><a href="https://www.dotnetperls.com/trace">ASP.NET Trace Examples - Dot Net Perls</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/215.html">https://cwe.mitre.org/data/definitions/215.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40029/">https://www.zaproxy.org/docs/alerts/40029/</a></li>        
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -2312,7 +2368,8 @@ Grant the minimum database access that is necessary for the application.</p>
     </p>
     <h3>References:</h3>
     <ul>
-    <li>No reference</li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">https://cwe.mitre.org/data/definitions/89.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/50001/">https://www.zaproxy.org/docs/alerts/50001/</a></li>            
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -2332,7 +2389,7 @@ Grant the minimum database access that is necessary for the application.</p>
     </p>
     <h3>References:</h3>
     <ul>
-    <li>No reference</li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/90001/">https://www.zaproxy.org/docs/alerts/90001/</a></li>            
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -2413,6 +2470,7 @@ Grant the minimum database access that is necessary for the application.</p>
     <ul>
     <li><a href="https://www.w3.org/TR/html401/charset.html#h-5.2.2">Charset</a></li>
     <li><a href="https://www.w3.org/TR/html5/document-metadata.html#charset">Document Metadata Charset</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/90011/">https://www.zaproxy.org/docs/alerts/90011/</a></li>
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -2455,6 +2513,7 @@ Grant the minimum database access that is necessary for the application.</p>
     <ul>
     <li><a href="https://cwe.mitre.org/data/definitions/94.html">CWE-94: Improper Control of Generation of Code ('Code Injection')</a></li>
     <li><a href="https://www.owasp.org/index.php/Direct_Dynamic_Code_Evaluation_('Eval_Injection')">Direct Dynamic Code Evaluation ('Eval Injection')</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/90019/">https://www.zaproxy.org/docs/alerts/90019/</a></li>
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -2531,6 +2590,7 @@ Grant the minimum database access that is necessary for the application.</p>
     <ul>
     <li><a href="https://cwe.mitre.org/data/definitions/78.html">CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')</a></li>
     <li><a href="https://www.owasp.org/index.php/Command_Injection">Command Injection</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/90020/">https://www.zaproxy.org/docs/alerts/90020/</a></li>
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -2571,7 +2631,8 @@ Properly validate user input. Reject data where appropriate, filter where approp
     the client (browser) while logging the details on the server side and not exposing them to the user.</p>
     <h3>References:</h3>
     <ul>
-    <li>No Reference.</li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90022/">https://www.zaproxy.org/docs/alerts/90022/</a></li>
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -2590,7 +2651,7 @@ Properly validate user input. Reject data where appropriate, filter where approp
     <p>Disable processing of External Entities.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://projects.webappsec.org/XML-External-Entities">http://projects.webappsec.org/XML-External-Entities</a></li>
+    <li><a href="https://projects.webappsec.org/XML-External-Entities">https://projects.webappsec.org/XML-External-Entities</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/611.html">CWE-611</a></li>    
 	<li><a href="https://www.zaproxy.org/docs/alerts/90023/">https://www.zaproxy.org/docs/alerts/90023/</a></li>
     </ul>]]>
@@ -2610,7 +2671,7 @@ Properly validate user input. Reject data where appropriate, filter where approp
     <p>Update the affected server software, or modify the scripts so that they properly validate encrypted data before attempting decryption.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://netifera.com/research/">http://netifera.com/research/</a></li>
+    <li><a href="https://netifera.com/research/">https://netifera.com/research/</a></li>
     <li><a href="https://cwe.mitre.org/data/definitions/209.html">CWE-209</a></li>    
 	<li><a href="https://www.zaproxy.org/docs/alerts/90024/">https://www.zaproxy.org/docs/alerts/90024/</a></li>
     </ul>]]>
@@ -2692,7 +2753,7 @@ Properly validate user input. Reject data where appropriate, filter where approp
     </p>
     <h3>References:</h3>
     <ul>
-    <li>No Reference.</li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/90030/">https://www.zaproxy.org/docs/alerts/90030/</a></li>
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -2712,6 +2773,8 @@ Properly validate user input. Reject data where appropriate, filter where approp
     <li><a href="https://tools.ietf.org/html/rfc6265#section-4.1/></li>
     <li><a href="https://www.owasp.org/index.php/Testing_for_cookies_attributes_(OTG-SESS-002)/></li>
     <li><a href="https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies/></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/565.html">CWE-565</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90033/">https://www.zaproxy.org/docs/alerts/90033/</a></li>       
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -2747,7 +2810,7 @@ Properly validate user input. Reject data where appropriate, filter where approp
     N/A
     <h3>References:</h3>
     <ul>
-
+	<li><a href="https://www.zaproxy.org/docs/alerts/100000/">https://www.zaproxy.org/docs/alerts/100000/</a></li>
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -2764,7 +2827,7 @@ Properly validate user input. Reject data where appropriate, filter where approp
     N/A
     <h3>References:</h3>
     <ul>
-
+	<li><a href="https://www.zaproxy.org/docs/alerts/100001/">https://www.zaproxy.org/docs/alerts/100001/</a></li>
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -2783,7 +2846,9 @@ Properly validate user input. Reject data where appropriate, filter where approp
     <h3>References:</h3>
     <ul>
     <li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy">https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</a></li>
-    <li><a href="https://content-security-policy.com/">http://content-security-policy.com/</a></li>
+    <li><a href="https://content-security-policy.com/">https://content-security-policy.com/</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">CWE-16</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10038/">https://www.zaproxy.org/docs/alerts/10038/</a></li>       
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -2804,7 +2869,9 @@ Properly validate user input. Reject data where appropriate, filter where approp
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/HTTP_Strict_Transport_Security">https://www.owasp.org/index.php/HTTP_Strict_Transport_Security</a></li>
-    <li><a href="https://content-security-policy.com/">http://content-security-policy.com/</a></li>
+    <li><a href="https://content-security-policy.com/">https://content-security-policy.com/</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">CWE-16</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10035/">https://www.zaproxy.org/docs/alerts/10035/</a></li>       
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -2824,7 +2891,9 @@ Properly validate user input. Reject data where appropriate, filter where approp
     N/A
     <h3>References:</h3>
     <ul>
-    <li>&lt;p&gt;https://tools.ietf.org/html/rfc7234&lt;/p&gt;&lt;p&gt;https://tools.ietf.org/html/rfc7231&lt;/p&gt;&lt;p&gt;http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)&lt;/p&gt;</li>
+    <li>&lt;p&gt;https://tools.ietf.org/html/rfc7234&lt;/p&gt;&lt;p&gt;https://tools.ietf.org/html/rfc7231&lt;/p&gt;&lt;p&gt;https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)&lt;/p&gt;</li>
+    <li><a href="https://cwe.mitre.org/data/definitions/524.html">CWE-524</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10049/">https://www.zaproxy.org/docs/alerts/10049/</a></li>       
     </ul>]]>
         </description>
         <severity>INFO</severity>
