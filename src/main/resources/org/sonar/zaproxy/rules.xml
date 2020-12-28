@@ -2082,7 +2082,7 @@ Grant the minimum database access that is necessary for the application.</p>
 	<li><a href="https://www.zaproxy.org/docs/alerts/40023/">https://www.zaproxy.org/docs/alerts/40023/</a></li>
     </ul>]]>
         </description>
-        <severity>MAJOR</severity>
+        <severity>INFO</severity>
         <status>READY</status>
         <tag>cweid-200</tag>
         <tag>wascid-13</tag>
