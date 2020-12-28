@@ -2722,6 +2722,23 @@ Properly validate user input. Reject data where appropriate, filter where approp
         <tag>cweid-565</tag>
     </rule>
     <rule>
+        <key>90034</key>
+        <name>Cloud Metadata Potentially Exposed</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not trust any user data in NGINX configs. In this case it is probably the use of the $host variable which is set from the 'Host' header and can be controlled by an attacker.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.nginx.com/blog/trust-no-one-perils-of-trusting-user-input/">https://www.nginx.com/blog/trust-no-one-perils-of-trusting-user-input//a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/90034/">https://www.zaproxy.org/docs/alerts/90034/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
         <key>100000</key>
         <name>A Server Error response code was returned by the server</name>
         <description>
