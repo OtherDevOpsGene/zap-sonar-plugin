@@ -2541,6 +2541,28 @@ Grant the minimum database access that is necessary for the application.</p>
         <tag>zaproxy</tag>
     </rule>
     <rule>
+        <key>90021</key>
+        <name>XPath Injection</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Use parameterized XPath queries (e.g. using XQuery). This will help ensure separation between data plane and control plane.
+
+Properly validate user input. Reject data where appropriate, filter where appropriate and escape where appropriate. Make sure input that will be used in XPath queries is safe in that context.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/XPath-Injection">https://projects.webappsec.org/XPath-Injection</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/643.html">CWE-643</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90021/">https://www.zaproxy.org/docs/alerts/90021/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-643</tag>
+        <tag>wascid-39</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
         <key>90022</key>
         <name>Application Error Disclosure</name>
         <description>
@@ -2559,7 +2581,107 @@ Grant the minimum database access that is necessary for the application.</p>
         <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
-    </rule>
+    </rule>    
+    <rule>
+        <key>90023</key>
+        <name>XML External Entity Attack</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Disable processing of External Entities.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="http://projects.webappsec.org/XML-External-Entities">http://projects.webappsec.org/XML-External-Entities</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/611.html">CWE-611</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90023/">https://www.zaproxy.org/docs/alerts/90023/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-611</tag>
+        <tag>wascid-43</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>90024</key>
+        <name>Generic Padding Oracle</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Update the affected server software, or modify the scripts so that they properly validate encrypted data before attempting decryption.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="http://netifera.com/research/">http://netifera.com/research/</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/209.html">CWE-209</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90024/">https://www.zaproxy.org/docs/alerts/90024/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-209</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>90025</key>
+        <name>Expression Language Injection</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Perform data validation best practice against untrusted input and to ensure that output encoding is applied when data arrives on the EL layer, so that no metacharacter is found by the interpreter within the user content before evaluation. The most obvious patterns to detect include ${ and #{, but it may be possible to encode or fragment this data.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/XPath-Injection">https://projects.webappsec.org/XPath-Injection</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/917.html">CWE-917</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90025/">https://www.zaproxy.org/docs/alerts/90025/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-917</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>90027</key>
+        <name>Cookie Slack Detector</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>TBA.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Fingerprinting">https://projects.webappsec.org/Fingerprinting</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90027/">https://www.zaproxy.org/docs/alerts/90027/</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>cweid-200</tag>
+        <tag>wascid-45</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>90028</key>
+        <name>Insecure HTTP Method</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>TBA.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Fingerprinting">https://projects.webappsec.org/Fingerprinting</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90028/">https://www.zaproxy.org/docs/alerts/90028/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-200</tag>
+        <tag>wascid-45</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>90030</key>
         <name>WSDL File Passive Scanner</name>
