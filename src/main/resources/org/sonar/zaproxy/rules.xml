@@ -368,7 +368,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
         <severity>MINOR</severity>
         <status>READY</status>
         <tag>wascid-15</tag>
-        <tag>cwe-1004</tag>
+        <tag>cweid-1004</tag>
         <tag>owasp-a2</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
@@ -390,7 +390,7 @@ Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directive
         <severity>MINOR</severity>
         <status>READY</status>
         <tag>wascid-4</tag>
-        <tag>cwe-614</tag>
+        <tag>cweid-614</tag>
         <tag>owasp-a2</tag>
         <tag>owasp-a3</tag>
         <tag>security</tag>
