@@ -2121,6 +2121,107 @@ Grant the minimum database access that is necessary for the application.</p>
         <tag>zaproxy</tag>
     </rule> 
     <rule>
+        <key>40025</key>
+        <name>Proxy Disclosure</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Disable the 'TRACE' method on the proxy servers, as well as the origin web/application server.
+Disable the 'OPTIONS' method on the proxy servers, as well as the origin web/application server, if it is not required for other purposes, such as 'CORS' (Cross Origin Resource Sharing).
+Configure the web and application servers with custom error pages, to prevent 'fingerprintable' product-specific error pages being leaked to the user in the event of HTTP errors, such as 'TRACK' requests for non-existent pages.
+Configure all proxies, application servers, and web servers to prevent disclosure of the technology and version information in the 'Server' and 'X-Powered-By' HTTP response headers.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://tools.ietf.org/html/rfc7231#section-5.1.2">https://tools.ietf.org/html/rfc7231#section-5.1.2</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40025/">https://www.zaproxy.org/docs/alerts/40025/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-200</tag>
+        <tag>wascid-45</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40026</key>
+        <name>Cross Site Scripting (DOM Based)</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Phase: Architecture and Design
+Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.
+Examples of libraries and frameworks that make it easier to generate properly encoded output include Microsoft's Anti-XSS library, the OWASP ESAPI Encoding module, and Apache Wicket.
+
+Phases: Implementation; Architecture and Design
+Understand the context in which your data will be used and the encoding that will be expected. This is especially important when transmitting data between different components, or when generating outputs that can contain multiple encodings at the same time, such as web pages or multi-part mail messages. Study all expected communication protocols and data representations to determine the required encoding strategies.
+For any data that will be output to another web page, especially any data that was received from external inputs, use the appropriate encoding on all non-alphanumeric characters.
+Consult the XSS Prevention Cheat Sheet for more details on the types of encoding and escaping that are needed.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="http://projects.webappsec.org/Cross-Site-Scripting">http://projects.webappsec.org/Cross-Site-Scripting</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/79.html">CWE-79</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40026/">https://www.zaproxy.org/docs/alerts/40026/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-79</tag>
+        <tag>wascid-8</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40027</key>
+        <name>SQL Injection - MsSQL</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not trust client side input, even if there is client side validation in place. 
+In general, type check all data on the server side.
+If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'
+If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.
+If database Stored Procedures can be used, use them.
+Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!
+Do not create dynamic SQL queries using simple string concatenation.
+Escape all data received from the client.
+Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.
+Apply the privilege of least privilege by using the least privileged database user possible.
+In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.
+Grant the minimum database access that is necessary for the application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">CWE-89</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40027/">https://www.zaproxy.org/docs/alerts/40027/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-89</tag>
+        <tag>wascid-19</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40028</key>
+        <name>ELMAH Information Leak</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Consider whether or not ELMAH is actually required in production, if it isn't then disable it. If it is then ensure access to it requires authentication and authorization. See also: https://elmah.github.io/a/securing-error-log-pages/</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.troyhunt.com/aspnet-session-hijacking-with-google/">https://www.troyhunt.com/aspnet-session-hijacking-with-google/</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/215.html">CWE-215</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40028/">https://www.zaproxy.org/docs/alerts/40028/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-215</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
         <key>40029</key>
         <name>Trace.axd Information Leak</name>
 
