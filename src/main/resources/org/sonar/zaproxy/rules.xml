@@ -2422,6 +2422,26 @@ Grant the minimum database access that is necessary for the application.</p>
         <tag>owasp-a6</tag>
     </rule>
     <rule>
+        <key>90017</key>
+        <name>XSLT Injection</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Sanitize and analyze every user input coming from any client-side.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.contextis.com/blog/xslt-server-side-injection-attacks">https://www.contextis.com/blog/xslt-server-side-injection-attacks</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/91.html">CWE-91</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90017/">https://www.zaproxy.org/docs/alerts/90017/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-91</tag>
+        <tag>wascid-23</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
         <key>90019</key>
         <name>Server Side Code Injection</name>
 
