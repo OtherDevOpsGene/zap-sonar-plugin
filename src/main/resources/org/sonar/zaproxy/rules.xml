@@ -1809,6 +1809,27 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
         <tag>zaproxy</tag>
     </rule>
     <rule>
+        <key>40013</key>
+        <name>Session Fixation</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Prevent the attacker from gaining a session id by enforcing strict session ids, and by only allocating session ids upon successful authentication to the application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://owasp.org/www-community/attacks/Session_fixation">https://owasp.org/www-community/attacks/Session_fixation</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/384.html">CWE-384</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40013/">https://www.zaproxy.org/docs/alerts/40013/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-384</tag>
+        <tag>wascid-37</tag>
+        <tag>owasp-a2</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
         <key>40014</key>
         <name>Cross Site Scripting (Persistent)</name>
 
@@ -1924,6 +1945,181 @@ Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive se
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    <rule>
+        <key>40019</key>
+        <name>SQL Injection - MySQL</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not trust client side input, even if there is client side validation in place. 
+In general, type check all data on the server side.
+If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'
+If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.
+If database Stored Procedures can be used, use them.
+Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!
+Do not create dynamic SQL queries using simple string concatenation.
+Escape all data received from the client.
+Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.
+Apply the privilege of least privilege by using the least privileged database user possible.
+In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.
+Grant the minimum database access that is necessary for the application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">CWE-89</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40019/">https://www.zaproxy.org/docs/alerts/40019/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-89</tag>
+        <tag>wascid-19</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40020</key>
+        <name>SQL Injection - Hypersonic SQL</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not trust client side input, even if there is client side validation in place. 
+In general, type check all data on the server side.
+If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'
+If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.
+If database Stored Procedures can be used, use them.
+Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!
+Do not create dynamic SQL queries using simple string concatenation.
+Escape all data received from the client.
+Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.
+Apply the privilege of least privilege by using the least privileged database user possible.
+In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.
+Grant the minimum database access that is necessary for the application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">CWE-89</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40020/">https://www.zaproxy.org/docs/alerts/40020/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-89</tag>
+        <tag>wascid-19</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40021</key>
+        <name>SQL Injection - Oracle</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not trust client side input, even if there is client side validation in place. 
+In general, type check all data on the server side.
+If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'
+If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.
+If database Stored Procedures can be used, use them.
+Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!
+Do not create dynamic SQL queries using simple string concatenation.
+Escape all data received from the client.
+Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.
+Apply the privilege of least privilege by using the least privileged database user possible.
+In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.
+Grant the minimum database access that is necessary for the application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">CWE-89</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40021/">https://www.zaproxy.org/docs/alerts/40021/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-89</tag>
+        <tag>wascid-19</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40022</key>
+        <name>SQL Injection - PostgreSQL</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not trust client side input, even if there is client side validation in place. 
+In general, type check all data on the server side.
+If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'
+If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.
+If database Stored Procedures can be used, use them.
+Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!
+Do not create dynamic SQL queries using simple string concatenation.
+Escape all data received from the client.
+Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.
+Apply the privilege of least privilege by using the least privileged database user possible.
+In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.
+Grant the minimum database access that is necessary for the application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">CWE-89</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40022/">https://www.zaproxy.org/docs/alerts/40022/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-89</tag>
+        <tag>wascid-19</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40023</key>
+        <name>Possible Username Enumeration</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not divulge details of whether a username is valid or invalid. In particular, for unsuccessful login attempts, do not differentiate between an invalid user and an invalid password in the error message, page title, page contents, HTTP headers, or redirection logic.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account.html">https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40023/">https://www.zaproxy.org/docs/alerts/40023/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-200</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40024</key>
+        <name>SQL Injection - SQLite</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not trust client side input, even if there is client side validation in place. 
+In general, type check all data on the server side.
+If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'
+If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.
+If database Stored Procedures can be used, use them.
+Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!
+Do not create dynamic SQL queries using simple string concatenation.
+Escape all data received from the client.
+Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.
+Apply the privilege of least privilege by using the least privileged database user possible.
+In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.
+Grant the minimum database access that is necessary for the application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">CWE-89</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40024/">https://www.zaproxy.org/docs/alerts/40024/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-89</tag>
+        <tag>wascid-19</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>40029</key>
         <name>Trace.axd Information Leak</name>
