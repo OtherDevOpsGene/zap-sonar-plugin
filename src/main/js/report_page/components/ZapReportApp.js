@@ -48,7 +48,6 @@ const ZapReportApp = ({ options }) => {
   }, []);
 
   return (
-    /* jshint ignore:start */
     <div className="page zap-report-container">
       { !htmlReportString &&
         <DeferredSpinner />
@@ -63,7 +62,6 @@ const ZapReportApp = ({ options }) => {
         />
       }
     </div>
-    /* jshint ignore:end */
   );
 };
 
