@@ -52,6 +52,9 @@ docker logs sonarqube
 
 Look for a line that says `SonarQube is up`.
 
+(If you add the `-f` flag it will follow the output, so you don't have to reload.
+But you'll need to <key><key>Ctrl</key>-<key>C</key><key> to stop following.)
+
 Then run an analysis using the test report:
 
 ```bash
