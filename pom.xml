@@ -5,7 +5,7 @@
 
     <groupId>org.sonarsource.owasp</groupId>
     <artifactId>sonar-zap-plugin</artifactId>
-    <version>2.0.3-SNAPSHOT</version>
+    <version>2.1.0-SNAPSHOT</version>
     <packaging>sonar-plugin</packaging>
 
     <properties>
@@ -18,7 +18,8 @@
         <sonar.apiVersion>7.9.5</sonar.apiVersion>
         <sonar.pluginClass>org.sonar.zaproxy.ZapPlugin</sonar.pluginClass>
         <sonar.packaging.maven.plugin.version>1.20.0.405</sonar.packaging.maven.plugin.version>
-        <sonar.zaproxy.reportPath>${project.basedir}/src/test/resources/report/zaproxy-report.xml</sonar.zaproxy.reportPath>
+        <sonar.zaproxy.reportPath>${project.basedir}/src/test/resources/report/dvwa.xml</sonar.zaproxy.reportPath>
+        <sonar.zaproxy.htmlReportPath>${project.basedir}/src/test/resources/report/dvwa.html</sonar.zaproxy.htmlReportPath>
 
         <java.version>1.8</java.version>
         <maven.version>3.5.4</maven.version>
@@ -50,6 +51,7 @@
         <pitest.junit5.plugin.version>0.12</pitest.junit5.plugin.version>
         <license.maven.plugin.version>2.0.0</license.maven.plugin.version>
         <docker.maven.plugin.version>0.34.1</docker.maven.plugin.version>
+        <frontend.maven.plugin.version>1.11.0</frontend.maven.plugin.version>
 
         <commons.lang3.version>3.11</commons.lang3.version>
         <jsr305.version>3.0.2</jsr305.version>
@@ -58,6 +60,8 @@
         <junit.version>5.7.0</junit.version>
         <assertj.version>3.18.1</assertj.version>
         <mockito.version>3.6.28</mockito.version>
+
+        <nodejs.version>v14.15.3</nodejs.version>
     </properties>
 
     <dependencyManagement>
@@ -151,6 +155,16 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>${maven.clean.plugin.version}</version>
+                    <configuration>
+                        <filesets>
+                            <fileset>
+                                <directory>node</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>node_modules</directory>
+                            </fileset>
+                        </filesets>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -353,6 +367,16 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>${docker.maven.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.eirslett</groupId>
+                    <artifactId>frontend-maven-plugin</artifactId>
+                    <version>${frontend.maven.plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -462,6 +486,52 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <id>install node and npm </id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>${nodejs.version}</nodeVersion>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <id>npm audit</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>audit</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <id>npm run script</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run build</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -500,6 +570,9 @@
         <contributor>
             <name>Niklas Mehner</name>
             <email>niklas.mehner@gmail.com</email>
+        </contributor>
+        <contributor>
+            <name>pangyiwei</name>
         </contributor>
     </contributors>
 
@@ -573,7 +646,6 @@
                     <plugin>
                         <groupId>io.fabric8</groupId>
                         <artifactId>docker-maven-plugin</artifactId>
-                        <version>${docker.maven.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>default</id>

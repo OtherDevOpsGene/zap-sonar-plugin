@@ -52,6 +52,9 @@ docker logs sonarqube
 
 Look for a line that says `SonarQube is up`.
 
+(If you add the `-f` flag it will follow the output, so you don't have to reload.
+But you'll need to <key><key>Ctrl</key>-<key>C</key><key> to stop following.)
+
 Then run an analysis using the test report:
 
 ```bash
@@ -60,7 +63,10 @@ mvn sonar:sonar
 
 The ZAP results can be viewed at
 <http://localhost:9000/project/issues?id=org.sonarsource.owasp%3Asonar-zap-plugin&resolved=false&tags=zaproxy>.
-There should be 14 issues: 1 Major, 9 Minor, 4 Info.
+There should be 13 issues: 4 Major, 5 Minor, 4 Info.
+
+The ZAP HTML report can be viewed from within SonarQube under `More` > `ZAP` at
+<http://localhost:9000/project/extension/zap/report_page?id=org.sonarsource.owasp%3Asonar-zap-plugin&qualifier=TRK>.
 
 ## Releasing
 

@@ -1,4 +1,4 @@
-package org.sonar.zaproxy;
+package org.sonar.zaproxy.ui;
 
 /*-
  * #%L
@@ -22,26 +22,21 @@ package org.sonar.zaproxy;
  * #L%
  */
 
-import org.sonar.api.config.Configuration;
-import org.sonar.api.scanner.ScannerSide;
-import org.sonar.zaproxy.base.ZapConstants;
+import org.sonar.api.web.page.Context;
+import org.sonar.api.web.page.Page;
+import org.sonar.api.web.page.Page.Scope;
+import org.sonar.api.web.page.PageDefinition;
 
-@ScannerSide
-public class ZapSensorConfiguration {
+public class ZapPageDefinition implements PageDefinition {
 
-  private final Configuration config;
-
-  public ZapSensorConfiguration(final Configuration config) {
-    this.config = config;
-  }
-
-  public String getReportPath() {
-    return this.config.get(ZapConstants.REPORT_PATH_PROPERTY).orElse("missing/report/path");
-  }
-
-  public String getHtmlReportPath() {
-    return this.config
-        .get(ZapConstants.HTML_REPORT_PATH_PROPERTY)
-        .orElse("missing/html/report/path");
+  @Override
+  public void define(Context context) {
+    context.addPage(
+        Page.builder("zap/report_page")
+            .setScope(Scope.COMPONENT)
+            .setComponentQualifiers(Page.Qualifier.PROJECT, Page.Qualifier.MODULE)
+            .setName("ZAP")
+            .setAdmin(false)
+            .build());
   }
 }

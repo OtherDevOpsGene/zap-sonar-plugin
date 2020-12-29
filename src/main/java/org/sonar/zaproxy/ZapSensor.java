@@ -40,6 +40,7 @@ import org.sonar.api.utils.log.Loggers;
 import org.sonar.api.utils.log.Profiler;
 import org.sonar.zaproxy.base.ZapMetrics;
 import org.sonar.zaproxy.base.ZapUtils;
+import org.sonar.zaproxy.parser.HtmlReportFile;
 import org.sonar.zaproxy.parser.ReportParser;
 import org.sonar.zaproxy.parser.XmlReportFile;
 import org.sonar.zaproxy.parser.element.AlertItem;
@@ -53,6 +54,7 @@ public class ZapSensor implements Sensor {
   private static final Logger LOGGER = Loggers.get(ZapSensor.class);
 
   private final XmlReportFile report;
+  private final HtmlReportFile htmlReport;
 
   private int totalAlerts;
   private int criticalIssuesCount;
@@ -63,6 +65,7 @@ public class ZapSensor implements Sensor {
   public ZapSensor(
       ZapSensorConfiguration configuration, FileSystem fileSystem, PathResolver pathResolver) {
     this.report = new XmlReportFile(configuration, fileSystem, pathResolver);
+    this.htmlReport = new HtmlReportFile(configuration, fileSystem, pathResolver);
   }
 
   private void addIssue(SensorContext context, AlertItem alert) {
@@ -177,6 +180,16 @@ public class ZapSensor implements Sensor {
       profiler.stopInfo();
     }
     saveMeasures(context);
+
+    try {
+      uploadHtmlReport(context);
+    } catch (IOException e) {
+      throw MessageException.of(
+          "Can not upload ZAP HTML report. Ensure the report are located within the project"
+              + " workspace and that sonar.sources is set to reflect these paths (or set"
+              + " sonar.sources=.)",
+          e);
+    }
   }
 
   private void saveMeasures(SensorContext context) {
@@ -197,6 +210,19 @@ public class ZapSensor implements Sensor {
         .forMetric(ZapMetrics.IDENTIFIED_RISK_SCORE)
         .withValue(
             ZapMetrics.inheritedRiskScore(criticalIssuesCount, majorIssuesCount, minorIssuesCount));
+  }
+
+  private void uploadHtmlReport(SensorContext context) throws IOException {
+    String reportContent = htmlReport.getReportContent();
+    if (reportContent != null) {
+      LOGGER.info("Upload ZAP HTML Report");
+      context
+          .<String>newMeasure()
+          .forMetric(ZapMetrics.HTML_REPORT)
+          .on(context.project())
+          .withValue(reportContent)
+          .save();
+    }
   }
 
   @Override
