@@ -95,10 +95,6 @@ public final class ZapMetrics implements Metrics {
           .setHidden(false)
           .create();
 
-  public static double inheritedRiskScore(int high, int medium, int low) {
-    return (high * 5.0d) + (medium * 3.0d) + (low * 1.0d);
-  }
-
   public static final Metric<String> HTML_REPORT =
       new Metric.Builder(HTML_REPORT_KEY, "ZAP Report", Metric.ValueType.DATA)
           .setDescription("Report HTML")
@@ -107,6 +103,10 @@ public final class ZapMetrics implements Metrics {
           .setHidden(false)
           .setDeleteHistoricalData(true)
           .create();
+
+  public static double inheritedRiskScore(int high, int medium, int low) {
+    return (high * 5.0d) + (medium * 3.0d) + (low * 1.0d);
+  }
 
   @Override
   public List<Metric> getMetrics() {

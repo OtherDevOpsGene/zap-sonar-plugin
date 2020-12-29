@@ -24,6 +24,7 @@ package org.sonar.zaproxy.parser;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import javax.annotation.CheckForNull;
@@ -88,7 +89,8 @@ public class HtmlReportFile {
       LOGGER.warn("ZAP html report does not exist.");
       return null;
     }
-    return new String(Files.readAllBytes(Paths.get(htmlReportFile.getPath())));
+    return new String(
+        Files.readAllBytes(Paths.get(htmlReportFile.getPath())), StandardCharsets.UTF_8);
   }
 
   public boolean exist() {

@@ -184,7 +184,7 @@ public class ZapSensor implements Sensor {
     try {
       uploadHtmlReport(context);
     } catch (IOException e) {
-      throw new RuntimeException(
+      throw MessageException.of(
           "Can not upload ZAP HTML report. Ensure the report are located within the project"
               + " workspace and that sonar.sources is set to reflect these paths (or set"
               + " sonar.sources=.)",
