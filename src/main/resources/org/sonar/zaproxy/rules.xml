@@ -38,8 +38,11 @@ If you want to add a rule, you can, following the model above.
   <p>Disable directory browsing. If this is required, make sure the listed files does not induce risks.</p>
   <h3>References:</h3>
   <ul>
-  <li><a href="http://httpd.apache.org/docs/mod/core.html#options">Directive Options</a></li>
-  <li><a href="http://alamo.satlug.org/pipermail/satlug/2002-February/000053.html">Apache Dir/Browsing Question</a></li>
+  <li><a href="https://httpd.apache.org/docs/mod/core.html#options">Directive Options</a></li>
+  <li><a href="https://alamo.satlug.org/pipermail/satlug/2002-February/000053.html">Apache Dir/Browsing Question</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/548.html">CWE-548</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/0/">https://www.zaproxy.org/docs/alerts/0/</a></li>
+
   </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -75,6 +78,8 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://tools.ietf.org/html/rfc1918">Address Allocation for Private Internets</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/2/">https://www.zaproxy.org/docs/alerts/2/</a></li>
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -94,7 +99,9 @@ If you want to add a rule, you can, following the model above.
     <p>For secure content, put session ID in a cookie. To be even more secure consider using a combination of cookie and URL rewrite.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://seclists.org/lists/webappsec/2002/Oct-Dec/0111.html">Hijacking URL Encoded Session IDs using Referer Logs</a></li>
+    <li><a href="https://seclists.org/lists/webappsec/2002/Oct-Dec/0111.html">Hijacking URL Encoded Session IDs using Referer Logs</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/3/">https://www.zaproxy.org/docs/alerts/3/</a></li>
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -151,8 +158,9 @@ If you want to add a rule, you can, following the model above.
     </p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://projects.webappsec.org/Path-Traversal">Path Traversal</a></li>
-    <li><a href="http://cwe.mitre.org/data/definitions/22.html">CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')</a></li>
+    <li><a href="https://projects.webappsec.org/Path-Traversal">Path Traversal</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/22.html">CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/6/">https://www.zaproxy.org/docs/alerts/6/</a></li>
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -217,9 +225,10 @@ If you want to add a rule, you can, following the model above.
     </p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://projects.webappsec.org/Remote-File-Inclusion">Remote File Inclusion</a></li>
-    <li><a href="http://cwe.mitre.org/data/definitions/98.html">CWE-98: Improper Control of Filename for Include/Require Statement in PHP Program
+    <li><a href="https://projects.webappsec.org/Remote-File-Inclusion">Remote File Inclusion</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/98.html">CWE-98: Improper Control of Filename for Include/Require Statement in PHP Program
     ('PHP Remote File Inclusion')</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/7/">https://www.zaproxy.org/docs/alerts/7/</a></li>
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -227,6 +236,118 @@ If you want to add a rule, you can, following the model above.
         <tag>cweid-98</tag>
         <tag>wascid-5</tag>
         <tag>owasp-a5</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
+        <key>41</key>
+        <name>Source Code Disclosure - Git</name>
+
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that Git metadata files are not deployed to the web server or application server.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Predictable-Resource-Location">https://projects.webappsec.org/Predictable-Resource-Location</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/425.html">https://cwe.mitre.org/data/definitions/425.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/41/">https://www.zaproxy.org/docs/alerts/41/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-425</tag>
+        <tag>cweid-541</tag>        
+        <tag>wascid-34</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
+        <key>42</key>
+        <name>Source Code Disclosure - SVN</name>
+
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that SVN metadata files are not deployed to the web server or application server.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Predictable-Resource-Location">https://projects.webappsec.org/Predictable-Resource-Location</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/425.html">https://cwe.mitre.org/data/definitions/425.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/42/">https://www.zaproxy.org/docs/alerts/42/</a></li>
+
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-425</tag>
+        <tag>cweid-541</tag>        
+        <tag>wascid-34</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
+        <key>43</key>
+        <name>Source Code Disclosure - File Inclusion</name>
+
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that Source Code files are not deployed to the web server or application server.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Predictable-Resource-Location">https://projects.webappsec.org/Predictable-Resource-Location</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/425.html">https://cwe.mitre.org/data/definitions/425.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/43/">https://www.zaproxy.org/docs/alerts/43/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-425</tag>
+        <tag>cweid-541</tag>        
+        <tag>wascid-34</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
+        <key>10003</key>
+        <name>Vulnerable JS Library</name>
+
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Please upgrade to the latest version of ExampleLibrary.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cwe.mitre.org/data/definitions/829.html">https://cwe.mitre.org/data/definitions/829.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/937.html">https://cwe.mitre.org/data/definitions/937.html</a></li>        
+    <li><a href="https://www.zaproxy.org/docs/alerts/10003/">https://www.zaproxy.org/docs/alerts/10003/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-829</tag>
+        <tag>cweid-937</tag>     
+        <tag>owasp-a9</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
+        <key>10009</key>
+        <name>In Page Banner Information Leak</name>
+
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>"Configure the server to prevent such information leaks. For example:
+Under Tomcat this is done via the 'server' directive and implementation of custom error pages.
+Under Apache this is done via the 'ServerSignature' and 'ServerTokens' directives.".</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/">https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">https://cwe.mitre.org/data/definitions/200.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10009/">https://www.zaproxy.org/docs/alerts/10009/</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>cweid-200</tag>
+        <tag>wascid-13</tag>     
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
@@ -240,16 +361,18 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/HttpOnly">HttpOnly</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/1004.html">https://cwe.mitre.org/data/definitions/1004.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10010/">https://www.zaproxy.org/docs/alerts/10010/</a></li>
     </ul>]]>
         </description>
         <severity>MINOR</severity>
         <status>READY</status>
         <tag>wascid-15</tag>
-        <tag>cwe-1004</tag>
+        <tag>cweid-1004</tag>
         <tag>owasp-a2</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
-    </rule>
+    </rule>    
     <rule>
         <key>10011</key>
         <name>Cookie set without secure flag</name>
@@ -259,13 +382,15 @@ If you want to add a rule, you can, following the model above.
     Ensure that the secure flag is set for cookies containing such sensitive information.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://www.owasp.org/index.php/Testing_for_cookies_attributes_(OWASP-SM-002)">Testing for cookies attributes (OTG-SESS-002)</a></li>
+    <li><a href="https://www.owasp.org/index.php/Testing_for_cookies_attributes_(OWASP-SM-002)">Testing for cookies attributes (OTG-SESS-002)</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/614.html">https://cwe.mitre.org/data/definitions/614.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10011/">https://www.zaproxy.org/docs/alerts/10011/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
         <status>READY</status>
         <tag>wascid-4</tag>
-        <tag>cwe-614</tag>
+        <tag>cweid-614</tag>
         <tag>owasp-a2</tag>
         <tag>owasp-a3</tag>
         <tag>security</tag>
@@ -280,7 +405,9 @@ If you want to add a rule, you can, following the model above.
     <p>Turn off AUTOCOMPLETE attribute in form or individual input elements containing password by using AUTOCOMPLETE='OFF'</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://msdn.microsoft.com/library/default.asp?url=/workshop/author/forms/autocomplete_ovr.asp">Autocomplete</a></li>
+    <li><a href="https://msdn.microsoft.com/library/default.asp?url=/workshop/author/forms/autocomplete_ovr.asp">Autocomplete</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/525.html">https://cwe.mitre.org/data/definitions/525.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10012/">https://www.zaproxy.org/docs/alerts/10012/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -301,6 +428,8 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Session_Management_Cheat_Sheet#Web_Content_Caching">Web Content Caching</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/525.html">https://cwe.mitre.org/data/definitions/525.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10015/">https://www.zaproxy.org/docs/alerts/10015/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -321,6 +450,8 @@ If you want to add a rule, you can, following the model above.
     <ul>
     <li><a href="https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet">XSS (Cross Site Scripting) Prevention Cheat Sheet</a></li>
     <li><a href="https://blog.veracode.com/2014/03/guidelines-for-setting-security-headers">Guidelines for Setting Security Headers</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/933.html">https://cwe.mitre.org/data/definitions/933.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10016/">https://www.zaproxy.org/docs/alerts/10016/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -339,7 +470,7 @@ If you want to add a rule, you can, following the model above.
     <p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application</p>
     <h3>References:</h3>
     <ul>
-    <li>No reference.</li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10017/">https://www.zaproxy.org/docs/alerts/10017/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -356,7 +487,8 @@ If you want to add a rule, you can, following the model above.
     <p>Ensure each page is setting the specific and appropriate content-type value for the content being delivered</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx">Reducing MIME type security risks</a></li>
+    <li><a href="https://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx">Reducing MIME type security risks</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10019/">https://www.zaproxy.org/docs/alerts/10019/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -376,7 +508,8 @@ If you want to add a rule, you can, following the model above.
     if you never expect the page to be framed, you should use DENY.  ALLOW-FROM allows specific websites to frame the web page in supported web browsers).</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://blogs.msdn.com/b/ieinternals/archive/2010/03/30/combating-clickjacking-with-x-frame-options.aspx">Combating ClickJacking With X-Frame-Options</a></li>
+    <li><a href="https://blogs.msdn.com/b/ieinternals/archive/2010/03/30/combating-clickjacking-with-x-frame-options.aspx">Combating ClickJacking With X-Frame-Options</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10020/">https://www.zaproxy.org/docs/alerts/10020/</a></li>    
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -395,8 +528,9 @@ If you want to add a rule, you can, following the model above.
     can be directed by the web application/web server to not perform MIME-sniffing.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx">Reducing MIME type security risks</a></li>
+    <li><a href="https://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx">Reducing MIME type security risks</a></li>
     <li><a href="https://www.owasp.org/index.php/List_of_useful_HTTP_headers">List of useful HTTP headers</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10021/">https://www.zaproxy.org/docs/alerts/10021/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -418,6 +552,7 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Top_10_2007-Information_Leakage_and_Improper_Error_Handling">List of useful HTTP headers</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10023/">https://www.zaproxy.org/docs/alerts/10023/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -436,6 +571,7 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Information_exposure_through_query_strings_in_url">List of useful HTTP headers</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10024/">https://www.zaproxy.org/docs/alerts/10024/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -454,6 +590,7 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Information_exposure_through_query_strings_in_url">List of useful HTTP headers</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10025/">https://www.zaproxy.org/docs/alerts/10025/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -473,6 +610,7 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Testing_for_HTTP_Parameter_pollution_(OTG-INPVAL-004)">Testing for HPP</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10026/">https://www.zaproxy.org/docs/alerts/10026/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -490,6 +628,7 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://cwe.mitre.org/data/definitions/546.html">CWE-546</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10027/">https://www.zaproxy.org/docs/alerts/10027/</a></li>    
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -501,6 +640,85 @@ If you want to add a rule, you can, following the model above.
         <tag>owasp-a3</tag>
     </rule>
     <rule>
+        <key>10028</key>
+        <name>Open Redirect</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>To avoid the open redirect vulnerability, parameters of the application script/program must be validated before sending 302 HTTP code (redirect) to the client browser. Implement safe redirect functionality that only redirects to relative URI's, or a list of trusted domains.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/601.html">CWE-601</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10028/">https://www.zaproxy.org/docs/alerts/10028/</a></li>    
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-601</tag>
+        <tag>wascid-38</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
+        <key>10029</key>
+        <name>Cookie Poisoning</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not allow user input to control cookie names and values. If some query string parameters must be set in cookie values, be sure to filter out semicolon's that can serve as name/value pair delimiters.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-cookie">https://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-cookie</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10029/">https://www.zaproxy.org/docs/alerts/10029/</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>cweid-20</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
+        <key>10030</key>
+        <name>User Controllable Charset</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Force UTF-8 in all charset declarations. If user-input is required to decide a charset declaration, ensure that only an allowed list is used.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10030/">https://www.zaproxy.org/docs/alerts/10030/</a></li>    
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>cweid-20</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
+        <key>10031</key>
+        <name>User Controllable HTML Element Attribute (Potential XSS)</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Validate all input and sanitize output it before writing to any HTML attributes.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute">https://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10031/">https://www.zaproxy.org/docs/alerts/10031/</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>cweid-20</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
         <key>10032</key>
         <name>Viewstate Scanner</name>
         <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
@@ -510,10 +728,108 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/images/2/22/20110412-aspnet_viewstate_security-alexandre.pdf">ASP Security ViewState flaw</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10032/">https://www.zaproxy.org/docs/alerts/10032/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
         <status>READY</status>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
+        <key>10033</key>
+        <name>Directory Browsing</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Configure the web server to disable directory browsing.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cwe.mitre.org/data/definitions/548.html">CWE-548</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10033/">https://www.zaproxy.org/docs/alerts/10033/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-548</tag>
+        <tag>wascid-16</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
+        <key>10034</key>
+        <name>Heartbleed OpenSSL Vulnerability (Indicative)</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Update to OpenSSL 1.0.1g or later. Re-issue HTTPS certificates. Change asymmetric private keys and shared secret keys, since these may have been compromised, with no evidence of compromise in the server log files.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cvedetails.com/cve-details.php?t=1&cve_id=CVE-2014-0160">https://cvedetails.com/cve-details.php?t=1&cve_id=CVE-2014-0160</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/119.html">CWE-119</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10034/">https://www.zaproxy.org/docs/alerts/10034/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-119</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
+        <key>10036</key>
+        <name>HTTP Server Response Header</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Disable Server Header Version Information</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10036/">https://www.zaproxy.org/docs/alerts/10036/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-200</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>    
+    <rule>
+        <key>10037</key>
+        <name>Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that your web server, application server, load balancer, etc. is configured to suppress 'X-Powered-By' headers.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx">https://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10037/">https://www.zaproxy.org/docs/alerts/10037/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>cweid-200</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>
+    <rule>
+        <key>10039</key>
+        <name>X-Backend-Server Header Information Leak</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that your web server, application server, load balancer, etc. is configured to suppress X-Backend-Server headers.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10039/">https://www.zaproxy.org/docs/alerts/10039/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>cweid-200</tag>
         <tag>wascid-13</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
@@ -530,6 +846,7 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Transport_Layer_Protection_Cheat_Sheet">Transport Layer Protection Cheat Sheet</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10040/">https://www.zaproxy.org/docs/alerts/10040/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -537,6 +854,387 @@ If you want to add a rule, you can, following the model above.
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    <rule>
+        <key>10041</key>
+        <name>HTTP to HTTPS Insecure Transition in Form Post</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Use HTTPS for landing pages that host secure forms.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">CWE-16</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10041/">https://www.zaproxy.org/docs/alerts/10041/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-16</tag>
+        <tag>wascid-15</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>    
+    <rule>
+        <key>10042</key>
+        <name>HTTPS to HTTP Insecure Transition in Form Post</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure sensitive data is only sent over secured HTTPS channels.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">CWE-16</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10042/">https://www.zaproxy.org/docs/alerts/10042/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-16</tag>
+        <tag>wascid-15</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>    
+    <rule>
+        <key>10043</key>
+        <name>User Controllable JavaScript Event (XSS)</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Validate all input and sanitize output it before writing to any Javascript on* events.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://websecuritytool.codeplex.com/wikipage?title=Checks#user-javascript-event">https://websecuritytool.codeplex.com/wikipage?title=Checks#user-javascript-event</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10043/">https://www.zaproxy.org/docs/alerts/10043/</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>cweid-20</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>    
+    <rule>
+        <key>10044</key>
+        <name>Big Redirect Detected (Potential Sensitive Information Leak)</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cwe.mitre.org/data/definitions/201.html">CWE-201</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10044/">https://www.zaproxy.org/docs/alerts/10044/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>cweid-201</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>    
+    <rule>
+        <key>10045</key>
+        <name>Source Code Disclosure - /WEB-INF folder</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Apply appropriate access control authorizations for each access to all restricted URLs, scripts or files.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Predictable-Resource-Location">https://projects.webappsec.org/Predictable-Resource-Location</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/541.html">CWE-541</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10045/">https://www.zaproxy.org/docs/alerts/10045/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-541</tag>
+        <tag>wascid-34</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>    
+    <rule>
+        <key>10047</key>
+        <name>HTTPS Content Available via HTTP</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that your web server, application server, load balancer, etc. is configured to only serve such content via HTTPS. Consider implementing HTTP Strict Transport Security.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</a></li>
+    <li><a href="https://owasp.org/www-community/Security_Headers">https://owasp.org/www-community/Security_Headers</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/311.html">CWE-311</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10047/">https://www.zaproxy.org/docs/alerts/10047/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>cweid-311</tag>
+        <tag>wascid-4</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>    
+    <rule>
+        <key>10048</key>
+        <name>Remote Code Execution - Shell Shock</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Update Bash on the server to the latest version</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271">https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/78.html">CWE-78</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10048/">https://www.zaproxy.org/docs/alerts/10048/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-78</tag>
+        <tag>wascid-31</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>    
+    <rule>
+        <key>10050</key>
+        <name>Retrieved from Cache</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://tools.ietf.org/html/rfc7234">https://tools.ietf.org/html/rfc7234</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10050/">https://www.zaproxy.org/docs/alerts/10050/</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>    
+    <rule>
+        <key>10051</key>
+        <name>Relative Path Confusion</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Web servers and frameworks should be updated to be configured to not serve responses to ambiguous URLs in such a way that the relative path of such URLs could be mis-interpreted by components on either the client side, or server side.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.thespanner.co.uk/2014/03/21/rpo/">https://www.thespanner.co.uk/2014/03/21/rpo/</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10051/">https://www.zaproxy.org/docs/alerts/10051/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-20</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>    
+    <rule>
+        <key>10052</key>
+        <name>X-ChromeLogger-Data (XCOLD) Header Information Leak</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Disable this functionality in Production when it might leak information that could be leveraged by an attacker. Alternatively ensure that use of the functionality is tied to a strong authorization check and only available to administrators or support personnel for troubleshooting purposes not general users.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://craig.is/writing/chrome-logger">https://craig.is/writing/chrome-logger</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10052/">https://www.zaproxy.org/docs/alerts/10052/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-200</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule>    
+    <rule>
+        <key>10053</key>
+        <name>Apache Range Header DoS (CVE-2011-3192)</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Upgrade your Apache server to a currently stable version. Alternative solutions or workarounds are outlined in the references.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://httpd.apache.org/security/CVE-2011-3192.txt">https://httpd.apache.org/security/CVE-2011-3192.txt</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/400.html">CWE-400</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10053/">https://www.zaproxy.org/docs/alerts/10053/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-400</tag>
+        <tag>wascid-10</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>10054</key>
+        <name>Cookie Without SameSite Attribute</name>
+        <description>
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that the SameSite attribute is set to either &apos;lax&apos; or ideally &apos;strict&apos; for all cookies.</p>
+    N/A
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site">https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">https://cwe.mitre.org/data/definitions/16.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10054/">https://www.zaproxy.org/docs/alerts/10054/</a></li>    
+
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+        <tag>cweid-16</tag>
+        <tag>wascid-13</tag>
+        <tag>owasp-a6</tag>
+    </rule>
+    <rule>
+        <key>10055</key>
+        <name>CSP Scanner: script-src unsafe-inline</name>
+        <description>
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>
+    N/A
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.w3.org/TR/CSP2/">https://www.w3.org/TR/CSP2/</a></li>
+    <li><a href="https://caniuse.com/#search=content+security+policy">https://caniuse.com/#search=content+security+policy</a></li>
+    <li><a href="https://content-security-policy.com/">https://content-security-policy.com/</a></li>
+    <li><a href="https://github.com/shapesecurity/salvation">https://github.com/shapesecurity/salvation</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">https://cwe.mitre.org/data/definitions/16.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10055/">https://www.zaproxy.org/docs/alerts/10055/</a></li>    
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+        <tag>cweid-16</tag>
+        <tag>wascid-15</tag>
+        <tag>owasp-a6</tag>
+    </rule>
+    <rule>
+        <key>10056</key>
+        <name>X-Debug-Token Information Leak.</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Limit access to Symfony's Profiler, either via authentication/authorization or limiting inclusion of the header to specific clients (by IP, etc.).</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://symfony.com/doc/current/cookbook/profiler/profiling_data.html">https://symfony.com/doc/current/cookbook/profiler/profiling_data.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10056/">https://www.zaproxy.org/docs/alerts/10056/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>cweid-200</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>10057</key>
+        <name>Username Hash Found</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Use per user or session indirect object references (create a temporary mapping at time of use). Or, ensure that each use of a direct object reference is tied to an authorization check to ensure the user is authorized for the requested object.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/05-Authorization_Testing/04-Testing_for_Insecure_Direct_Object_References.html">https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/05-Authorization_Testing/04-Testing_for_Insecure_Direct_Object_References.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/284.html">CWE-284</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10057/">https://www.zaproxy.org/docs/alerts/10057/</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>cweid-284</tag>
+        <tag>wascid-2</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>10058</key>
+        <name>GET for POST</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that only POST is accepted where POST is expected.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">CWE-16</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10058/">https://www.zaproxy.org/docs/alerts/10058/</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>cweid-16</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>10061</key>
+        <name>X-AspNet-Version Response Header</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Configure the server so it will not return those headers.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.troyhunt.com/shhh-dont-let-your-response-headers/">https://www.troyhunt.com/shhh-dont-let-your-response-headers/</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/933.html">CWE-933</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10061/">https://www.zaproxy.org/docs/alerts/10061/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>cweid-933</tag>
+        <tag>wascid-14</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>10062</key>
+        <name>PII Disclosure</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>_Unavailable_</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cwe.mitre.org/data/definitions/359.html">CWE-359</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10062/">https://www.zaproxy.org/docs/alerts/10062/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-359</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>10063</key>
+        <name>Feature Policy Header Not Set</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that your web server, application server, load balancer, etc. is configured to set the Feature-Policy header.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">CWE-16</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10063/">https://www.zaproxy.org/docs/alerts/10063/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>cweid-16</tag>
+        <tag>wascid-15</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>10094</key>
         <name>Base64 Disclosure</name>
@@ -547,7 +1245,9 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure">Top 10 2013-A6-Sensitive Data Exposure</a></li>
-    <li><a href="http://projects.webappsec.org/w/page/13246936/Information%20Leakage">WASC - Information Leakage</a></li>
+    <li><a href="https://projects.webappsec.org/w/page/13246936/Information%20Leakage">WASC - Information Leakage</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">https://cwe.mitre.org/data/definitions/200.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10094/">https://www.zaproxy.org/docs/alerts/10094/</a></li>    
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -558,6 +1258,130 @@ If you want to add a rule, you can, following the model above.
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    <rule>
+        <key>10095</key>
+        <name>Backup File Disclosure</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Apply appropriate access control authorizations for each access to all restricted URLs, scripts or files.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/04-Review_Old_Backup_and_Unreferenced_Files_for_Sensitive_Information.html">https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/04-Review_Old_Backup_and_Unreferenced_Files_for_Sensitive_Information.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/530.html">CWE-530</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10095/">https://www.zaproxy.org/docs/alerts/10095/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-530</tag>
+        <tag>wascid-34</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>10096</key>
+        <name>Timestamp Disclosure - Unix</name>
+        <description>
+            <![CDATA[<h3>Solution :</h3>
+    <p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>
+    N/A
+    <h3>References:</h3>
+    <ul>
+    <li>&lt;p&gt;https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure&lt;/p&gt;&lt;p&gt;https://projects.webappsec.org/w/page/13246936/Information%20Leakage&lt;/p&gt;</li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">https://cwe.mitre.org/data/definitions/200.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10096/">https://www.zaproxy.org/docs/alerts/10096/</a></li>    
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+        <tag>cweid-200</tag>
+        <tag>wascid-13</tag>
+        <tag>owasp-a3</tag>
+    </rule>
+    <rule>
+        <key>10097</key>
+        <name>Hash Disclosure - MD4 / MD5</name>
+        <description>
+            <![CDATA[<h3>Solution :</h3>
+    <p>A Ensure that hashes that are used to protect credentials or other resources are not leaked by the web server or database. There is typically no requirement for password hashes to be accessible to the web browser.</p>
+    N/A
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure">Sensitive Data Exposure</a></li>
+    <li><a href="https://projects.webappsec.org/w/page/13246936/Information%20Leakage">Information Leakage</a></li>
+    <li><a href="https://openwall.info/wiki/john/sample-hashes">sample hashes</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">https://cwe.mitre.org/data/definitions/200.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10097/">https://www.zaproxy.org/docs/alerts/10097/</a></li>    
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+        <tag>cweid-200</tag>
+        <tag>wascid-13</tag>
+        <tag>owasp-a3</tag>
+    </rule>
+   <rule>
+        <key>10098</key>
+        <name>Cross-Domain Misconfiguration</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).
+Configure the 'Access-Control-Allow-Origin' HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.hpenterprisesecurity.com/vulncat/en/vulncat/vb/html5_overly_permissive_cors_policy.html">https://www.hpenterprisesecurity.com/vulncat/en/vulncat/vb/html5_overly_permissive_cors_policy.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/264.html">CWE-264</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10098/">https://www.zaproxy.org/docs/alerts/10098/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-264</tag>
+        <tag>wascid-14</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>10099</key>
+        <name>Source Code Disclosure</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that application Source Code is not available with alternative extensions, and ensure that source code is not present within other files or data deployed to the web server, or served by the web server.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/">https://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/540.html">CWE-540</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10099/">https://www.zaproxy.org/docs/alerts/10099/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-540</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+   <rule>
+        <key>10104</key>
+        <name>User Agent Fuzzer</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://owasp.org/wstg">https://owasp.org/wstg</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10104/">https://www.zaproxy.org/docs/alerts/10104/</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>10105</key>
         <name>Weak Authentication Method</name>
@@ -570,6 +1394,7 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/OWASP_Periodic_Table_of_Vulnerabilities_-_Weak_Authentication_Methods">Weak Authentication Methods</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10105/">https://www.zaproxy.org/docs/alerts/10105/</a></li>    
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -577,6 +1402,98 @@ If you want to add a rule, you can, following the model above.
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    <rule>
+        <key>10106</key>
+        <name>HTTP Only Site</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Configure your web or application server to use SSL (https)..</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href=" https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html"> https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/311.html">CWE-311</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10106/">https://www.zaproxy.org/docs/alerts/10106/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-311</tag>
+        <tag>wascid-4</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>10107</key>
+        <name>Httpoxy - Proxy Header Misuse</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>The best immediate mitigation is to block Proxy request headers as early as possible, and before they hit your application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://httpoxy.org/">https://httpoxy.org/</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10107/">https://www.zaproxy.org/docs/alerts/10107/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-20</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>10108</key>
+        <name>Reverse Tabnabbing</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not use a target attribute, or if you have to then also add the attribute: rel='noopener noreferrer'.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://owasp.org/www-community/attacks/Reverse_Tabnabbing">https://owasp.org/www-community/attacks/Reverse_Tabnabbing/</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10108/">https://www.zaproxy.org/docs/alerts/10108/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>10109</key>
+        <name>Modern Web Application</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>
+    <h3>References:</h3>
+    <ul>
+	<li><a href="https://www.zaproxy.org/docs/alerts/10109/">https://www.zaproxy.org/docs/alerts/10109/</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>10110</key>
+        <name>Dangerous JS Functions</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>See the references for security advice on the use of these functions.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://angular.io/guide/security">https://angular.io/guide/security</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/749.html">CWE-749</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10110/">https://www.zaproxy.org/docs/alerts/10110/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>cweid-749</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>10202</key>
         <name>Absence of Anti-CSRF Tokens</name>
@@ -588,6 +1505,9 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet">CSRF Prevention Cheat Sheet</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/352.html">https://cwe.mitre.org/data/definitions/352.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/10202/">https://www.zaproxy.org/docs/alerts/10202/</a></li>    
+
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -597,6 +1517,126 @@ If you want to add a rule, you can, following the model above.
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    <rule>
+        <key>20012</key>
+        <name>Anti-CSRF Tokens Check</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Cross-Site-Request-Forgery">https://projects.webappsec.org/Cross-Site-Request-Forgery</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/352.html">CWE-352</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/20012/">https://www.zaproxy.org/docs/alerts/20012/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-352</tag>
+        <tag>wascid-9</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>20014</key>
+        <name>HTTP Parameter Pollution</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Properly sanitize the user input for parameter delimiters</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.google.com/search?q=http+parameter+pollution">https://www.google.com/search?q=http+parameter+pollution</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/20014/">https://www.zaproxy.org/docs/alerts/20014/</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>cweid-20</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>20015</key>
+        <name>Heartbleed OpenSSL Vulnerability</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Update to OpenSSL 1.0.1g or later. Re-issue HTTPS certificates. Change asymmetric private keys and shared secret keys, since these may have been compromised, with no evidence of compromise in the server log files.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cvedetails.com/cve-details.php?t=1&cve_id=CVE-2014-0160">https://cvedetails.com/cve-details.php?t=1&cve_id=CVE-2014-0160</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/119.html">CWE-119</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/20015/">https://www.zaproxy.org/docs/alerts/20015/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-119</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>20016</key>
+        <name>Cross-Domain Misconfiguration</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Correct/Add cross domain policy</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html">https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/264.html">CWE-264</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/20016/">https://www.zaproxy.org/docs/alerts/20016/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-264</tag>
+        <tag>wascid-14</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>20017</key>
+        <name>Source Code Disclosure - CVE-2012-1823</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Improper input handling is one of the most common weaknesses identified across applications today. Poorly handled input is a leading cause behind critical vulnerabilities that exist in systems and applications.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Improper-Input-Handling">https://projects.webappsec.org/Improper-Input-Handling</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/20017/">https://www.zaproxy.org/docs/alerts/20017/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-20</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>20018</key>
+        <name>Remote Code Execution - CVE-2012-1823</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Improper input handling is one of the most common weaknesses identified across applications today. Poorly handled input is a leading cause behind critical vulnerabilities that exist in systems and applications.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Improper-Input-Handling">https://projects.webappsec.org/Improper-Input-Handling</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/20018/">https://www.zaproxy.org/docs/alerts/20018/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-20</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>20019</key>
         <name>External Redirect</name>
@@ -615,7 +1655,7 @@ If you want to add a rule, you can, following the model above.
     redirect occurs, or force the user to click on the link. Be careful to avoid XSS problems when generating the disclaimer page.
     When the set of acceptable objects, such as filenames or URLs, is limited or known, create a mapping from a set of fixed input values (such as numeric IDs)
     to the actual filenames or URLs, and reject all other inputs.
-    For example, ID 1 could map to "/login.asp" and ID 2 could map to "http://www.example.com/". Features such as the ESAPI AccessReferenceMap provide this
+    For example, ID 1 could map to "/login.asp" and ID 2 could map to "https://www.example.com/". Features such as the ESAPI AccessReferenceMap provide this
     capability.
     Understand all the potential areas where untrusted inputs can enter your software: parameters or arguments, cookies, anything read from the network,
     environment variables, reverse DNS lookups, query results, request headers, URL components, e-mail, files, databases, and any external systems that provide
@@ -623,8 +1663,9 @@ If you want to add a rule, you can, following the model above.
     Many open redirect problems occur because the programmer assumed that certain inputs could not be modified, such as cookies and hidden form fields.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://projects.webappsec.org/URL-Redirector-Abuse">URL Redirector Abuse</a></li>
-    <li><a href="http://cwe.mitre.org/data/definitions/601.html">CWE-601: URL Redirection to Untrusted Site ('Open Redirect')</a></li>
+    <li><a href="https://projects.webappsec.org/URL-Redirector-Abuse">URL Redirector Abuse</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/601.html">CWE-601: URL Redirection to Untrusted Site ('Open Redirect')</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/20019/">https://www.zaproxy.org/docs/alerts/20019/</a></li>    
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -634,6 +1675,26 @@ If you want to add a rule, you can, following the model above.
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    <rule>
+        <key>30001</key>
+        <name>Buffer Overflow</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Rewrite the background program using proper return length checking.  This will require a recompile of the background executable.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://owasp.org/www-community/attacks/Buffer_overflow_attack">https://owasp.org/www-community/attacks/Buffer_overflow_attack</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/120.html">CWE-120</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/30001/">https://www.zaproxy.org/docs/alerts/30001/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-120</tag>
+        <tag>wascid-7</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>30002</key>
         <name>Check for proper format string handling in back end c code</name>
@@ -648,7 +1709,7 @@ If you want to add a rule, you can, following the model above.
        stability of the system.</p>
     <h3>References:</h3>
     <ul>
-    <li>No Reference.</li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/30002/">https://www.zaproxy.org/docs/alerts/30002/</a></li>    
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -656,6 +1717,26 @@ If you want to add a rule, you can, following the model above.
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    <rule>
+        <key>30003</key>
+        <name>Integer Overflow Error</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Rewrite the background program using proper checking of the size of integer being input to prevent overflows and divide by 0 errors.  This will require a recompile of the background executable.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/w/page/13246946/Integer%20Overflows">https://projects.webappsec.org/w/page/13246946/Integer%20Overflows</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/190.html">CWE-190</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/30003/">https://www.zaproxy.org/docs/alerts/30003/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-190</tag>
+        <tag>wascid-3</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>40003</key>
         <name>CRLF Injection</name>
@@ -665,8 +1746,11 @@ If you want to add a rule, you can, following the model above.
     <p>Type check the submitted parameter carefully.  Do not allow CRLF to be injected by filtering CRLF.</p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://www.securityfocus.com/bid/9804">Multiple Vendor HTTP Response Splitting Vulnerability</a></li>
+    <li><a href="https://www.securityfocus.com/bid/9804">Multiple Vendor HTTP Response Splitting Vulnerability</a></li>
     <li><a href="https://www.owasp.org/index.php/HTTP_Response_Splitting">HTTP Response Splitting</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/113.html">https://cwe.mitre.org/data/definitions/113.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40003/">https://www.zaproxy.org/docs/alerts/40003/</a></li>    
+
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -687,7 +1771,8 @@ If you want to add a rule, you can, following the model above.
     properly.  Use a generic 500 error page for internal server error.</p>
     <h3>References:</h3>
     <ul>
-    <li>No reference.</li>
+    <li><a href="https://cwe.mitre.org/data/definitions/472.html">https://cwe.mitre.org/data/definitions/472.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40008/">https://www.zaproxy.org/docs/alerts/40008/</a></li>        
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -715,7 +1800,9 @@ If you want to add a rule, you can, following the model above.
     </p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://www.carleton.ca/~dmcfet/html/ssi.html">Server Side Includes</a></li>
+    <li><a href="https://www.carleton.ca/~dmcfet/html/ssi.html">Server Side Includes</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/97.html">https://cwe.mitre.org/data/definitions/97.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40009/">https://www.zaproxy.org/docs/alerts/40009/</a></li>        
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -757,8 +1844,9 @@ If you want to add a rule, you can, following the model above.
     </p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://projects.webappsec.org/Cross-Site-Scripting">Cross Site Scripting</a></li>
-    <li><a href="http://cwe.mitre.org/data/definitions/79.html">CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</a></li>
+    <li><a href="https://projects.webappsec.org/Cross-Site-Scripting">Cross Site Scripting</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/79.html">CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40012/">https://www.zaproxy.org/docs/alerts/40012/</a></li>        
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -769,6 +1857,27 @@ If you want to add a rule, you can, following the model above.
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    <rule>
+        <key>40013</key>
+        <name>Session Fixation</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Prevent the attacker from gaining a session id by enforcing strict session ids, and by only allocating session ids upon successful authentication to the application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://owasp.org/www-community/attacks/Session_fixation">https://owasp.org/www-community/attacks/Session_fixation</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/384.html">CWE-384</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40013/">https://www.zaproxy.org/docs/alerts/40013/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-384</tag>
+        <tag>wascid-37</tag>
+        <tag>owasp-a2</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>40014</key>
         <name>Cross Site Scripting (Persistent)</name>
@@ -801,8 +1910,9 @@ If you want to add a rule, you can, following the model above.
     </p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://projects.webappsec.org/Cross-Site-Scripting">Cross Site Scripting</a></li>
-    <li><a href="http://cwe.mitre.org/data/definitions/79.html">CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</a></li>
+    <li><a href="https://projects.webappsec.org/Cross-Site-Scripting">Cross Site Scripting</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/79.html">CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40014/">https://www.zaproxy.org/docs/alerts/40014/</a></li>        
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -822,7 +1932,8 @@ If you want to add a rule, you can, following the model above.
     <p>N/A</p>
     <h3>References:</h3>
     <ul>
-    <li>No reference.</li>
+    <li><a href="https://cwe.mitre.org/data/definitions/79.html">https://cwe.mitre.org/data/definitions/79.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40016/">https://www.zaproxy.org/docs/alerts/40016/</a></li>            
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -842,7 +1953,8 @@ If you want to add a rule, you can, following the model above.
     <p>N/A</p>
     <h3>References:</h3>
     <ul>
-    <li>No reference.</li>
+    <li><a href="https://cwe.mitre.org/data/definitions/79.html">https://cwe.mitre.org/data/definitions/79.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40017/">https://www.zaproxy.org/docs/alerts/40017/</a></li>        
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -875,6 +1987,8 @@ If you want to add a rule, you can, following the model above.
     <ul>
     <li><a href="https://www.owasp.org/index.php/Top_10_2010-A1">Top 10 2010-A1-Injection</a></li>
     <li><a href="https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet">SQL Injection Prevention Cheat Sheet</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">https://cwe.mitre.org/data/definitions/89.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40018/">https://www.zaproxy.org/docs/alerts/40018/</a></li>        
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -885,6 +1999,282 @@ If you want to add a rule, you can, following the model above.
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    <rule>
+        <key>40019</key>
+        <name>SQL Injection - MySQL</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not trust client side input, even if there is client side validation in place. 
+In general, type check all data on the server side.
+If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'
+If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.
+If database Stored Procedures can be used, use them.
+Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!
+Do not create dynamic SQL queries using simple string concatenation.
+Escape all data received from the client.
+Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.
+Apply the privilege of least privilege by using the least privileged database user possible.
+In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.
+Grant the minimum database access that is necessary for the application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">CWE-89</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40019/">https://www.zaproxy.org/docs/alerts/40019/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-89</tag>
+        <tag>wascid-19</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40020</key>
+        <name>SQL Injection - Hypersonic SQL</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not trust client side input, even if there is client side validation in place. 
+In general, type check all data on the server side.
+If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'
+If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.
+If database Stored Procedures can be used, use them.
+Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!
+Do not create dynamic SQL queries using simple string concatenation.
+Escape all data received from the client.
+Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.
+Apply the privilege of least privilege by using the least privileged database user possible.
+In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.
+Grant the minimum database access that is necessary for the application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">CWE-89</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40020/">https://www.zaproxy.org/docs/alerts/40020/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-89</tag>
+        <tag>wascid-19</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40021</key>
+        <name>SQL Injection - Oracle</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not trust client side input, even if there is client side validation in place. 
+In general, type check all data on the server side.
+If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'
+If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.
+If database Stored Procedures can be used, use them.
+Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!
+Do not create dynamic SQL queries using simple string concatenation.
+Escape all data received from the client.
+Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.
+Apply the privilege of least privilege by using the least privileged database user possible.
+In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.
+Grant the minimum database access that is necessary for the application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">CWE-89</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40021/">https://www.zaproxy.org/docs/alerts/40021/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-89</tag>
+        <tag>wascid-19</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40022</key>
+        <name>SQL Injection - PostgreSQL</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not trust client side input, even if there is client side validation in place. 
+In general, type check all data on the server side.
+If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'
+If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.
+If database Stored Procedures can be used, use them.
+Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!
+Do not create dynamic SQL queries using simple string concatenation.
+Escape all data received from the client.
+Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.
+Apply the privilege of least privilege by using the least privileged database user possible.
+In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.
+Grant the minimum database access that is necessary for the application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">CWE-89</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40022/">https://www.zaproxy.org/docs/alerts/40022/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-89</tag>
+        <tag>wascid-19</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40023</key>
+        <name>Possible Username Enumeration</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not divulge details of whether a username is valid or invalid. In particular, for unsuccessful login attempts, do not differentiate between an invalid user and an invalid password in the error message, page title, page contents, HTTP headers, or redirection logic.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account.html">https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40023/">https://www.zaproxy.org/docs/alerts/40023/</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>cweid-200</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40024</key>
+        <name>SQL Injection - SQLite</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not trust client side input, even if there is client side validation in place. 
+In general, type check all data on the server side.
+If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'
+If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.
+If database Stored Procedures can be used, use them.
+Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!
+Do not create dynamic SQL queries using simple string concatenation.
+Escape all data received from the client.
+Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.
+Apply the privilege of least privilege by using the least privileged database user possible.
+In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.
+Grant the minimum database access that is necessary for the application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">CWE-89</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40024/">https://www.zaproxy.org/docs/alerts/40024/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-89</tag>
+        <tag>wascid-19</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40025</key>
+        <name>Proxy Disclosure</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Disable the 'TRACE' method on the proxy servers, as well as the origin web/application server.
+Disable the 'OPTIONS' method on the proxy servers, as well as the origin web/application server, if it is not required for other purposes, such as 'CORS' (Cross Origin Resource Sharing).
+Configure the web and application servers with custom error pages, to prevent 'fingerprintable' product-specific error pages being leaked to the user in the event of HTTP errors, such as 'TRACK' requests for non-existent pages.
+Configure all proxies, application servers, and web servers to prevent disclosure of the technology and version information in the 'Server' and 'X-Powered-By' HTTP response headers.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://tools.ietf.org/html/rfc7231#section-5.1.2">https://tools.ietf.org/html/rfc7231#section-5.1.2</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40025/">https://www.zaproxy.org/docs/alerts/40025/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-200</tag>
+        <tag>wascid-45</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40026</key>
+        <name>Cross Site Scripting (DOM Based)</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Phase: Architecture and Design
+Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.
+Examples of libraries and frameworks that make it easier to generate properly encoded output include Microsoft's Anti-XSS library, the OWASP ESAPI Encoding module, and Apache Wicket.
+
+Phases: Implementation; Architecture and Design
+Understand the context in which your data will be used and the encoding that will be expected. This is especially important when transmitting data between different components, or when generating outputs that can contain multiple encodings at the same time, such as web pages or multi-part mail messages. Study all expected communication protocols and data representations to determine the required encoding strategies.
+For any data that will be output to another web page, especially any data that was received from external inputs, use the appropriate encoding on all non-alphanumeric characters.
+Consult the XSS Prevention Cheat Sheet for more details on the types of encoding and escaping that are needed.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Cross-Site-Scripting">https://projects.webappsec.org/Cross-Site-Scripting</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/79.html">CWE-79</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40026/">https://www.zaproxy.org/docs/alerts/40026/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-79</tag>
+        <tag>wascid-8</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40027</key>
+        <name>SQL Injection - MsSQL</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not trust client side input, even if there is client side validation in place. 
+In general, type check all data on the server side.
+If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'
+If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.
+If database Stored Procedures can be used, use them.
+Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!
+Do not create dynamic SQL queries using simple string concatenation.
+Escape all data received from the client.
+Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.
+Apply the privilege of least privilege by using the least privileged database user possible.
+In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.
+Grant the minimum database access that is necessary for the application.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">CWE-89</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40027/">https://www.zaproxy.org/docs/alerts/40027/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-89</tag>
+        <tag>wascid-19</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40028</key>
+        <name>ELMAH Information Leak</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Consider whether or not ELMAH is actually required in production, if it isn't then disable it. If it is then ensure access to it requires authentication and authorization. See also: https://elmah.github.io/a/securing-error-log-pages/</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.troyhunt.com/aspnet-session-hijacking-with-google/">https://www.troyhunt.com/aspnet-session-hijacking-with-google/</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/215.html">CWE-215</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40028/">https://www.zaproxy.org/docs/alerts/40028/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-215</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>40029</key>
         <name>Trace.axd Information Leak</name>
@@ -897,6 +2287,8 @@ If you want to add a rule, you can, following the model above.
     <li><a href="https://msdn.microsoft.com/en-us/library/bb386420.aspx">ASP.NET Tracing Overview</a></li>
     <li><a href="https://msdn.microsoft.com/en-us/library/wwh16c6c.aspx">How to: View ASP.NET Trace Information with the Trace Viewer</a></li>
     <li><a href="https://www.dotnetperls.com/trace">ASP.NET Trace Examples - Dot Net Perls</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/215.html">https://cwe.mitre.org/data/definitions/215.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/40029/">https://www.zaproxy.org/docs/alerts/40029/</a></li>        
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -906,6 +2298,65 @@ If you want to add a rule, you can, following the model above.
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    <rule>
+        <key>40032</key>
+        <name>.htaccess Information Leak</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure the .htaccess file is not accessible.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://cwe.mitre.org/data/definitions/215.html">CWE-215</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40032/">https://www.zaproxy.org/docs/alerts/40032/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-215</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40034</key>
+        <name>.env Information Leak</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure the .env file is not accessible.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.google.com/search?q=db_password+filetype%3Aenv">https://www.google.com/search?q=db_password+filetype%3Aenv</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/215.html">CWE-215</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40034/">https://www.zaproxy.org/docs/alerts/40034/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-215</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>40035</key>
+        <name>Hidden File Finder</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Consider whether or not the component is actually required in production, if it isn't then disable it. If it is then ensure access to it requires appropriate authentication and authorization, or limit exposure to internal systems or specific source IPs, etc.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://blog.hboeck.de/archives/892-Introducing-Snallygaster-a-Tool-to-Scan-for-Secrets-on-Web-Servers.html">https://blog.hboeck.de/archives/892-Introducing-Snallygaster-a-Tool-to-Scan-for-Secrets-on-Web-Servers.html</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/538.html">CWE-538</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/40035/">https://www.zaproxy.org/docs/alerts/40035/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-538</tag>
+        <tag>wascid-13</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>50001</key>
         <name>Script Passive Scan Rules</name>
@@ -917,7 +2368,8 @@ If you want to add a rule, you can, following the model above.
     </p>
     <h3>References:</h3>
     <ul>
-    <li>No reference</li>
+    <li><a href="https://cwe.mitre.org/data/definitions/89.html">https://cwe.mitre.org/data/definitions/89.html</a></li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/50001/">https://www.zaproxy.org/docs/alerts/50001/</a></li>            
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -937,7 +2389,7 @@ If you want to add a rule, you can, following the model above.
     </p>
     <h3>References:</h3>
     <ul>
-    <li>No reference</li>
+    <li><a href="https://www.zaproxy.org/docs/alerts/90001/">https://www.zaproxy.org/docs/alerts/90001/</a></li>            
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -945,6 +2397,65 @@ If you want to add a rule, you can, following the model above.
         <tag>security</tag>
         <tag>zaproxy</tag>
     </rule>
+    <rule>
+        <key>90002</key>
+        <name>Java Serialization Object</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Deserialization of untrusted data is inherently dangerous and should be avoided.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.oracle.com/technetwork/java/seccodeguide-139067.html#8">https://www.oracle.com/technetwork/java/seccodeguide-139067.html#8</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/502.html">CWE-502</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90002/">https://www.zaproxy.org/docs/alerts/90002/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-502</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>90003</key>
+        <name>Sub Resource Integrity Attribute Missing</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Provide a valid integrity attribute to the tag.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity">https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">CWE-16</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90003/">https://www.zaproxy.org/docs/alerts/90003/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-16</tag>
+        <tag>wascid-15</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>90004</key>
+        <name>Insufficient Site Isolation Against Spectre Vulnerability</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy_(CORP)">https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy_(CORP)</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">CWE-16</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90004/">https://www.zaproxy.org/docs/alerts/90004/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MINOR</severity>
+        <status>READY</status>
+        <tag>cweid-16</tag>
+        <tag>wascid-14</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>90011</key>
         <name>Charset Mismatch</name>
@@ -957,8 +2468,9 @@ If you want to add a rule, you can, following the model above.
     </p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://www.w3.org/TR/html401/charset.html#h-5.2.2">Charset</a></li>
-    <li><a href="http://www.w3.org/TR/html5/document-metadata.html#charset">Document Metadata Charset</a></li>
+    <li><a href="https://www.w3.org/TR/html401/charset.html#h-5.2.2">Charset</a></li>
+    <li><a href="https://www.w3.org/TR/html5/document-metadata.html#charset">Document Metadata Charset</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/90011/">https://www.zaproxy.org/docs/alerts/90011/</a></li>
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -967,6 +2479,26 @@ If you want to add a rule, you can, following the model above.
         <tag>zaproxy</tag>
         <tag>owasp-a6</tag>
     </rule>
+    <rule>
+        <key>90017</key>
+        <name>XSLT Injection</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Sanitize and analyze every user input coming from any client-side.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.contextis.com/blog/xslt-server-side-injection-attacks">https://www.contextis.com/blog/xslt-server-side-injection-attacks</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/91.html">CWE-91</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90017/">https://www.zaproxy.org/docs/alerts/90017/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-91</tag>
+        <tag>wascid-23</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>90019</key>
         <name>Server Side Code Injection</name>
@@ -979,8 +2511,9 @@ If you want to add a rule, you can, following the model above.
     </p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://cwe.mitre.org/data/definitions/94.html">CWE-94: Improper Control of Generation of Code ('Code Injection')</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/94.html">CWE-94: Improper Control of Generation of Code ('Code Injection')</a></li>
     <li><a href="https://www.owasp.org/index.php/Direct_Dynamic_Code_Evaluation_('Eval_Injection')">Direct Dynamic Code Evaluation ('Eval Injection')</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/90019/">https://www.zaproxy.org/docs/alerts/90019/</a></li>
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -1055,8 +2588,9 @@ If you want to add a rule, you can, following the model above.
     </p>
     <h3>References:</h3>
     <ul>
-    <li><a href="http://cwe.mitre.org/data/definitions/78.html">CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/78.html">CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')</a></li>
     <li><a href="https://www.owasp.org/index.php/Command_Injection">Command Injection</a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/90020/">https://www.zaproxy.org/docs/alerts/90020/</a></li>
     </ul>]]>
         </description>
         <severity>CRITICAL</severity>
@@ -1067,6 +2601,28 @@ If you want to add a rule, you can, following the model above.
         <tag>zaproxy</tag>
     </rule>
     <rule>
+        <key>90021</key>
+        <name>XPath Injection</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Use parameterized XPath queries (e.g. using XQuery). This will help ensure separation between data plane and control plane.
+
+Properly validate user input. Reject data where appropriate, filter where appropriate and escape where appropriate. Make sure input that will be used in XPath queries is safe in that context.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/XPath-Injection">https://projects.webappsec.org/XPath-Injection</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/643.html">CWE-643</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90021/">https://www.zaproxy.org/docs/alerts/90021/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-643</tag>
+        <tag>wascid-39</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
         <key>90022</key>
         <name>Application Error Disclosure</name>
         <description>
@@ -1075,7 +2631,8 @@ If you want to add a rule, you can, following the model above.
     the client (browser) while logging the details on the server side and not exposing them to the user.</p>
     <h3>References:</h3>
     <ul>
-    <li>No Reference.</li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90022/">https://www.zaproxy.org/docs/alerts/90022/</a></li>
     </ul>]]>
         </description>
         <severity>MAJOR</severity>
@@ -1085,7 +2642,107 @@ If you want to add a rule, you can, following the model above.
         <tag>owasp-a6</tag>
         <tag>security</tag>
         <tag>zaproxy</tag>
-    </rule>
+    </rule>    
+    <rule>
+        <key>90023</key>
+        <name>XML External Entity Attack</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Disable processing of External Entities.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/XML-External-Entities">https://projects.webappsec.org/XML-External-Entities</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/611.html">CWE-611</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90023/">https://www.zaproxy.org/docs/alerts/90023/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-611</tag>
+        <tag>wascid-43</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>90024</key>
+        <name>Generic Padding Oracle</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Update the affected server software, or modify the scripts so that they properly validate encrypted data before attempting decryption.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://netifera.com/research/">https://netifera.com/research/</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/209.html">CWE-209</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90024/">https://www.zaproxy.org/docs/alerts/90024/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-209</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>90025</key>
+        <name>Expression Language Injection</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Perform data validation best practice against untrusted input and to ensure that output encoding is applied when data arrives on the EL layer, so that no metacharacter is found by the interpreter within the user content before evaluation. The most obvious patterns to detect include ${ and #{, but it may be possible to encode or fragment this data.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/XPath-Injection">https://projects.webappsec.org/XPath-Injection</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/917.html">CWE-917</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90025/">https://www.zaproxy.org/docs/alerts/90025/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-917</tag>
+        <tag>wascid-20</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>90027</key>
+        <name>Cookie Slack Detector</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>TBA.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Fingerprinting">https://projects.webappsec.org/Fingerprinting</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90027/">https://www.zaproxy.org/docs/alerts/90027/</a></li>
+    </ul>]]>
+        </description>
+        <severity>INFO</severity>
+        <status>READY</status>
+        <tag>cweid-200</tag>
+        <tag>wascid-45</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
+        <key>90028</key>
+        <name>Insecure HTTP Method</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>TBA.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://projects.webappsec.org/Fingerprinting">https://projects.webappsec.org/Fingerprinting</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90028/">https://www.zaproxy.org/docs/alerts/90028/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>cweid-200</tag>
+        <tag>wascid-45</tag>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
     <rule>
         <key>90030</key>
         <name>WSDL File Passive Scanner</name>
@@ -1096,7 +2753,7 @@ If you want to add a rule, you can, following the model above.
     </p>
     <h3>References:</h3>
     <ul>
-    <li>No Reference.</li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/90030/">https://www.zaproxy.org/docs/alerts/90030/</a></li>
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -1115,7 +2772,9 @@ If you want to add a rule, you can, following the model above.
     <ul>
     <li><a href="https://tools.ietf.org/html/rfc6265#section-4.1/></li>
     <li><a href="https://www.owasp.org/index.php/Testing_for_cookies_attributes_(OTG-SESS-002)/></li>
-    <li><a href="http://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies/></li>
+    <li><a href="https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies/></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/565.html">CWE-565</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/90033/">https://www.zaproxy.org/docs/alerts/90033/</a></li>       
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -1126,6 +2785,23 @@ If you want to add a rule, you can, following the model above.
         <tag>cweid-565</tag>
     </rule>
     <rule>
+        <key>90034</key>
+        <name>Cloud Metadata Potentially Exposed</name>
+        <description> <!-- Corresponding to "<solution>" and "<reference>" of the ZAP report -->
+            <![CDATA[<h3>Solution :</h3>
+    <p>Do not trust any user data in NGINX configs. In this case it is probably the use of the $host variable which is set from the 'Host' header and can be controlled by an attacker.</p>
+    <h3>References:</h3>
+    <ul>
+    <li><a href="https://www.nginx.com/blog/trust-no-one-perils-of-trusting-user-input/">https://www.nginx.com/blog/trust-no-one-perils-of-trusting-user-input//a></li>
+	<li><a href="https://www.zaproxy.org/docs/alerts/90034/">https://www.zaproxy.org/docs/alerts/90034/</a></li>
+    </ul>]]>
+        </description>
+        <severity>MAJOR</severity>
+        <status>READY</status>
+        <tag>security</tag>
+        <tag>zaproxy</tag>
+    </rule> 
+    <rule>
         <key>100000</key>
         <name>A Server Error response code was returned by the server</name>
         <description>
@@ -1134,7 +2810,7 @@ If you want to add a rule, you can, following the model above.
     N/A
     <h3>References:</h3>
     <ul>
-
+	<li><a href="https://www.zaproxy.org/docs/alerts/100000/">https://www.zaproxy.org/docs/alerts/100000/</a></li>
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -1151,78 +2827,13 @@ If you want to add a rule, you can, following the model above.
     N/A
     <h3>References:</h3>
     <ul>
-
+	<li><a href="https://www.zaproxy.org/docs/alerts/100001/">https://www.zaproxy.org/docs/alerts/100001/</a></li>
     </ul>]]>
         </description>
         <severity>INFO</severity>
         <status>READY</status>
         <tag>security</tag>
         <tag>zaproxy</tag>
-        <tag>owasp-a6</tag>
-    </rule>
-    <rule>
-        <key>10097</key>
-        <name>Hash Disclosure - MD4 / MD5</name>
-        <description>
-            <![CDATA[<h3>Solution :</h3>
-    <p>A Ensure that hashes that are used to protect credentials or other resources are not leaked by the web server or database. There is typically no requirement for password hashes to be accessible to the web browser.</p>
-    N/A
-    <h3>References:</h3>
-    <ul>
-    <li><a href="https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure">Sensitive Data Exposure</a></li>
-    <li><a href="http://projects.webappsec.org/w/page/13246936/Information%20Leakage">Information Leakage</a></li>
-    <li><a href="http://openwall.info/wiki/john/sample-hashes">sample hashes</a></li>
-    </ul>]]>
-        </description>
-        <severity>INFO</severity>
-        <status>READY</status>
-        <tag>security</tag>
-        <tag>zaproxy</tag>
-        <tag>cweid-200</tag>
-        <tag>wascid-13</tag>
-        <tag>owasp-a3</tag>
-    </rule>
-    <rule>
-        <key>10055</key>
-        <name>CSP Scanner: script-src unsafe-inline</name>
-        <description>
-            <![CDATA[<h3>Solution :</h3>
-    <p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>
-    N/A
-    <h3>References:</h3>
-    <ul>
-    <li><a href="http://www.w3.org/TR/CSP2/">http://www.w3.org/TR/CSP2/</a></li>
-    <li><a href="http://caniuse.com/#search=content+security+policy">http://caniuse.com/#search=content+security+policy</a></li>
-    <li><a href="http://content-security-policy.com/">http://content-security-policy.com/</a></li>
-    <li><a href="https://github.com/shapesecurity/salvation">https://github.com/shapesecurity/salvation</a></li>
-    </ul>]]>
-        </description>
-        <severity>MINOR</severity>
-        <status>READY</status>
-        <tag>security</tag>
-        <tag>zaproxy</tag>
-        <tag>cweid-16</tag>
-        <tag>wascid-15</tag>
-        <tag>owasp-a6</tag>
-    </rule>
-    <rule>
-        <key>10054</key>
-        <name>Cookie Without SameSite Attribute</name>
-        <description>
-            <![CDATA[<h3>Solution :</h3>
-    <p>Ensure that the SameSite attribute is set to either &apos;lax&apos; or ideally &apos;strict&apos; for all cookies.</p>
-    N/A
-    <h3>References:</h3>
-    <ul>
-    <li><a href="https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site">https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</a></li>
-    </ul>]]>
-        </description>
-        <severity>MINOR</severity>
-        <status>READY</status>
-        <tag>security</tag>
-        <tag>zaproxy</tag>
-        <tag>cweid-16</tag>
-        <tag>wascid-13</tag>
         <tag>owasp-a6</tag>
     </rule>
     <rule>
@@ -1235,7 +2846,9 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy">https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</a></li>
-    <li><a href="http://content-security-policy.com/">http://content-security-policy.com/</a></li>
+    <li><a href="https://content-security-policy.com/">https://content-security-policy.com/</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">CWE-16</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10038/">https://www.zaproxy.org/docs/alerts/10038/</a></li>       
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -1256,7 +2869,9 @@ If you want to add a rule, you can, following the model above.
     <h3>References:</h3>
     <ul>
     <li><a href="https://www.owasp.org/index.php/HTTP_Strict_Transport_Security">https://www.owasp.org/index.php/HTTP_Strict_Transport_Security</a></li>
-    <li><a href="http://content-security-policy.com/">http://content-security-policy.com/</a></li>
+    <li><a href="https://content-security-policy.com/">https://content-security-policy.com/</a></li>
+    <li><a href="https://cwe.mitre.org/data/definitions/16.html">CWE-16</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10035/">https://www.zaproxy.org/docs/alerts/10035/</a></li>       
     </ul>]]>
         </description>
         <severity>MINOR</severity>
@@ -1276,7 +2891,9 @@ If you want to add a rule, you can, following the model above.
     N/A
     <h3>References:</h3>
     <ul>
-    <li>&lt;p&gt;https://tools.ietf.org/html/rfc7234&lt;/p&gt;&lt;p&gt;https://tools.ietf.org/html/rfc7231&lt;/p&gt;&lt;p&gt;http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)&lt;/p&gt;</li>
+    <li>&lt;p&gt;https://tools.ietf.org/html/rfc7234&lt;/p&gt;&lt;p&gt;https://tools.ietf.org/html/rfc7231&lt;/p&gt;&lt;p&gt;https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)&lt;/p&gt;</li>
+    <li><a href="https://cwe.mitre.org/data/definitions/524.html">CWE-524</a></li>    
+	<li><a href="https://www.zaproxy.org/docs/alerts/10049/">https://www.zaproxy.org/docs/alerts/10049/</a></li>       
     </ul>]]>
         </description>
         <severity>INFO</severity>
@@ -1284,26 +2901,6 @@ If you want to add a rule, you can, following the model above.
         <tag>security</tag>
         <tag>zaproxy</tag>
         <tag>cweid-524</tag>
-        <tag>wascid-13</tag>
-        <tag>owasp-a3</tag>
-    </rule>
-    <rule>
-        <key>10096</key>
-        <name>Timestamp Disclosure - Unix</name>
-        <description>
-            <![CDATA[<h3>Solution :</h3>
-    <p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>
-    N/A
-    <h3>References:</h3>
-    <ul>
-    <li>&lt;p&gt;https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure&lt;/p&gt;&lt;p&gt;http://projects.webappsec.org/w/page/13246936/Information%20Leakage&lt;/p&gt;</li>
-    </ul>]]>
-        </description>
-        <severity>INFO</severity>
-        <status>READY</status>
-        <tag>security</tag>
-        <tag>zaproxy</tag>
-        <tag>cweid-200</tag>
         <tag>wascid-13</tag>
         <tag>owasp-a3</tag>
     </rule>
