@@ -16,13 +16,11 @@
     "react": "17.0.1",
     "react-addons-shallow-compare": "15.6.3",
     "react-addons-test-utils": "15.6.2",
-    "react-dev-utils": "11.0.1",
     "react-dom": "17.0.1",
     "react-router": "5.2.0",
     "react-transform-hmr": "1.0.4",
     "style-loader": "^2.0.0",
-    "webpack": "5.11.0",
-    "webpack-dev-server": "3.11.0"
+    "webpack": "5.11.0"
   },
   "scripts": {
     "build": "node scripts/build.js",
