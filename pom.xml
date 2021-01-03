@@ -568,11 +568,22 @@
     </developers>
     <contributors>
         <contributor>
-            <name>Niklas Mehner</name>
-            <email>niklas.mehner@gmail.com</email>
+            <name>James Pether Sörling</name>
+            <organization>Hack23</organization>
+            <organizationUrl>https://www.hack23.com/</organizationUrl>
+            <properties>
+                <github>pethers</github>
+            </properties>
         </contributor>
         <contributor>
             <name>pangyiwei</name>
+            <properties>
+                <github>pangyiwei</github>
+            </properties>
+        </contributor>
+        <contributor>
+            <name>Niklas Mehner</name>
+            <email>niklas.mehner@gmail.com</email>
         </contributor>
     </contributors>
 
