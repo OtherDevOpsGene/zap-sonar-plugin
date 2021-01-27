@@ -59,7 +59,7 @@
 
         <junit.version>5.7.0</junit.version>
         <assertj.version>3.18.1</assertj.version>
-        <mockito.version>3.6.28</mockito.version>
+        <mockito.version>3.7.0</mockito.version>
 
         <nodejs.version>v14.15.3</nodejs.version>
     </properties>
