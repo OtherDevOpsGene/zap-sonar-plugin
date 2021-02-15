@@ -58,7 +58,7 @@
         <staxmate.version>2.4.0</staxmate.version>
 
         <junit.version>5.7.0</junit.version>
-        <assertj.version>3.18.1</assertj.version>
+        <assertj.version>3.19.0</assertj.version>
         <mockito.version>3.6.28</mockito.version>
 
         <nodejs.version>v14.15.3</nodejs.version>
