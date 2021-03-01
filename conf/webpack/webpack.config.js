@@ -34,6 +34,7 @@ module.exports = {
     // Register the Sonar* globals as packages, to simplify importing.
     // See src/main/js/common/api.js for more information on what is exposed
     // in SonarRequest.
+    "sonar-helpers": "SonarHelpers",
     "sonar-request": "SonarRequest",
     "sonar-measures": "SonarMeasures",
     // See src/main/js/portfolio_page/components/MeasuresHistory.js for some
