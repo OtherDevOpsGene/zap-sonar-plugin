@@ -53,7 +53,7 @@
         <docker.maven.plugin.version>0.34.1</docker.maven.plugin.version>
         <frontend.maven.plugin.version>1.11.0</frontend.maven.plugin.version>
 
-        <commons.lang3.version>3.11</commons.lang3.version>
+        <commons.lang3.version>3.12.0</commons.lang3.version>
         <jsr305.version>3.0.2</jsr305.version>
         <staxmate.version>2.4.0</staxmate.version>
 
