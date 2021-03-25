@@ -15,7 +15,7 @@
         <license.owner>Gene Gotimer</license.owner>
         <license.mailto>eugene.gotimer@steampunk.com</license.mailto>
 
-        <sonar.apiVersion>7.9.5</sonar.apiVersion>
+        <sonar.apiVersion>7.9.6</sonar.apiVersion>
         <sonar.pluginClass>org.sonar.zaproxy.ZapPlugin</sonar.pluginClass>
         <sonar.packaging.maven.plugin.version>1.20.0.405</sonar.packaging.maven.plugin.version>
         <sonar.zaproxy.reportPath>${project.basedir}/src/test/resources/report/dvwa.xml</sonar.zaproxy.reportPath>
