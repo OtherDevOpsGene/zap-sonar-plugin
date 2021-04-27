@@ -15,7 +15,7 @@
         <license.owner>Gene Gotimer</license.owner>
         <license.mailto>eugene.gotimer@steampunk.com</license.mailto>
 
-        <sonar.apiVersion>7.9.5</sonar.apiVersion>
+        <sonar.apiVersion>7.9.6</sonar.apiVersion>
         <sonar.pluginClass>org.sonar.zaproxy.ZapPlugin</sonar.pluginClass>
         <sonar.packaging.maven.plugin.version>1.20.0.405</sonar.packaging.maven.plugin.version>
         <sonar.zaproxy.reportPath>${project.basedir}/src/test/resources/report/dvwa.xml</sonar.zaproxy.reportPath>
@@ -48,18 +48,18 @@
         <maven.javadoc.plugin.version>3.2.0</maven.javadoc.plugin.version>
         <lint.maven.plugin.version>0.0.11</lint.maven.plugin.version>
         <pitest.maven.version>1.5.2</pitest.maven.version>
-        <pitest.junit5.plugin.version>0.12</pitest.junit5.plugin.version>
+        <pitest.junit5.plugin.version>0.14</pitest.junit5.plugin.version>
         <license.maven.plugin.version>2.0.0</license.maven.plugin.version>
         <docker.maven.plugin.version>0.34.1</docker.maven.plugin.version>
         <frontend.maven.plugin.version>1.11.0</frontend.maven.plugin.version>
 
-        <commons.lang3.version>3.11</commons.lang3.version>
+        <commons.lang3.version>3.12.0</commons.lang3.version>
         <jsr305.version>3.0.2</jsr305.version>
         <staxmate.version>2.4.0</staxmate.version>
 
-        <junit.version>5.7.0</junit.version>
-        <assertj.version>3.18.1</assertj.version>
-        <mockito.version>3.6.28</mockito.version>
+        <junit.version>5.7.1</junit.version>
+        <assertj.version>3.19.0</assertj.version>
+        <mockito.version>3.9.0</mockito.version>
 
         <nodejs.version>v14.15.3</nodejs.version>
     </properties>
@@ -568,11 +568,22 @@
     </developers>
     <contributors>
         <contributor>
-            <name>Niklas Mehner</name>
-            <email>niklas.mehner@gmail.com</email>
+            <name>James Pether Sörling</name>
+            <organization>Hack23</organization>
+            <organizationUrl>https://www.hack23.com/</organizationUrl>
+            <properties>
+                <github>pethers</github>
+            </properties>
         </contributor>
         <contributor>
             <name>pangyiwei</name>
+            <properties>
+                <github>pangyiwei</github>
+            </properties>
+        </contributor>
+        <contributor>
+            <name>Niklas Mehner</name>
+            <email>niklas.mehner@gmail.com</email>
         </contributor>
     </contributors>
 
