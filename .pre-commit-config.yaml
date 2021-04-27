@@ -6,16 +6,16 @@ repos:
   - id: check-xml
   - id: end-of-file-fixer
 - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-  rev: v1.6.1
+  rev: v2.0.0
   hooks:
   - id: pretty-format-java
     args: [--autofix]
 - repo: https://github.com/markdownlint/markdownlint
-  rev: b9593ac22935133be1388306bb3e06bcf117d981
+  rev: d4722e89430631ab96cfb30719f163650b1d4b14
   hooks:
   - id: markdownlint_docker
 - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-  rev: v1.6.1
+  rev: v2.0.0
   hooks:
   - id: pretty-format-yaml
     args: [--autofix]
