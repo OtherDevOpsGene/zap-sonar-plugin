@@ -1,0 +1,33 @@
+image: openjdk:13-slim
+
+stages:
+  - pentest
+
+# please make sure to install the zap-sonar-plugin on sonarqube
+
+owasp-zap:
+  image: docker:19.03.12
+  stage: pentest
+  services:
+    - name: docker:19.03.12-dind
+      command: ["--insecure-registry=registry.gitlab.com"]
+  variables:
+    DOCKER_DRIVER: overlay2
+    APP_URL_UNDER_TEST: https://oneprofile.io/auth
+    PLUGIN_VERSION: 2.2.0
+  before_script:
+    - apk add --no-cache make git wget
+    - apk add --no-cache docker-compose
+    - docker info
+  script:
+    - wget https://github.com/Coveros/zap-sonar-plugin/releases/download/sonar-zap-plugin-${PLUGIN_VERSION}/sonar-zap-plugin-${PLUGIN_VERSION}.jar -O ./plugin/sonar-zap-plugin-${PLUGIN_VERSION}.jar
+    - docker-compose up -d sonarqube
+    - sleep 75
+    - docker-compose up owasp-zap
+    - docker-compose up sonar-scanner
+  only:
+    - master
+    - develop
+
+after_script:
+  - echo "End CI"

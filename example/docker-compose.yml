@@ -1,0 +1,50 @@
+version: "3.6"
+
+services:
+
+  sonarqube:
+    image: sonarqube:8.2-community
+    container_name: sonarqube
+    hostname: sonarqube
+    networks:
+      vulns-subnet:
+        ipv4_address: 192.168.10.11
+    volumes:
+      - ./plugin/sonar-zap-plugin-${PLUGIN_VERSION}.jar:/opt/sonarqube/extensions/plugins/sonar-zap-plugin-${PLUGIN_VERSION}.jar
+    ports:
+      - 9000:9000
+      - 9092:9092
+
+  owasp-zap:
+    image: owasp/zap2docker-stable
+    networks:
+      vulns-subnet:
+        ipv4_address: 192.168.10.15
+    extra_hosts:
+      - "javavulnlab:192.168.10.13"
+    volumes:
+      - ./reports:/zap/wrk/:rw
+    command: zap-baseline.py -t ${APP_URL_UNDER_TEST} -r zaproxy-report.html -x zaproxy-report.xml -g zapproxy-rules.xml
+
+  sonar-scanner:
+    image: sonarsource/sonar-scanner-cli
+    networks:
+      vulns-subnet:
+        ipv4_address: 192.168.10.14
+    extra_hosts:
+      - "sonarqube:192.168.10.11"
+    volumes:
+      - ./reports:/app/reports
+      - ./sonar-project.properties:/opt/sonar-scanner/conf/sonar-scanner.properties
+    environment:
+      - SONAR_HOST_URL=http://sonarqube:9000
+    command: sonar-scanner -Dproject.settings=/opt/sonar-scanner/conf/sonar-scanner.properties
+
+networks:
+  vulns-subnet:
+    name: vulns_subnet
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.10.0/24
