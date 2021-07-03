@@ -35,6 +35,20 @@ property in an active profile in your `settings.xml`:
 </settings>
 ```
 
+Consider pulling the latest SonarQube LTS image prior to building:
+
+```bash
+docker pull sonarqube:lts
+```
+
+To test with another version of SonarQube, you can build on a specific
+Docker Hub image by passing the `docker.sonarqube` property (default is
+`sonarqube:lts`).
+
+```bash
+mvn clean install -Ddocker.sonarqube=sonarqube:7.9.6-community
+```
+
 ## Testing
 
 Once you build the Docker image, you can start it with
@@ -59,6 +73,14 @@ Then run an analysis using the test report:
 
 ```bash
 mvn sonar:sonar
+```
+
+On SonarQube 8.x, you'll need to use a browser to visit the server
+(at <http://localhost:9000>), change the default password (`admin`),
+and then pass the new login credentials to the analysis:
+
+```bash
+mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=S00p3RS3krEt
 ```
 
 The ZAP results can be viewed at

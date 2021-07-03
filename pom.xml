@@ -21,6 +21,8 @@
         <sonar.zaproxy.reportPath>${project.basedir}/src/test/resources/report/dvwa.xml</sonar.zaproxy.reportPath>
         <sonar.zaproxy.htmlReportPath>${project.basedir}/src/test/resources/report/dvwa.html</sonar.zaproxy.htmlReportPath>
 
+        <docker.sonarqube>sonarqube:lts</docker.sonarqube>
+
         <java.version>1.8</java.version>
         <maven.version>3.5.4</maven.version>
         <pmd.cpd.minimumTokens>50</pmd.cpd.minimumTokens>
@@ -670,7 +672,7 @@
                                 <image>
                                     <name>${project.groupId}/%a:%l</name>
                                     <build>
-                                        <from>sonarqube:lts</from>
+                                        <from>${docker.sonarqube}</from>
                                         <labels>
                                             <maintainer>${license.mailto}</maintainer>
                                         </labels>

@@ -1,4 +1,4 @@
-# ZAP Plugin for SonarQube 7.x LTS
+# ZAP Plugin for SonarQube
 
 [![Build Status](https://travis-ci.org/OtherDevOpsGene/zap-sonar-plugin.svg?branch=main)](https://travis-ci.org/OtherDevOpsGene/zap-sonar-plugin)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6f379a37e7ef4994b5443723ec4bcb9f)](https://www.codacy.com/gh/OtherDevOpsGene/zap-sonar-plugin/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=OtherDevOpsGene/zap-sonar-plugin&amp;utm_campaign=Badge_Grade)
@@ -8,8 +8,8 @@
 [![deepcode](https://www.deepcode.ai/api/gh/badge?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF0Zm9ybTEiOiJnaCIsIm93bmVyMSI6Ik90aGVyRGV2T3BzR2VuZSIsInJlcG8xIjoiemFwLXNvbmFyLXBsdWdpbiIsImluY2x1ZGVMaW50IjpmYWxzZSwiYXV0aG9ySWQiOjI1MDYzLCJpYXQiOjE2MDU4ODgyMzB9.5bi9hovkUE-DkAOLt0IUZy_CJTeJH1LFiRrqK_REoW0)](https://www.deepcode.ai/app/gh/OtherDevOpsGene/zap-sonar-plugin/_/dashboard?utm_content=gh%2FOtherDevOpsGene%2Fzap-sonar-plugin)
 
 Integrates [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)
-reports into SonarQube v7.x or higher. The current LTS version of SonarQube is
-target.
+reports into SonarQube 7.9.6 LTS or higher.
+The current LTS version of SonarQube is the target.
 
 ## About ZAP
 
