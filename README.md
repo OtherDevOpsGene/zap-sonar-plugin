@@ -40,6 +40,28 @@ sonar.zaproxy.htmlReportPath=${WORKSPACE}/zaproxy-htmlReport.html
 sonar.zaproxy.rulesFilePath=${WORKSPACE}/myrules.xml
 ```
 
+## Example of automation with a CI toolchain
+
+```sh
+cd example
+
+docker-compose up -d sonarqube
+sleep 120
+# wait 2 minute for sonarqbue to start
+
+export PLUGIN_VERSION=2.2.0
+wget https://github.com/Coveros/zap-sonar-plugin/releases/download/sonar-zap-plugin-${PLUGIN_VERSION}/sonar-zap-plugin-${PLUGIN_VERSION}.jar -O ./plugin/sonar-zap-plugin-${PLUGIN_VERSION}.jar
+
+export APP_URL_UNDER_TEST='your-url-under-test'
+docker-compose up owasp-zap
+docker-compose up sonar-scanner
+```
+
+> If you wish to run the zap tool within the CI pipeline:
+> -   you may refet to the [example](example)
+> -   You need to have docker and docker-compose installed
+> -   You may refer to [.gitlab-ci.yml](example/.gitlab-ci.yml) if you wish to run on Gitlab CI
+
 ## History
 
 The ZAP SonarQube Plugin is derived from the
