@@ -57,7 +57,7 @@
 
         <commons.lang3.version>3.12.0</commons.lang3.version>
         <jsr305.version>3.0.2</jsr305.version>
-        <staxmate.version>2.4.0</staxmate.version>
+        <staxmate.version>2.4.1</staxmate.version>
 
         <junit.version>5.7.2</junit.version>
         <assertj.version>3.19.0</assertj.version>
@@ -473,7 +473,7 @@
                 <artifactId>license-maven-plugin</artifactId>
                 <configuration>
                     <licenseName>gpl_v3</licenseName>
-                    <organizationName>${license.owner} &lt;${license.mailto}></organizationName>
+                    <organizationName>${license.owner} &lt;${license.mailto}&gt;</organizationName>
                     <roots>
                         <root>src/main/java</root>
                         <root>src/test/java</root>
